@@ -9,7 +9,7 @@ export const appearanceOptions: Record<LinkAppearances, { label: string; value: 
     label: 'Default',
     value: 'default',
   },
-  outline: {
+  'outline-solid': {
     label: 'Outline',
     value: 'outline-solid',
   },
@@ -118,7 +118,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   }
 
   if (appearances !== false) {
-    let appearanceOptionsToUse = [appearanceOptions.default, appearanceOptions.outline]
+    let appearanceOptionsToUse = [appearanceOptions.default, appearanceOptions['outline-solid']]
 
     if (appearances) {
       appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
