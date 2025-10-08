@@ -1,9 +1,14 @@
+import type { Metadata } from 'next'
 import type React from 'react'
 import '@/app/(frontend)/global.css'
 
-export const metadata = {
+export const metadata: Metadata = {
+	title: 'Nature Paysage Laheux',
 	description: 'A blank template using Payload in a Next.js app.',
-	title: 'Payload Blank Template',
+	appleWebApp: {
+		title: 'Nature Paysage Laheux',
+	},
+	manifest: '/manifest.json',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

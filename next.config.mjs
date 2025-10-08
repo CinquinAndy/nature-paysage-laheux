@@ -12,6 +12,29 @@ const nextConfig = {
 
 		return webpackConfig
 	},
+	async headers() {
+		// Phase 1: Basic security headers that shouldn't interfere with PayPal
+		await Promise.resolve() // Satisfy async requirement
+		return [
+			{
+				source: '/(.*)',
+				headers: [
+					{
+						value: 'nosniff',
+						key: 'X-Content-Type-Options',
+					},
+					{
+						value: 'strict-origin-when-cross-origin',
+						key: 'Referrer-Policy',
+					},
+					{
+						value: '1; mode=block',
+						key: 'X-XSS-Protection',
+					},
+				],
+			},
+		]
+	},
 	trailingSlash: false,
 	images: {
 		remotePatterns: [
@@ -20,6 +43,11 @@ const nextConfig = {
 			{ protocol: 'https', hostname: 'cdnjs.cloudflare.com' },
 		],
 		qualities: [75, 90, 100], // Add quality configurations
+	},
+	experimental: {
+		serverActions: {
+			bodySizeLimit: '10mb',
+		},
 	},
 }
 
