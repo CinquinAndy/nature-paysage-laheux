@@ -2,6 +2,8 @@
 
 @config '../../../tailwind.config.mjs';
 
+@plugin '@tailwindcss/typography';
+
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -17,6 +19,113 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/* Tailwind v4 theme configuration */
+@theme {
+  /* Container configuration */
+  --container-center: true;
+  --container-padding: 1rem;
+  --container-padding-sm: 1rem;
+  --container-padding-md: 2rem;
+  --container-padding-lg: 2rem;
+  --container-padding-xl: 2rem;
+  --container-padding-2xl: 2rem;
+  --container-max-width-sm: 40rem;
+  --container-max-width-md: 48rem;
+  --container-max-width-lg: 64rem;
+  --container-max-width-xl: 80rem;
+  --container-max-width-2xl: 86rem;
+
+  /* Font families */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  /* Colors */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsla(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-success: hsl(var(--success));
+  --color-error: hsl(var(--error));
+  --color-warning: hsl(var(--warning));
+
+  /* Animations - replacing tailwindcss-animate */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Typography plugin customization */
+  --typography-body: var(--text);
+  --typography-headings: var(--text);
+}
+
+/* Keyframes for animations (replacing tailwindcss-animate) */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Typography customization */
+@theme {
+  --typography-body: var(--text);
+  --typography-headings: var(--text);
+}
+
+@layer base {
+  /* Typography custom styles */
+  .prose h1 {
+    font-weight: normal;
+    margin-bottom: 0.25em;
+    font-size: 2.5rem;
+  }
+
+  .prose h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    .prose h1 {
+      font-size: 3.5rem;
+    }
+
+    .prose h2 {
+      font-size: 1.5rem;
+    }
   }
 }
 
