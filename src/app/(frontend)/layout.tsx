@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type React from 'react'
 import '@/app/(frontend)/global.css'
+import { NavigationBar } from '@/components/global/navigationbar'
 
 export const metadata: Metadata = {
 	title: 'Nature Paysage Laheux',
@@ -17,7 +18,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 	return (
 		<html lang="fr">
 			<body>
-				<main>{children}</main>
+				<main>
+					<NavigationBar />
+					{children}
+				</main>
 			</body>
 		</html>
 	)
