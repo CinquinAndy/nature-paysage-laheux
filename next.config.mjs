@@ -12,6 +12,15 @@ const nextConfig = {
 
     return webpackConfig
   },
+  trailingSlash: false,
+	images: {
+		remotePatterns: [
+			{ protocol: 'https', hostname: '*.andy-cinquin.fr' },
+			{ protocol: 'https', hostname: 'cdnjs.cloudflare.com' },
+			{ protocol: 'https', hostname: 'cdnjs.cloudflare.com' },
+		],
+		qualities: [75, 90, 100], // Add quality configurations
+	},
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
