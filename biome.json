@@ -1,9 +1,14 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
-	"vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
+	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["src/**/*", "*.ts", "*.tsx", "*.js", "*.jsx"],
+		"includes": ["src/**/*", "*.ts", "*.tsx", "*.js", "*.jsx", "*.mjs"],
 		"maxSize": 1048576
 	},
 	"formatter": {
@@ -68,5 +73,17 @@
 				"organizeImports": "on"
 			}
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["**/payload-types.ts"],
+			"linter": {
+				"rules": {
+					"complexity": {
+						"noBannedTypes": "off"
+					}
+				}
+			}
+		}
+	]
 }

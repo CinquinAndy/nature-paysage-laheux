@@ -1,5 +1,5 @@
 import type React from 'react'
-import './global.css'
+import '@/app/(frontend)/global.css'
 
 export const metadata = {
 	description: 'A blank template using Payload in a Next.js app.',
