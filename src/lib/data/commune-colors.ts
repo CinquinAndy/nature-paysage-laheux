@@ -1,42 +1,34 @@
-// Palette de couleurs pastel/sobre pour les communes
-// Utilise des couleurs douces et harmonieuses
+// Palette de couleurs ultra-douces pour les 15 communes
+// Couleurs très pâles et harmonieuses pour éviter la surcharge visuelle
 export const COMMUNE_COLORS: Record<string, string> = {
-	// Verts pastel
-	"44100": "#86efac", // Monnières - Vert clair
-	"44117": "#a7f3d0", // Le Pallet - Vert menthe
-	"44070": "#bbf7d0", // La Haie-Fouassière - Vert pâle
+	// Top communes - Verts très pâles
+	'44117': '#d1fae5', // Le Pallet (score 860) - Vert menthe très pâle
+	'44100': '#ecfdf5', // Monnières (score 340) - Vert eau très clair
+	'44064': '#d1fae5', // Gorges - Vert pâle
+	'44032': '#f0fdf4', // La Chapelle-Heulin - Vert presque blanc
 
-	// Bleus pastel
-	"44071": "#93c5fd", // Haute-Goulaine - Bleu ciel
-	"44009": "#bfdbfe", // Basse-Goulaine - Bleu très clair
-	"44215": "#a5f3fc", // Vertou - Cyan pastel
-	"44169": "#7dd3fc", // Saint-Julien-de-Concelles - Bleu turquoise
+	// Vallet et environs - Beiges/Pêches ultra-doux
+	'44212': '#fef3c7', // Vallet 9.5k - Jaune crème
+	'44108': '#fef9e7', // Mouzillon - Beige très clair
+	'44084': '#fef3c7', // Le Loroux-Bottereau - Pêche pâle
 
-	// Violets/Roses pastel
-	"44062": "#d8b4fe", // Gorges - Violet pastel
-	"44176": "#e9d5ff", // Saint-Fiacre-sur-Maine - Mauve clair
-	"44142": "#f0abfc", // La Regrippière - Rose-violet
+	// Vertou - Bleu très pâle
+	'44215': '#e0f2fe', // Vertou 26k hab - Bleu ciel très clair
 
-	// Oranges/Jaunes pastel
-	"44043": "#fdba74", // Clisson - Orange pastel
-	"44037": "#fcd34d", // La Chapelle-Heulin - Jaune doux
-	"44079": "#fde68a", // Le Landreau - Jaune pâle
-	"44212": "#fed7aa", // Vallet - Pêche
-	"44108": "#fbbf24", // Mouzillon - Ambre clair
+	// Goulaine - Violets ultra-pâles
+	'44071': '#f3e8ff', // Haute-Goulaine - Mauve presque blanc
+	'44009': '#faf5ff', // Basse-Goulaine - Violet ultra-pâle
 
-	// Roses pastel
-	"44038": "#fbcfe8", // Château-Thébaud - Rose clair
-	"44002": "#fda4af", // Aigrefeuille-sur-Maine - Rose saumon
-	"44177": "#f9a8d4", // Saint-Lumine-de-Clisson - Rose bonbon
+	// Clisson et environs - Roses/Corails très doux
+	'44043': '#fee2e2', // Clisson - Rose pêche très pâle
+	'44173': '#fef2f2', // Saint-Lumine - Rose presque blanc
 
-	// Autres couleurs pastel
-	"44061": "#c4b5fd", // Gétigné - Indigo pastel
-	"44205": "#a5b4fc", // Tillières - Bleu indigo
-	"44143": "#cbd5e1", // Remouillé - Gris bleuté
-	"44217": "#d4d4d8", // Vieillevigne - Gris clair
-	"44102": "#e4e4e7", // Montbert - Gris très clair
+	// Autres - Tons neutres très pâles
+	'44070': '#fce7f3', // La Haie-Fouassière - Rose glacé
+	'44088': '#f5f3ff', // Maisdon-sur-Sèvre - Lavande très pâle
+	'44002': '#fef9e7', // Aigrefeuille - Jaune crème très clair
 }
 
 export function getCommuneColor(code: string): string {
-	return COMMUNE_COLORS[code] || "#86efac"
+	return COMMUNE_COLORS[code] || '#ecfdf5'
 }

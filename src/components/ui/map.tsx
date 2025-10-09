@@ -1,8 +1,8 @@
 'use client'
 
-import { type ReactNode, useEffect } from 'react'
-import { MapContainer, TileLayer, Circle, Polygon, GeoJSON, useMap } from 'react-leaflet'
 import type { LatLngExpression } from 'leaflet'
+import { type ReactNode, useEffect } from 'react'
+import { Circle, GeoJSON, MapContainer, Polygon, TileLayer, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { cn } from '@/lib/utils'
 
@@ -30,7 +30,7 @@ function MapBounds({ minZoom, maxZoom }: { minZoom?: number; maxZoom?: number })
 	return null
 }
 
-export function Map({
+export function LeafletMap({
 	center,
 	zoom = 10,
 	className,
@@ -71,7 +71,8 @@ export function MapTileLayer({ variant = 'default' }: MapTileLayerProps) {
 
 	const attributions = {
 		default: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-		minimal: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+		minimal:
+			'&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 		dark: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	}
 
@@ -120,11 +121,10 @@ export function MapCircle({
 
 interface MapMarkerProps {
 	position: LatLngExpression
-	label?: string
 	glow?: boolean
 }
 
-export function MapMarker({ position, label, glow = false }: MapMarkerProps) {
+export function MapMarker({ position, glow = false }: MapMarkerProps) {
 	return (
 		<Circle
 			center={position}
@@ -162,35 +162,33 @@ export function MapPolygon({ positions, glow = false, fillOpacity = 0.3 }: MapPo
 }
 
 interface MapGeoJSONProps {
-	data: any
-	glow?: boolean
+	data: GeoJSON.GeoJsonObject
 	colorMap?: Record<string, string>
 	showLabels?: boolean
 }
 
-export function MapGeoJSON({ data, glow = false, colorMap, showLabels = false }: MapGeoJSONProps) {
+export function MapGeoJSON({ data, colorMap, showLabels = false }: MapGeoJSONProps) {
 	return (
 		<GeoJSON
 			data={data}
-			style={(feature) => {
+			style={feature => {
 				const code = feature?.properties?.code
-				const color = (colorMap && code) ? colorMap[code] : 'hsl(var(--primary))'
+				const color = colorMap && code ? colorMap[code] : 'hsl(var(--primary))'
 
 				return {
 					color: color,
 					fillColor: color,
-					fillOpacity: 0.25,
-					weight: 1.5,
-					opacity: 0.6,
+					fillOpacity: 0.6,
+					weight: 1,
+					opacity: 0.4,
 				}
 			}}
-			className={glow ? 'map-polygon-glow' : ''}
 			onEachFeature={(feature, layer) => {
-				if (feature.properties && feature.properties.nom) {
+				if (feature.properties?.nom) {
 					layer.bindTooltip(feature.properties.nom, {
 						permanent: showLabels,
 						direction: 'center',
-						className: 'commune-tooltip'
+						className: 'commune-tooltip',
 					})
 				}
 			}}
