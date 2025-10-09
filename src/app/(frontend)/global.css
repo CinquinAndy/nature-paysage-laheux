@@ -26,6 +26,8 @@
 	--color-border: var(--border);
 	--color-input: var(--input);
 	--color-ring: var(--ring);
+	--color-brand: var(--brand);
+	--color-brand-foreground: var(--brand-foreground);
 	--color-chart-1: var(--chart-1);
 	--color-chart-2: var(--chart-2);
 	--color-chart-3: var(--chart-3);
@@ -57,8 +59,9 @@
 	--shadow-sm: var(--shadow-sm);
 	--shadow-xs: var(--shadow-xs);
 	--shadow-2xs: var(--shadow-2xs);
-	--shadow-glow: 0 -16px 128px 0 oklch(0.5234 0.1347 144.1672 / 0.3) inset,
-		0 -16px 32px 0 oklch(0.5234 0.1347 144.1672 / 0.5) inset;
+	--shadow-glow: 0 -16px 128px 0 hsl(var(--brand-foreground) / 0.5) inset,
+		0 -16px 32px 0 hsl(var(--brand) / 0.5) inset;
+	--max-w-container: 80rem;
 	--spacing: var(--spacing);
 	--letter-spacing: var(--letter-spacing);
 	--shadow-offset-y: var(--shadow-offset-y);
@@ -104,6 +107,8 @@
 	--sidebar-border: oklch(0.8805 0.0208 74.6428);
 	--sidebar-ring: oklch(0.5234 0.1347 144.1672);
 	--destructive-foreground: oklch(1 0 0);
+	--brand: 144 54% 47%;
+	--brand-foreground: 144 54% 57%;
 	--font-sans: Montserrat, sans-serif;
 	--font-serif: Merriweather, serif;
 	--font-mono: Source Code Pro, monospace;
@@ -159,6 +164,8 @@
 	--sidebar-border: oklch(0.3942 0.0265 142.9926);
 	--sidebar-ring: oklch(0.6731 0.1624 144.2083);
 	--destructive-foreground: oklch(0.9423 0.0097 72.6595);
+	--brand: 144 65% 57%;
+	--brand-foreground: 144 65% 67%;
 	--radius: 0.5rem;
 	--font-sans: Montserrat, sans-serif;
 	--font-serif: Merriweather, serif;
@@ -179,8 +186,8 @@
 	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
 	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
 	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-	--shadow-glow: 0 -16px 128px 0 oklch(0.6731 0.1624 144.2083 / 0.4) inset,
-		0 -16px 32px 0 oklch(0.6731 0.1624 144.2083 / 0.6) inset;
+	--shadow-glow: 0 -16px 128px 0 hsl(var(--brand-foreground) / 0.5) inset,
+		0 -16px 32px 0 hsl(var(--brand) / 0.5) inset;
 }
 
 @layer utilities {

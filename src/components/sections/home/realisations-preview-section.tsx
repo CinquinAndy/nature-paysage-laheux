@@ -1,7 +1,7 @@
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
 
 const realisationImages = [
 	{ src: '/usable/IMG_20231117_093237.jpg', alt: 'Entretien de pelouse écologique' },

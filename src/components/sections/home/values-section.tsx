@@ -1,5 +1,5 @@
+import { Leaf, MapPin, TrendingDown, Wrench } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Leaf, TrendingDown, MapPin, Wrench } from 'lucide-react'
 
 const values = [
 	{

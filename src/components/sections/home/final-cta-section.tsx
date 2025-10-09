@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import { ArrowRight, CheckCircle2, Phone } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { CheckCircle2, Phone, ArrowRight } from 'lucide-react'
 
 const benefits = [
 	'Réponse sous 48h',

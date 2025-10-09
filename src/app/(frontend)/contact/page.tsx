@@ -1,13 +1,13 @@
 'use client'
 
+import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
-import { Mail, MapPin, Phone, Clock, CheckCircle2 } from 'lucide-react'
 
 export default function ContactPage() {
 	const [formData, setFormData] = useState({

@@ -1,8 +1,8 @@
 import { Award, Check, Heart, Leaf, Shield, X } from 'lucide-react'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 const philosophyPoints = [
 	{
@@ -212,35 +212,36 @@ export function PhilosophySection() {
 				{/* Engagement Banner */}
 				<section className="overflow-hidden pt-0 md:pt-0">
 					<div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
-						{/* Glow Effect Background */}
-						<div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 animate-scale-in delay-700">
-							<div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-primary/5 to-transparent blur-3xl" />
-						</div>
-
-						{/* Content */}
-						<div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8">
-							{/* Badge */}
+						{/* Badge */}
+						{true && (
 							<Badge variant="outline" className="opacity-0 animate-fade-in-up delay-100">
 								<span className="text-muted-foreground">Mon engagement</span>
 							</Badge>
+						)}
 
-							{/* Title */}
-							<h3 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
-								Transparence & Crédit d'impôt
-							</h3>
+						{/* Title */}
+						<h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
+							Transparence & Crédit d'impôt
+						</h2>
 
-							{/* Description */}
-							<p className="text-muted-foreground text-lg max-w-3xl opacity-0 animate-fade-in-up delay-300">
+						{/* Description */}
+						{true && (
+							<p className="text-muted-foreground opacity-0 animate-fade-in-up delay-300">
 								En tant que membre de la coopérative Unipros, je vous garantis transparence sur les tarifs et bénéfice
 								maximum du crédit d'impôt (50%). Chaque jardin mérite une attention particulière et des méthodes qui
 								respectent son écosystème unique.
 							</p>
+						)}
 
-							{/* Action Button */}
-							<Button size="lg" className="opacity-0 animate-fade-in-up delay-500" asChild>
-								<a href="/contact">Demander un devis gratuit</a>
-							</Button>
-						</div>
+						{/* Action Button */}
+						<Button variant="default" size="lg" className="opacity-0 animate-fade-in-up delay-500" asChild>
+							<a href="/contact">Demander un devis gratuit</a>
+						</Button>
+
+						{/* Glow Effect */}
+						{true && (
+							<div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
+						)}
 					</div>
 				</section>
 			</div>
