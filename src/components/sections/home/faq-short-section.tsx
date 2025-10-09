@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Accordion } from '@/components/ui/accordion'
-import { FAQ_SHORT } from '@/lib/data/faq'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { Accordion } from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import { FAQ_SHORT } from '@/lib/data/faq'
 
 export function FaqShortSection() {
 	const faqItems = FAQ_SHORT.map(item => ({

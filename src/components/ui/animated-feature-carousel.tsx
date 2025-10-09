@@ -9,6 +9,7 @@ import {
 	useMotionValue,
 	type Variants,
 } from 'framer-motion'
+import Image from 'next/image'
 import { forwardRef, type MouseEvent, useCallback, useEffect, useState } from 'react'
 
 // --- Helper Functions and Fallbacks ---
@@ -193,19 +194,21 @@ const stepVariants: Variants = {
 	active: { scale: 1, opacity: 1 },
 }
 
-const StepImage = forwardRef<HTMLImageElement, StepImageProps>(({ src, alt, className, style, ...props }, ref) => {
+const StepImage = forwardRef<HTMLDivElement, StepImageProps>(({ src, alt, className, style, ...props }, ref) => {
 	return (
-		<img
-			ref={ref}
-			alt={alt}
-			className={className}
-			src={src}
-			style={{ position: 'absolute', userSelect: 'none', maxWidth: 'unset', ...style }}
-			onError={e => {
-				e.currentTarget.src = placeholderImage(alt)
-			}}
-			{...props}
-		/>
+		<div ref={ref} className={className} style={{ position: 'absolute', userSelect: 'none', ...style }}>
+			<Image
+				alt={alt}
+				src={src}
+				fill
+				sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+				style={{ objectFit: 'contain', maxWidth: 'unset' }}
+				onError={e => {
+					e.currentTarget.src = placeholderImage(alt)
+				}}
+				{...props}
+			/>
+		</div>
 	)
 })
 StepImage.displayName = 'StepImage'

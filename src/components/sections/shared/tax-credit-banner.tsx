@@ -1,5 +1,5 @@
-import { Badge } from '@/components/ui/badge'
 import { Sparkles } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
 
 interface TaxCreditBannerProps {
 	variant?: 'default' | 'compact' | 'detailed'

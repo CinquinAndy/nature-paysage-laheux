@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import type React from 'react'
 import '@/app/(frontend)/global.css'
-import { NavigationBar } from '@/components/global/navigationbar'
 import { Footer } from '@/components/global/footer'
+import { NavigationBar } from '@/components/global/navigationbar'
 
 export const metadata: Metadata = {
 	title: 'Nature Paysage Laheux',
