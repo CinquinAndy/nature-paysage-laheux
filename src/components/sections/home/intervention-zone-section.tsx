@@ -97,26 +97,37 @@ export function InterventionZoneSection() {
 						</div>
 					</div>
 
-					{/* CTA */}
-					<div className="text-center bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 border-2 border-primary/20">
-						<p className="text-lg font-medium mb-6">
-							Votre commune n'est pas dans la liste ?<br />
-							<span className="text-muted-foreground text-base">
-								Contactez-moi pour vérifier si j'interviens dans votre secteur
-							</span>
-						</p>
-						<div className="flex flex-col sm:flex-row gap-3 justify-center">
-							<Button variant="primary" size="lg" asChild>
-								<Link href="/contact">Demander un Devis Gratuit</Link>
-							</Button>
-							<Button variant="outline" size="lg" asChild>
-								<Link href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}>
-									<Phone className="mr-2 h-4 w-4" />
-									{CONTACT_INFO.phone}
-								</Link>
-							</Button>
+					{/* CTA Card */}
+					<section className="overflow-hidden pt-0 md:pt-0">
+						<div className="relative mx-auto flex container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
+							{/* Title */}
+							<h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
+								Votre commune n'est pas dans la liste ?
+							</h2>
+
+							{/* Description */}
+							<p className="text-muted-foreground opacity-0 animate-fade-in-up delay-300">
+								Contactez-moi pour vérifier si j'interviens dans votre secteur. Basé à {CONTACT_INFO.address.city}, je
+								peux étendre ma zone d'intervention selon vos besoins et la nature de votre projet.
+							</p>
+
+							{/* Action Buttons */}
+							<div className="flex flex-col sm:flex-row gap-3 opacity-0 animate-fade-in-up delay-500">
+								<Button variant="default" size="lg" asChild>
+									<Link href="/contact">Demander un Devis Gratuit</Link>
+								</Button>
+								<Button variant="outline" size="lg" asChild>
+									<Link href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}>
+										<Phone className="mr-2 h-4 w-4" />
+										{CONTACT_INFO.phone}
+									</Link>
+								</Button>
+							</div>
+
+							{/* Glow Effect */}
+							<div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
 						</div>
-					</div>
+					</section>
 				</div>
 			</div>
 		</section>
