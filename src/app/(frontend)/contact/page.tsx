@@ -1,6 +1,7 @@
 'use client'
 
 import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -56,12 +57,12 @@ export default function ContactPage() {
 										<Phone className="h-5 w-5 text-primary shrink-0 mt-0.5" />
 										<div>
 											<p className="font-medium">Téléphone</p>
-											<a
+											<Link
 												href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
 												className="text-muted-foreground hover:text-primary"
 											>
 												{CONTACT_INFO.phone}
-											</a>
+											</Link>
 											<p className="text-xs text-muted-foreground mt-1">Le moyen le plus rapide</p>
 										</div>
 									</div>
@@ -70,12 +71,12 @@ export default function ContactPage() {
 										<Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
 										<div>
 											<p className="font-medium">Email</p>
-											<a
+											<Link
 												href={`mailto:${CONTACT_INFO.email}`}
 												className="text-muted-foreground hover:text-primary break-all text-sm"
 											>
 												{CONTACT_INFO.email}
-											</a>
+											</Link>
 											<p className="text-xs text-muted-foreground mt-1">Réponse sous 48h</p>
 										</div>
 									</div>

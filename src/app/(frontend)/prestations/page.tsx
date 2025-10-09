@@ -98,10 +98,10 @@ export default function PrestationsPage() {
 								<Link href="/contact">Demander un Devis Gratuit</Link>
 							</Button>
 							<Button size="lg" variant="outline" asChild>
-								<a href="tel:0631043445">
+								<Link href="tel:0631043445">
 									<Phone className="mr-2 h-5 w-5" />
 									06 31 04 34 45
-								</a>
+								</Link>
 							</Button>
 						</div>
 						<div className="mt-8 text-sm text-muted-foreground space-y-1">

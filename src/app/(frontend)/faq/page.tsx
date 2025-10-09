@@ -65,10 +65,10 @@ export default function FaqPage() {
 								<Link href="/contact">Me Contacter</Link>
 							</Button>
 							<Button size="lg" variant="outline" asChild>
-								<a href="tel:0631043445">
+								<Link href="tel:0631043445">
 									<Phone className="mr-2 h-5 w-5" />
 									06 31 04 34 34 45
-								</a>
+								</Link>
 							</Button>
 						</div>
 						<p className="mt-6 text-sm text-muted-foreground">Réponse garantie sous 48h</p>

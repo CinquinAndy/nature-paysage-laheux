@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
 	title: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
@@ -79,9 +80,9 @@ export default function MentionsLegalesPage() {
 							Téléphone : 06 21 58 26 84
 							<br />
 							Site web :{' '}
-							<a href="https://andy-cinquin.fr" target="_blank" rel="noopener noreferrer">
+							<Link href="https://andy-cinquin.fr" target="_blank" rel="noopener noreferrer">
 								https://andy-cinquin.fr
-							</a>
+							</Link>
 						</p>
 						<p>
 							Prestation "clé en main" incluant : création de thème personnalisé, image de marque, référencement,
