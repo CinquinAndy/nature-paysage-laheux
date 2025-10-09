@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { Accordion } from '@/components/ui/accordion'
-import { FAQ_ITEMS, FAQ_CATEGORIES } from '@/lib/data/faq'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { Phone } from 'lucide-react'
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { Accordion } from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import { FAQ_CATEGORIES, FAQ_ITEMS } from '@/lib/data/faq'
 
 export const metadata: Metadata = {
 	title: 'Questions Fréquentes | Jean-Luc Laheux Eco-Paysagiste',

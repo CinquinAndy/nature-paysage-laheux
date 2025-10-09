@@ -1,6 +1,6 @@
 import { Award, Check, Heart, Leaf, Shield, X } from 'lucide-react'
 import Image from 'next/image'
-import { Badge } from '@/components/ui/badge'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -211,14 +211,7 @@ export function PhilosophySection() {
 
 				{/* Engagement Banner */}
 				<section className="overflow-hidden pt-0 md:pt-0">
-					<div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
-						{/* Badge */}
-						{true && (
-							<Badge variant="outline" className="opacity-0 animate-fade-in-up delay-100">
-								<span className="text-muted-foreground">Mon engagement</span>
-							</Badge>
-						)}
-
+					<div className="relative mx-auto flex container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
 						{/* Title */}
 						<h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
 							Transparence & Crédit d'impôt
@@ -235,7 +228,7 @@ export function PhilosophySection() {
 
 						{/* Action Button */}
 						<Button variant="default" size="lg" className="opacity-0 animate-fade-in-up delay-500" asChild>
-							<a href="/contact">Demander un devis gratuit</a>
+							<Link href="/contact">Demander un devis gratuit</Link>
 						</Button>
 
 						{/* Glow Effect */}

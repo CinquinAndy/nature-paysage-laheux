@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { CONTACT_INFO } from '@/lib/data/contact-info'
-import { Separator } from '@/components/ui/separator'
 import { Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Separator } from '@/components/ui/separator'
+import { CONTACT_INFO } from '@/lib/data/contact-info'
 
 export function Footer() {
 	const currentYear = new Date().getFullYear()
@@ -85,22 +85,22 @@ export function Footer() {
 						<h3 className="font-semibold text-base">Contact</h3>
 						<ul className="space-y-3 text-sm">
 							<li>
-								<a
+								<Link
 									href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
 									className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
 								>
 									<Phone className="h-4 w-4" />
 									{CONTACT_INFO.phone}
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
+								<Link
 									href={`mailto:${CONTACT_INFO.email}`}
 									className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors break-all"
 								>
 									<Mail className="h-4 w-4 shrink-0" />
 									{CONTACT_INFO.email}
-								</a>
+								</Link>
 							</li>
 							<li>
 								<div className="flex items-start gap-2 text-muted-foreground">
@@ -114,7 +114,7 @@ export function Footer() {
 							</li>
 						</ul>
 						<div className="flex items-center gap-3 pt-2">
-							<a
+							<Link
 								href={CONTACT_INFO.social.facebook}
 								target="_blank"
 								rel="noopener noreferrer"
@@ -122,8 +122,8 @@ export function Footer() {
 								aria-label="Facebook"
 							>
 								<Facebook className="h-5 w-5" />
-							</a>
-							<a
+							</Link>
+							<Link
 								href={CONTACT_INFO.social.linkedin}
 								target="_blank"
 								rel="noopener noreferrer"
@@ -131,7 +131,7 @@ export function Footer() {
 								aria-label="LinkedIn"
 							>
 								<Linkedin className="h-5 w-5" />
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -145,14 +145,14 @@ export function Footer() {
 					</p>
 					<p>
 						Site créé par{' '}
-						<a
+						<Link
 							href="https://andy-cinquin.fr"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:text-primary transition-colors underline"
 						>
 							Cinquin Andy
-						</a>
+						</Link>
 					</p>
 				</div>
 			</div>

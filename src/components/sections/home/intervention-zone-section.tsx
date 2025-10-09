@@ -52,10 +52,10 @@ export function InterventionZoneSection() {
 								<Link href="/contact">Demander un Devis</Link>
 							</Button>
 							<Button variant="outline" asChild>
-								<a href="tel:0631043445">
+								<Link href="tel:0631043445">
 									<Phone className="mr-2 h-4 w-4" />
 									06 31 04 34 45
-								</a>
+								</Link>
 							</Button>
 						</div>
 					</div>

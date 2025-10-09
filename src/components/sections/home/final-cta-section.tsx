@@ -52,10 +52,10 @@ export function FinalCtaSection() {
 							</Link>
 						</Button>
 						<Button size="lg" className="text-lg px-8 py-6 bg-white hover:bg-white/90 text-primary shadow-xl" asChild>
-							<a href="tel:0631043445">
+							<Link href="tel:0631043445">
 								<Phone className="mr-2 h-5 w-5" />
 								06 31 04 34 45
-							</a>
+							</Link>
 						</Button>
 					</div>
 
