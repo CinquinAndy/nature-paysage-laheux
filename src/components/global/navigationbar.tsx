@@ -47,7 +47,7 @@ export const NavigationBar = () => {
 							key={`mobile-link-${item.name}`}
 							href={item.link}
 							onClick={() => setIsMobileMenuOpen(false)}
-							className="relative text-white"
+							className="relative text-black  font-semibold text-lg hover:text-primary transition-colors"
 						>
 							<span className="block">{item.name}</span>
 						</Link>
