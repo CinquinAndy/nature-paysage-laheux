@@ -32,7 +32,7 @@ export const NavigationBar = () => {
 				<NavbarLogo />
 				<NavItems items={navItems} />
 				<div className="flex items-center gap-4">
-					<NavbarButton variant="primary" asChild>
+					<NavbarButton variant="primary">
 						<Link href="/contact">Devis Gratuit</Link>
 					</NavbarButton>
 				</div>
@@ -57,7 +57,7 @@ export const NavigationBar = () => {
 						</Link>
 					))}
 					<div className="flex w-full flex-col gap-4">
-						<NavbarButton variant="primary" className="w-full" asChild>
+						<NavbarButton variant="primary" className="w-full">
 							<Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
 								Devis Gratuit
 							</Link>
