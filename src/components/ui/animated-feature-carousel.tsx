@@ -1,16 +1,15 @@
 'use client'
 
-import { forwardRef, useCallback, useEffect, useRef, useState, type MouseEvent } from 'react'
-import clsx from 'clsx'
 import {
 	AnimatePresence,
+	type MotionStyle,
+	type MotionValue,
 	motion,
 	useMotionTemplate,
 	useMotionValue,
-	type MotionStyle,
-	type MotionValue,
 	type Variants,
 } from 'framer-motion'
+import { forwardRef, type MouseEvent, useCallback, useEffect, useState } from 'react'
 
 // --- Helper Functions and Fallbacks ---
 
@@ -287,7 +286,7 @@ function StepsNav({
 }) {
 	return (
 		<nav aria-label="Progress" className="flex justify-center px-4">
-			<ol className="flex w-full flex-wrap items-center justify-center gap-2" role="list">
+			<ol className="flex w-full flex-wrap items-center justify-center gap-2">
 				{stepItems.map((step, stepIdx) => {
 					const isCompleted = current > stepIdx
 					const isCurrent = current === stepIdx
@@ -334,12 +333,12 @@ function StepsNav({
 
 const defaultClasses = {
 	img: 'rounded-xl border border-green-200 dark:border-green-800 shadow-2xl shadow-black/10 dark:shadow-green-950/50',
-	step1img1: 'w-[50%] left-0 top-[15%]',
-	step1img2: 'w-[60%] left-[40%] top-[35%]',
-	step2img1: 'w-[50%] left-[5%] top-[20%]',
-	step2img2: 'w-[40%] left-[55%] top-[45%]',
-	step3img: 'w-[90%] left-[5%] top-[25%]',
-	step4img: 'w-[90%] left-[5%] top-[25%]',
+	step1img1: 'w-[50%] left-0 top-[10%]',
+	step1img2: 'w-[60%] left-[40%] top-[25%]',
+	step2img1: 'w-[50%] left-[5%] top-[7%]',
+	step2img2: 'w-[40%] left-[50%] top-[15%]',
+	step3img: 'w-[90%] left-[0%] top-[10%]',
+	step4img: 'w-[90%] left-[0%] top-[5%]',
 } as const
 
 export function FeatureCarousel({
