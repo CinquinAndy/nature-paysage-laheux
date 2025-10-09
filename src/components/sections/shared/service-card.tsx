@@ -1,10 +1,7 @@
+import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import type { Service } from '@/lib/data/services'
-import { CheckCircle2 } from 'lucide-react'
 
 interface ServiceCardProps {
 	service: Service
@@ -13,51 +10,40 @@ interface ServiceCardProps {
 	ctaHref?: string
 }
 
-export function ServiceCard({
-	service,
-	showImage = true,
-	ctaText = 'En savoir plus',
-	ctaHref = '/prestations',
-}: ServiceCardProps) {
+export function ServiceCard({ service, showImage = true }: ServiceCardProps) {
 	return (
-		<Card className="h-full flex flex-col overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+		<Card className="relative min-h-[500px] h-full flex flex-col overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-transparent border-none z-20">
 			{showImage && service.image && (
-				<div className="relative h-48 w-full overflow-hidden">
-					<Image
-						src={service.image}
-						alt={service.title}
-						fill
-						className="object-cover group-hover:scale-105 transition-transform duration-300"
-					/>
-				</div>
+				<Image
+					src={service.image}
+					alt={service.title}
+					fill
+					className="object-cover group-hover:scale-105 transition-transform duration-300 h-full w-full z-10 brightness-75"
+				/>
 			)}
-			<CardHeader>
-				<div className="flex items-start justify-between gap-2">
-					<CardTitle className="text-xl">{service.title}</CardTitle>
-					{service.eligibleTaxCredit && (
-						<Badge variant="success" className="shrink-0 text-xs">
-							✓ -50%
-						</Badge>
-					)}
-				</div>
-			</CardHeader>
-			<CardContent className="flex-1">
-				<p className="text-sm text-muted-foreground mb-4">{service.shortDescription}</p>
-				<ul className="space-y-2">
+			<CardHeader className="z-20 flex gap-8 justify-between flex-row flex-nowrap w-full">
+				<ul className="flex flex-wrap gap-2">
 					{service.features.slice(0, 4).map((feature, index) => (
-						<li key={index} className="flex items-start gap-2 text-sm">
-							<CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-							<span>{feature}</span>
+						<li
+							key={index}
+							className="flex items-start gap-2 text-sm border border-white rounded-2xl p-2 px-3 bg-white/5 backdrop-blur-sm"
+						>
+							<span className="text-white font-semibold text-xs">{feature}</span>
 						</li>
 					))}
 				</ul>
+				<div>
+					<div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5 backdrop-blur-sm border border-white/25">
+						<ArrowUpRight className="w-4 h-4 text-white" />
+					</div>
+				</div>
+			</CardHeader>
+			<CardContent className="flex flex-col gap-4 z-20 text-white h-full justify-end">
+				<div className="flex items-start justify-between gap-2">
+					<CardTitle className="text-xl uppercase font-black">{service.title}</CardTitle>
+				</div>
+				<p className="text-sm text-white font-semibold mb-4">{service.shortDescription}</p>
 			</CardContent>
-			<CardFooter className="flex flex-col items-stretch gap-3">
-				<p className="text-sm font-medium text-muted-foreground">{service.price}</p>
-				<Button variant="outline" className="w-full" asChild>
-					<Link href={ctaHref}>{ctaText}</Link>
-				</Button>
-			</CardFooter>
 		</Card>
 	)
 }

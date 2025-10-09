@@ -1,10 +1,10 @@
+import { Phone } from 'lucide-react'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ServiceCard } from '@/components/sections/shared/service-card'
 import { TaxCreditBanner } from '@/components/sections/shared/tax-credit-banner'
-import { SERVICES } from '@/lib/data/services'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { Phone } from 'lucide-react'
+import { SERVICES } from '@/lib/data/services'
 
 export const metadata: Metadata = {
 	title: "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux - Loire-Atlantique",
@@ -32,10 +32,16 @@ export default function PrestationsPage() {
 
 			{/* Services Grid */}
 			<section className="py-16 md:py-24">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{SERVICES.map(service => (
-							<ServiceCard key={service.id} service={service} showImage={true} ctaText="Voir les détails" />
+							<Link
+								key={service.id}
+								href={`/prestations/${service.id}`}
+								className="hover:scale-105 transition-all duration-300 cursor-pointer"
+							>
+								<ServiceCard key={service.id} service={service} showImage={true} ctaText="Voir les détails" />
+							</Link>
 						))}
 					</div>
 				</div>
