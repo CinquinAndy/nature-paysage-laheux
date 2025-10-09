@@ -27,12 +27,12 @@ const values = [
 
 export function ValuesSection() {
 	return (
-		<section className="py-16 md:py-24 bg-muted/30">
+		<section className="py-16 md:py-24 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
-				<div className="text-center mb-12 md:mb-16">
+				<div className="text-left mb-12 md:mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Une Approche Écologique et Sur-Mesure</h2>
-					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+					<p className="text-lg text-muted-foreground max-w-2xl">
 						Quatre piliers fondamentaux guident mon travail au quotidien
 					</p>
 				</div>

@@ -7,14 +7,15 @@ export function InterventionZoneSection() {
 	return (
 		<section className="py-16 md:py-24 bg-muted/30">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+				{/* Section Header */}
+				<div className="text-left mb-12 md:mb-16">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Zone d'Intervention en Loire-Atlantique</h2>
+					<p className="text-lg text-muted-foreground max-w-2xl">
+						Basé à {CONTACT_INFO.address.city}, j'interviens dans le Vignoble Nantais et les communes environnantes
+					</p>
+				</div>
+
 				<div className="max-w-4xl mx-auto">
-					{/* Section Header */}
-					<div className="text-center mb-12">
-						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Zone d'Intervention en Loire-Atlantique</h2>
-						<p className="text-lg text-muted-foreground">
-							Basé à {CONTACT_INFO.address.city}, j'interviens dans le Vignoble Nantais et les communes environnantes
-						</p>
-					</div>
 
 					{/* Zone Info Card */}
 					<div className="bg-primary/5 rounded-2xl p-8 md:p-10 border-2 border-primary/20 mb-8">

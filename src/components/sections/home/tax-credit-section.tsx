@@ -1,5 +1,5 @@
 import { FeatureCarousel } from '@/components/ui/animated-feature-carousel'
-import { TAX_CREDIT_INFO } from '@/lib/data/services'
+
 export function TaxCreditSection() {
 	// Images pour le carrousel - utiliser des images d'Unsplash
 	const images = {
@@ -13,14 +13,14 @@ export function TaxCreditSection() {
 	}
 
 	return (
-		<section className="py-16 md:py-24 bg-muted/30">
+		<section className="py-16 md:py-24 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
-				<div className="text-center mb-12 md:mb-16">
+				<div className="text-left mb-12 md:mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
 						Comment Profiter de 50% de Réduction d'Impôt ?
 					</h2>
-					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+					<p className="text-lg text-muted-foreground max-w-3xl">
 						Un processus simple en 4 étapes pour économiser sur vos travaux de jardinage
 					</p>
 				</div>
