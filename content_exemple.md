@@ -33,7 +33,13 @@ Loire-Atlantique, France
 
 **SIRET :** [EN ATTENTE - À DEMANDER]
 
-**Agrément :** Services à la Personne (SAP) - Coopérative [Numéro à obtenir]
+**Agrément :** Services à la Personne (SAP) - Coopérative Unipros (SIREN 850484650)
+
+**Coopérative Unipros :**
+📧 contact@unipros.coop
+📞 01 89 71 48 25
+🌐 www.unipros.coop
+📍 142 Rue de Rivoli, 75001 Paris
 
 ---
 
@@ -75,10 +81,12 @@ Nature & Paysage Laheux, éco-paysagiste à Monnières, vous accompagne pour cr�
 **Services d'entretien de jardin :**
 Tonte de pelouse, débroussaillage, taille d'arbres et de haies, rénovation pelouse, petit élagage, broyage, paillage.
 
-*Prestations éligibles au service à la personne et crédit d'impôt 50%.*
+*Prestations éligibles au service à la personne. Payez seulement 50% avec l'avance immédiate du crédit d'impôt.*
 
 **Création de jardin et d'espaces verts :**
-Engazonnement, plantations, potagers, massifs, muret, terrasse, dallage, pavage, clôture, portail, pergola, mur en pierre, cuisine d'été..."
+Engazonnement, plantations, potagers, massifs, muret, terrasse, dallage, pavage, clôture, portail, pergola, mur en pierre, cuisine d'été...
+
+💡 Membre de la coopérative Unipros : bénéficiez de votre avantage fiscal immédiatement, sans attendre l'année suivante !"
 
 ---
 
@@ -146,7 +154,7 @@ Engazonnement, plantations, potagers, massifs, muret, terrasse, dallage, pavage,
 
 **Mention systématique :**
 "Sur devis personnalisé après visite gratuite"
-"Toutes nos prestations bénéficient de 50% de crédit d'impôt"
+"Payez seulement 50% avec l'avance immédiate (ou crédit d'impôt classique)"
 
 ---
 
@@ -162,7 +170,7 @@ Engazonnement, plantations, potagers, massifs, muret, terrasse, dallage, pavage,
 
 ### Proposition de Valeur Unique
 
-**50% de crédit d'impôt + Approche écologique + Expertise locale Loire-Atlantique**
+**Payez seulement 50% immédiatement (avance immédiate) + Approche écologique + Expertise locale Loire-Atlantique**
 
 ### Tone of Voice
 
@@ -178,8 +186,9 @@ Engazonnement, plantations, potagers, massifs, muret, terrasse, dallage, pavage,
 - Eco-paysagiste Loire-Atlantique
 - Entretien jardin écologique 44
 - Services à la personne jardinage Loire-Atlantique
+- Avance immédiate crédit d'impôt jardinage
 - Taille haie Monnières
-- Tonte pelouse crédit d'impôt 44
+- Tonte pelouse 50% immédiat
 - Jardinier écologique Vignoble Nantais
 
 ---
@@ -189,9 +198,9 @@ Engazonnement, plantations, potagers, massifs, muret, terrasse, dallage, pavage,
 ### SEO Metadata
 
 ```yaml
-title: "Jean-Luc Laheux - Eco-Paysagiste à Monnières (44) | 50% de Crédit d'Impôt"
-meta_description: "Services d'entretien de jardin écologique à Monnières et Loire-Atlantique. Profitez de 50% de crédit d'impôt. Approche respectueuse de l'environnement. Devis gratuit."
-keywords: "eco-paysagiste Loire-Atlantique, paysagiste Monnières, jardinier écologique 44, entretien jardin crédit impôt"
+title: "Jean-Luc Laheux - Eco-Paysagiste à Monnières (44) | Payez 50% Immédiatement"
+meta_description: "Entretien jardin écologique à Monnières. Payez seulement 50% avec l'avance immédiate du crédit d'impôt. Approche naturelle respectueuse. Devis gratuit."
+keywords: "eco-paysagiste Loire-Atlantique, paysagiste Monnières, avance immédiate crédit impôt, jardinier écologique 44"
 canonical: "https://nature-paysage-laheux.fr/"
 ```
 
@@ -219,13 +228,14 @@ Une approche respectueuse de la nature et de votre budget
 **Bloc Avantage Fiscal (bien visible mais élégant)**
 
 ```
-50% DE CRÉDIT D'IMPÔT
-Services à la Personne
+PAYEZ SEULEMENT 50% IMMÉDIATEMENT
+Avance Immédiate du Crédit d'Impôt
 
-Exemple : Votre prestation
-Ne vous coûte réellement que la moitié
+Exemple : Prestation de 200€
+→ Vous payez 100€ tout de suite
 
-Jusqu'à 2 500€ d'économie par an
+Pas d'avance de frais • Pas d'attente
+Bénéficiez de votre crédit d'impôt en temps réel
 ```
 
 **CTA Primaire**
@@ -255,10 +265,10 @@ Méthodes douces, sans produits chimiques
 Préservation de la biodiversité
 Solutions naturelles et durables
 
-50% DE CRÉDIT D'IMPÔT
-Sur toutes mes prestations
-Attestation fiscale fournie
-Économie garantie pour votre budget
+PAYEZ SEULEMENT 50%
+Avance immédiate du crédit d'impôt
+Aucun frais à avancer
+Profitez de votre avantage fiscal en temps réel
 
 EXPERTISE LOCALE
 Connaissance du terroir ligérien
@@ -434,37 +444,71 @@ En tant que membre de la coopérative Unipros, je vous garantis transparence sur
 
 **Titre (H2)**: "Comment Profiter de 50% de Réduction d'Impôt ?"
 
-**4 Étapes**
+**Sous-titre**: "2 options pour bénéficier de votre avantage fiscal"
+
+---
+
+**OPTION 1 : AVANCE IMMÉDIATE (RECOMMANDÉE)**
 
 ```
-ÉTAPE 1
-Demandez un Devis
-Contactez-moi pour une visite gratuite et un devis personnalisé.
+PAYEZ SEULEMENT 50% TOUT DE SUITE
+Sans attendre, sans avancer de frais
 
-ÉTAPE 2
-Réalisation des Travaux
-J'interviens avec soin et dans le respect de l'environnement.
+Comment ça marche ?
 
-ÉTAPE 3
-Attestation Fiscale
-Je vous fournis l'attestation Services à la Personne pour votre déclaration.
+1. INSCRIPTION SIMPLE
+   Je vous aide à vous inscrire au dispositif Unipros
+   100% en ligne et gratuit
 
-ÉTAPE 4
-Récupérez 50%
-L'État vous rembourse la moitié du montant (crédit d'impôt ou virement).
+2. MON INTERVENTION
+   Je réalise votre prestation avec soin
+
+3. VOUS PAYEZ 50% SEULEMENT
+   Facture envoyée via Unipros
+   L'Urssaf vous prélève uniquement 50% du montant
+   Je suis payé en totalité par la coopérative
+
+EXEMPLE CONCRET :
+Prestation de 400€
+→ Vous payez 200€ immédiatement
+→ L'État paie 200€ pour vous
+→ Plus d'avance de trésorerie !
 ```
 
-**Exemple Concret**
+---
+
+**OPTION 2 : CRÉDIT D'IMPÔT CLASSIQUE**
 
 ```
-EXEMPLE
+SI VOUS PRÉFÉREZ LA MÉTHODE TRADITIONNELLE
 
-Coût d'une prestation : 200 €
-Crédit d'impôt (50%) : - 100 €
-───────────────────────────────
-Coût réel pour vous : 100 €
+1. INTERVENTION
+   Je réalise votre prestation
 
-Plafond annuel : 5 000€ de prestations = 2 500€ de crédit maximum
+2. VOUS PAYEZ LA TOTALITÉ
+   Règlement du montant complet
+
+3. ATTESTATION FISCALE
+   En janvier, je vous fournis l'attestation
+
+4. REMBOURSEMENT L'ANNÉE SUIVANTE
+   Vous récupérez 50% via votre déclaration d'impôts
+
+EXEMPLE :
+Prestation de 400€ en 2024
+→ Vous payez 400€ en 2024
+→ Attestation en janvier 2025
+→ Remboursement de 200€ en été 2025
+```
+
+---
+
+**PLAFOND ANNUEL**
+```
+5 000€ de dépenses maximum par an
+= 2 500€ de crédit d'impôt maximum
+
+Valable pour résidence principale ET secondaire
 ```
 
 ---
@@ -515,8 +559,8 @@ N'hésitez pas à me contacter pour vérifier si j'interviens dans votre secteur
 **Titre (H2)**: "Questions Fréquentes"
 
 ```
-Suis-je éligible au crédit d'impôt ?
-Oui ! Que vous soyez imposable ou non. Même les non-imposables reçoivent un remboursement du Trésor Public.
+Je paie vraiment seulement 50% ?
+Oui ! Avec l'avance immédiate, vous payez directement 50% du montant. Sans attente, sans avancer de frais. Je vous aide à vous inscrire.
 
 Utilisez-vous des produits chimiques ?
 Non. Je travaille exclusivement avec des méthodes naturelles et des produits organiques.
@@ -536,7 +580,7 @@ Je réponds sous 48h et planifie l'intervention selon vos disponibilités et les
 
 **Titre (H2)**: "Prêt à Redonner Vie à Votre Jardin ?"
 
-**Sous-titre**: "Demandez votre devis gratuit et profitez de 50% de réduction d'impôt"
+**Sous-titre**: "Demandez votre devis gratuit - Payez seulement 50% avec l'avance immédiate"
 
 ```
 [CTA PRIMAIRE: Demander un Devis Gratuit]
@@ -545,7 +589,8 @@ Je réponds sous 48h et planifie l'intervention selon vos disponibilités et les
 ✓ Réponse sous 48h
 ✓ Devis gratuit et sans engagement
 ✓ Visite et conseil gratuits
-✓ 50% de crédit d'impôt garanti
+✓ Payez seulement 50% immédiatement (avance immédiate)
+✓ Je vous aide à vous inscrire
 ```
 
 ---
@@ -555,9 +600,9 @@ Je réponds sous 48h et planifie l'intervention selon vos disponibilités et les
 ### SEO Metadata
 
 ```yaml
-title: "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux - Loire-Atlantique"
-meta_description: "Tonte écologique, désherbage naturel, taille raisonnée, potager en permaculture. Toutes mes prestations bénéficient de 50% de crédit d'impôt. Devis gratuit."
-keywords: "prestations paysagiste Monnières, tonte écologique 44, désherbage naturel Loire-Atlantique, potager permaculture"
+title: "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux - Payez 50% Immédiatement"
+meta_description: "Tonte écologique, désherbage naturel, taille raisonnée, potager permaculture. Payez seulement 50% avec l'avance immédiate. Devis gratuit Loire-Atlantique."
+keywords: "prestations paysagiste Monnières, avance immédiate jardin, tonte écologique 44, désherbage naturel"
 canonical: "https://nature-paysage-laheux.fr/prestations"
 ```
 
@@ -574,12 +619,15 @@ canonical: "https://nature-paysage-laheux.fr/prestations"
 ### BANNIÈRE RAPPEL
 
 ```
-50% DE CRÉDIT D'IMPÔT
+PAYEZ SEULEMENT 50% IMMÉDIATEMENT
+Avance Immédiate du Crédit d'Impôt
 
-Toutes mes prestations sont éligibles au crédit d'impôt Services à la Personne
+Toutes mes prestations sont éligibles au dispositif Services à la Personne
 
-Économisez la moitié du coût sur toutes les interventions
-Jusqu'à 2 500€ de crédit par an
+✓ Aucun frais à avancer
+✓ Bénéficiez de votre avantage fiscal en temps réel
+✓ Ou choisissez le crédit d'impôt classique
+✓ Jusqu'à 2 500€ d'économie par an
 
 [CTA: Comment ça marche ?]
 ```
@@ -890,7 +938,8 @@ Parlons de votre projet de jardin
 
 ✓ Devis gratuit après visite
 ✓ Conseil personnalisé
-✓ 50% de crédit d'impôt garanti
+✓ Payez seulement 50% immédiatement (avance immédiate)
+✓ Je vous accompagne dans l'inscription
 ```
 
 ---
@@ -1039,7 +1088,8 @@ Chaque projet est unique. Parlons du vôtre.
 
 ✓ Visite et conseil gratuits
 ✓ Approche écologique garantie
-✓ 50% de crédit d'impôt sur toutes mes prestations
+✓ Payez seulement 50% immédiatement (avance immédiate)
+✓ Je vous aide à vous inscrire
 ```
 
 ---
@@ -1069,26 +1119,54 @@ canonical: "https://nature-paysage-laheux.fr/faq"
 
 **Titre (H2)**: "Questions sur le Crédit d'Impôt"
 
-#### Q1: Comment fonctionne le crédit d'impôt de 50% ?
+#### Q1: L'avance immédiate, c'est quoi ?
 
 ```
-Le crédit d'impôt Services à la Personne vous permet de récupérer 50% des sommes versées pour l'entretien de votre jardin.
+L'avance immédiate est un dispositif qui vous permet de bénéficier de votre crédit d'impôt IMMÉDIATEMENT, sans attendre l'année suivante.
+
+AU LIEU DE :
+Payer 400€ → Attendre 1 an → Récupérer 200€
+
+AVEC L'AVANCE IMMÉDIATE :
+Payer 200€ → C'est tout ! Pas d'attente !
+
+COMMENT ÇA MARCHE ?
+1. Vous vous inscrivez gratuitement sur Unipros (je vous aide)
+2. Vous activez votre compte Urssaf en ligne
+3. Lors de chaque prestation, vous payez directement 50% seulement
+4. L'Urssaf prélève uniquement ce montant réduit
+
+C'EST :
+✓ Gratuit
+✓ 100% en ligne
+✓ Simple et rapide
+✓ Disponible pour tous (imposable ou non)
+
+RÉSULTAT :
+Plus d'avance de trésorerie, plus d'attente. Vous payez le juste prix immédiatement.
+```
+
+#### Q2: Comment fonctionne le crédit d'impôt classique ?
+
+```
+Si vous ne souhaitez pas utiliser l'avance immédiate, le crédit d'impôt classique reste disponible.
 
 CONCRÈTEMENT :
-• Vous me payez le montant de la prestation
+• Vous me payez le montant complet de la prestation
 • L'année suivante, lors de votre déclaration d'impôt, vous déclarez cette somme
 • L'État vous rembourse 50% (soit par réduction d'impôt, soit par virement si vous n'êtes pas imposable)
 
 EXEMPLE :
-Prestation de 200€
-→ Vous déclarez 200€
-→ Vous récupérez 100€
-→ Coût réel : 100€
+Prestation de 200€ en 2024
+→ Vous payez 200€ en 2024
+→ Vous déclarez en 2025
+→ Vous récupérez 100€ en été 2025
+→ Coût réel final : 100€
 
 PLAFOND : 5 000€ de dépenses par an maximum = 2 500€ de crédit d'impôt maximum
 ```
 
-#### Q2: Suis-je éligible au crédit d'impôt ?
+#### Q3: Suis-je éligible au crédit d'impôt / à l'avance immédiate ?
 
 ```
 OUI si :
@@ -1098,12 +1176,13 @@ OUI si :
 
 BON À SAVOIR :
 • Imposable ou non-imposable : tout le monde en bénéficie
-• Les non-imposables reçoivent un remboursement direct
+• Les non-imposables reçoivent un remboursement direct avec le crédit classique
 • Aucune condition d'âge ou de revenus
 • Valable pour propriétaires ET locataires
+• L'avance immédiate est disponible pour tous sans condition
 ```
 
-#### Q3: Quelles prestations sont éligibles ?
+#### Q4: Quelles prestations sont éligibles ?
 
 ```
 ✅ ÉLIGIBLES (50% de crédit) :
@@ -1134,13 +1213,38 @@ AUTRES :
 • Installation arrosage automatique
 ```
 
-#### Q4: Comment récupérer mon crédit ?
+#### Q5: Comment m'inscrire à l'avance immédiate ?
 
 ```
-EN 3 ÉTAPES :
+INSCRIPTION SIMPLE EN 3 ÉTAPES :
+
+1. INSCRIPTION UNIPROS
+Je vous aide à remplir le formulaire en ligne
+Transmission automatique de votre demande à l'Urssaf
+
+2. ACTIVATION COMPTE URSSAF
+Vous recevez un email de l'Urssaf
+Vous créez votre mot de passe sur particulier.urssaf.fr
+Vous validez vos informations personnelles
+
+3. C'EST TERMINÉ !
+Vous bénéficiez du service immédiatement
+À chaque prestation, vous payez seulement 50%
+
+BESOIN D'AIDE ?
+Je vous accompagne dans toutes les étapes de l'inscription.
+C'est 100% gratuit, 100% en ligne, et ça prend 10 minutes.
+```
+
+#### Q6: Et si je préfère le crédit d'impôt classique ?
+
+```
+AUCUN PROBLÈME !
+
+Avec le crédit d'impôt classique :
 
 1. JE RÉALISE LA PRESTATION
-Vous me payez le montant convenu
+Vous me payez le montant complet
 
 2. JE VOUS FOURNIS L'ATTESTATION
 En janvier, je vous envoie votre attestation fiscale annuelle
@@ -1150,10 +1254,12 @@ Au printemps, vous déclarez sur votre déclaration d'impôt (case 7DB)
 → Remboursement en été (réduction d'impôt ou virement)
 
 EXEMPLE DE TIMELINE :
-• 2024 : Prestations réalisées
+• 2024 : Prestations réalisées et payées en totalité
 • Janvier 2025 : Attestation reçue
-• Printemps 2025 : Déclaration
+• Printemps 2025 : Déclaration d'impôts
 • Été 2025 : Remboursement de 50%
+
+Les deux options sont disponibles, c'est vous qui choisissez !
 ```
 
 ---
@@ -1558,9 +1664,10 @@ Aucun frais de déplacement dans ma zone d'intervention
 Réponse sous 48h
 Disponibilité pour échanger sur votre projet
 
-✓ 50% DE CRÉDIT D'IMPÔT
-Sur toutes mes prestations éligibles
-Attestation fiscale fournie
+✓ PAYEZ SEULEMENT 50%
+Avance immédiate disponible : payez 50% tout de suite
+Ou crédit d'impôt classique selon votre préférence
+Je vous accompagne dans l'inscription
 ```
 
 ---
@@ -1570,10 +1677,14 @@ Attestation fiscale fournie
 ```
 💡 N'OUBLIEZ PAS
 
-Toutes mes prestations d'entretien de jardin bénéficient de 50% de crédit d'impôt
+PAYEZ SEULEMENT 50% IMMÉDIATEMENT
+Avec l'avance immédiate du crédit d'impôt
 
 Exemple : Prestation de 150€
-→ Coût réel après crédit : 75€
+→ Vous payez 75€ tout de suite
+→ Pas d'attente, pas d'avance de frais
+
+Je vous aide à vous inscrire !
 
 [CTA: Comment ça marche ?]
 ```
@@ -1620,6 +1731,25 @@ France
 SASU Nature et Paysage Laheux est agréée Services à la Personne (SAP).
 
 Cet agrément nous autorise à exercer les activités de petits travaux de jardinage éligibles au crédit d'impôt prévu à l'article 199 sexdecies du Code général des impôts.
+
+## Coopérative Unipros
+
+SASU Nature et Paysage Laheux est adhérente de la coopérative Unipros.
+
+**Unipros**
+SIREN : 850484650
+Adresse : 142 Rue de Rivoli, 75001 Paris
+Email : contact@unipros.coop
+Téléphone : 01 89 71 48 25
+Site web : www.unipros.coop
+
+La coopérative Unipros assure :
+- La gestion administrative des prestations Services à la Personne
+- L'émission des factures
+- La fourniture des attestations fiscales
+- La gestion du dispositif d'avance immédiate du crédit d'impôt
+
+Pour toute question relative à vos factures, attestations fiscales ou au dispositif d'avance immédiate, vous pouvez contacter directement Unipros.
 
 ## Hébergement du site
 
@@ -1704,6 +1834,8 @@ Ces données sont utilisées exclusivement pour :
 
 ### Destinataires
 Vos données peuvent être transmises à :
+- Coopérative Unipros (facturation, attestations fiscales, avance immédiate)
+- Urssaf (si vous optez pour l'avance immédiate du crédit d'impôt)
 - Notre expert-comptable (gestion comptable)
 - Administration fiscale (déclaration Services à la Personne)
 - Hébergeur du site (netcup GmbH)
@@ -1789,8 +1921,8 @@ Eco-Paysagiste
 SASU Nature et Paysage Laheux
 
 Monnières, Loire-Atlantique
-Services à la personne
-50% de crédit d'impôt
+Membre Unipros
+Payez seulement 50% (avance immédiate)
 
 ### Colonne 2: Liens Rapides
 - Accueil
@@ -1839,7 +1971,8 @@ Mentions Légales | Site créé par Cinquin Andy
 
 **Secondaires (intention commerciale):**
 
-- crédit impôt jardinage 44
+- avance immédiate crédit impôt jardinage
+- payer 50% jardinage immédiatement
 - jardinage écologique Monnières
 - potager permaculture Loire-Atlantique
 - paysagiste naturel vignoble nantais
@@ -1847,11 +1980,13 @@ Mentions Légales | Site créé par Cinquin Andy
 
 **Longue traîne (conversion):**
 
-- eco-paysagiste crédit impôt Monnières
+- eco-paysagiste avance immédiate Monnières
+- jardinier payé 50% immédiat Loire-Atlantique
 - jardinier écologique vignoble nantais
 - création potager permaculture Loire-Atlantique
 - entretien jardin naturel 44
 - désherbage manuel Monnières
+- paysagiste unipros 44
 
 ### Structure URL Propre
 

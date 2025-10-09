@@ -2,158 +2,137 @@ export interface FaqItem {
 	id: string
 	question: string
 	answer: string
-	category?: string
+	category: 'general' | 'services' | 'tarifs' | 'ecologie'
 }
 
-export const FAQ_SHORT: FaqItem[] = [
+export const FAQ_CATEGORIES = {
+	general: 'Questions Générales',
+	services: 'Prestations & Services',
+	tarifs: "Tarifs & Crédit d'Impôt",
+	ecologie: 'Approche Écologique',
+}
+
+export const FAQ_ITEMS: FaqItem[] = [
+	// Questions Générales
 	{
-		id: 'credit-impot',
-		question: "Suis-je éligible au crédit d'impôt ?",
+		id: 'zone-intervention',
+		question: 'Dans quelle zone intervenez-vous ?',
 		answer:
-			'Oui ! Que vous soyez imposable ou non. Même les non-imposables reçoivent un remboursement du Trésor Public.',
+			"J'interviens dans un rayon de 15 km autour de Monnières (44690). Cela inclut notamment : Vallet, Clisson, Le Pallet, La Haie-Fouassière, Gorges, Saint-Fiacre-sur-Maine, Mouzillon, et les communes environnantes. Pour vérifier si votre commune est couverte, n'hésitez pas à me contacter.",
+		category: 'general',
+	},
+	{
+		id: 'horaires',
+		question: "Quels sont vos horaires d'intervention ?",
+		answer:
+			"J'interviens du lundi au vendredi, de 8h à 18h. Je peux également organiser des rendez-vous le samedi matin sur demande pour les visites et devis. Je respecte la réglementation locale concernant les horaires de tonte et travaux bruyants.",
+		category: 'general',
+	},
+	{
+		id: 'urgences',
+		question: 'Intervenez-vous en urgence ?',
+		answer:
+			"Oui, selon les disponibilités. En cas d'urgence (arbre tombé, haie dangereuse, dégâts après tempête), contactez-moi par téléphone au 06 31 04 34 45. Je m'efforce de trouver une solution rapide, généralement sous 48h.",
+		category: 'general',
+	},
+	{
+		id: 'contrat-regulier',
+		question: "Proposez-vous des contrats d'entretien régulier ?",
+		answer:
+			"Oui, je propose des contrats d'entretien saisonniers ou annuels pour un suivi personnalisé de votre jardin. Cela permet de planifier les interventions selon les besoins réels de votre espace vert et de bénéficier de tarifs préférentiels. Contactez-moi pour étudier ensemble la formule adaptée.",
+		category: 'general',
+	},
+
+	// Prestations & Services
+	{
+		id: 'services-proposes',
+		question: 'Quels services proposez-vous exactement ?',
+		answer:
+			"Je propose : tonte écologique, taille de haies et arbustes, désherbage manuel, débroussaillage, ramassage de feuilles, entretien de massifs, accompagnement potager, petite maçonnerie paysagère, plantation et aménagements simples. Tous mes services sont réalisés avec des méthodes respectueuses de l'environnement.",
+		category: 'services',
 	},
 	{
 		id: 'produits-chimiques',
 		question: 'Utilisez-vous des produits chimiques ?',
-		answer: 'Non. Je travaille exclusivement avec des méthodes naturelles et des produits organiques.',
+		answer:
+			"Non, jamais. Je refuse catégoriquement l'usage de produits phytosanitaires de synthèse ou de désherbants chimiques. Je privilégie le désherbage manuel, les engrais organiques, le paillage végétal et les techniques inspirées de la permaculture. C'est un engagement ferme pour la santé de votre jardin et de l'environnement.",
+		category: 'services',
 	},
 	{
-		id: 'devis-gratuit',
-		question: 'Le devis est-il gratuit ?',
-		answer: 'Oui, totalement gratuit et sans engagement. Je me déplace pour évaluer vos besoins.',
+		id: 'dechets-verts',
+		question: 'Que faites-vous des déchets verts ?',
+		answer:
+			"Je valorise au maximum les déchets verts : compostage sur place si vous avez un compost, broyage pour paillage, ou évacuation en déchetterie agréée. Je peux également vous conseiller pour créer votre propre système de compostage et profiter d'un amendement naturel gratuit pour votre jardin.",
+		category: 'services',
 	},
 	{
-		id: 'delais',
-		question: 'Quels sont les délais ?',
-		answer: "Je réponds sous 48h et planifie l'intervention selon vos disponibilités et les besoins de votre jardin.",
+		id: 'creation-jardin',
+		question: 'Faites-vous de la création de jardin ?',
+		answer:
+			"Je réalise principalement de l'entretien et des aménagements simples (plantation, petite maçonnerie paysagère, bordures). Pour les créations paysagères complexes, je peux vous orienter vers des confrères spécialisés. Mon expertise se concentre sur l'entretien écologique et l'accompagnement potager.",
+		category: 'services',
 	},
-]
 
-export const FAQ_FULL: FaqItem[] = [
-	// CRÉDIT D'IMPÔT
+	// Tarifs & Crédit d\'Impôt
 	{
-		id: 'comment-credit-impot',
+		id: 'credit-impot',
 		question: "Comment fonctionne le crédit d'impôt de 50% ?",
 		answer:
-			"Le crédit d'impôt Services à la Personne vous permet de récupérer 50% des sommes versées pour l'entretien de votre jardin.\n\nConcrètement :\n• Vous me payez le montant de la prestation\n• L'année suivante, lors de votre déclaration d'impôt, vous déclarez cette somme\n• L'État vous rembourse 50% (soit par réduction d'impôt, soit par virement si vous n'êtes pas imposable)\n\nExemple : Prestation de 200€ → Vous déclarez 200€ → Vous récupérez 100€ → Coût réel : 100€\n\nPlafond : 5 000€ de dépenses par an maximum = 2 500€ de crédit d'impôt maximum",
-		category: 'credit-impot',
+			"Tous mes services d'entretien de jardin sont éligibles au crédit d'impôt de 50%. En tant que membre de la coopérative Unipros, je vous établis une attestation fiscale annuelle. Vous déclarez la somme payée, et l'État vous rembourse 50% l'année suivante (dans la limite du plafond annuel de 12 000€). Exemple : 100€ de prestations = 50€ de crédit d'impôt.",
+		category: 'tarifs',
 	},
 	{
-		id: 'eligible-credit-impot',
-		question: "Suis-je éligible au crédit d'impôt ?",
+		id: 'devis',
+		question: 'Comment obtenir un devis ?',
 		answer:
-			"OUI si :\n✓ Vous êtes fiscalement domicilié en France\n✓ Les travaux sont réalisés à votre résidence (principale ou secondaire)\n✓ Les prestations sont éligibles au régime Services à la Personne\n\nBon à savoir :\n• Imposable ou non-imposable : tout le monde en bénéficie\n• Les non-imposables reçoivent un remboursement direct\n• Aucune condition d'âge ou de revenus\n• Valable pour propriétaires ET locataires",
-		category: 'credit-impot',
+			'Le devis est gratuit et sans engagement. Je me déplace chez vous pour évaluer précisément vos besoins. Vous pouvez me contacter par téléphone (06 31 04 34 45), email (nature.paysage.laheux@gmail.com) ou via le formulaire de contact. Je vous réponds généralement sous 24h.',
+		category: 'tarifs',
 	},
 	{
-		id: 'prestations-eligibles',
-		question: 'Quelles prestations sont éligibles ?',
+		id: 'tarifs-horaires',
+		question: 'Quels sont vos tarifs ?',
 		answer:
-			"✅ ÉLIGIBLES (50% de crédit) :\n\nPELOUSE :\n• Tonte • Scarification • Aération • Arrosage manuel\n\nVÉGÉTAUX :\n• Désherbage manuel\n• Bêchage, binage\n• Taille de haies à partir du sol\n• Taille d'arbustes et fruitiers\n• Application d'engrais naturels\n\nAUTRES :\n• Entretien de massifs\n• Création et entretien de potager\n• Ramassage de feuilles\n\n❌ NON ÉLIGIBLES : Vente de plantes, Création paysagère complexe, Terrassement, Installation arrosage automatique",
-		category: 'credit-impot',
+			"Mes tarifs varient selon la nature et la complexité de l'intervention. Je privilégie une tarification au forfait après visite, pour plus de transparence. Comptez généralement entre 25€ et 35€ de l'heure (avant crédit d'impôt), soit 12,50€ à 17,50€ après réduction fiscale. Chaque devis est personnalisé.",
+		category: 'tarifs',
 	},
 	{
-		id: 'recuperer-credit',
-		question: 'Comment récupérer mon crédit ?',
+		id: 'paiement',
+		question: 'Quels moyens de paiement acceptez-vous ?',
 		answer:
-			"EN 3 ÉTAPES :\n\n1. JE RÉALISE LA PRESTATION\nVous me payez le montant convenu\n\n2. JE VOUS FOURNIS L'ATTESTATION\nEn janvier, je vous envoie votre attestation fiscale annuelle\n\n3. VOUS DÉCLAREZ ET RÉCUPÉREZ\nAu printemps, vous déclarez sur votre déclaration d'impôt (case 7DB)\n→ Remboursement en été (réduction d'impôt ou virement)\n\nEXEMPLE DE TIMELINE :\n• 2024 : Prestations réalisées\n• Janvier 2025 : Attestation reçue\n• Printemps 2025 : Déclaration\n• Été 2025 : Remboursement de 50%",
-		category: 'credit-impot',
+			"J'accepte les chèques, virements bancaires et CESU préfinancés (Chèque Emploi Service Universel). Le paiement s'effectue après la prestation. Pour les contrats réguliers, nous pouvons convenir d'un échéancier de paiement mensuel.",
+		category: 'tarifs',
 	},
 
-	// APPROCHE ÉCOLOGIQUE
+	// Approche Écologique
 	{
-		id: 'pourquoi-eco-paysagiste',
-		question: 'Pourquoi choisir un éco-paysagiste ?',
+		id: 'pourquoi-ecologique',
+		question: 'Pourquoi choisir une approche écologique ?',
 		answer:
-			"Choisir un éco-paysagiste, c'est choisir :\n\nPOUR VOTRE SANTÉ :\n• Aucun produit toxique dans votre environnement\n• Fruits et légumes sains si vous avez un potager\n• Préservation de la qualité de l'eau\n\nPOUR LA NATURE :\n• Préservation de la biodiversité (insectes, oiseaux, hérissons...)\n• Sol vivant et fertile\n• Économie d'eau\n\nPOUR VOTRE PORTE-MONNAIE :\n• Réduction progressive des besoins d'entretien\n• Végétaux plus résistants = moins de remplacements\n• + 50% de crédit d'impôt en bonus !\n\nPOUR LE PLAISIR :\n• Jardin vivant et changeant\n• Satisfaction de contribuer à un environnement sain\n• Transmission de bonnes pratiques",
-		category: 'approche-ecologique',
+			"Une approche écologique crée un jardin plus vivant, résilient et autonome. Elle respecte la biodiversité, améliore la qualité du sol, réduit les besoins en eau et en entretien à long terme. C'est aussi meilleur pour votre santé, celle de vos enfants, de vos animaux et de l'environnement. Un jardin écologique est un investissement durable.",
+		category: 'ecologie',
 	},
 	{
-		id: 'vraiment-pas-chimique',
-		question: 'Vraiment aucun produit chimique ?',
+		id: 'permaculture',
+		question: "Qu'est-ce que la permaculture appliquée au jardin ?",
 		answer:
-			"VRAIMENT AUCUN.\n\nCE QUE J'UTILISE :\n✓ Mes mains et mes outils manuels\n✓ Compost et amendements organiques certifiés\n✓ Purins et décoctions de plantes si besoin\n✓ Paillages naturels (BRF, paille, feuilles)\n✓ Techniques préventives\n\nCE QUE JE N'UTILISE JAMAIS :\n✗ Glyphosate et désherbants chimiques\n✗ Pesticides de synthèse\n✗ Engrais chimiques\n✗ Produits phytosanitaires\n\nRÉSULTAT :\nUn jardin où vos enfants et animaux peuvent jouer en toute sécurité. Un sol qui s'enrichit d'année en année. Une nature qui revient (papillons, abeilles, oiseaux...).",
-		category: 'approche-ecologique',
+			"La permaculture est une approche qui s'inspire des écosystèmes naturels. Au jardin, cela signifie : observer les cycles naturels, favoriser la diversité, recycler les matières organiques, économiser l'eau, créer des associations bénéfiques entre plantes. Je vous accompagne pour appliquer ces principes de manière simple et pratique.",
+		category: 'ecologie',
 	},
 	{
-		id: 'entretien-manuel-long',
-		question: "L'entretien manuel, n'est-ce pas plus long ?",
+		id: 'biodiversite',
+		question: 'Comment favorisez-vous la biodiversité ?',
 		answer:
-			"OUI, c'est plus long. Et c'est tant mieux.\n\nPOURQUOI ?\nParce que ce temps investi est du temps de qualité :\n• Observation fine de votre jardin\n• Détection précoce de problèmes (maladies, parasites)\n• Travail soigné et précis\n• Respect de chaque plante\n\nMAIS AUSSI :\n• Résultats durables (pas de repousse express comme avec les désherbants)\n• Amélioration progressive de l'état général\n• Réduction des besoins au fil du temps\n\nET POUR VOUS :\nLe coût reste abordable grâce au crédit d'impôt de 50%.",
-		category: 'approche-ecologique',
-	},
-
-	// PRESTATIONS PRATIQUES
-	{
-		id: 'quels-services',
-		question: 'Quels services proposez-vous ?',
-		answer:
-			"Je propose tous les services classiques d'entretien de jardin, avec une approche écologique :\n\n• Tonte et entretien de pelouse\n• Désherbage manuel\n• Taille de haies, arbustes et fruitiers\n• Entretien de massifs fleuris\n• Création et entretien de potager en permaculture\n• Accompagnement à l'année\n\nToutes ces prestations sont éligibles à 50% de crédit d'impôt.",
-		category: 'prestations',
+			'Je préserve les zones refuges (tas de bois, pierres), plante des espèces mellifères pour les pollinisateurs, évite les tontes trop fréquentes, maintiens des zones sauvages, favorise le paillage organique qui abrite la micro-faune. Chaque intervention respecte la faune auxiliaire : hérissons, oiseaux, insectes utiles, vers de terre.',
+		category: 'ecologie',
 	},
 	{
-		id: 'zone-intervention',
-		question: "Quelle est votre zone d'intervention ?",
+		id: 'conseil-ecologique',
+		question: 'Donnez-vous des conseils pour un jardin plus écologique ?',
 		answer:
-			"Je suis basé à Monnières et j'interviens principalement dans :\n\n• Le Vignoble Nantais\n• La Vallée de la Loire (sud)\n• Secteur de Clisson\n• Communes environnantes (15 km autour de Monnières)\n\nPour savoir si j'interviens chez vous, le plus simple est de me contacter.",
-		category: 'prestations',
-	},
-	{
-		id: 'intervention-toute-annee',
-		question: "Intervenez-vous toute l'année ?",
-		answer:
-			"OUI, selon les besoins de votre jardin :\n\nPRINTEMPS : Réveil du jardin, premières tontes, plantations\nÉTÉ : Entretien intensif, arrosage si besoin, récoltes\nAUTOMNE : Préparation hivernale, taille, plantation d'arbres\nHIVER : Taille d'arbustes et fruitiers, préparation de la saison\n\nChaque saison a ses travaux spécifiques.",
-		category: 'prestations',
-	},
-	{
-		id: 'presence-obligatoire',
-		question: 'Dois-je être présent lors de votre intervention ?',
-		answer:
-			"NON, ce n'est pas obligatoire si :\n\n✓ Votre jardin est accessible\n✓ Vous m'avez donné vos consignes lors du devis\n✓ Vous m'avez signalé les points de vigilance\n\nJe vous laisse un compte-rendu après chaque passage.\n\nPRÉSENCE RECOMMANDÉE pour :\n• La première visite (faire connaissance et comprendre vos attentes)\n• Les interventions importantes nécessitant des choix",
-		category: 'prestations',
-	},
-	{
-		id: 'materiel-fourni',
-		question: 'Fournissez-vous le matériel ?',
-		answer:
-			"OUI, je viens avec tout mon équipement professionnel :\n\n• Tondeuse, taille-haie, débroussailleuse\n• Outils manuels de qualité\n• Brouette, sacs, etc.\n\nET J'ÉVACUE :\n• Tous les déchets verts\n• Direction déchetterie agrée\n• Ou broyage sur place pour paillage si vous le souhaitez\n\nVous n'avez rien à fournir, rien à faire.",
-		category: 'prestations',
-	},
-
-	// DEVIS ET TARIFS
-	{
-		id: 'tarifs-comment',
-		question: 'Comment sont fixés vos tarifs ?',
-		answer:
-			'Mes tarifs dépendent de plusieurs facteurs :\n\n• Type de prestation\n• Surface à entretenir\n• État initial du jardin\n• Fréquence des interventions\n• Accessibilité du terrain\n\nTRANSPARENCE :\nJe ne travaille pas avec des plateformes qui prennent des commissions. Le tarif annoncé est le tarif facturé.\n\nMembre de la coopérative Unipros, je garantis des prix justes et transparents.',
-		category: 'tarifs',
-	},
-	{
-		id: 'devis-gratuit-full',
-		question: 'Le devis est-il gratuit ?',
-		answer:
-			'OUI, totalement gratuit et sans engagement.\n\nJE ME DÉPLACE GRATUITEMENT pour :\n• Voir votre jardin\n• Comprendre vos besoins et vos attentes\n• Vous conseiller\n• Vous proposer un devis détaillé\n\nAucune obligation de donner suite. Le devis reste valable 3 mois.',
-		category: 'tarifs',
-	},
-	{
-		id: 'delais-intervention',
-		question: 'Quels sont les délais pour une intervention ?',
-		answer:
-			"Je m'engage à :\n\n• Répondre sous 48h à toute demande\n• Planifier une visite devis rapidement (sous 1 semaine en général)\n• Réaliser l'intervention dans les meilleurs délais selon vos disponibilités\n\nPour les urgences (tempête, dégâts...) : je fais mon maximum pour intervenir rapidement.",
-		category: 'tarifs',
-	},
-	{
-		id: 'paiement-modalites',
-		question: 'Comment se passe le paiement ?',
-		answer:
-			"Modalités de paiement :\n\n• Paiement après intervention (ou fin de mois pour les abonnements)\n• Chèque, espèces, virement\n• Facturation claire et détaillée\n• Attestation fiscale annuelle pour votre crédit d'impôt\n\nAucun acompte demandé pour les prestations régulières.",
-		category: 'tarifs',
+			"Oui, absolument ! Je partage volontiers mes connaissances : choix de plantes adaptées au climat local, techniques de paillage, création de compost, économie d'eau, lutte biologique contre les ravageurs. Mon objectif est de vous rendre autonome et de vous transmettre les bonnes pratiques pour un jardin naturellement sain.",
+		category: 'ecologie',
 	},
 ]
 
-export const FAQ_CATEGORIES = [
-	{ id: 'credit-impot', name: "Crédit d'Impôt", icon: '💰' },
-	{ id: 'approche-ecologique', name: 'Approche Écologique', icon: '🌱' },
-	{ id: 'prestations', name: 'Prestations', icon: '🛠️' },
-	{ id: 'tarifs', name: 'Devis et Tarifs', icon: '💵' },
-] as const
+// Short version for homepage (top 4 questions)
+export const FAQ_SHORT = FAQ_ITEMS.slice(0, 4)
