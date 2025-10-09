@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {}
 
 const Label = React.forwardRef<HTMLLabelElement, LabelProps>(({ className, ...props }, ref) => (
+	// biome-ignore lint/a11y/noLabelWithoutControl: Reusable component - htmlFor provided by parent
 	<label
 		ref={ref}
 		className={cn(

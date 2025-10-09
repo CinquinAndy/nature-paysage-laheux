@@ -35,7 +35,8 @@ export function TaxCreditSection() {
 							{/* Connector Arrow (hidden on last item and mobile) */}
 							{index < TAX_CREDIT_INFO.steps.length - 1 && (
 								<div className="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
-									<svg width="32" height="32" viewBox="0 0 32 32" className="text-primary">
+									<svg width="32" height="32" viewBox="0 0 32 32" className="text-primary" aria-hidden="true">
+										<title>Arrow connector</title>
 										<path
 											d="M8 16 L24 16 M24 16 L18 10 M24 16 L18 22"
 											stroke="currentColor"

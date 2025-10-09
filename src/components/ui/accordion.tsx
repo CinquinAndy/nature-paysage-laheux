@@ -34,6 +34,7 @@ export function Accordion({ items, type = 'single', className }: AccordionProps)
 				return (
 					<div key={item.value} className="group">
 						<button
+							type="button"
 							onClick={() => toggleItem(item.value)}
 							className="flex w-full items-center justify-between px-6 py-4 text-left font-medium transition-colors hover:bg-muted/50"
 							aria-expanded={isOpen}

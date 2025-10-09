@@ -30,9 +30,9 @@ export function InterventionZoneSection() {
 
 						{/* Communes Grid */}
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-							{CONTACT_INFO.interventionZone.communes.map((commune, index) => (
+							{CONTACT_INFO.interventionZone.communes.map(commune => (
 								<div
-									key={index}
+									key={commune}
 									className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-primary/5 transition-colors"
 								>
 									<span className="text-primary">•</span>

@@ -23,9 +23,9 @@ export function ServiceCard({ service, showImage = true }: ServiceCardProps) {
 			)}
 			<CardHeader className="z-20 flex gap-8 justify-between flex-row flex-nowrap w-full">
 				<ul className="flex flex-wrap gap-2">
-					{service.features.slice(0, 4).map((feature, index) => (
+					{service.features.slice(0, 4).map(feature => (
 						<li
-							key={index}
+							key={feature}
 							className="flex items-start gap-2 text-sm border border-white rounded-2xl p-2 px-3 bg-white/5 backdrop-blur-sm"
 						>
 							<span className="text-white font-semibold text-xs">{feature}</span>

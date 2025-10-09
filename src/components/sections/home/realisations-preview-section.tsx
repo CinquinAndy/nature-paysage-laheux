@@ -26,9 +26,9 @@ export function RealisationsPreviewSection() {
 
 				{/* Image Grid */}
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12">
-					{realisationImages.map((image, index) => (
+					{realisationImages.map(image => (
 						<Link
-							key={index}
+							key={image.src}
 							href="/realisations"
 							className="group relative aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
 						>

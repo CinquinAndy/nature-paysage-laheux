@@ -55,9 +55,9 @@ export default function RealisationsPage() {
 			<section className="py-8 md:py-12">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-						{realisations.map((realisation, index) => (
+						{realisations.map(realisation => (
 							<div
-								key={index}
+								key={realisation.src}
 								className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
 							>
 								<Image

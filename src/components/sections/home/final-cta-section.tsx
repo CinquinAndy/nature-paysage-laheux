@@ -32,9 +32,9 @@ export function FinalCtaSection() {
 
 					{/* Benefits List */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-2xl mx-auto">
-						{benefits.map((benefit, index) => (
+						{benefits.map(benefit => (
 							<div
-								key={index}
+								key={benefit}
 								className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 text-white"
 							>
 								<CheckCircle2 className="h-5 w-5 text-green-300 shrink-0" />

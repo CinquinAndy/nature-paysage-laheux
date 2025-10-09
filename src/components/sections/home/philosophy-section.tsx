@@ -1,6 +1,8 @@
-import { Award, CheckCircle2, Heart, Leaf, Shield, XCircle } from 'lucide-react'
+import { Award, Check, Heart, Leaf, Shield, X } from 'lucide-react'
 import Image from 'next/image'
-import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
 const philosophyPoints = [
 	{
@@ -26,16 +28,37 @@ const philosophyPoints = [
 ]
 
 const preferences = [
-	'Désherbage manuel (zéro produit chimique)',
-	'Engrais organiques et compost naturel',
-	'Paillage végétal pour protéger le sol',
-	'Techniques inspirées de la permaculture',
+	{
+		title: 'Désherbage manuel (zéro produit chimique)',
+		description: "Respect total de l'environnement et de la biodiversité",
+	},
+	{
+		title: 'Engrais organiques et compost naturel',
+		description: 'Nutrition naturelle pour un sol vivant et fertile',
+	},
+	{
+		title: 'Paillage végétal pour protéger le sol',
+		description: "Conservation de l'humidité et protection naturelle",
+	},
+	{
+		title: 'Techniques inspirées de la permaculture',
+		description: 'Approche durable et respectueuse des écosystèmes',
+	},
 ]
 
 const refusals = [
-	'Produits phytosanitaires de synthèse',
-	'Désherbants chimiques',
-	'Méthodes intensives qui appauvrissent le sol',
+	{
+		title: 'Produits phytosanitaires de synthèse',
+		description: "Nocifs pour l'environnement et la santé",
+	},
+	{
+		title: 'Désherbants chimiques',
+		description: 'Pollution des sols et des nappes phréatiques',
+	},
+	{
+		title: 'Méthodes intensives qui appauvrissent le sol',
+		description: 'Dégradation à long terme de la qualité du sol',
+	},
 ]
 
 export function PhilosophySection() {
@@ -66,19 +89,19 @@ export function PhilosophySection() {
 				{/* Main Content Grid */}
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
 					{/* Left: Layered Image Mockup */}
-					<div className="relative h-[500px] lg:h-[600px]">
+					<div className="relative h-[400px] lg:h-[500px]">
 						{/* Secondary Image (Background) */}
-						<div className="absolute top-0 right-0 w-[85%] h-[45%] rounded-2xl overflow-hidden shadow-2xl">
+						<div className="absolute top-0 right-0 w-[85%] h-[70%] rounded-2xl overflow-hidden shadow-2xl">
 							<Image
 								src="/usable/IMG_20250803_122326_1.jpg"
 								alt="Jean-Luc Laheux au travail dans un jardin"
 								fill
-								className="object-cover blur-[2px] opacity-90"
+								className="object-cover blur-[2px] opacity-90 -scale-x-100"
 							/>
 						</div>
 
 						{/* Primary Image (Foreground) */}
-						<div className="absolute bottom-0 left-0 w-[85%] h-[65%] rounded-2xl overflow-hidden shadow-2xl group">
+						<div className="absolute bottom-0 left-0 w-[85%] h-[85%] rounded-2xl overflow-hidden shadow-2xl group">
 							<Image
 								src="/usable/IMG_20250803_122326_1.jpg"
 								alt="Jean-Luc Laheux travaillant avec des méthodes naturelles"
@@ -92,88 +115,134 @@ export function PhilosophySection() {
 							<div className="absolute bottom-0 left-0 right-0 p-6 text-white">
 								<h3 className="text-xl font-bold mb-2">Une Approche Écologique</h3>
 								<p className="text-white/90 text-sm leading-relaxed">
-									Chaque intervention est l'occasion de créer un jardin plus vivant, plus résilient et plus respectueux de
-									l'environnement.
+									Chaque intervention est l'occasion de créer un jardin plus vivant, plus résilient et plus respectueux
+									de l'environnement.
 								</p>
 							</div>
 						</div>
 					</div>
 
 					{/* Right: Philosophy Cards */}
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
 						{philosophyPoints.map((point, index) => {
 							const Icon = point.icon
 							return (
-								<Card
-									key={index}
-									className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 hover:border-primary/50 bg-background/80 backdrop-blur-sm"
+								<div
+									key={point.title}
+									className={cn(
+										'flex flex-col border-border py-8 px-6 relative group/feature transition-all duration-200',
+										'lg:border-r',
+										(index === 0 || index === 2) && 'lg:border-l',
+										index < 2 && 'lg:border-b'
+									)}
 								>
-									<CardContent className="p-6">
-										<div className="mb-4 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+									{/* Gradient overlay on hover - from top for top row */}
+									{index < 2 && (
+										<div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-muted/50 to-transparent pointer-events-none" />
+									)}
+									{/* Gradient overlay on hover - from bottom for bottom row */}
+									{index >= 2 && (
+										<div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-muted/50 to-transparent pointer-events-none" />
+									)}
+
+									{/* Icon */}
+									<div className="mb-4 relative z-10">
+										<div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center group-hover/feature:bg-primary/20 group-hover/feature:scale-110 transition-all duration-300">
 											<Icon className="h-6 w-6 text-primary" />
 										</div>
-										<h4 className="text-lg font-semibold mb-2">{point.title}</h4>
-										<p className="text-sm text-muted-foreground leading-relaxed">{point.description}</p>
-									</CardContent>
-								</Card>
+									</div>
+
+									{/* Title with animated border */}
+									<div className="mb-2 relative z-10">
+										<div className="absolute left-0 top-0 h-6 w-1 rounded-tr-full rounded-br-full bg-muted-foreground/30 group-hover/feature:h-8 group-hover/feature:bg-primary transition-all duration-200 origin-top" />
+										<h4 className="text-lg font-semibold pl-3 group-hover/feature:translate-x-1 transition-transform duration-200">
+											{point.title}
+										</h4>
+									</div>
+
+									{/* Description */}
+									<p className="text-sm text-muted-foreground leading-relaxed relative z-10 pl-3">
+										{point.description}
+									</p>
+								</div>
 							)
 						})}
 					</div>
 				</div>
 
 				{/* Two Columns: What I Do / What I Don't */}
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 mb-12">
 					{/* What I Do */}
-					<div className="bg-primary/5 border-l-4 border-primary rounded-r-2xl p-8 hover:bg-primary/10 transition-colors">
-						<div className="flex items-center gap-3 mb-6">
-							<div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
-								<CheckCircle2 className="h-6 w-6 text-primary" />
-							</div>
-							<h3 className="text-2xl font-bold">Ce que je privilégie</h3>
+					<div className="flex gap-4 flex-col items-start">
+						<div className="flex gap-2 flex-col">
+							<h3 className="text-3xl md:text-4xl tracking-tighter font-semibold">Ce que je privilégie</h3>
 						</div>
-						<ul className="space-y-3">
-							{preferences.map((item, index) => (
-								<li key={index} className="flex items-start gap-3 text-muted-foreground">
-									<span className="text-primary mt-1 text-lg">●</span>
-									<span className="text-sm leading-relaxed">{item}</span>
-								</li>
+						<div className="flex gap-6 pt-8 flex-col w-full">
+							{preferences.map(item => (
+								<div key={item.title} className="flex flex-row gap-4 w-full items-start">
+									<Check className="w-5 h-5 mt-0.5 text-green-600 dark:text-green-500 flex-shrink-0" />
+									<div className="flex flex-col gap-1">
+										<p className="font-medium text-foreground">{item.title}</p>
+										<p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+									</div>
+								</div>
 							))}
-						</ul>
+						</div>
 					</div>
 
 					{/* What I Don't */}
-					<div className="bg-destructive/5 border-l-4 border-destructive rounded-r-2xl p-8 hover:bg-destructive/10 transition-colors">
-						<div className="flex items-center gap-3 mb-6">
-							<div className="h-10 w-10 rounded-full bg-destructive/20 flex items-center justify-center">
-								<XCircle className="h-6 w-6 text-destructive" />
-							</div>
-							<h3 className="text-2xl font-bold">Ce que je refuse</h3>
+					<div className="flex gap-4 flex-col items-start">
+						<div className="flex gap-2 flex-col">
+							<h3 className="text-3xl md:text-4xl tracking-tighter font-semibold">Ce que je refuse</h3>
 						</div>
-						<ul className="space-y-3">
-							{refusals.map((item, index) => (
-								<li key={index} className="flex items-start gap-3 text-muted-foreground">
-									<span className="text-destructive mt-1 text-lg">●</span>
-									<span className="text-sm leading-relaxed">{item}</span>
-								</li>
+						<div className="flex gap-6 pt-8 flex-col w-full">
+							{refusals.map(item => (
+								<div key={item.title} className="flex flex-row gap-4 w-full items-start">
+									<X className="w-5 h-5 mt-0.5 text-red-600 dark:text-red-500 flex-shrink-0" />
+									<div className="flex flex-col gap-1">
+										<p className="font-medium text-foreground">{item.title}</p>
+										<p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+									</div>
+								</div>
 							))}
-						</ul>
+						</div>
 					</div>
 				</div>
 
 				{/* Engagement Banner */}
-				<div className="relative rounded-2xl overflow-hidden">
-					<div className="absolute inset-0 bg-gradient-to-r from-primary to-green-600" />
-					<div className="relative p-8 md:p-12 text-white">
-						<div className="max-w-4xl">
-							<h3 className="text-2xl md:text-3xl font-bold mb-4">Mon engagement</h3>
-							<p className="text-lg text-white/90 leading-relaxed">
+				<section className="overflow-hidden pt-0 md:pt-0">
+					<div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
+						{/* Glow Effect Background */}
+						<div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 animate-scale-in delay-700">
+							<div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-primary/5 to-transparent blur-3xl" />
+						</div>
+
+						{/* Content */}
+						<div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8">
+							{/* Badge */}
+							<Badge variant="outline" className="opacity-0 animate-fade-in-up delay-100">
+								<span className="text-muted-foreground">Mon engagement</span>
+							</Badge>
+
+							{/* Title */}
+							<h3 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
+								Transparence & Crédit d'impôt
+							</h3>
+
+							{/* Description */}
+							<p className="text-muted-foreground text-lg max-w-3xl opacity-0 animate-fade-in-up delay-300">
 								En tant que membre de la coopérative Unipros, je vous garantis transparence sur les tarifs et bénéfice
 								maximum du crédit d'impôt (50%). Chaque jardin mérite une attention particulière et des méthodes qui
 								respectent son écosystème unique.
 							</p>
+
+							{/* Action Button */}
+							<Button size="lg" className="opacity-0 animate-fade-in-up delay-500" asChild>
+								<a href="/contact">Demander un devis gratuit</a>
+							</Button>
 						</div>
 					</div>
-				</div>
+				</section>
 			</div>
 		</section>
 	)

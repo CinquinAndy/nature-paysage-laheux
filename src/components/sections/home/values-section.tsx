@@ -39,11 +39,11 @@ export function ValuesSection() {
 
 				{/* Values Grid */}
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-					{values.map((value, index) => {
+					{values.map(value => {
 						const Icon = value.icon
 						return (
 							<Card
-								key={index}
+								key={value.title}
 								className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 hover:border-primary/50"
 							>
 								<CardHeader className="text-center">

@@ -57,6 +57,8 @@
 	--shadow-sm: var(--shadow-sm);
 	--shadow-xs: var(--shadow-xs);
 	--shadow-2xs: var(--shadow-2xs);
+	--shadow-glow: 0 -16px 128px 0 oklch(0.5234 0.1347 144.1672 / 0.3) inset,
+		0 -16px 32px 0 oklch(0.5234 0.1347 144.1672 / 0.5) inset;
 	--spacing: var(--spacing);
 	--letter-spacing: var(--letter-spacing);
 	--shadow-offset-y: var(--shadow-offset-y);
@@ -177,6 +179,38 @@
 	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
 	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
 	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+	--shadow-glow: 0 -16px 128px 0 oklch(0.6731 0.1624 144.2083 / 0.4) inset,
+		0 -16px 32px 0 oklch(0.6731 0.1624 144.2083 / 0.6) inset;
+}
+
+@layer utilities {
+	.delay-100 {
+		animation-delay: 100ms;
+	}
+	.delay-200 {
+		animation-delay: 200ms;
+	}
+	.delay-300 {
+		animation-delay: 300ms;
+	}
+	.delay-500 {
+		animation-delay: 500ms;
+	}
+	.delay-700 {
+		animation-delay: 700ms;
+	}
+
+	.fade-top-lg {
+		mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 8rem);
+	}
+
+	.animate-fade-in-up {
+		animation: fade-in-up 0.5s ease-out forwards;
+	}
+
+	.animate-scale-in {
+		animation: scale-in 0.5s ease-out forwards;
+	}
 }
 
 @layer base {
@@ -186,5 +220,27 @@
 	body {
 		@apply bg-background text-foreground;
 		letter-spacing: var(--tracking-normal);
+	}
+
+	@keyframes fade-in-up {
+		0% {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes scale-in {
+		0% {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 }
