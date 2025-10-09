@@ -18,8 +18,10 @@ export const NavigationBar = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
 	const navItems = [
-		{ name: 'Home', link: '/' },
-		{ name: 'About', link: '/about' },
+		{ name: 'Accueil', link: '/' },
+		{ name: 'Ce Que Je Fais', link: '/prestations' },
+		{ name: 'Mes Réalisations', link: '/realisations' },
+		{ name: 'FAQ', link: '/faq' },
 		{ name: 'Contact', link: '/contact' },
 	]
 
@@ -30,7 +32,9 @@ export const NavigationBar = () => {
 				<NavbarLogo />
 				<NavItems items={navItems} />
 				<div className="flex items-center gap-4">
-					<NavbarButton variant="primary">Contactez-moi</NavbarButton>
+					<NavbarButton variant="primary" asChild>
+						<Link href="/contact">Devis Gratuit</Link>
+					</NavbarButton>
 				</div>
 			</NavBody>
 
@@ -53,8 +57,10 @@ export const NavigationBar = () => {
 						</Link>
 					))}
 					<div className="flex w-full flex-col gap-4">
-						<NavbarButton onClick={() => setIsMobileMenuOpen(false)} variant="primary" className="w-full">
-							Contactez-moi
+						<NavbarButton variant="primary" className="w-full" asChild>
+							<Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+								Devis Gratuit
+							</Link>
 						</NavbarButton>
 					</div>
 				</MobileNavMenu>
