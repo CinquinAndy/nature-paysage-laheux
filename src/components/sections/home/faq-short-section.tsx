@@ -17,23 +17,25 @@ export function FaqShortSection() {
 				{/* Section Header */}
 				<div className="text-left mb-12 md:mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Questions Fréquentes</h2>
-					<p className="text-lg text-muted-foreground max-w-2xl">Réponses aux questions les plus courantes sur mes services</p>
+					<p className="text-lg text-muted-foreground max-w-2xl">
+						Réponses aux questions les plus courantes sur mes services
+					</p>
 				</div>
 
 				<div className="max-w-3xl mx-auto">
 					{/* FAQ Accordion */}
 					<Accordion items={faqItems} type="single" className="mb-8" />
 
-				{/* CTA */}
-				<div className="text-center mt-10">
-					<p className="text-muted-foreground mb-4">D'autres questions ?</p>
-					<Button variant="outline" asChild>
-						<Link href="/faq">
-							Voir Toutes les Questions
-							<ArrowRight className="ml-2 h-5 w-5" />
-						</Link>
-					</Button>
-				</div>
+					{/* CTA */}
+					<div className="text-center mt-10">
+						<p className="text-muted-foreground mb-4">D'autres questions ?</p>
+						<Button variant="outline" asChild>
+							<Link href="/faq">
+								Voir Toutes les Questions
+								<ArrowRight className="ml-2 h-5 w-5" />
+							</Link>
+						</Button>
+					</div>
 				</div>
 			</div>
 		</section>

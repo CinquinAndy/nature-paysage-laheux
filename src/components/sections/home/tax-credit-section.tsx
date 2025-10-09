@@ -1,15 +1,15 @@
 import { FeatureCarousel } from '@/components/ui/animated-feature-carousel'
 
 export function TaxCreditSection() {
-	// Images pour le carrousel - utiliser des images d'Unsplash
+	// Images for the carousel - using local images from public/usable/
 	const images = {
 		alt: "Processus de crédit d'impôt",
-		step1img1: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=1740&auto=format&fit=crop',
-		step1img2: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=1740&auto=format&fit=crop',
-		step2img1: 'https://images.unsplash.com/photo-1554224311-beee460ae6fb?q=80&w=1661&auto=format&fit=crop',
-		step2img2: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1674&auto=format&fit=crop',
-		step3img: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?q=80&w=1740&auto=format&fit=crop',
-		step4img: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1742&auto=format&fit=crop',
+		step1img1: '/usable/IMG_20231117_093237.jpg',
+		step1img2: '/usable/IMG_20240310_161440.jpg',
+		step2img1: '/usable/IMG_20250402_142527.jpg',
+		step2img2: '/usable/IMG_20250803_122326_1.jpg',
+		step3img: '/usable/IMG_20250803_123919.jpg',
+		step4img: '/usable/PXL_20251006_080220831.jpg',
 	}
 
 	return (

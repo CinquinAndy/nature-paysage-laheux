@@ -16,7 +16,6 @@ export function InterventionZoneSection() {
 				</div>
 
 				<div className="max-w-4xl mx-auto">
-
 					{/* Zone Info Card */}
 					<div className="bg-primary/5 rounded-2xl p-8 md:p-10 border-2 border-primary/20 mb-8">
 						<div className="flex items-start gap-4 mb-6">

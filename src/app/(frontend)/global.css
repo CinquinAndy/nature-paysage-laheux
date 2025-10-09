@@ -59,8 +59,7 @@
 	--shadow-sm: var(--shadow-sm);
 	--shadow-xs: var(--shadow-xs);
 	--shadow-2xs: var(--shadow-2xs);
-	--shadow-glow: 0 -16px 128px 0 hsl(var(--brand-foreground) / 0.5) inset,
-		0 -16px 32px 0 hsl(var(--brand) / 0.5) inset;
+	--shadow-glow: 0 -16px 128px 0 hsl(var(--brand-foreground) / 0.5) inset, 0 -16px 32px 0 hsl(var(--brand) / 0.5) inset;
 	--max-w-container: 80rem;
 	--spacing: var(--spacing);
 	--letter-spacing: var(--letter-spacing);
@@ -186,8 +185,7 @@
 	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
 	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
 	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-	--shadow-glow: 0 -16px 128px 0 hsl(var(--brand-foreground) / 0.5) inset,
-		0 -16px 32px 0 hsl(var(--brand) / 0.5) inset;
+	--shadow-glow: 0 -16px 128px 0 hsl(var(--brand-foreground) / 0.5) inset, 0 -16px 32px 0 hsl(var(--brand) / 0.5) inset;
 }
 
 @layer utilities {
