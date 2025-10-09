@@ -17,9 +17,12 @@ export default function HomePage() {
 			<ServicesPreviewSection />
 			{/* good */}
 			<PhilosophySection />
-
+			{/* good */}
 			<TaxCreditSection />
+
+
 			<InterventionZoneSection />
+			
 			<RealisationsPreviewSection />
 			<FaqShortSection />
 			<FinalCtaSection />
