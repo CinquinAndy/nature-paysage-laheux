@@ -182,6 +182,7 @@ function IconCheck({ className, ...props }: React.ComponentProps<'svg'>) {
 			className={cn('h-4 w-4', className)}
 			{...props}
 		>
+			<title>Check</title>
 			<path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z" />
 		</svg>
 	)
@@ -200,7 +201,9 @@ const StepImage = forwardRef<HTMLImageElement, StepImageProps>(({ src, alt, clas
 			className={className}
 			src={src}
 			style={{ position: 'absolute', userSelect: 'none', maxWidth: 'unset', ...style }}
-			onError={e => (e.currentTarget.src = placeholderImage(alt))}
+			onError={e => {
+				e.currentTarget.src = placeholderImage(alt)
+			}}
 			{...props}
 		/>
 	)
