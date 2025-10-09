@@ -44,6 +44,9 @@ importers:
       dotenv:
         specifier: 17.2.3
         version: 17.2.3
+      framer-motion:
+        specifier: ^12.23.22
+        version: 12.23.22(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       graphql:
         specifier: 16.11.0
         version: 16.11.0

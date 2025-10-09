@@ -63,7 +63,7 @@ const refusals = [
 
 export function PhilosophySection() {
 	return (
-		<section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden">
+		<section className="py-16 md:py-24 bg-background relative overflow-hidden">
 			{/* Background Pattern */}
 			<div className="absolute inset-0 opacity-5">
 				<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent" />

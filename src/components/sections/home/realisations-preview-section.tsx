@@ -14,7 +14,7 @@ const realisationImages = [
 
 export function RealisationsPreviewSection() {
 	return (
-		<section className="py-16 md:py-24 bg-muted/30">
+		<section className="py-16 md:py-24 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
 				<div className="text-center mb-12 md:mb-16">

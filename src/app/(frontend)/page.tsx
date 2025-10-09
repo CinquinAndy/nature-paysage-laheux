@@ -15,7 +15,7 @@ export default function HomePage() {
 			<HeroSection />
 			{/* good */}
 			<ServicesPreviewSection />
-
+			{/* good */}
 			<PhilosophySection />
 
 			<TaxCreditSection />
