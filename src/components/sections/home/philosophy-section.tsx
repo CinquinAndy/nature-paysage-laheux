@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { CheckCircle2, XCircle } from 'lucide-react'
+import Image from 'next/image'
 
 export function PhilosophySection() {
 	const preferences = [
@@ -22,9 +22,9 @@ export function PhilosophySection() {
 		<section className="py-16 md:py-24 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
-				<div className="text-center mb-12 md:mb-16">
+				<div className="text-left mb-12 md:mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Mon Approche : Nature & Respect</h2>
-					<p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+					<p className="text-lg text-muted-foreground max-w-3xl">
 						Passionné par le végétal et la biodiversité, je mets mon expertise au service de votre jardin depuis
 						plusieurs années en Loire-Atlantique.
 					</p>
