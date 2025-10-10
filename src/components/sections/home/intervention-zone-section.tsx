@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import type * as GeoJSON from 'geojson'
-import { MapPin } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -52,7 +51,7 @@ const InterventionMap = dynamic(
 					dragging={false}
 					doubleClickZoom={false}
 					zoomControl={false}
-					className="h-[500px] w-full rounded-2xl shadow-xl border border-primary/10"
+					className="h-[600px] w-full rounded-2xl shadow-xl border border-primary/10"
 				>
 					<MapTileLayer variant="dark" />
 					<MapCircle
@@ -106,25 +105,12 @@ export function InterventionZoneSection() {
 				<div className="text-center mb-12 md:mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Zone d'Intervention en Loire-Atlantique</h2>
 					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-						Basé à {CONTACT_INFO.address.city}, j'interviens dans un rayon de 30 km dans le Vignoble Nantais
+						Basé à {CONTACT_INFO.address.city}, j'interviens dans un rayon de 20 km.
 					</p>
 				</div>
 
-				<div className="max-w-6xl mx-auto">
-					{/* Carte Interactive */}
-					<div className="mb-8 relative">
-						<div className="absolute top-4 left-4 z-[400] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 rounded-lg p-4 shadow-lg border max-w-xs">
-							<div className="flex items-start gap-3">
-								<div className="rounded-full bg-primary/10 p-2">
-									<MapPin className="h-5 w-5 text-primary" />
-								</div>
-								<div>
-									<h3 className="font-semibold mb-1">Rayon de 20 km</h3>
-									<p className="text-sm text-muted-foreground">Autour de {CONTACT_INFO.address.city}</p>
-								</div>
-							</div>
-						</div>
-
+				<div className="container mx-auto">
+					<div className="mb-24">
 						<InterventionMap />
 					</div>
 
@@ -135,7 +121,7 @@ export function InterventionZoneSection() {
 								Principales communes desservies
 							</h3>
 							<p className="text-muted-foreground mt-4 text-sm tracking-wide text-balance md:text-base">
-								Découvrez les 15 communes du Vignoble Nantais où nous intervenons régulièrement
+								Découvrez les 15 communes où j'intervient régulièrement
 							</p>
 						</AnimatedContainer>
 
