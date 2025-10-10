@@ -42,7 +42,7 @@ export function CtaShader({
 					<div className="max-w-5xl">
 						<div className="flex flex-col items-start justify-between gap-8 rounded-lg bg-background backdrop-blur-md border border-white/20 px-6 py-10 md:flex-row lg:px-20 lg:py-16 shadow-2xl">
 							<div className="md:w-1/2">
-								<h4 className="mb-4 text-2xl font-bold md:text-3xl text-foreground">{title}</h4>
+								<h4 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">{title}</h4>
 								<p className="text-foreground/90 text-lg mb-6">{description}</p>
 								<Button className="bg-white hover:bg-white/90 text-primary font-semibold " size="lg" asChild>
 									<Link href={buttonUrl}>

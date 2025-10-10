@@ -19,9 +19,7 @@ export function FaqShortSection() {
 								<Badge variant="outline">FAQ</Badge>
 							</div>
 							<div className="flex gap-2 flex-col">
-								<h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-left font-regular">
-									Questions Fréquentes
-								</h2>
+								<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-xl text-left">Questions Fréquentes</h2>
 								<p className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-muted-foreground text-left">
 									Réponses aux questions les plus courantes sur mes services d'entretien de jardin écologique
 								</p>

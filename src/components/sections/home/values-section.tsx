@@ -1,63 +1,86 @@
 import { Leaf, MapPin, TrendingDown, Wrench } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import Image from 'next/image'
 
 const values = [
 	{
 		icon: Leaf,
+		number: '01',
 		title: 'Respect de la Nature',
 		description:
 			'Méthodes douces, sans produits chimiques. Préservation de la biodiversité et solutions naturelles durables.',
 	},
 	{
-		icon: TrendingDown,
-		title: "50% de Crédit d'Impôt",
-		description: 'Sur toutes mes prestations. Attestation fiscale fournie. Économie garantie pour votre budget.',
+		icon: Wrench,
+		number: '02',
+		title: 'Travail Artisanal',
+		description: 'Interventions soignées et personnalisées. Écoute de vos besoins. Conseil et accompagnement.',
 	},
+
 	{
 		icon: MapPin,
+		number: '03',
 		title: 'Expertise Locale',
 		description: 'Connaissance du terroir ligérien. Adaptation au climat de Loire-Atlantique. Passion pour le végétal.',
 	},
 	{
-		icon: Wrench,
-		title: 'Travail Artisanal',
-		description: 'Interventions soignées et personnalisées. Écoute de vos besoins. Conseil et accompagnement.',
+		icon: TrendingDown,
+		number: '04',
+		title: "50% de Crédit d'Impôt",
+		description: 'Sur toutes mes prestations. Attestation fiscale fournie. Économie garantie pour votre budget.',
 	},
 ]
 
 export function ValuesSection() {
 	return (
-		<section className="py-16 md:py-24 bg-background">
+		<section className="py-16 md:py-24 bg-[#3d5243] text-white rounded-t-2xl">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				{/* Section Header */}
-				<div className="text-left mb-12 md:mb-16">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Une Approche Écologique et Sur-Mesure</h2>
-					<p className="text-lg text-muted-foreground max-w-2xl">
-						Quatre piliers fondamentaux guident mon travail au quotidien
-					</p>
-				</div>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+					{/* Left Side - Image */}
+					<div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
+						<Image
+							src="/usable/bg.jpg"
+							alt="Jardin paysager écologique"
+							fill
+							className="object-cover"
+							sizes="(max-width: 1024px) 100vw, 50vw"
+						/>
+					</div>
 
-				{/* Values Grid */}
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-					{values.map(value => {
-						const Icon = value.icon
-						return (
-							<Card
-								key={value.title}
-								className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 hover:border-primary/50"
-							>
-								<CardHeader className="text-center">
-									<div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-										<Icon className="h-8 w-8 text-primary" />
+					{/* Right Side - Content */}
+					<div className="space-y-8">
+						{/* Header */}
+						<div>
+							<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">
+								Une Approche
+								<br />
+								Écologique et
+								<br />
+								Sur-Mesure
+							</h2>
+						</div>
+
+						{/* Values Grid */}
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+							{values.map(value => {
+								const Icon = value.icon
+								return (
+									<div
+										key={value.title}
+										className="space-y-3 p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors duration-300"
+									>
+										<div className="flex items-start justify-between">
+											<div className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center">
+												<Icon className="h-5 w-5 text-white" />
+											</div>
+											<span className="text-sm font-mono text-white/60">{value.number}</span>
+										</div>
+										<h3 className="text-lg font-semibold">{value.title}</h3>
+										<p className="text-sm text-white/80 leading-relaxed">{value.description}</p>
 									</div>
-									<CardTitle className="text-xl">{value.title}</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<p className="text-sm text-muted-foreground text-center leading-relaxed">{value.description}</p>
-								</CardContent>
-							</Card>
-						)
-					})}
+								)
+							})}
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

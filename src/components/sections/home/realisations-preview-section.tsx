@@ -56,7 +56,7 @@ const realisationsData: Gallery4Item[] = [
 
 export function RealisationsPreviewSection() {
 	return (
-		<section className="py-16 md:py-24 bg-background">
+		<section className="py-16 md:pb-24 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<Gallery4
 					title="Découvrez Mes Réalisations"
@@ -65,7 +65,7 @@ export function RealisationsPreviewSection() {
 				/>
 
 				{/* CTA */}
-				<div className="text-center mt-12">
+				<div className="text-center ">
 					<Button size="lg" variant="outline" asChild>
 						<Link href="/realisations">
 							Voir Toutes Mes Réalisations

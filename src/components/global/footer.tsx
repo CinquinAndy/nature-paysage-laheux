@@ -144,14 +144,14 @@ export function Footer() {
 						© {currentYear} {CONTACT_INFO.company.name} - Tous droits réservés
 					</p>
 					<p>
-						Site créé par{' '}
+						Developed & Designed with ❤️ by{' '}
 						<Link
 							href="https://andy-cinquin.fr"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:text-primary transition-colors underline"
 						>
-							Cinquin Andy
+							Andy Cinquin
 						</Link>
 					</p>
 				</div>

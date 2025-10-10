@@ -11,21 +11,19 @@ import { ValuesSection } from '@/components/sections/home/values-section'
 export default function HomePage() {
 	return (
 		<>
-			{/* good */}
-			<HeroSection />
-			{/* good */}
-			<ServicesPreviewSection />
-			{/* good */}
-			<PhilosophySection />
-			{/* good */}
-			<TaxCreditSection />
-			{/* good */}
-			<InterventionZoneSection />
-			<RealisationsPreviewSection />
-			<FaqShortSection />
-
-			<FinalCtaSection />
-			<ValuesSection />
+			<div className="">
+				<HeroSection />
+			</div>
+			<div className="transform translate-y-[-75px]">
+				<ValuesSection />
+				<ServicesPreviewSection />
+				<PhilosophySection />
+				<InterventionZoneSection />
+				<RealisationsPreviewSection />
+				<FaqShortSection />
+				<TaxCreditSection />
+				<FinalCtaSection />
+			</div>
 		</>
 	)
 }
