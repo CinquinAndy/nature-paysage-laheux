@@ -19,7 +19,7 @@ export const NavigationBar = () => {
 
 	const navItems = [
 		{ name: 'Accueil', link: '/' },
-		{ name: 'Ce Que Je Fais', link: '/prestations' },
+		{ name: 'Ce Que Je Propose', link: '/prestations' },
 		{ name: 'Mes Réalisations', link: '/realisations' },
 		{ name: 'FAQ', link: '/faq' },
 		{ name: 'Contact', link: '/contact' },

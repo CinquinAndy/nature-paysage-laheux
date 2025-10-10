@@ -1,24 +1,10 @@
 {
-	// ============================================================================
-	// OPTION 1 (ACTIVE): Format on save avec l'extension Biome
-	// ============================================================================
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "biomejs.biome",
-	"editor.codeActionsOnSave": {
-		"quickfix.biome": "explicit",
-		"source.organizeImports.biome": "explicit"
-	},
-	
-	// Config Biome extension
-	"biome.enabled": true,
-	"biome.lspBin": "./node_modules/@biomejs/biome/bin/biome",
-	"biome.rename": true,
-	
-	// Par type de fichier
-	"[typescript]": {
+	"[typescriptreact]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"[typescriptreact]": {
+	"[typescript]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[javascript]": {
@@ -29,23 +15,5 @@
 	},
 	"[json]": {
 		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "biomejs.biome"
 	}
-
-	// ============================================================================
-	// OPTION 2 (FALLBACK): Si Biome crashe, décommente ci-dessous et commente au-dessus
-	// Installe l'extension "Run on Save" (emeraldwalk.runonsave)
-	// ============================================================================
-	// "editor.formatOnSave": false,
-	// "biome.enabled": false,
-	// "emeraldwalk.runonsave": {
-	// 	"commands": [
-	// 		{
-	// 			"match": "\\.(ts|tsx|js|jsx|json|jsonc)$",
-	// 			"cmd": "pnpm biome format --write ${file}"
-	// 		}
-	// 	]
-	// }
 }

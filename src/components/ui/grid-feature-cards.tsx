@@ -51,14 +51,14 @@ function GridPattern({
 			<rect width="100%" height="100%" strokeWidth={0} fill={`url(#${patternId})`} />
 			{squares && (
 				<svg x={x} y={y} className="overflow-visible" aria-hidden="true">
-					{squares.map(([x, y], idx) => (
+					{squares.map(([squareX, squareY]) => (
 						<rect
 							strokeWidth="0"
-							key={idx}
+							key={`${squareX}-${squareY}`}
 							width={width + 1}
 							height={height + 1}
-							x={x * width}
-							y={y * height}
+							x={squareX * width}
+							y={squareY * height}
 						/>
 					))}
 				</svg>
@@ -69,8 +69,19 @@ function GridPattern({
 
 function genRandomPattern(length?: number): number[][] {
 	length = length ?? 5
-	return Array.from({ length }, () => [
-		Math.floor(Math.random() * 4) + 7, // random x between 7 and 10
-		Math.floor(Math.random() * 6) + 1, // random y between 1 and 6
-	])
+	const pattern: number[][] = []
+	const used = new Set<string>()
+
+	while (pattern.length < length) {
+		const x = Math.floor(Math.random() * 4) + 7 // random x between 7 and 10
+		const y = Math.floor(Math.random() * 6) + 1 // random y between 1 and 6
+		const key = `${x}-${y}`
+
+		if (!used.has(key)) {
+			used.add(key)
+			pattern.push([x, y])
+		}
+	}
+
+	return pattern
 }
