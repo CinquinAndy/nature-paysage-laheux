@@ -1,6 +1,7 @@
 'use client'
 
 import { MeshGradient, Warp } from '@paper-design/shaders-react'
+import { useEffect, useState } from 'react'
 
 interface EnhancedShaderBackgroundProps {
 	colors?: string[]
@@ -28,51 +29,62 @@ const shaderPresets = {
 }
 
 export function EnhancedShaderBackground({ variant = 'nature', colors }: EnhancedShaderBackgroundProps) {
+	const [isMounted, setIsMounted] = useState(false)
 	const preset = shaderPresets[variant]
 	const warpColors = colors || preset.warpColors
+
+	useEffect(() => {
+		setIsMounted(true)
+	}, [])
 
 	return (
 		<div className="absolute inset-0">
 			{/* Base Mesh Gradient Layer */}
-			<div className="absolute inset-0 opacity-40">
-				<MeshGradient style={{ height: '100%', width: '100%' }} colors={preset.meshColors} speed={0.3} />
-			</div>
+			{isMounted && (
+				<div className="absolute inset-0 opacity-40">
+					<MeshGradient style={{ height: '100%', width: '100%' }} colors={preset.meshColors} speed={0.3} />
+				</div>
+			)}
 
 			{/* Primary Warp Layer */}
-			<div className="absolute inset-0">
-				<Warp
-					style={{ height: '100%', width: '100%' }}
-					proportion={0.45}
-					softness={1.2}
-					distortion={0.3}
-					swirl={1}
-					swirlIterations={12}
-					shape="checks"
-					shapeScale={0.08}
-					scale={1.2}
-					rotation={0}
-					speed={0.4}
-					colors={warpColors}
-				/>
-			</div>
+			{isMounted && (
+				<div className="absolute inset-0">
+					<Warp
+						style={{ height: '100%', width: '100%' }}
+						proportion={0.45}
+						softness={1.2}
+						distortion={0.3}
+						swirl={1}
+						swirlIterations={12}
+						shape="checks"
+						shapeScale={0.08}
+						scale={1.2}
+						rotation={0}
+						speed={0.4}
+						colors={warpColors}
+					/>
+				</div>
+			)}
 
 			{/* Secondary Warp Layer with different pattern */}
-			<div className="absolute inset-0 opacity-30">
-				<Warp
-					style={{ height: '100%', width: '100%' }}
-					proportion={0.5}
-					softness={0.8}
-					distortion={0.2}
-					swirl={0.6}
-					swirlIterations={8}
-					shape="stripes"
-					shapeScale={0.15}
-					scale={0.8}
-					rotation={45}
-					speed={0.6}
-					colors={warpColors.map(c => c)}
-				/>
-			</div>
+			{isMounted && (
+				<div className="absolute inset-0 opacity-30">
+					<Warp
+						style={{ height: '100%', width: '100%' }}
+						proportion={0.5}
+						softness={0.8}
+						distortion={0.2}
+						swirl={0.6}
+						swirlIterations={8}
+						shape="stripes"
+						shapeScale={0.15}
+						scale={0.8}
+						rotation={45}
+						speed={0.6}
+						colors={warpColors.map(c => c)}
+					/>
+				</div>
+			)}
 
 			{/* Ambient glow effects overlay */}
 			<div className="absolute inset-0 pointer-events-none">

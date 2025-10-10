@@ -214,7 +214,7 @@ export const NavbarLogo = () => {
 
 export const NavbarButton = ({
 	href,
-	as: Tag = 'a',
+	as,
 	children,
 	className,
 	variant = 'primary',
@@ -237,6 +237,9 @@ export const NavbarButton = ({
 		gradient:
 			'bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]',
 	}
+
+	// Use Link component for Next.js navigation if href is provided
+	const Tag = as || (href ? Link : 'button')
 
 	return (
 		<Tag href={href || undefined} className={cn(baseStyles, variantStyles[variant], className)} {...props}>

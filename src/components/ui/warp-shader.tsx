@@ -1,6 +1,7 @@
 'use client'
 
 import { Warp } from '@paper-design/shaders-react'
+import { useEffect, useState } from 'react'
 
 interface WarpShaderProps {
 	colors?: string[]
@@ -29,22 +30,30 @@ export function WarpShader({
 	rotation = 0,
 	speed = 1,
 }: WarpShaderProps) {
+	const [isMounted, setIsMounted] = useState(false)
+
+	useEffect(() => {
+		setIsMounted(true)
+	}, [])
+
 	return (
 		<div className="absolute inset-0">
-			<Warp
-				style={{ height: '100%', width: '100%' }}
-				proportion={proportion}
-				softness={softness}
-				distortion={distortion}
-				swirl={swirl}
-				swirlIterations={swirlIterations}
-				shape={shape}
-				shapeScale={shapeScale}
-				scale={scale}
-				rotation={rotation}
-				speed={speed}
-				colors={colors}
-			/>
+			{isMounted && (
+				<Warp
+					style={{ height: '100%', width: '100%' }}
+					proportion={proportion}
+					softness={softness}
+					distortion={distortion}
+					swirl={swirl}
+					swirlIterations={swirlIterations}
+					shape={shape}
+					shapeScale={shapeScale}
+					scale={scale}
+					rotation={rotation}
+					speed={speed}
+					colors={colors}
+				/>
+			)}
 		</div>
 	)
 }

@@ -32,8 +32,8 @@ export const NavigationBar = () => {
 				<NavbarLogo />
 				<NavItems items={navItems} />
 				<div className="flex items-center gap-4">
-					<NavbarButton variant="primary">
-						<Link href="/contact">Devis Gratuit</Link>
+					<NavbarButton variant="primary" href="/contact">
+						Devis Gratuit
 					</NavbarButton>
 				</div>
 			</NavBody>
@@ -57,10 +57,13 @@ export const NavigationBar = () => {
 						</Link>
 					))}
 					<div className="flex w-full flex-col gap-4">
-						<NavbarButton variant="primary" className="w-full">
-							<Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-								Devis Gratuit
-							</Link>
+						<NavbarButton
+							variant="primary"
+							className="w-full"
+							href="/contact"
+							onClick={() => setIsMobileMenuOpen(false)}
+						>
+							Devis Gratuit
 						</NavbarButton>
 					</div>
 				</MobileNavMenu>
