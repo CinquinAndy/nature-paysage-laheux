@@ -7,9 +7,9 @@
 		"defaultBranch": "main"
 	},
 	"files": {
-		"ignoreUnknown": false,
-		"includes": ["src/**/*", "*.ts", "*.tsx", "*.js", "*.jsx", "*.mjs"],
-		"maxSize": 1048576
+		"ignoreUnknown": true,
+		"includes": ["src/**/*", "*.ts", "*.tsx", "*.js", "*.jsx", "*.mjs", "*.json", "*.jsonc"],
+		"maxSize": 10485760
 	},
 	"formatter": {
 		"enabled": true,
@@ -20,8 +20,7 @@
 		"lineWidth": 120,
 		"attributePosition": "auto",
 		"bracketSameLine": false,
-		"bracketSpacing": true,
-		"useEditorconfig": true
+		"bracketSpacing": true
 	},
 	"linter": {
 		"enabled": true,
@@ -59,19 +58,6 @@
 			"quoteStyle": "single",
 			"attributePosition": "auto",
 			"bracketSpacing": true
-		}
-	},
-	"html": {
-		"formatter": {
-			"selfCloseVoidElements": "always"
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
 		}
 	},
 	"overrides": [
