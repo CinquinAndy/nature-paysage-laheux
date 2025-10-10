@@ -16,12 +16,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@paper-design/shaders-react": "^0.0.57",
     "@payloadcms/db-postgres": "3.59.1",
     "@payloadcms/next": "3.59.1",
     "@payloadcms/payload-cloud": "3.59.1",
     "@payloadcms/richtext-lexical": "3.59.1",
     "@payloadcms/storage-s3": "^3.59.1",
     "@payloadcms/ui": "3.59.1",
+    "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",

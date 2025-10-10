@@ -21,9 +21,9 @@ export default function HomePage() {
 			<TaxCreditSection />
 			{/* good */}
 			<InterventionZoneSection />
-
 			<RealisationsPreviewSection />
 			<FaqShortSection />
+
 			<FinalCtaSection />
 			<ValuesSection />
 		</>

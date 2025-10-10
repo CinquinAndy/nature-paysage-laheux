@@ -1,7 +1,7 @@
 import { Phone } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Accordion } from '@/components/ui/accordion'
+import { FaqSection } from '@/components/sections/faq/faq-section'
 import { Button } from '@/components/ui/button'
 import { FAQ_CATEGORIES, FAQ_ITEMS } from '@/lib/data/faq'
 
@@ -33,26 +33,17 @@ export default function FaqPage() {
 				</div>
 			</section>
 
-			{/* FAQ Sections */}
-			<section className="py-16 md:py-24">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-4xl mx-auto space-y-16">
-						{faqByCategory.map(({ category, label, items }) => (
-							<div key={category}>
-								<h2 className="text-3xl font-bold mb-8">{label}</h2>
-								<Accordion
-									items={items.map(item => ({
-										value: item.id,
-										title: item.question,
-										children: item.answer,
-									}))}
-									type="single"
-								/>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+			{/* FAQ Sections by Category */}
+			{faqByCategory.map(({ category, label, items }) => (
+				<FaqSection
+					key={category}
+					title={label}
+					description={`Découvrez toutes les informations concernant ${label.toLowerCase()}`}
+					categoryLabel={label}
+					items={items}
+					showCta={false}
+				/>
+			))}
 
 			{/* CTA Section */}
 			<section className="py-16 bg-muted/30">
@@ -67,7 +58,7 @@ export default function FaqPage() {
 							<Button size="lg" variant="outline" asChild>
 								<Link href="tel:0631043445">
 									<Phone className="mr-2 h-5 w-5" />
-									06 31 04 34 34 45
+									06 31 04 34 45
 								</Link>
 							</Button>
 						</div>

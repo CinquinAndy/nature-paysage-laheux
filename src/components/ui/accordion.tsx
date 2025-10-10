@@ -1,60 +1,82 @@
 'use client'
 
+import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDown } from 'lucide-react'
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 
-interface AccordionItemProps {
+// Radix UI Accordion components
+const AccordionRoot = AccordionPrimitive.Root
+
+const AccordionItem = React.forwardRef<
+	React.ElementRef<typeof AccordionPrimitive.Item>,
+	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+	<AccordionPrimitive.Item ref={ref} className={cn('border-b', className)} {...props} />
+))
+AccordionItem.displayName = 'AccordionItem'
+
+const AccordionTrigger = React.forwardRef<
+	React.ElementRef<typeof AccordionPrimitive.Trigger>,
+	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+	<AccordionPrimitive.Header className="flex">
+		<AccordionPrimitive.Trigger
+			ref={ref}
+			className={cn(
+				'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180',
+				className
+			)}
+			{...props}
+		>
+			{children}
+			<ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+		</AccordionPrimitive.Trigger>
+	</AccordionPrimitive.Header>
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+
+const AccordionContent = React.forwardRef<
+	React.ElementRef<typeof AccordionPrimitive.Content>,
+	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+	<AccordionPrimitive.Content
+		ref={ref}
+		className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+		{...props}
+	>
+		<div className={cn('pb-4 pt-0', className)}>{children}</div>
+	</AccordionPrimitive.Content>
+))
+
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
+
+// Legacy wrapper for backwards compatibility
+interface LegacyAccordionItemProps {
 	value: string
 	title: string
 	children: React.ReactNode
 }
 
-interface AccordionProps {
-	items: AccordionItemProps[]
+interface LegacyAccordionProps {
+	items: LegacyAccordionItemProps[]
 	type?: 'single' | 'multiple'
 	className?: string
 }
 
-export function Accordion({ items, type = 'single', className }: AccordionProps) {
-	const [openItems, setOpenItems] = React.useState<string[]>([])
-
-	const toggleItem = (value: string) => {
-		if (type === 'single') {
-			setOpenItems(openItems.includes(value) ? [] : [value])
-		} else {
-			setOpenItems(openItems.includes(value) ? openItems.filter(item => item !== value) : [...openItems, value])
-		}
-	}
-
+function Accordion({ items, type = 'single', className }: LegacyAccordionProps) {
 	return (
-		<div className={cn('divide-y divide-border rounded-lg border', className)}>
-			{items.map(item => {
-				const isOpen = openItems.includes(item.value)
-				return (
-					<div key={item.value} className="group">
-						<button
-							type="button"
-							onClick={() => toggleItem(item.value)}
-							className="flex w-full items-center justify-between px-6 py-4 text-left font-medium transition-colors hover:bg-muted/50"
-							aria-expanded={isOpen}
-						>
-							<span className="text-base font-semibold">{item.title}</span>
-							<ChevronDown
-								className={cn('h-5 w-5 shrink-0 transition-transform duration-200', isOpen && 'rotate-180')}
-							/>
-						</button>
-						<div
-							className={cn(
-								'overflow-hidden transition-all duration-300',
-								isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-							)}
-						>
-							<div className="px-6 pb-4 pt-2 text-sm text-muted-foreground whitespace-pre-wrap">{item.children}</div>
-						</div>
-					</div>
-				)
-			})}
-		</div>
+		<AccordionRoot type={type} collapsible className={cn('divide-y divide-border rounded-lg border', className)}>
+			{items.map(item => (
+				<AccordionItem key={item.value} value={item.value} className="border-b-0 px-6">
+					<AccordionTrigger className="text-base font-semibold">{item.title}</AccordionTrigger>
+					<AccordionContent className="text-sm text-muted-foreground whitespace-pre-wrap">
+						{item.children}
+					</AccordionContent>
+				</AccordionItem>
+			))}
+		</AccordionRoot>
 	)
 }
+
+export { Accordion, AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent }
