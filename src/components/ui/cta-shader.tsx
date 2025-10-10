@@ -52,8 +52,8 @@ export function CtaShader({
 							</div>
 							<div className="md:w-1/3">
 								<ul className="flex flex-col space-y-3 text-sm font-medium">
-									{items.map((item, idx) => (
-										<li className="flex items-center text-foreground" key={idx}>
+									{items.map(item => (
+										<li className="flex items-center text-foreground" key={item}>
 											<Check className="mr-4 size-5 flex-shrink-0 text-green-300" />
 											{item}
 										</li>

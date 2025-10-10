@@ -42,8 +42,8 @@ export const Cta4 = ({
 							</div>
 							<div className="md:w-1/3">
 								<ul className="flex flex-col space-y-2 text-sm font-medium">
-									{items.map((item, idx) => (
-										<li className="flex items-center" key={idx}>
+									{items.map(item => (
+										<li className="flex items-center" key={item}>
 											<Check className="mr-4 size-4 flex-shrink-0" />
 											{item}
 										</li>

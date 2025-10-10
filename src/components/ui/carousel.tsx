@@ -116,6 +116,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 					canScrollNext,
 				}}
 			>
+				{/* biome-ignore lint/a11y/useSemanticElements: role="region" is correct for carousel container per WAI-ARIA pattern */}
 				<div
 					ref={ref}
 					onKeyDownCapture={handleKeyDown}
@@ -154,6 +155,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 		const { orientation } = useCarousel()
 
 		return (
+			// biome-ignore lint/a11y/useSemanticElements: role="group" is correct for carousel items, not a form fieldset
 			<div
 				ref={ref}
 				role="group"
