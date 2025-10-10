@@ -66,7 +66,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 			ref={ref}
 			// IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
 			className={cn(
-				'fixed inset-x-0 top-12 z-40 w-full',
+				'fixed inset-x-0 top-12 z-[9999] w-full',
 				// 'fixed inset-x-0 top-12 z-40 w-full backdrop-blur-lg max-w-7xl mx-auto rounded-xl bg-black/1',
 				className
 			)}
