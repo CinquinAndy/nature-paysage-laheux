@@ -1,10 +1,12 @@
 'use client'
 
+import { motion, useReducedMotion } from 'framer-motion'
 import type * as GeoJSON from 'geojson'
-import { MapPin, Phone } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { CityCard } from '@/components/ui/grid-feature-cards'
 import { COMMUNE_COLORS } from '@/lib/data/commune-colors'
 import { COMMUNES_CONTOURS } from '@/lib/data/communes-contours'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
@@ -12,6 +14,25 @@ import { CONTACT_INFO } from '@/lib/data/contact-info'
 // Coordonnées de Monnières
 const MONNIERES_COORDS: [number, number] = [47.1339, -1.3433]
 const INTERVENTION_RADIUS = 20000 // 20km en mètres
+
+// Liste des communes principales autour de Monnières (extraite de la carte GeoJSON)
+const PRINCIPALES_COMMUNES = [
+	'Monnières',
+	'Le Pallet',
+	'Vertou',
+	'Gorges',
+	'La Chapelle-Heulin',
+	'Maisdon-sur-Sèvre',
+	'Vallet',
+	'La Haie-Fouassière',
+	'Clisson',
+	'Haute-Goulaine',
+	'Mouzillon',
+	'Le Loroux-Bottereau',
+	'Basse-Goulaine',
+	'Aigrefeuille-sur-Maine',
+	'Saint-Lumine-de-Clisson',
+]
 
 // Dynamic import to avoid SSR issues with Leaflet
 // We create a complete map wrapper that includes all child components in the same context
@@ -51,6 +72,32 @@ const InterventionMap = dynamic(
 	{ ssr: false }
 )
 
+type AnimatedContainerProps = {
+	delay?: number
+	className?: React.ComponentProps<typeof motion.div>['className']
+	children: React.ReactNode
+}
+
+function AnimatedContainer({ className, delay = 0.1, children }: AnimatedContainerProps) {
+	const shouldReduceMotion = useReducedMotion()
+
+	if (shouldReduceMotion) {
+		return <div className={className}>{children}</div>
+	}
+
+	return (
+		<motion.div
+			initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
+			whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
+			viewport={{ once: true }}
+			transition={{ delay, duration: 0.8 }}
+			className={className}
+		>
+			{children}
+		</motion.div>
+	)
+}
+
 export function InterventionZoneSection() {
 	return (
 		<section className="py-16 md:py-24 bg-muted/30">
@@ -82,19 +129,24 @@ export function InterventionZoneSection() {
 					</div>
 
 					{/* Communes Grid */}
-					<div className="bg-primary/5 rounded-2xl p-8 md:p-10 border-2 border-primary/20 mb-8">
-						<h3 className="text-xl font-semibold mb-6 text-center">Principales communes desservies</h3>
-						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-							{CONTACT_INFO.interventionZone.communes.map(commune => (
-								<div
-									key={commune}
-									className="flex items-center gap-2 text-sm p-3 rounded-lg bg-background/50 hover:bg-primary/10 transition-colors border border-primary/10"
-								>
-									<span className="text-primary font-bold">✓</span>
-									<span>{commune}</span>
-								</div>
+					<div className="mb-12">
+						<AnimatedContainer className="mx-auto max-w-3xl text-center mb-8">
+							<h3 className="text-2xl font-bold tracking-wide text-balance md:text-3xl">
+								Principales communes desservies
+							</h3>
+							<p className="text-muted-foreground mt-4 text-sm tracking-wide text-balance md:text-base">
+								Découvrez les 15 communes du Vignoble Nantais où nous intervenons régulièrement
+							</p>
+						</AnimatedContainer>
+
+						<AnimatedContainer
+							delay={0.4}
+							className="grid grid-cols-2 divide-x divide-y divide-dashed border border-dashed sm:grid-cols-3 md:grid-cols-5"
+						>
+							{PRINCIPALES_COMMUNES.map(commune => (
+								<CityCard key={commune} city={{ name: commune }} />
 							))}
-						</div>
+						</AnimatedContainer>
 					</div>
 
 					{/* CTA Card */}
@@ -107,20 +159,15 @@ export function InterventionZoneSection() {
 
 							{/* Description */}
 							<p className="text-muted-foreground opacity-0 animate-fade-in-up delay-300">
-								Contactez-moi pour vérifier si j'interviens dans votre secteur. Basé à {CONTACT_INFO.address.city}, je
-								peux étendre ma zone d'intervention selon vos besoins et la nature de votre projet.
+								Contactez-moi pour vérifier si j'interviens dans votre secteur. <br />
+								Basé à {CONTACT_INFO.address.city}, je peux étendre ma zone d'intervention selon vos besoins et la
+								nature de votre projet.
 							</p>
 
 							{/* Action Buttons */}
 							<div className="flex flex-col sm:flex-row gap-3 opacity-0 animate-fade-in-up delay-500">
 								<Button variant="default" size="lg" asChild>
-									<Link href="/contact">Demander un Devis Gratuit</Link>
-								</Button>
-								<Button variant="outline" size="lg" asChild>
-									<Link href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}>
-										<Phone className="mr-2 h-4 w-4" />
-										{CONTACT_INFO.phone}
-									</Link>
+									<Link href="/contact">Contactez-moi</Link>
 								</Button>
 							</div>
 
