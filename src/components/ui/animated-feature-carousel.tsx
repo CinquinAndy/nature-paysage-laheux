@@ -205,6 +205,7 @@ const StepImage = forwardRef<HTMLDivElement, StepImageProps>(({ src, alt, classN
 				alt={alt}
 				src={src}
 				fill
+				className="rounded-2xl"
 				sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 				style={{ objectFit: 'cover' }}
 				onError={e => {
@@ -240,7 +241,7 @@ function FeatureCard({ children, step }: { children: React.ReactNode; step: numb
 			onMouseMove={handleMouseMove}
 			style={{ '--x': useMotionTemplate`${mouseX}px`, '--y': useMotionTemplate`${mouseY}px` } as WrapperStyle}
 		>
-			<div className="relative w-full overflow-hidden bg-white duration-300">
+			<div className="relative w-full overflow-hidden bg-white duration-300 rounded-2xl">
 				<div className="m-6 md:m-10 min-h-[450px] md:min-h-[500px] w-full relative">
 					<AnimatePresence mode="wait">
 						<motion.div
@@ -338,7 +339,7 @@ function StepsNav({
 }
 
 const defaultClasses = {
-	img: 'border border-green-200 shadow-2xl shadow-black/10',
+	img: 'shadow-black/10 border-2 border-green-500/10 rounded-2xl',
 	step1img1: 'w-[45%] h-auto left-0 top-[10%]',
 	step1img2: 'w-[50%] h-auto left-[45%] top-[25%]',
 	step2img1: 'w-[45%] h-auto left-[5%] top-[7%]',
@@ -419,7 +420,7 @@ export function FeatureCarousel({
 		}
 	}
 	return (
-		<div className="flex flex-col gap-12 w-full max-w-4xl mx-auto p-4">
+		<div className="flex flex-col gap-12 w-full max-w-4xl mx-auto p-4 rounded-2xl">
 			<FeatureCard {...props} step={step}>
 				<AnimatePresence mode="wait">
 					<motion.div key={step} {...ANIMATION_PRESETS.fadeInScale} className="w-full h-full absolute">

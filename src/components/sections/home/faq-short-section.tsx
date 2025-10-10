@@ -3,7 +3,6 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '@/components/ui/accordion'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { FAQ_SHORT } from '@/lib/data/faq'
 
@@ -15,9 +14,6 @@ export function FaqShortSection() {
 					{/* Left Column - Intro */}
 					<div className="flex gap-10 flex-col">
 						<div className="flex gap-4 flex-col">
-							<div>
-								<Badge variant="outline">FAQ</Badge>
-							</div>
 							<div className="flex gap-2 flex-col">
 								<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-xl text-left">Questions Fréquentes</h2>
 								<p className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-muted-foreground text-left">
