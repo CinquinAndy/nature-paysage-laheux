@@ -196,13 +196,17 @@ const stepVariants: Variants = {
 
 const StepImage = forwardRef<HTMLDivElement, StepImageProps>(({ src, alt, className, style, ...props }, ref) => {
 	return (
-		<div ref={ref} className={className} style={{ position: 'absolute', userSelect: 'none', ...style }}>
+		<div
+			ref={ref}
+			className={cn('relative aspect-[4/3]', className)}
+			style={{ position: 'absolute', userSelect: 'none', ...style }}
+		>
 			<Image
 				alt={alt}
 				src={src}
 				fill
 				sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-				style={{ objectFit: 'contain', maxWidth: 'unset' }}
+				style={{ objectFit: 'cover' }}
 				onError={e => {
 					e.currentTarget.src = placeholderImage(alt)
 				}}
@@ -236,19 +240,19 @@ function FeatureCard({ children, step }: { children: React.ReactNode; step: numb
 			onMouseMove={handleMouseMove}
 			style={{ '--x': useMotionTemplate`${mouseX}px`, '--y': useMotionTemplate`${mouseY}px` } as WrapperStyle}
 		>
-			<div className="relative w-full overflow-hidden rounded-3xl border border-green-200 bg-white transition-colors duration-300 dark:border-green-800 dark:bg-green-950">
-				<div className="m-10 min-h-[450px] w-full">
+			<div className="relative w-full overflow-hidden bg-white duration-300">
+				<div className="m-6 md:m-10 min-h-[450px] md:min-h-[500px] w-full relative">
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={step}
-							className="flex w-full flex-col gap-4 md:w-3/5"
+							className="flex w-full flex-col gap-4 md:w-3/5 relative z-10"
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -20 }}
 							transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
 						>
 							<motion.div
-								className="text-sm font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-500"
+								className="text-sm font-semibold uppercase tracking-wider text-emerald-600"
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -256,7 +260,7 @@ function FeatureCard({ children, step }: { children: React.ReactNode; step: numb
 								{steps[step].name}
 							</motion.div>
 							<motion.h2
-								className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 md:text-3xl"
+								className="text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl"
 								initial={{ opacity: 0, x: -20 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 0.1, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -268,9 +272,7 @@ function FeatureCard({ children, step }: { children: React.ReactNode; step: numb
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 0.15, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
 							>
-								<p className="text-base leading-relaxed text-neutral-700 dark:text-neutral-400">
-									{steps[step].description}
-								</p>
+								<p className="text-base leading-relaxed text-neutral-700">{steps[step].description}</p>
 							</motion.div>
 						</motion.div>
 					</AnimatePresence>
@@ -308,10 +310,8 @@ function StepsNav({
 							<button
 								type="button"
 								className={cn(
-									'group flex items-center gap-2.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-black',
-									isCurrent
-										? 'bg-emerald-600 text-white dark:bg-emerald-500'
-										: 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'
+									'group flex items-center gap-2.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500',
+									isCurrent ? 'bg-emerald-600 text-white' : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
 								)}
 								onClick={() => onChange(stepIdx)}
 							>
@@ -319,10 +319,10 @@ function StepsNav({
 									className={cn(
 										'flex h-5 w-5 shrink-0 items-center justify-center rounded-full transition-all duration-300',
 										isCompleted
-											? 'bg-emerald-600 text-white dark:bg-emerald-500'
+											? 'bg-emerald-600 text-white'
 											: isCurrent
-												? 'bg-emerald-400 text-emerald-900 dark:bg-emerald-400 dark:text-emerald-900'
-												: 'bg-neutral-200 text-neutral-700 group-hover:bg-neutral-300 dark:bg-neutral-700 dark:text-neutral-200 dark:group-hover:bg-neutral-600'
+												? 'bg-emerald-400 text-emerald-900'
+												: 'bg-neutral-200 text-neutral-700 group-hover:bg-neutral-300'
 									)}
 								>
 									{isCompleted ? <IconCheck className="h-3.5 w-3.5" /> : <span>{stepIdx + 1}</span>}
@@ -338,13 +338,13 @@ function StepsNav({
 }
 
 const defaultClasses = {
-	img: 'rounded-xl border border-green-200 dark:border-green-800 shadow-2xl shadow-black/10 dark:shadow-green-950/50',
-	step1img1: 'w-[50%] left-0 top-[10%]',
-	step1img2: 'w-[60%] left-[40%] top-[25%]',
-	step2img1: 'w-[50%] left-[5%] top-[7%]',
-	step2img2: 'w-[40%] left-[50%] top-[15%]',
-	step3img: 'w-[90%] left-[0%] top-[10%]',
-	step4img: 'w-[90%] left-[0%] top-[5%]',
+	img: 'border border-green-200 shadow-2xl shadow-black/10',
+	step1img1: 'w-[45%] h-auto left-0 top-[10%]',
+	step1img2: 'w-[50%] h-auto left-[45%] top-[25%]',
+	step2img1: 'w-[45%] h-auto left-[5%] top-[7%]',
+	step2img2: 'w-[40%] h-auto left-[50%] top-[15%]',
+	step3img: 'w-[85%] h-auto left-[5%] top-[10%]',
+	step4img: 'w-[85%] h-auto left-[5%] top-[5%]',
 } as const
 
 export function FeatureCarousel({

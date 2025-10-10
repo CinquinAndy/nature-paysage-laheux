@@ -180,7 +180,7 @@ export function PhilosophySection() {
 						<div className="flex gap-6 pt-8 flex-col w-full">
 							{preferences.map(item => (
 								<div key={item.title} className="flex flex-row gap-4 w-full items-start">
-									<Check className="w-5 h-5 mt-0.5 text-green-600 dark:text-green-500 flex-shrink-0" />
+									<Check className="w-5 h-5 mt-0.5 text-green-600 flex-shrink-0" />
 									<div className="flex flex-col gap-1">
 										<p className="font-medium text-foreground">{item.title}</p>
 										<p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
@@ -198,7 +198,7 @@ export function PhilosophySection() {
 						<div className="flex gap-6 pt-8 flex-col w-full">
 							{refusals.map(item => (
 								<div key={item.title} className="flex flex-row gap-4 w-full items-start">
-									<X className="w-5 h-5 mt-0.5 text-red-600 dark:text-red-500 flex-shrink-0" />
+									<X className="w-5 h-5 mt-0.5 text-red-600 flex-shrink-0" />
 									<div className="flex flex-col gap-1">
 										<p className="font-medium text-foreground">{item.title}</p>
 										<p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>

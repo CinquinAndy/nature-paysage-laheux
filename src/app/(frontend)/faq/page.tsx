@@ -22,7 +22,7 @@ export default function FaqPage() {
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
-			<section className="bg-gradient-to-br from-primary/10 to-green-50 dark:from-primary/5 dark:to-green-950 py-16 md:py-24">
+			<section className="bg-gradient-to-br from-primary/10 to-green-50 py-16 md:py-24">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="max-w-4xl mx-auto text-center">
 						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Questions Fréquentes</h1>

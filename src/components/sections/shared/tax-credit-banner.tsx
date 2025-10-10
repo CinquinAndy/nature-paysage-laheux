@@ -19,21 +19,21 @@ export function TaxCreditBanner({ variant = 'default', className = '' }: TaxCred
 	if (variant === 'detailed') {
 		return (
 			<div
-				className={`rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 border-2 border-green-200 dark:border-green-800 p-6 ${className}`}
+				className={`rounded-xl bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 p-6 ${className}`}
 			>
 				<div className="flex items-start gap-4">
-					<div className="rounded-full bg-green-100 dark:bg-green-900 p-3">
-						<Sparkles className="h-6 w-6 text-green-600 dark:text-green-400" />
+					<div className="rounded-full bg-green-100 p-3">
+						<Sparkles className="h-6 w-6 text-green-600" />
 					</div>
 					<div className="flex-1">
-						<h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-2">50% DE CRÉDIT D'IMPÔT</h3>
-						<p className="text-sm text-green-800 dark:text-green-200 mb-3">Services à la Personne</p>
-						<div className="space-y-1 text-sm text-green-700 dark:text-green-300">
+						<h3 className="text-xl font-bold text-green-900 mb-2">50% DE CRÉDIT D'IMPÔT</h3>
+						<p className="text-sm text-green-800 mb-3">Services à la Personne</p>
+						<div className="space-y-1 text-sm text-green-700">
 							<p>
 								<strong>Exemple :</strong> Votre prestation de 200€
 							</p>
 							<p>Ne vous coûte réellement que 100€</p>
-							<p className="text-xs mt-2 text-green-600 dark:text-green-400">Jusqu'à 2 500€ d'économie par an</p>
+							<p className="text-xs mt-2 text-green-600">Jusqu'à 2 500€ d'économie par an</p>
 						</div>
 					</div>
 				</div>
@@ -44,12 +44,12 @@ export function TaxCreditBanner({ variant = 'default', className = '' }: TaxCred
 	// Default variant
 	return (
 		<div
-			className={`inline-flex items-center gap-3 rounded-lg bg-green-100 dark:bg-green-900 border border-green-200 dark:border-green-800 px-6 py-3 ${className}`}
+			className={`inline-flex items-center gap-3 rounded-lg bg-green-100 border border-green-200 px-6 py-3 ${className}`}
 		>
-			<Sparkles className="h-5 w-5 text-green-600 dark:text-green-400" />
+			<Sparkles className="h-5 w-5 text-green-600" />
 			<div className="text-sm">
-				<span className="font-bold text-green-900 dark:text-green-100">50% de crédit d'impôt</span>
-				<span className="text-green-700 dark:text-green-300 ml-2">sur toutes les prestations</span>
+				<span className="font-bold text-green-900">50% de crédit d'impôt</span>
+				<span className="text-green-700 ml-2">sur toutes les prestations</span>
 			</div>
 		</div>
 	)
