@@ -1,4 +1,6 @@
 {
-	"recommendations": ["biomejs.biome"]
+	"recommendations": [
+		"biomejs.biome",
+		"emeraldwalk.runonsave"
+	]
 }
-
