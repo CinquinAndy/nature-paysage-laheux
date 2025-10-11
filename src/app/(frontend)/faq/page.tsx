@@ -1,9 +1,7 @@
-import { Phone } from 'lucide-react'
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { FaqSection } from '@/components/sections/faq/faq-section'
 import { PageHero } from '@/components/sections/shared/page-hero'
-import { Button } from '@/components/ui/button'
+import { CtaShader } from '@/components/ui/cta-shader'
 import { FAQ_CATEGORIES, FAQ_ITEMS } from '@/lib/data/faq'
 
 export const metadata: Metadata = {

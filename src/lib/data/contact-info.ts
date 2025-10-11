@@ -8,12 +8,11 @@ export const CONTACT_INFO = {
 		legalForm: 'SASU',
 	},
 	address: {
-		street: '37 bis la Miniere',
 		postalCode: '44690',
 		city: 'Monnières',
 		region: 'Loire-Atlantique',
 		country: 'France',
-		full: '37 bis la Miniere, 44690 Monnières, Loire-Atlantique',
+		full: '44690 Monnières, Loire-Atlantique',
 	},
 	social: {
 		facebook: 'https://www.facebook.com/profile.php?id=61580058785232',

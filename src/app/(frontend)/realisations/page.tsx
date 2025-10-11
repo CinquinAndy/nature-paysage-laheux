@@ -1,9 +1,7 @@
-import { Phone } from 'lucide-react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
-import { Button } from '@/components/ui/button'
+import { CtaShader } from '@/components/ui/cta-shader'
 
 export const metadata: Metadata = {
 	title: 'Mes Réalisations de Jardins Écologiques | Jean-Luc Laheux',
@@ -75,31 +73,20 @@ export default function RealisationsPage() {
 				</div>
 			</section>
 
-			{/* CTA Section */}
-			<section className="py-16 md:py-24 bg-muted/30">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-2xl mx-auto text-center">
-						<h2 className="text-3xl font-bold mb-4">Envie du Même Résultat Pour Votre Jardin ?</h2>
-						<p className="text-lg text-muted-foreground mb-8">Chaque projet est unique. Parlons du vôtre.</p>
-						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<Button size="lg" variant="primary" asChild>
-								<Link href="/contact">Demander un Devis Gratuit</Link>
-							</Button>
-							<Button size="lg" variant="outline" asChild>
-								<Link href="tel:0631043445">
-									<Phone className="mr-2 h-5 w-5" />
-									06 31 04 34 45
-								</Link>
-							</Button>
-						</div>
-						<div className="mt-8 text-sm text-muted-foreground space-y-1">
-							<p>✓ Visite et conseil gratuits</p>
-							<p>✓ Approche écologique garantie</p>
-							<p>✓ 50% de crédit d'impôt sur toutes mes prestations</p>
-						</div>
-					</div>
-				</div>
-			</section>
+			{/* CTA Section with Shader */}
+			<CtaShader
+				title="Envie du Même Résultat Pour Votre Jardin ?"
+				description="Chaque projet est unique. Parlons du vôtre et donnons vie à votre jardin écologique."
+				buttonText="Demander un Devis Gratuit"
+				buttonUrl="/contact"
+				items={[
+					'Visite et conseil gratuits',
+					'Approche écologique garantie',
+					'Réponse sous 48h',
+					"50% de crédit d'impôt sur toutes mes prestations",
+				]}
+				shaderVariant="nature"
+			/>
 		</div>
 	)
 }

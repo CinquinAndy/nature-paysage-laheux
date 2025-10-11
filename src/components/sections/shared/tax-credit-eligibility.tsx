@@ -37,7 +37,6 @@ const defaultTabs: Tab[] = [
 		icon: <CheckCircle2 className="h-auto w-4 shrink-0" />,
 		label: "Éligible au crédit d'impôt",
 		content: {
-			badge: '50% de réduction',
 			title: "Prestations Éligibles au Crédit d'Impôt",
 			description:
 				"Ces services bénéficient du crédit d'impôt de 50% sur le montant TTC. Vous ne payez que la moitié du prix !",
@@ -80,7 +79,6 @@ const defaultTabs: Tab[] = [
 		icon: <XCircle className="h-auto w-4 shrink-0" />,
 		label: 'Non éligible',
 		content: {
-			badge: "Sans crédit d'impôt",
 			title: "Prestations Non Éligibles au Crédit d'Impôt",
 			description:
 				"Ces prestations restent possibles mais ne bénéficient pas du crédit d'impôt. Elles seront facturées séparément.",
@@ -149,12 +147,6 @@ const TaxCreditEligibility = (props: TaxCreditEligibilityProps) => {
 								className="grid place-items-start gap-12 lg:grid-cols-2 lg:gap-10 mt-0"
 							>
 								<div className="flex flex-col gap-6 order-2 lg:order-1">
-									<Badge
-										variant={tab.value === 'eligible' ? 'default' : 'outline'}
-										className="w-fit bg-primary/10 text-primary border-primary/20"
-									>
-										{tab.content.badge}
-									</Badge>
 									<h3 className="text-2xl font-bold lg:text-3xl">{tab.content.title}</h3>
 									<p className="text-muted-foreground lg:text-lg">{tab.content.description}</p>
 									<ul className="space-y-4 mt-4">
@@ -173,7 +165,7 @@ const TaxCreditEligibility = (props: TaxCreditEligibilityProps) => {
 										))}
 									</ul>
 								</div>
-								<div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden order-1 lg:order-2">
+								<div className="relative w-full h-full rounded-xl overflow-hidden order-1 lg:order-2">
 									<Image src={tab.content.imageSrc} alt={tab.content.imageAlt} fill className="object-cover" />
 								</div>
 							</TabsContent>
