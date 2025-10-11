@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { ServiceCard } from '@/components/sections/shared/service-card'
-import { TaxCreditBanner } from '@/components/sections/shared/tax-credit-banner'
+import { TaxCreditEligibility } from '@/components/sections/shared/tax-credit-eligibility'
 import { Button } from '@/components/ui/button'
 import { SERVICES } from '@/lib/data/services'
 
@@ -40,45 +40,8 @@ export default function PrestationsPage() {
 				</div>
 			</section>
 
-			{/* Non-Eligible Section */}
-			<section className="py-16 bg-muted/30">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-3xl mx-auto">
-						<h2 className="text-3xl font-bold mb-6">Transparence : Ce Qui N'Est Pas Éligible au Crédit d'Impôt</h2>
-						<p className="text-muted-foreground mb-6">
-							Par souci d'honnêteté, voici ce qui ne bénéficie PAS du crédit d'impôt selon la loi :
-						</p>
-						<div className="bg-background rounded-xl p-6 border-2 border-muted">
-							<ul className="space-y-3">
-								<li className="flex items-start gap-2">
-									<span className="text-destructive mt-1">•</span>
-									<span>Vente de plantes et végétaux</span>
-								</li>
-								<li className="flex items-start gap-2">
-									<span className="text-destructive mt-1">•</span>
-									<span>Fourniture de matériaux (terre, paillage en gros volume)</span>
-								</li>
-								<li className="flex items-start gap-2">
-									<span className="text-destructive mt-1">•</span>
-									<span>Création paysagère complexe</span>
-								</li>
-								<li className="flex items-start gap-2">
-									<span className="text-destructive mt-1">•</span>
-									<span>Travaux de terrassement importants</span>
-								</li>
-								<li className="flex items-start gap-2">
-									<span className="text-destructive mt-1">•</span>
-									<span>Installation de systèmes d'arrosage automatique</span>
-								</li>
-							</ul>
-							<p className="mt-6 text-sm text-muted-foreground">
-								Ces prestations restent possibles mais seront facturées séparément. L'entretien ultérieur reste éligible
-								au crédit d'impôt.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+			{/* Tax Credit Eligibility Section with Tabs */}
+			<TaxCreditEligibility />
 
 			{/* CTA Section */}
 			<section className="py-16 md:py-24 bg-primary/5">

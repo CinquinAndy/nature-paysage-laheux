@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import type React from 'react'
 import localFont from 'next/font/local'
+import type React from 'react'
 import '@/app/(frontend)/global.css'
 import { Footer } from '@/components/global/footer'
 import { NavigationBar } from '@/components/global/navigationbar'
