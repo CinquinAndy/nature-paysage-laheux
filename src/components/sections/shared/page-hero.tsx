@@ -9,7 +9,7 @@ interface PageHeroProps {
 
 export function PageHero({ title, subtitle, imageSrc, imageAlt }: PageHeroProps) {
 	return (
-		<section className="relative w-full h-full min-h-screen overflow-hidden ">
+		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-2xl">
 			<div className="px-4 sm:px-6 lg:px-8 h-full w-full flex items-center justify-center">
 				<div className="relative w-full h-full flex items-center">
 					{/* Blob Masked Image Container */}

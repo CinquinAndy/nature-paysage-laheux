@@ -32,7 +32,7 @@ const values = [
 
 export function ValuesSection() {
 	return (
-		<section className="py-16 md:py-24 bg-[#3d5243] text-white rounded-t-2xl">
+		<section className="py-16 md:py-24 bg-sidebar-accent text-white rounded-t-2xl">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 					{/* Left Side - Image */}
