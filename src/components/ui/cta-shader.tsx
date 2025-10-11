@@ -3,7 +3,6 @@
 import { Check } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { EnhancedShaderBackground } from '@/components/ui/enhanced-shader-background'
 
 interface CtaShaderProps {
 	title?: string
@@ -11,8 +10,6 @@ interface CtaShaderProps {
 	buttonText?: string
 	buttonUrl?: string
 	items?: string[]
-	shaderVariant?: 'nature' | 'energy' | 'calm'
-	shaderColors?: string[]
 }
 
 const defaultItems = [
@@ -28,8 +25,6 @@ export function CtaShader({
 	buttonText = 'Demander un Devis Gratuit',
 	buttonUrl = '/contact',
 	items = defaultItems,
-	shaderVariant = 'nature',
-	shaderColors,
 }: CtaShaderProps) {
 	return (
 		<section className="relative py-32 overflow-hidden bg-sidebar-accent">

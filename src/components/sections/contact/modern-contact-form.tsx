@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -25,7 +24,7 @@ const itemVariants = {
 		y: 0,
 		transition: {
 			duration: 0.5,
-			ease: 'easeOut',
+			ease: 'easeOut' as const,
 		},
 	},
 }
@@ -307,10 +306,7 @@ export function ModernContactForm() {
 									</div>
 									<div>
 										<p className="text-sm font-semibold text-foreground">Adresse</p>
-										<p className="text-sm text-muted-foreground">{CONTACT_INFO.address.street}</p>
-										<p className="text-sm text-muted-foreground">
-											{CONTACT_INFO.address.postalCode} {CONTACT_INFO.address.city}
-										</p>
+										<p className="text-sm text-muted-foreground">{CONTACT_INFO.address.full}</p>
 									</div>
 								</div>
 

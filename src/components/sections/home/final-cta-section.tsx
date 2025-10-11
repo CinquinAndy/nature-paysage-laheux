@@ -13,7 +13,6 @@ export function FinalCtaSection() {
 				'Visite et conseil gratuits',
 				"50% de crédit d'impôt garanti",
 			]}
-			shaderVariant="energy"
 		/>
 	)
 }

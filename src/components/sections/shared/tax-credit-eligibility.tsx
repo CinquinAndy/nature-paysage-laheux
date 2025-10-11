@@ -36,6 +36,7 @@ const defaultTabs: Tab[] = [
 		icon: <CheckCircle2 className="h-auto w-4 shrink-0" />,
 		label: "Éligible au crédit d'impôt",
 		content: {
+			badge: "Crédit d'impôt 50%",
 			title: "Prestations Éligibles au Crédit d'Impôt",
 			description:
 				"Ces services bénéficient du crédit d'impôt de 50% sur le montant TTC. Vous ne payez que la moitié du prix !",
@@ -78,6 +79,7 @@ const defaultTabs: Tab[] = [
 		icon: <XCircle className="h-auto w-4 shrink-0" />,
 		label: 'Non éligible',
 		content: {
+			badge: "Non éligible",
 			title: "Prestations Non Éligibles au Crédit d'Impôt",
 			description:
 				"Ces prestations restent possibles mais ne bénéficient pas du crédit d'impôt. Elles seront facturées séparément.",

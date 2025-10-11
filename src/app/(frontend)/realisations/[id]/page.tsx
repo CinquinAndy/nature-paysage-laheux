@@ -9,9 +9,9 @@ import { CtaShader } from '@/components/ui/cta-shader'
 import { REALISATIONS } from '@/lib/data/realisations'
 
 interface RealisationPageProps {
-	params: {
+	params: Promise<{
 		id: string
-	}
+	}>
 }
 
 // Fonction pour formater la date en français
@@ -26,7 +26,8 @@ function formatDate(dateString: string): string {
 
 // Génération des métadonnées dynamiques
 export async function generateMetadata({ params }: RealisationPageProps): Promise<Metadata> {
-	const realisation = REALISATIONS.find(r => r.id === params.id)
+	const { id } = await params
+	const realisation = REALISATIONS.find(r => r.id === id)
 
 	if (!realisation) {
 		return {
@@ -47,8 +48,9 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default function RealisationPage({ params }: RealisationPageProps) {
-	const realisation = REALISATIONS.find(r => r.id === params.id)
+export default async function RealisationPage({ params }: RealisationPageProps) {
+	const { id } = await params
+	const realisation = REALISATIONS.find(r => r.id === id)
 
 	if (!realisation) {
 		notFound()
@@ -119,11 +121,11 @@ export default function RealisationPage({ params }: RealisationPageProps) {
 							<div className="mb-12">
 								<h2 className="text-2xl font-bold mb-4">Galerie Photos</h2>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-									{realisation.images.map((img, index) => (
-										<div key={index} className="relative aspect-[4/3] overflow-hidden rounded-lg">
+									{realisation.images.map((img) => (
+										<div key={img} className="relative aspect-[4/3] overflow-hidden rounded-lg">
 											<Image
 												src={img}
-												alt={`${realisation.title} - Photo ${index + 1}`}
+												alt={`${realisation.title} - ${img}`}
 												fill
 												className="object-cover"
 											/>
@@ -188,7 +190,6 @@ export default function RealisationPage({ params }: RealisationPageProps) {
 					'Réponse sous 48h',
 					"50% de crédit d'impôt sur toutes mes prestations",
 				]}
-				shaderVariant="nature"
 			/>
 		</div>
 	)

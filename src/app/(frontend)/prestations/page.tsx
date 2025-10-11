@@ -54,7 +54,6 @@ export default function PrestationsPage() {
 					'Réponse sous 48h',
 					"50% de crédit d'impôt garanti",
 				]}
-				shaderVariant="energy"
 			/>
 		</div>
 	)

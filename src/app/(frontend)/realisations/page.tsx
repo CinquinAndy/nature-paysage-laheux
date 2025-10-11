@@ -67,7 +67,6 @@ export default function RealisationsPage() {
 					'Réponse sous 48h',
 					"50% de crédit d'impôt sur toutes mes prestations",
 				]}
-				shaderVariant="nature"
 			/>
 		</div>
 	)

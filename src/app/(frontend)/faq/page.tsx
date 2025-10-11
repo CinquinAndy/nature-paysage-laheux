@@ -51,7 +51,6 @@ export default function FaqPage() {
 					'Transparence totale sur mes méthodes',
 					"50% de crédit d'impôt sur toutes mes prestations",
 				]}
-				shaderVariant="calm"
 			/>
 		</div>
 	)
