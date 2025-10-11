@@ -119,7 +119,7 @@ importers:
         version: 7946.0.16
       '@types/leaflet':
         specifier: ^1.9.20
-        version: 1.9.20
+        version: 1.9.21
       '@types/leaflet-draw':
         specifier: ^1.0.13
         version: 1.0.13
@@ -2255,8 +2255,8 @@ packages:
   '@types/leaflet-draw@1.0.13':
     resolution: {integrity: sha512-YU82kilOaU+wPNbqKCCDfHH3hqepN6XilrBwG/mSeZ/z4ewumaRCOah44s3FMxSu/Aa0SVa3PPJvhIZDUA09mw==}
 
-  '@types/leaflet@1.9.20':
-    resolution: {integrity: sha512-rooalPMlk61LCaLOvBF2VIf9M47HgMQqi5xQ9QRi7c8PkdIe0WrIi5IxXUXQjAdL0c+vcQ01mYWbthzmp9GHWw==}
+  '@types/leaflet@1.9.21':
+    resolution: {integrity: sha512-TbAd9DaPGSnzp6QvtYngntMZgcRk+igFELwR2N99XZn7RXUdKgsXMR+28bUO0rPsWp8MIu/f47luLIQuSLYv/w==}
 
   '@types/lodash@4.17.20':
     resolution: {integrity: sha512-H3MHACvFUEiujabxhaI/ImO6gUrd8oOurg7LQtS7mbwIXA/cUqWrvBsaeJ23aZEPk1TAYkurjfMbSELfoCXlGA==}
@@ -6733,9 +6733,9 @@ snapshots:
 
   '@types/leaflet-draw@1.0.13':
     dependencies:
-      '@types/leaflet': 1.9.20
+      '@types/leaflet': 1.9.21
 
-  '@types/leaflet@1.9.20':
+  '@types/leaflet@1.9.21':
     dependencies:
       '@types/geojson': 7946.0.16
 
