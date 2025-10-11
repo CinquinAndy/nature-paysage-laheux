@@ -19,7 +19,6 @@ export default function PrestationsPage() {
 			{/* Hero Section */}
 			<PageHero
 				title="Mes Prestations Écologiques"
-				subtitle="Des services professionnels pour votre jardin"
 				imageSrc="/usable/IMG_20250803_123919.jpg"
 				imageAlt="Prestations paysagistes écologiques"
 			/>

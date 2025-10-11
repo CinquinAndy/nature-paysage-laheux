@@ -2,14 +2,13 @@ import { BlobMaskedImage } from '@/components/ui/blob-masked-image'
 
 interface PageHeroProps {
 	title: string
-	subtitle?: string
 	imageSrc: string
 	imageAlt: string
 }
 
-export function PageHero({ title, subtitle, imageSrc, imageAlt }: PageHeroProps) {
+export function PageHero({ title, imageSrc, imageAlt }: PageHeroProps) {
 	return (
-		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-2xl">
+		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-4xl">
 			<div className="px-4 sm:px-6 lg:px-8 h-full w-full flex items-center justify-center">
 				<div className="relative w-full h-full flex items-center">
 					{/* Blob Masked Image Container */}
@@ -37,13 +36,6 @@ export function PageHero({ title, subtitle, imageSrc, imageAlt }: PageHeroProps)
 								{title}
 							</h1>
 						</div>
-
-						{/* Subtitle in bottom left */}
-						{subtitle && (
-							<div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
-								<p className="text-white text-sm md:text-base font-medium drop-shadow-lg max-w-xs">{subtitle}</p>
-							</div>
-						)}
 					</div>
 				</div>
 			</div>

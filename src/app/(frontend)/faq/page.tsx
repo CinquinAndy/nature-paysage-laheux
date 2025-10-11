@@ -2,6 +2,7 @@ import { Phone } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { FaqSection } from '@/components/sections/faq/faq-section'
+import { PageHero } from '@/components/sections/shared/page-hero'
 import { Button } from '@/components/ui/button'
 import { FAQ_CATEGORIES, FAQ_ITEMS } from '@/lib/data/faq'
 
@@ -22,16 +23,11 @@ export default function FaqPage() {
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
-			<section className="bg-gradient-to-br from-primary/10 to-green-50 py-16 md:py-24">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-4xl mx-auto text-center">
-						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Questions Fréquentes</h1>
-						<p className="text-xl text-muted-foreground">
-							Tout ce que vous devez savoir sur mes services et le crédit d'impôt
-						</p>
-					</div>
-				</div>
-			</section>
+			<PageHero
+				title="Questions Fréquentes"
+				imageSrc="/usable/IMG_20231117_093237.jpg"
+				imageAlt="Questions fréquentes sur les services d'éco-paysagisme"
+			/>
 
 			{/* FAQ Sections by Category */}
 			{faqByCategory.map(({ category, label, items }) => (

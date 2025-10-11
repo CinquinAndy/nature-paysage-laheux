@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function HeroSection() {
 	return (
-		<section className="w-screen min-h-screen p-4 xl:p-8 rounded-xl z-20">
+		<section className="w-screen min-h-screen p-4 xl:p-8 rounded-4xl z-20">
 			<div className="relative z-10">
 				<Image
 					src="/usable/bg.jpg"

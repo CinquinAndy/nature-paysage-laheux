@@ -3,6 +3,7 @@
 import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { PageHero } from '@/components/sections/shared/page-hero'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -33,14 +34,11 @@ export default function ContactPage() {
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
-			<section className="bg-gradient-to-br from-primary/10 to-green-50 py-16 md:py-24">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-4xl mx-auto text-center">
-						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">Contactez-Moi</h1>
-						<p className="text-xl text-muted-foreground">Demandez votre devis gratuit - Réponse sous 48h</p>
-					</div>
-				</div>
-			</section>
+			<PageHero
+				title="Contactez-Moi"
+				imageSrc="/usable/IMG_20240310_161440.jpg"
+				imageAlt="Contact Jean-Luc Laheux Eco-Paysagiste"
+			/>
 
 			{/* Contact Section */}
 			<section className="py-16 md:py-24">

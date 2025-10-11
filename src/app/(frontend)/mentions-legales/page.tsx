@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { PageHero } from '@/components/sections/shared/page-hero'
 
 export const metadata: Metadata = {
 	title: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
@@ -11,11 +12,11 @@ export default function MentionsLegalesPage() {
 	return (
 		<div className="min-h-screen bg-background">
 			{/* Hero Section */}
-			<section className="bg-muted/30 py-12 md:py-16">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<h1 className="text-4xl sm:text-5xl font-bold text-center">Mentions Légales</h1>
-				</div>
-			</section>
+			<PageHero
+				title="Mentions Légales"
+				imageSrc="/usable/PXL_20251006_080220831.jpg"
+				imageAlt="Mentions légales Nature et Paysage Laheux"
+			/>
 
 			{/* Content */}
 			<section className="py-12 md:py-16">
