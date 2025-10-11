@@ -1,22 +1,15 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
+import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
+import { RealisationCard } from '@/components/sections/shared/realisation-card'
 import { CtaShader } from '@/components/ui/cta-shader'
+import { REALISATIONS } from '@/lib/data/realisations'
 
 export const metadata: Metadata = {
 	title: 'Mes Réalisations de Jardins Écologiques | Jean-Luc Laheux',
 	description:
 		"Découvrez mes réalisations d'entretien de jardin écologique en Loire-Atlantique. Photos avant-après, projets de potagers, tailles, rénovations naturelles.",
 }
-
-const realisations = [
-	{ src: '/usable/IMG_20231117_093237.jpg', title: 'Entretien de pelouse naturelle', location: 'Monnières' },
-	{ src: '/usable/IMG_20240310_161440.jpg', title: 'Taille raisonnée de haies', location: 'Vignoble Nantais' },
-	{ src: '/usable/IMG_20250402_142527.jpg', title: 'Aménagement paysager écologique', location: 'Clisson' },
-	{ src: '/usable/IMG_20250803_122326_1.jpg', title: 'Potager en permaculture', location: 'La Haie-Fouassière' },
-	{ src: '/usable/IMG_20250803_123919.jpg', title: 'Entretien de massifs fleuris', location: 'Haute-Goulaine' },
-	{ src: '/usable/PXL_20251006_080220831.jpg', title: 'Jardin naturel entretenu', location: 'Vallée de la Loire' },
-]
 
 export default function RealisationsPage() {
 	return (
@@ -48,26 +41,15 @@ export default function RealisationsPage() {
 			{/* Gallery */}
 			<section className="py-8 md:py-12">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-						{realisations.map(realisation => (
-							<div
-								key={realisation.src}
-								className="group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+						{REALISATIONS.map(realisation => (
+							<Link
+								key={realisation.id}
+								href={`/realisations/${realisation.id}`}
+								className="hover:scale-105 transition-all duration-300 cursor-pointer"
 							>
-								<Image
-									src={realisation.src}
-									alt={realisation.title}
-									fill
-									className="object-cover group-hover:scale-110 transition-transform duration-500"
-								/>
-								{/* Overlay */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity">
-									<div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-										<h3 className="text-xl font-bold mb-1">{realisation.title}</h3>
-										<p className="text-sm text-white/80">{realisation.location}</p>
-									</div>
-								</div>
-							</div>
+								<RealisationCard realisation={realisation} />
+							</Link>
 						))}
 					</div>
 				</div>

@@ -9,7 +9,7 @@ interface PageHeroProps {
 export function PageHero({ title, imageSrc, imageAlt }: PageHeroProps) {
 	return (
 		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-4xl">
-			<div className="px-4 sm:px-6 lg:px-8 h-full w-full flex items-center justify-center">
+			<div className="px-4 sm:px-6 lg:px-8 h-full w-full flex items-center justify-center mt-16">
 				<div className="relative w-full h-full flex items-center">
 					{/* Blob Masked Image Container */}
 					<div className="relative w-screen h-screen">
@@ -17,7 +17,7 @@ export function PageHero({ title, imageSrc, imageAlt }: PageHeroProps) {
 
 						{/* Overlay gradient for better text readability */}
 						<div
-							className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"
+							className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent"
 							style={{
 								maskImage: 'url(/blob_bg.svg)',
 								WebkitMaskImage: 'url(/blob_bg.svg)',

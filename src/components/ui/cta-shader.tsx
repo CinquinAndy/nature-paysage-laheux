@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { EnhancedShaderBackground } from '@/components/ui/enhanced-shader-background'
@@ -32,9 +32,9 @@ export function CtaShader({
 	shaderColors,
 }: CtaShaderProps) {
 	return (
-		<section className="relative py-32 overflow-hidden">
+		<section className="relative py-32 overflow-hidden bg-sidebar-accent">
 			{/* Enhanced Multi-Layer Shader Background */}
-			<EnhancedShaderBackground variant={shaderVariant} colors={shaderColors} />
+			{/* <EnhancedShaderBackground variant={shaderVariant} colors={shaderColors} /> */}
 
 			{/* Content */}
 			<div className="relative z-10 container mx-auto ">
@@ -59,9 +59,7 @@ export function CtaShader({
 								</ul>
 								<div className="flex flex-col w-full h-full justify-end">
 									<Button className="bg-white hover:bg-white/90 text-primary font-semibold " size="lg" asChild>
-										<Link href={buttonUrl}>
-											{buttonText} <ArrowRight className="ml-2 size-4" />
-										</Link>
+										<Link href={buttonUrl}>{buttonText}</Link>
 									</Button>
 								</div>
 							</div>

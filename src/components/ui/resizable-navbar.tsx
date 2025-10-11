@@ -130,14 +130,15 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 					href={item.link}
 				>
 					{hovered === idx && (
-						<motion.div layoutId="hovered" className="absolute inset-0 h-full w-full rounded-full bg-zinc-600" />
+						<motion.div layoutId="hovered" className="absolute inset-0 h-full w-full rounded-full bg-black/50" />
 					)}
-					<span className="relative z-20">{item.name}</span>
+					<span className="relative z-20 text-shadow-lg">{item.name}</span>
 				</Link>
 			))}
 		</motion.div>
 	)
 }
+
 
 export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
 	return (

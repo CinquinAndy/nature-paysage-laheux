@@ -348,16 +348,6 @@ export function ModernContactForm() {
 								</div>
 							</div>
 						</div>
-
-						{/* Image */}
-						<div className="mt-8 relative h-64 rounded-2xl overflow-hidden shadow-lg">
-							<Image
-								src="/usable/IMG_20250803_123919.jpg"
-								alt="Jardins entretenus par Nature et Paysage Laheux"
-								fill
-								className="object-cover"
-							/>
-						</div>
 					</motion.div>
 				</div>
 			</motion.div>

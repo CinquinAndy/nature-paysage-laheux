@@ -106,8 +106,6 @@ export function Footer() {
 								<div className="flex items-start gap-2 text-muted-foreground">
 									<MapPin className="h-4 w-4 shrink-0 mt-0.5" />
 									<span>
-										{CONTACT_INFO.address.street}
-										<br />
 										{CONTACT_INFO.address.postalCode} {CONTACT_INFO.address.city}
 									</span>
 								</div>

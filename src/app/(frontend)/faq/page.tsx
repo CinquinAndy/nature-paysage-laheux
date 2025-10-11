@@ -39,27 +39,20 @@ export default function FaqPage() {
 				/>
 			))}
 
-			{/* CTA Section */}
-			<section className="py-16 bg-muted/30">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-2xl mx-auto text-center">
-						<h2 className="text-3xl font-bold mb-4">Une Autre Question ?</h2>
-						<p className="text-lg text-muted-foreground mb-8">N'hésitez pas à me contacter directement</p>
-						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<Button size="lg" variant="primary" asChild>
-								<Link href="/contact">Me Contacter</Link>
-							</Button>
-							<Button size="lg" variant="outline" asChild>
-								<Link href="tel:0631043445">
-									<Phone className="mr-2 h-5 w-5" />
-									06 31 04 34 45
-								</Link>
-							</Button>
-						</div>
-						<p className="mt-6 text-sm text-muted-foreground">Réponse garantie sous 48h</p>
-					</div>
-				</div>
-			</section>
+			{/* CTA Section with Shader */}
+			<CtaShader
+				title="Une Autre Question ?"
+				description="N'hésitez pas à me contacter directement. Je vous répondrai avec plaisir et transparence."
+				buttonText="Me Contacter"
+				buttonUrl="/contact"
+				items={[
+					'Réponse garantie sous 48h',
+					'Conseil personnalisé et gratuit',
+					'Transparence totale sur mes méthodes',
+					"50% de crédit d'impôt sur toutes mes prestations",
+				]}
+				shaderVariant="calm"
+			/>
 		</div>
 	)
 }

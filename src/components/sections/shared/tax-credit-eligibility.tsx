@@ -1,6 +1,5 @@
 import { CheckCircle2, XCircle } from 'lucide-react'
 import Image from 'next/image'
-import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 interface EligibilityItem {

@@ -53,7 +53,7 @@ export const NavigationBar = () => {
 							onClick={() => setIsMobileMenuOpen(false)}
 							className="relative text-black  font-semibold text-lg hover:text-primary transition-colors"
 						>
-							<span className="block">{item.name}</span>
+							<span className="block text-shadow-lg">{item.name}</span>
 						</Link>
 					))}
 					<div className="flex w-full flex-col gap-4">
