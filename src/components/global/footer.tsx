@@ -3,12 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
-import { REALISATIONS } from '@/lib/data/realisations'
-import { getServices } from '@/lib/payload'
+import { getRealisations, getServices } from '@/lib/payload'
 
 export async function Footer() {
 	const currentYear = new Date().getFullYear()
-	const services = await getServices(6) // Limit to 6 services for the footer
+	const [services, realisations] = await Promise.all([
+		getServices(6), // Limit to 6 services for the footer
+		getRealisations(6), // Limit to 6 realisations for the footer
+	])
 
 	return (
 		<footer className="bg-muted/30 border-t">
@@ -91,10 +93,10 @@ export async function Footer() {
 					<div className="space-y-4">
 						<h3 className="font-semibold text-base">Dernières Réalisations</h3>
 						<ul className="space-y-2 text-sm">
-							{REALISATIONS.slice(0, 6).map(realisation => (
+							{realisations.map(realisation => (
 								<li key={realisation.id}>
 									<Link
-										href={`/realisations/${realisation.id}`}
+										href={`/realisations/${realisation.slug}`}
 										className="text-muted-foreground hover:text-primary transition-colors"
 									>
 										{realisation.title}

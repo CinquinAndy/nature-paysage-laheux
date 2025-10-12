@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { RealisationCard } from '@/components/sections/shared/realisation-card'
 import { CtaShader } from '@/components/ui/cta-shader'
-import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getRealisations, getRealisationsPageData } from '@/lib/payload'
 import type { RealisationsPage as RealisationsPageType } from '@/payload-types'
 
@@ -81,9 +80,7 @@ export default async function RealisationsListPage() {
 							<p className="text-lg text-muted-foreground leading-relaxed">{pageData.introduction.paragraph1}</p>
 						)}
 						{pageData.introduction?.paragraph2 && (
-							<div className="text-base text-muted-foreground mt-4">
-								<RichText content={pageData.introduction.paragraph2} />
-							</div>
+							<p className="text-base text-muted-foreground mt-4">{pageData.introduction.paragraph2}</p>
 						)}
 					</div>
 				</div>

@@ -45,7 +45,7 @@ export const RealisationsPage: GlobalConfig = {
 				},
 				{
 					name: 'paragraph2',
-					type: 'richText',
+					type: 'textarea',
 					label: 'Deuxième paragraphe',
 				},
 			],

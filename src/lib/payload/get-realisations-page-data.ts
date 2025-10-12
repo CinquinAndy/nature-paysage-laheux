@@ -14,4 +14,3 @@ export async function getRealisationsPageData(): Promise<RealisationsPage> {
 
 	return realisationsPage as RealisationsPage
 }
-
