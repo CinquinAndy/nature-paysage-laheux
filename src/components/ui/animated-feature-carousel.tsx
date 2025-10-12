@@ -84,8 +84,7 @@ const steps: readonly Step[] = [
 		id: '2',
 		name: 'Étape 2',
 		title: 'Vous recevez votre attestation fiscale',
-		description:
-			"En début d'année, je vous envoie automatiquement votre attestation fiscale pour votre déclaration.",
+		description: "En début d'année, je vous envoie automatiquement votre attestation fiscale pour votre déclaration.",
 	},
 	{
 		id: '3',

@@ -1,14 +1,4 @@
-import {
-	Body,
-	Container,
-	Head,
-	Heading,
-	Hr,
-	Html,
-	Preview,
-	Section,
-	Text,
-} from '@react-email/components'
+import { Body, Container, Head, Heading, Hr, Html, Preview, Section, Text } from '@react-email/components'
 import * as React from 'react'
 
 interface ContactFormEmailProps {
@@ -164,8 +154,7 @@ const colors = {
 
 const main = {
 	backgroundColor: colors.background,
-	fontFamily:
-		'Georgia, "Times New Roman", serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+	fontFamily: 'Georgia, "Times New Roman", serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
 }
 
 const container = {

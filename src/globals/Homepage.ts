@@ -2,117 +2,108 @@ import type { GlobalConfig } from 'payload'
 
 export const Homepage: GlobalConfig = {
 	slug: 'homepage',
-	label: 'Homepage',
+	label: 'Page d\'Accueil',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// HERO SECTION
+		// SECTION HERO (EN-TÊTE)
 		// ===========================
 		{
 			name: 'hero',
 			type: 'group',
-			label: 'Hero Section',
+			label: 'Section Hero (En-tête principal)',
 			fields: [
 				{
 					name: 'backgroundImage',
 					type: 'upload',
 					relationTo: 'media',
 					required: true,
-					label: 'Background Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image de fond',
 				},
 				{
 					name: 'title',
 					type: 'text',
 					required: true,
-					label: 'Hero Title',
+					label: 'Titre principal',
 					admin: {
-						description: 'Use **word** syntax for bold text (shown with blob accent). Example: **Transformez** Votre Jardin',
+						description: 'Utilisez **mot** pour mettre en gras (effet blob). Exemple : **Transformez** Votre Jardin',
 					},
 				},
 				{
 					name: 'subtitle',
 					type: 'text',
-					label: 'Subtitle',
+					label: 'Sous-titre',
 				},
 			],
 		},
 
 		// ===========================
-		// VALUES SECTION
+		// SECTION VALEURS
 		// ===========================
 		{
 			name: 'values',
 			type: 'group',
-			label: 'Values Section',
+			label: 'Section Valeurs',
 			fields: [
 				{
 					name: 'sectionTitle',
 					type: 'text',
 					required: true,
-					label: 'Section Title',
+					label: 'Titre de la section',
 					admin: {
-						description: 'Use **word** syntax for bold text. Example: Une Approche **Écologique** et Sur-Mesure',
+						description: 'Utilisez **mot** pour mettre en gras. Exemple : Une Approche **Écologique** et Sur-Mesure',
 					},
 				},
 				{
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Section Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image de la section',
 				},
 				{
 					name: 'valuesList',
 					type: 'array',
-					label: 'Values List',
+					label: 'Liste des valeurs',
 					minRows: 4,
 					maxRows: 4,
 					admin: {
-						description: 'Exactly 4 values will be displayed',
+						description: 'Exactement 4 valeurs seront affichées',
 					},
 					fields: [
 						{
 							name: 'icon',
 							type: 'select',
 							required: true,
+							label: 'Icône',
 							options: [
 								{ label: 'Feuille (Leaf)', value: 'leaf' },
 								{ label: 'Outil (Wrench)', value: 'wrench' },
-								{ label: 'Carte (MapPin)', value: 'map-pin' },
-								{ label: 'Tendance (TrendingDown)', value: 'trending-down' },
+								{ label: 'Épingle de carte (MapPin)', value: 'map-pin' },
+								{ label: 'Flèche descendante (TrendingDown)', value: 'trending-down' },
 							],
 						},
 						{
 							name: 'number',
 							type: 'text',
 							required: true,
-							label: 'Display Number',
+							label: 'Numéro affiché',
 							admin: {
-								description: 'e.g., "01", "02", etc.',
+								description: 'Par exemple : "01", "02", "03", "04"',
 							},
 						},
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
-							label: 'Value Title',
+							label: 'Titre de la valeur',
 						},
 						{
 							name: 'description',
 							type: 'textarea',
 							required: true,
-							label: 'Value Description',
+							label: 'Description',
 						},
 					],
 				},
@@ -120,108 +111,104 @@ export const Homepage: GlobalConfig = {
 		},
 
 		// ===========================
-		// SERVICES PREVIEW SECTION
+		// SECTION APERÇU DES PRESTATIONS
 		// ===========================
 		{
 			name: 'servicesPreview',
 			type: 'group',
-			label: 'Services Preview Section',
+			label: 'Section Aperçu des Prestations',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: "Mes Prestations d'Entretien de Jardin",
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'subtitle',
 					type: 'text',
 					defaultValue: "Toutes mes prestations bénéficient de 50% de réduction d'impôt",
-					label: 'Subtitle',
+					label: 'Sous-titre',
 				},
 				{
 					name: 'ctaLabel',
 					type: 'text',
 					defaultValue: 'Voir Toutes Mes Prestations',
-					label: 'CTA Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'ctaUrl',
 					type: 'text',
 					defaultValue: '/prestations',
-					label: 'CTA Button URL',
+					label: 'Lien du bouton',
 				},
 			],
 			admin: {
-				description: 'Services are pulled from the Services collection',
+				description: 'Les prestations sont automatiquement récupérées depuis la collection "Prestations"',
 			},
 		},
 
 		// ===========================
-		// PHILOSOPHY SECTION
+		// SECTION PHILOSOPHIE
 		// ===========================
 		{
 			name: 'philosophy',
 			type: 'group',
-			label: 'Philosophy Section',
+			label: 'Section Philosophie',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					required: true,
-					label: 'Section Title',
+					label: 'Titre de la section',
 					admin: {
-						description: 'Use **word** syntax for bold text. Example: Mon Approche : **Nature & Respect**',
+						description: 'Utilisez **mot** pour mettre en gras. Exemple : Mon Approche : **Nature & Respect**',
 					},
 				},
 				{
 					name: 'introText',
 					type: 'textarea',
-					label: 'Introduction Text',
+					label: 'Texte d\'introduction',
 				},
 				{
 					name: 'quote',
 					type: 'text',
-					label: 'Highlighted Quote',
+					label: 'Citation mise en avant',
 				},
 				{
 					name: 'primaryImage',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Main Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image principale',
 				},
 				{
 					name: 'imageOverlayTitle',
 					type: 'text',
-					label: 'Image Overlay Title',
+					label: 'Titre sur l\'image',
 				},
 				{
 					name: 'imageOverlayDescription',
 					type: 'textarea',
-					label: 'Image Overlay Description',
+					label: 'Description sur l\'image',
 				},
 				{
 					name: 'philosophyPoints',
 					type: 'array',
-					label: 'Philosophy Points',
+					label: 'Points de philosophie',
 					minRows: 4,
 					maxRows: 4,
 					admin: {
-						description: 'Exactly 4 philosophy cards',
+						description: 'Exactement 4 cartes de philosophie seront affichées',
 					},
 					fields: [
 						{
 							name: 'icon',
 							type: 'select',
 							required: true,
+							label: 'Icône',
 							options: [
 								{ label: 'Feuille (Leaf)', value: 'leaf' },
-								{ label: 'Coeur (Heart)', value: 'heart' },
+								{ label: 'Cœur (Heart)', value: 'heart' },
 								{ label: 'Récompense (Award)', value: 'award' },
 								{ label: 'Bouclier (Shield)', value: 'shield' },
 							],
@@ -230,79 +217,83 @@ export const Homepage: GlobalConfig = {
 							name: 'title',
 							type: 'text',
 							required: true,
-							label: 'Point Title',
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'textarea',
 							required: true,
-							label: 'Point Description',
+							label: 'Description',
 						},
 					],
 				},
 				{
 					name: 'preferences',
 					type: 'array',
-					label: 'What I Prefer (Green List)',
+					label: 'Ce que je privilégie (Liste verte)',
 					admin: {
-						description: 'Ecological practices I prioritize',
+						description: 'Pratiques écologiques que je favorise',
 					},
 					fields: [
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'text',
+							label: 'Description courte',
 						},
 					],
 				},
 				{
 					name: 'refusals',
 					type: 'array',
-					label: 'What I Refuse (Red List)',
+					label: 'Ce que je refuse (Liste rouge)',
 					admin: {
-						description: 'Practices I refuse to use',
+						description: 'Pratiques que je n\'utilise jamais',
 					},
 					fields: [
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'text',
+							label: 'Description courte',
 						},
 					],
 				},
 				{
 					name: 'engagementBanner',
 					type: 'group',
-					label: 'Engagement Banner',
+					label: 'Bannière d\'engagement',
 					fields: [
 						{
 							name: 'title',
 							type: 'text',
-							label: 'Banner Title',
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'textarea',
-							label: 'Banner Description',
+							label: 'Description',
 						},
 						{
 							name: 'ctaLabel',
 							type: 'text',
-							label: 'CTA Button Text',
+							label: 'Texte du bouton',
 						},
 						{
 							name: 'ctaUrl',
 							type: 'text',
 							defaultValue: '/contact',
-							label: 'CTA Button URL',
+							label: 'Lien du bouton',
 						},
 					],
 				},
@@ -310,88 +301,88 @@ export const Homepage: GlobalConfig = {
 		},
 
 		// ===========================
-		// INTERVENTION ZONE SECTION
+		// SECTION ZONE D'INTERVENTION
 		// ===========================
 		{
 			name: 'interventionZone',
 			type: 'group',
-			label: 'Intervention Zone Section',
+			label: 'Section Zone d\'Intervention',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'subtitle',
 					type: 'text',
-					label: 'Subtitle',
+					label: 'Sous-titre',
 				},
 				{
 					name: 'mapCenterLat',
 					type: 'number',
 					defaultValue: 47.1339,
-					label: 'Map Center Latitude',
+					label: 'Latitude du centre de la carte',
 					admin: {
-						description: 'Latitude for map center point',
+						description: 'Coordonnée latitude pour centrer la carte (ne pas modifier sans raison)',
 					},
 				},
 				{
 					name: 'mapCenterLng',
 					type: 'number',
 					defaultValue: -1.3433,
-					label: 'Map Center Longitude',
+					label: 'Longitude du centre de la carte',
 					admin: {
-						description: 'Longitude for map center point',
+						description: 'Coordonnée longitude pour centrer la carte (ne pas modifier sans raison)',
 					},
 				},
 				{
 					name: 'radiusKm',
 					type: 'number',
 					defaultValue: 20,
-					label: 'Intervention Radius (km)',
+					label: 'Rayon d\'intervention (en km)',
 				},
 				{
 					name: 'communes',
 					type: 'array',
-					label: 'Main Cities/Towns',
+					label: 'Communes principales',
 					admin: {
-						description: 'List of main cities where you operate',
+						description: 'Liste des villes où vous intervenez',
 					},
 					fields: [
 						{
 							name: 'name',
 							type: 'text',
 							required: true,
-							label: 'City Name',
+							label: 'Nom de la commune',
 						},
 					],
 				},
 				{
 					name: 'ctaSection',
 					type: 'group',
-					label: 'CTA Section',
+					label: 'Section appel à l\'action',
 					fields: [
 						{
 							name: 'title',
 							type: 'text',
-							label: 'CTA Title',
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'textarea',
-							label: 'CTA Description',
+							label: 'Description',
 						},
 						{
 							name: 'ctaLabel',
 							type: 'text',
-							label: 'CTA Button Text',
+							label: 'Texte du bouton',
 						},
 						{
 							name: 'ctaUrl',
 							type: 'text',
 							defaultValue: '/contact',
-							label: 'CTA Button URL',
+							label: 'Lien du bouton',
 						},
 					],
 				},
@@ -399,185 +390,186 @@ export const Homepage: GlobalConfig = {
 		},
 
 		// ===========================
-		// REALISATIONS PREVIEW SECTION
+		// SECTION APERÇU DES RÉALISATIONS
 		// ===========================
 		{
 			name: 'realisationsPreview',
 			type: 'group',
-			label: 'Realisations Preview Section',
+			label: 'Section Aperçu des Réalisations',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Découvrez Mes Réalisations',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Section Description',
+					label: 'Description',
 				},
 				{
 					name: 'ctaLabel',
 					type: 'text',
 					defaultValue: 'Voir Toutes Mes Réalisations',
-					label: 'CTA Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'ctaUrl',
 					type: 'text',
 					defaultValue: '/realisations',
-					label: 'CTA Button URL',
+					label: 'Lien du bouton',
 				},
 			],
 			admin: {
-				description: 'Realisations are pulled from the Realisations collection (gallery of 6)',
+				description: 'Les 6 dernières réalisations sont automatiquement récupérées depuis la collection "Réalisations"',
 			},
 		},
 
 		// ===========================
-		// FAQ SHORT SECTION
+		// SECTION FAQ COURTE
 		// ===========================
 		{
 			name: 'faqShort',
 			type: 'group',
-			label: 'FAQ Short Section',
+			label: 'Section FAQ (Questions fréquentes)',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Questions Fréquentes',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Section Description',
+					label: 'Description',
 				},
 				{
 					name: 'ctaLabel',
 					type: 'text',
 					defaultValue: 'Voir Toutes les Questions',
-					label: 'CTA Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'ctaUrl',
 					type: 'text',
 					defaultValue: '/faq',
-					label: 'CTA Button URL',
+					label: 'Lien du bouton',
 				},
 			],
 			admin: {
-				description: 'Top 4 FAQs are pulled from the FAQ collection (showOnHomepage = true)',
+				description: 'Les 4 questions marquées "À afficher sur la page d\'accueil" sont automatiquement récupérées',
 			},
 		},
 
 		// ===========================
-		// TAX CREDIT SECTION
+		// SECTION CRÉDIT D'IMPÔT
 		// ===========================
 		{
 			name: 'taxCredit',
 			type: 'group',
-			label: 'Tax Credit Section',
+			label: 'Section Crédit d\'Impôt',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: "Comment Profiter de 50% de Réduction d'Impôt ?",
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'subtitle',
 					type: 'text',
-					label: 'Subtitle',
+					label: 'Sous-titre',
 				},
 				{
 					name: 'steps',
 					type: 'array',
-					label: 'Tax Credit Steps',
+					label: 'Étapes pour bénéficier du crédit d\'impôt',
 					minRows: 4,
 					maxRows: 4,
 					admin: {
-						description: 'The 4 steps to benefit from tax credit',
+						description: 'Les 4 étapes pour profiter du crédit d\'impôt de 50%',
 					},
 					fields: [
 						{
 							name: 'number',
 							type: 'number',
 							required: true,
-							label: 'Step Number',
+							label: 'Numéro de l\'étape',
 						},
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
-							label: 'Step Title',
+							label: 'Titre de l\'étape',
 						},
 						{
 							name: 'description',
 							type: 'textarea',
-							label: 'Step Description',
+							label: 'Description',
 						},
 						{
 							name: 'image1',
 							type: 'upload',
 							relationTo: 'media',
-							label: 'First Image',
+							label: 'Première image',
 						},
 						{
 							name: 'image2',
 							type: 'upload',
 							relationTo: 'media',
-							label: 'Second Image',
+							label: 'Deuxième image',
 						},
 					],
 				},
-			],
+			},
 		},
 
 		// ===========================
-		// FINAL CTA SECTION
+		// SECTION APPEL À L'ACTION FINAL
 		// ===========================
 		{
 			name: 'finalCta',
 			type: 'group',
-			label: 'Final CTA Section',
+			label: 'Section Appel à l\'Action Final',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Prêt à Redonner Vie à Votre Jardin ?',
-					label: 'Section Title',
+					label: 'Titre',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Section Description',
+					label: 'Description',
 				},
 				{
 					name: 'buttonText',
 					type: 'text',
 					defaultValue: 'Demander un Devis Gratuit',
-					label: 'Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'buttonUrl',
 					type: 'text',
 					defaultValue: '/contact',
-					label: 'Button URL',
+					label: 'Lien du bouton',
 				},
 				{
 					name: 'benefits',
 					type: 'array',
-					label: 'Benefits List',
+					label: 'Liste des avantages',
 					admin: {
-						description: 'List of key benefits/reasons to contact',
+						description: 'Points clés qui encouragent à prendre contact',
 					},
 					fields: [
 						{
 							name: 'benefit',
 							type: 'text',
 							required: true,
+							label: 'Avantage',
 						},
 					],
 				},

@@ -50,13 +50,13 @@ export function AddressAutocomplete({
 
 			try {
 				const response = await fetch(
-					`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(debouncedValue)}&limit=5`,
+					`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(debouncedValue)}&limit=5`
 				)
 				const data = await response.json()
 				setSuggestions(data.features || [])
 				setIsOpen(true)
 			} catch (error) {
-				console.error('Erreur lors de la recherche d\'adresse:', error)
+				console.error("Erreur lors de la recherche d'adresse:", error)
 				setSuggestions([])
 			}
 		}

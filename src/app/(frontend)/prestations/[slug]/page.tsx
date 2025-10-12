@@ -120,9 +120,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 						{/* Tax Credit Info */}
 						{service.eligibleTaxCredit && (
 							<div className="mt-10 rounded-2xl bg-emerald-50 p-6 border border-emerald-200">
-								<h3 className="text-lg font-semibold text-emerald-900">
-									Bénéficiez de 50% de crédit d&apos;impôt
-								</h3>
+								<h3 className="text-lg font-semibold text-emerald-900">Bénéficiez de 50% de crédit d&apos;impôt</h3>
 								<p className="mt-2 text-sm text-emerald-800">
 									Cette prestation est éligible au crédit d&apos;impôt Services à la Personne. L&apos;État vous
 									rembourse 50% du montant payé, soit un vrai tarif divisé par deux.
