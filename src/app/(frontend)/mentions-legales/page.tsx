@@ -46,42 +46,52 @@ export default function MentionsLegalesPage() {
 
 					{/* Main Content */}
 					<div className="mt-10 max-w-2xl text-gray-600 dark:text-gray-400">
-						<h2>Éditeur du site</h2>
-						<p>
-							<strong>SASU Nature et Paysage Laheux</strong>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white first:mt-0">
+							Éditeur du site
+						</h2>
+						<p className="mt-6">
+							<strong className="font-semibold text-gray-900 dark:text-white">
+								SASU Nature et Paysage Laheux
+							</strong>
 							<br />
 							Représentée par Jean-Luc Laheux, Président
 						</p>
-						<p>
+						<p className="mt-4">
 							37 bis la Miniere
 							<br />
 							44690 Monnières
 							<br />
 							France
 						</p>
-						<p>
-							<strong>SIRET :</strong> [EN ATTENTE]
+						<p className="mt-4">
+							<strong className="font-semibold text-gray-900 dark:text-white">SIRET :</strong> [EN ATTENTE]
 							<br />
-							<strong>Email :</strong> nature.paysage.laheux@gmail.com
+							<strong className="font-semibold text-gray-900 dark:text-white">Email :</strong>{' '}
+							nature.paysage.laheux@gmail.com
 							<br />
-							<strong>Téléphone :</strong> 06 31 04 34 45
+							<strong className="font-semibold text-gray-900 dark:text-white">Téléphone :</strong> 06 31 04 34 45
 						</p>
-						<p>
-							<strong>Responsable de publication :</strong> Jean-Luc Laheux
+						<p className="mt-4">
+							<strong className="font-semibold text-gray-900 dark:text-white">Responsable de publication :</strong>{' '}
+							Jean-Luc Laheux
 						</p>
 
-						<h2>Agrément Services à la Personne</h2>
-						<p>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Agrément Services à la Personne
+						</h2>
+						<p className="mt-6">
 							SASU Nature et Paysage Laheux est agréée Services à la Personne (SAP). Cet agrément nous autorise à
-							exercer les activités de petits travaux de jardinage éligibles au crédit d'impôt prévu à l'article 199
-							sexdecies du Code général des impôts.
+							exercer les activités de petits travaux de jardinage éligibles au crédit d&apos;impôt prévu à
+							l&apos;article 199 sexdecies du Code général des impôts.
 						</p>
 
-						<h2>Hébergement du site</h2>
-						<p>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Hébergement du site
+						</h2>
+						<p className="mt-6">
 							Ce site est hébergé par :
 							<br />
-							<strong>netcup GmbH</strong>
+							<strong className="font-semibold text-gray-900 dark:text-white">netcup GmbH</strong>
 							<br />
 							Daimlerstraße 25
 							<br />
@@ -90,11 +100,15 @@ export default function MentionsLegalesPage() {
 							Allemagne
 						</p>
 
-						<h2>Création du site internet</h2>
-						<p>
-							<strong>Conception, développement et design :</strong>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Création du site internet
+						</h2>
+						<p className="mt-6">
+							<strong className="font-semibold text-gray-900 dark:text-white">
+								Conception, développement et design :
+							</strong>
 						</p>
-						<p>
+						<p className="mt-4">
 							Cinquin Andy
 							<br />
 							SIRET : 880 505 276 00019
@@ -105,28 +119,35 @@ export default function MentionsLegalesPage() {
 							Téléphone : 06 21 58 26 84
 							<br />
 							Site web :{' '}
-							<Link href="https://andy-cinquin.fr" target="_blank" rel="noopener noreferrer">
+							<Link
+								href="https://andy-cinquin.fr"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="text-emerald-600 dark:text-emerald-400 hover:underline"
+							>
 								https://andy-cinquin.fr
 							</Link>
 						</p>
-						<p>
+						<p className="mt-4">
 							Prestation "clé en main" incluant : création de thème personnalisé, image de marque, référencement,
 							hébergement.
 						</p>
 
-						<h2>Droit d'auteur et propriété intellectuelle</h2>
-						<p>
-							L'ensemble de ce site est soumis à une protection de droits d'auteur selon les Articles L335-2 et suivants
-							du Code de la propriété intellectuelle.
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Droit d&apos;auteur et propriété intellectuelle
+						</h2>
+						<p className="mt-6">
+							L&apos;ensemble de ce site est soumis à une protection de droits d&apos;auteur selon les Articles L335-2
+							et suivants du Code de la propriété intellectuelle.
 						</p>
-						<p>
+						<p className="mt-4">
 							Toute reproduction ou représentation totale ou partielle de son contenu (textes, images, sons, éléments
-							graphiques) par quelque procédé utilisé, sans l'autorisation préalable de Cinquin Andy, est strictement
-							interdite et constituera une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la
-							propriété intellectuelle.
+							graphiques) par quelque procédé utilisé, sans l&apos;autorisation préalable de Cinquin Andy, est
+							strictement interdite et constituera une contrefaçon sanctionnée par les articles L.335-2 et suivants du
+							Code de la propriété intellectuelle.
 						</p>
-						<p>
-							<strong>Titulaire des droits :</strong>
+						<p className="mt-4">
+							<strong className="font-semibold text-gray-900 dark:text-white">Titulaire des droits :</strong>
 							<br />
 							Cinquin Andy
 							<br />
@@ -135,21 +156,24 @@ export default function MentionsLegalesPage() {
 							<br />
 							44115 Haute-Goulaine
 						</p>
-						<p>Toute violation fera l'objet de poursuites.</p>
+						<p className="mt-4">Toute violation fera l&apos;objet de poursuites.</p>
 
-						<h2>Crédits photographiques</h2>
-						<p>
-							Les photographies présentes sur ce site sont la propriété de :
-							<ul>
-								<li>Cinquin Andy (création et design)</li>
-								<li>Jean-Luc Laheux (photos de réalisations jardins)</li>
-							</ul>
-							Toute utilisation sans autorisation est interdite.
-						</p>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Crédits photographiques
+						</h2>
+						<p className="mt-6">Les photographies présentes sur ce site sont la propriété de :</p>
+						<ul role="list" className="mt-4 space-y-2 list-disc pl-6">
+							<li>Cinquin Andy (création et design)</li>
+							<li>Jean-Luc Laheux (photos de réalisations jardins)</li>
+						</ul>
+						<p className="mt-4">Toute utilisation sans autorisation est interdite.</p>
 
-						<h2>Protection des données personnelles</h2>
-						<h3>Responsable du traitement</h3>
-						<p>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Protection des données personnelles
+						</h2>
+
+						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Responsable du traitement</h3>
+						<p className="mt-4">
 							SASU Nature et Paysage Laheux
 							<br />
 							37 bis la Miniere
@@ -159,60 +183,67 @@ export default function MentionsLegalesPage() {
 							Email : nature.paysage.laheux@gmail.com
 						</p>
 
-						<h3>Données collectées</h3>
-						<p>Dans le cadre de la gestion des demandes de devis et des prestations, nous collectons :</p>
-						<ul>
+						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Données collectées</h3>
+						<p className="mt-4">
+							Dans le cadre de la gestion des demandes de devis et des prestations, nous collectons :
+						</p>
+						<ul role="list" className="mt-4 space-y-2 list-disc pl-6">
 							<li>Identité : civilité, nom, prénom</li>
 							<li>Coordonnées : adresse, email, téléphone</li>
 							<li>Informations sur votre jardin : surface, type de prestations souhaitées</li>
 							<li>Photos de votre jardin (avec votre accord)</li>
 						</ul>
 
-						<h3>Finalités</h3>
-						<p>Ces données sont utilisées exclusivement pour :</p>
-						<ul>
+						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Finalités</h3>
+						<p className="mt-4">Ces données sont utilisées exclusivement pour :</p>
+						<ul role="list" className="mt-4 space-y-2 list-disc pl-6">
 							<li>Traiter votre demande de devis</li>
 							<li>Réaliser les prestations commandées</li>
 							<li>Établir les factures et attestations fiscales</li>
 							<li>Gérer notre relation client</li>
 						</ul>
 
-						<h3>Vos droits</h3>
-						<p>
-							Conformément au RGPD, vous disposez des droits suivants : droit d'accès, de rectification, d'effacement,
-							de limitation du traitement, d'opposition et de portabilité.
+						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Vos droits</h3>
+						<p className="mt-4">
+							Conformément au RGPD, vous disposez des droits suivants : droit d&apos;accès, de rectification,
+							d&apos;effacement, de limitation du traitement, d&apos;opposition et de portabilité.
 						</p>
-						<p>
-							<strong>Pour exercer vos droits :</strong>
+						<p className="mt-4">
+							<strong className="font-semibold text-gray-900 dark:text-white">Pour exercer vos droits :</strong>
 							<br />
 							Email : nature.paysage.laheux@gmail.com
 							<br />
 							Courrier : SASU Nature et Paysage Laheux, 37 bis la Miniere, 44690 Monnières
 						</p>
-						<p>Nous vous répondrons dans un délai d'un mois.</p>
-						<p>
-							<strong>Réclamation :</strong> Si vous estimez que vos droits ne sont pas respectés, vous pouvez
-							introduire une réclamation auprès de la CNIL : www.cnil.fr
+						<p className="mt-4">Nous vous répondrons dans un délai d&apos;un mois.</p>
+						<p className="mt-4">
+							<strong className="font-semibold text-gray-900 dark:text-white">Réclamation :</strong> Si vous estimez
+							que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL :
+							www.cnil.fr
 						</p>
 
-						<h2>Limitation de responsabilité</h2>
-						<p>
-							SASU Nature et Paysage Laheux s'efforce d'assurer l'exactitude des informations diffusées sur ce site.
-							Toutefois, nous ne pouvons garantir l'exhaustivité ou l'absence d'erreur.
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Limitation de responsabilité
+						</h2>
+						<p className="mt-6">
+							SASU Nature et Paysage Laheux s&apos;efforce d&apos;assurer l&apos;exactitude des informations diffusées
+							sur ce site. Toutefois, nous ne pouvons garantir l&apos;exhaustivité ou l&apos;absence d&apos;erreur.
 						</p>
 
-						<h2>Droit applicable</h2>
-						<p>
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Droit applicable
+						</h2>
+						<p className="mt-6">
 							Le présent site et les présentes mentions légales sont régis par le droit français. En cas de litige, une
 							solution amiable sera recherchée avant toute action judiciaire.
 						</p>
 
-						<p className="text-sm text-muted-foreground mt-12">
-							<strong>Date de dernière mise à jour :</strong> Janvier 2025
+						<p className="mt-12 text-sm text-gray-500 dark:text-gray-500">
+							<strong className="font-semibold">Date de dernière mise à jour :</strong> Janvier 2025
 						</p>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 	)
 }
