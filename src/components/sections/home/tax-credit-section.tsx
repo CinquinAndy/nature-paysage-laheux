@@ -1,6 +1,6 @@
 import { FeatureCarousel } from '@/components/ui/animated-feature-carousel'
-import type { Homepage } from '@/payload-types'
 import { getMediaUrl } from '@/lib/payload/media-helpers'
+import type { Homepage } from '@/payload-types'
 
 interface Props {
 	data?: Homepage['taxCredit']

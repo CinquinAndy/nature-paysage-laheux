@@ -33,15 +33,7 @@ export default buildConfig({
 		},
 	},
 	collections: [Users, Media, Services, Realisations, FAQ, ThirdPartyAccess],
-	globals: [
-		Homepage,
-		PrestationsPage,
-		RealisationsPage,
-		FaqPage,
-		ContactPage,
-		MentionsLegalesPage,
-		SiteSettings,
-	],
+	globals: [Homepage, PrestationsPage, RealisationsPage, FaqPage, ContactPage, MentionsLegalesPage, SiteSettings],
 	editor: lexicalEditor(),
 	secret: process.env.PAYLOAD_SECRET || '',
 	typescript: {

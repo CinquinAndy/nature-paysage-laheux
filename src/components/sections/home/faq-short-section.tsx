@@ -4,8 +4,8 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
-import type { Homepage, Faq } from '@/payload-types'
 import { lexicalToPlainText } from '@/lib/payload/media-helpers'
+import type { Faq, Homepage } from '@/payload-types'
 
 interface Props {
 	data?: Homepage['faqShort']

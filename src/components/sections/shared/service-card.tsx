@@ -1,8 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import type { Service } from '@/payload-types'
 import { getMediaUrl } from '@/lib/payload'
+import type { Service } from '@/payload-types'
 
 interface ServiceCardProps {
 	service: Service

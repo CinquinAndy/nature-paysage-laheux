@@ -1,7 +1,7 @@
-import { Leaf, MapPin, TrendingDown, Wrench, Award, Heart, Shield, LucideIcon } from 'lucide-react'
+import { Award, Heart, Leaf, type LucideIcon, MapPin, Shield, TrendingDown, Wrench } from 'lucide-react'
 import Image from 'next/image'
-import type { Homepage } from '@/payload-types'
 import { getMediaUrl } from '@/lib/payload'
+import type { Homepage } from '@/payload-types'
 
 interface ValuesSectionProps {
 	data: Homepage['values']

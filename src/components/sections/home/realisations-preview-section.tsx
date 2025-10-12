@@ -2,8 +2,8 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Gallery4, type Gallery4Item } from '@/components/ui/gallery4'
-import type { Homepage, Realisation } from '@/payload-types'
 import { getMediaUrl } from '@/lib/payload/media-helpers'
+import type { Homepage, Realisation } from '@/payload-types'
 
 interface Props {
 	data?: Homepage['realisationsPreview']

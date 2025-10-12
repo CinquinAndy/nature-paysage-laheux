@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
-import { SERVICES } from '@/lib/data/services'
 import { REALISATIONS } from '@/lib/data/realisations'
+import { SERVICES } from '@/lib/data/services'
 
 export function Footer() {
 	const currentYear = new Date().getFullYear()
