@@ -988,7 +988,7 @@ export interface MentionsLegalesPage {
 		image?: (number | null) | Media
 	}
 	/**
-	 * Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d'auteur, RGPD, etc.
+	 * Contenu légal complet éditable. Utilisez les titres H2 pour les sections principales. Les sections 'Hébergement', 'Création du site' et 'Droits d'auteur' sont ajoutées automatiquement après ce contenu. Sections recommandées : Éditeur du site, Coordonnées, Agrément SAP, Responsable de publication, Protection des données (RGPD), Cookies, Crédits photo.
 	 */
 	content: {
 		root: {
