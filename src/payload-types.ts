@@ -246,14 +246,9 @@ export interface Service {
     id?: string | null;
   }[];
   /**
-   * Galerie d'images additionnelles de la prestation
+   * Galerie d'images additionnelles de la réalisation, tout ce qui sera afficher dans le bouton 'voir la galerie'
    */
-  images?:
-    | {
-        image: number | Media;
-        id?: string | null;
-      }[]
-    | null;
+  images: (number | Media)[];
   /**
    * Cette prestation est-elle éligible au crédit d'impôt de 50% ?
    */
@@ -322,14 +317,9 @@ export interface Realisation {
       }[]
     | null;
   /**
-   * Galerie d'images additionnelles du projet
+   * Galerie d'images additionnelles de la réalisation, tout ce qui sera afficher dans le bouton 'voir la galerie'
    */
-  images?:
-    | {
-        image: number | Media;
-        id?: string | null;
-      }[]
-    | null;
+  images: (number | Media)[];
   testimonial?: {
     quote?: string | null;
     author?: string | null;
@@ -527,12 +517,7 @@ export interface ServicesSelect<T extends boolean = true> {
         feature?: T;
         id?: T;
       };
-  images?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
+  images?: T;
   eligibleTaxCredit?: T;
   price?: T;
   order?: T;
@@ -558,12 +543,7 @@ export interface RealisationsSelect<T extends boolean = true> {
         feature?: T;
         id?: T;
       };
-  images?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
+  images?: T;
   testimonial?:
     | T
     | {

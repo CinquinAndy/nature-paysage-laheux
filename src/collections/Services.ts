@@ -93,20 +93,15 @@ export const Services: CollectionConfig = {
 		},
 		{
 			name: 'images',
-			type: 'array',
-			label: 'Images supplémentaires',
+			type: 'upload',
+			label: "Galerie d'images",
 			admin: {
-				description: "Galerie d'images additionnelles de la prestation",
+				description:
+					"Galerie d'images additionnelles de la réalisation, tout ce qui sera afficher dans le bouton 'voir la galerie'",
 			},
-			fields: [
-				{
-					name: 'image',
-					type: 'upload',
-					relationTo: 'media',
-					required: true,
-					label: 'Image',
-				},
-			],
+			hasMany: true,
+			relationTo: 'media',
+			required: true,
 		},
 		{
 			name: 'eligibleTaxCredit',
