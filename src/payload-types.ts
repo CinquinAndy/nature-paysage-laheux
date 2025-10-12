@@ -1039,67 +1039,6 @@ export interface SiteSetting {
       note?: string | null;
     };
   };
-  taxCredit?: {
-    /**
-     * Pourcentage du crédit d'impôt (généralement 50%)
-     */
-    percentage?: number | null;
-    /**
-     * Montant maximum pouvant être déclaré par an
-     */
-    maxAnnualExpense?: number | null;
-    /**
-     * Montant maximum de crédit d'impôt pouvant être obtenu par an
-     */
-    maxAnnualCredit?: number | null;
-    /**
-     * Les étapes pour profiter du crédit d'impôt
-     */
-    steps?:
-      | {
-          number: number;
-          title: string;
-          description?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-    example?: {
-      serviceCost?: number | null;
-      taxCredit?: number | null;
-      realCost?: number | null;
-    };
-  };
-  navigation?: {
-    /**
-     * Liens du menu de navigation principal
-     */
-    mainMenu?:
-      | {
-          label: string;
-          url: string;
-          id?: string | null;
-        }[]
-      | null;
-    ctaButton?: {
-      label?: string | null;
-      url?: string | null;
-    };
-  };
-  footer?: {
-    logoAlt?: string | null;
-    tagline?: string | null;
-    copyrightText?: string | null;
-    developerName?: string | null;
-    developerUrl?: string | null;
-  };
-  seo?: {
-    siteTitle?: string | null;
-    siteDescription?: string | null;
-    /**
-     * Image utilisée par défaut lors des partages sur les réseaux sociaux
-     */
-    ogImage?: (number | null) | Media;
-  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1471,61 +1410,6 @@ export interface SiteSettingsSelect<T extends boolean = true> {
               sunday?: T;
               note?: T;
             };
-      };
-  taxCredit?:
-    | T
-    | {
-        percentage?: T;
-        maxAnnualExpense?: T;
-        maxAnnualCredit?: T;
-        steps?:
-          | T
-          | {
-              number?: T;
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-        example?:
-          | T
-          | {
-              serviceCost?: T;
-              taxCredit?: T;
-              realCost?: T;
-            };
-      };
-  navigation?:
-    | T
-    | {
-        mainMenu?:
-          | T
-          | {
-              label?: T;
-              url?: T;
-              id?: T;
-            };
-        ctaButton?:
-          | T
-          | {
-              label?: T;
-              url?: T;
-            };
-      };
-  footer?:
-    | T
-    | {
-        logoAlt?: T;
-        tagline?: T;
-        copyrightText?: T;
-        developerName?: T;
-        developerUrl?: T;
-      };
-  seo?:
-    | T
-    | {
-        siteTitle?: T;
-        siteDescription?: T;
-        ogImage?: T;
       };
   updatedAt?: T;
   createdAt?: T;
