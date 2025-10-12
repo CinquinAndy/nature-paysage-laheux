@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { RichText } from '@/components/ui/rich-text'
@@ -13,8 +12,6 @@ export const metadata: Metadata = {
 
 export default async function MentionsLegalesPage() {
 	const pageData = await getMentionsLegalesPageData()
-	console.log(pageData)
-	console.log(pageData.content.root.children)
 
 	const heroImageUrl = getMediaUrl(pageData.hero?.image)
 

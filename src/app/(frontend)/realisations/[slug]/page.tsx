@@ -65,7 +65,7 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 	const galleryImages = [
 		...(mainImageUrl ? [{ src: mainImageUrl, alt: realisation.title || 'Réalisation' }] : []),
 		...(realisation.images?.map(imgItem => ({
-			src: getMediaUrl(typeof imgItem === 'object' && 'image' in imgItem ? imgItem.image : null) || '',
+			src: getMediaUrl(imgItem) || '',
 			alt: realisation.title || 'Réalisation',
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs

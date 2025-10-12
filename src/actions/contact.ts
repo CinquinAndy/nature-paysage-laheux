@@ -44,7 +44,7 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
 		}
 
 		// Envoyer l'email via Resend avec React Email
-		const { data, error } = await resend.emails.send({
+		const { error } = await resend.emails.send({
 			from: 'Nature Paysage Laheux <contact@email.andy-cinquin.fr>',
 			to: ['cinquin.andy@gmail.com'], // Email de test
 			// to: ['nature.paysage.laheux@gmail.com'], // À activer quand tout sera fonctionnel
@@ -70,8 +70,6 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
 				error: 'RESEND_ERROR',
 			}
 		}
-
-		console.log('Email envoyé avec succès:', data)
 
 		return {
 			success: true,

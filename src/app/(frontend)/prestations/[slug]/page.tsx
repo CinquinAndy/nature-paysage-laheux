@@ -52,7 +52,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 	const galleryImages = [
 		...(mainImageUrl ? [{ src: mainImageUrl, alt: service.title || 'Prestation' }] : []),
 		...(service.images?.map(imgItem => ({
-			src: getMediaUrl(typeof imgItem === 'object' && 'image' in imgItem ? imgItem.image : null) || '',
+			src: getMediaUrl(imgItem) || '',
 			alt: service.title || 'Prestation',
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs
