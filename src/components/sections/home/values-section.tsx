@@ -1,36 +1,38 @@
-import { Leaf, MapPin, TrendingDown, Wrench } from 'lucide-react'
+import { Leaf, MapPin, TrendingDown, Wrench, Award, Heart, Shield, LucideIcon } from 'lucide-react'
 import Image from 'next/image'
+import type { Homepage } from '@/payload-types'
+import { getMediaUrl } from '@/lib/payload'
 
-const values = [
-	{
-		icon: Leaf,
-		number: '01',
-		title: 'Respect de la Nature',
-		description:
-			'Méthodes douces, sans produits chimiques. Préservation de la biodiversité et solutions naturelles durables.',
-	},
-	{
-		icon: Wrench,
-		number: '02',
-		title: 'Travail Artisanal',
-		description: 'Interventions soignées et personnalisées. Écoute de vos besoins. Conseil et accompagnement.',
-	},
+interface ValuesSectionProps {
+	data: Homepage['values']
+}
 
-	{
-		icon: MapPin,
-		number: '03',
-		title: 'Expertise Locale',
-		description: 'Connaissance du terroir ligérien. Adaptation au climat de Loire-Atlantique. Passion pour le végétal.',
-	},
-	{
-		icon: TrendingDown,
-		number: '04',
-		title: "50% de Crédit d'Impôt",
-		description: 'Sur toutes mes prestations. Attestation fiscale fournie. Économie garantie pour votre budget.',
-	},
-]
+const iconMap: Record<string, LucideIcon> = {
+	leaf: Leaf,
+	wrench: Wrench,
+	'map-pin': MapPin,
+	'trending-down': TrendingDown,
+	heart: Heart,
+	award: Award,
+	shield: Shield,
+}
 
-export function ValuesSection() {
+export function ValuesSection({ data }: ValuesSectionProps) {
+	// Parse title to extract bold text (text between **)
+	const parseTitleWithBold = (title: string) => {
+		const parts = title.split(/(\*\*.*?\*\*)/)
+		return parts.map((part, index) => {
+			if (part.startsWith('**') && part.endsWith('**')) {
+				const text = part.slice(2, -2)
+				return <strong key={index}>{text}</strong>
+			}
+			return <span key={index}>{part}</span>
+		})
+	}
+
+	const imageUrl = getMediaUrl(data.image) || '/usable/bg.jpg'
+	const values = data.valuesList || []
+
 	return (
 		<section className="py-16 md:py-24 bg-sidebar-accent text-white rounded-t-4xl">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,7 +40,7 @@ export function ValuesSection() {
 					{/* Left Side - Image */}
 					<div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
 						<Image
-							src="/usable/bg.jpg"
+							src={imageUrl}
 							alt="Jardin paysager écologique"
 							fill
 							className="object-cover"
@@ -51,18 +53,14 @@ export function ValuesSection() {
 						{/* Header */}
 						<div>
 							<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">
-								Une Approche
-								<br />
-								Écologique et
-								<br />
-								Sur-Mesure
+								{parseTitleWithBold(data.sectionTitle)}
 							</h2>
 						</div>
 
 						{/* Values Grid */}
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							{values.map(value => {
-								const Icon = value.icon
+								const Icon = iconMap[value.icon] || Leaf
 								return (
 									<div
 										key={value.title}

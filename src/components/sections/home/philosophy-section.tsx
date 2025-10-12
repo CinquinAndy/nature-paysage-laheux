@@ -1,67 +1,43 @@
-import { Award, Check, Heart, Leaf, Shield, X } from 'lucide-react'
+import { Award, Check, Heart, Leaf, Shield, X, LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import type { Homepage } from '@/payload-types'
+import { getMediaUrl } from '@/lib/payload'
 
-const philosophyPoints = [
-	{
-		icon: Leaf,
-		title: 'Méthodes Naturelles',
-		description: 'Désherbage manuel, engrais organiques, paillage végétal pour protéger le sol',
-	},
-	{
-		icon: Heart,
-		title: 'Respect des Cycles',
-		description: 'Respect des cycles naturels et de la faune, techniques inspirées de la permaculture',
-	},
-	{
-		icon: Award,
-		title: 'Valorisation',
-		description: 'Valorisation des déchets verts, compost naturel pour enrichir votre jardin',
-	},
-	{
-		icon: Shield,
-		title: 'Engagement Qualité',
-		description: "Transparence sur les tarifs et bénéfice maximum du crédit d'impôt (50%)",
-	},
-]
+interface PhilosophySectionProps {
+	data: Homepage['philosophy']
+}
 
-const preferences = [
-	{
-		title: 'Désherbage manuel (zéro produit chimique)',
-		description: "Respect total de l'environnement et de la biodiversité",
-	},
-	{
-		title: 'Engrais organiques et compost naturel',
-		description: 'Nutrition naturelle pour un sol vivant et fertile',
-	},
-	{
-		title: 'Paillage végétal pour protéger le sol',
-		description: "Conservation de l'humidité et protection naturelle",
-	},
-	{
-		title: 'Techniques inspirées de la permaculture',
-		description: 'Approche durable et respectueuse des écosystèmes',
-	},
-]
+const iconMap: Record<string, LucideIcon> = {
+	leaf: Leaf,
+	heart: Heart,
+	award: Award,
+	shield: Shield,
+}
 
-const refusals = [
-	{
-		title: 'Produits phytosanitaires de synthèse',
-		description: "Nocifs pour l'environnement et la santé",
-	},
-	{
-		title: 'Désherbants chimiques',
-		description: 'Pollution des sols et des nappes phréatiques',
-	},
-	{
-		title: 'Méthodes intensives qui appauvrissent le sol',
-		description: 'Dégradation à long terme de la qualité du sol',
-	},
-]
+export function PhilosophySection({ data }: PhilosophySectionProps) {
+	// Parse title to extract bold text (text between **)
+	const parseTitleWithBold = (title: string) => {
+		const parts = title.split(/(\*\*.*?\*\*)/)
+		return parts.map((part, index) => {
+			if (part.startsWith('**') && part.endsWith('**')) {
+				const text = part.slice(2, -2)
+				return (
+					<span key={index} className="text-primary">
+						{text}
+					</span>
+				)
+			}
+			return <span key={index}>{part}</span>
+		})
+	}
 
-export function PhilosophySection() {
+	const imageUrl = getMediaUrl(data.primaryImage)
+	const philosophyPoints = data.philosophyPoints || []
+	const preferences = data.preferences || []
+	const refusals = data.refusals || []
 	return (
 		<section className="py-16 md:py-24 bg-background relative overflow-hidden">
 			{/* Background Pattern */}
@@ -72,55 +48,48 @@ export function PhilosophySection() {
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 				{/* Section Header */}
 				<div className="max-w-3xl mb-16">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-						Mon Approche :<br />
-						<span className="text-primary">Nature & Respect</span>
-					</h2>
-					<p className="text-lg text-muted-foreground leading-relaxed">
-						Passionné par le végétal et la biodiversité, je mets mon expertise au service de votre jardin depuis
-						plusieurs années en Loire-Atlantique.
-					</p>
-					<p className="text-base text-muted-foreground mt-4 italic">
-						Ma philosophie est simple :{' '}
-						<strong className="text-foreground">travailler AVEC la nature, pas contre elle.</strong>
-					</p>
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">{parseTitleWithBold(data.title)}</h2>
+					{data.introText && <p className="text-lg text-muted-foreground leading-relaxed">{data.introText}</p>}
+					{data.quote && (
+						<p className="text-base text-muted-foreground mt-4 italic">
+							<strong className="text-foreground">{data.quote}</strong>
+						</p>
+					)}
 				</div>
 
 				{/* Main Content Grid */}
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
 					{/* Left: Layered Image Mockup */}
-					<div className="relative h-[400px] lg:h-[500px]">
-						{/* Secondary Image (Background) */}
-						<div className="absolute top-0 right-0 w-[85%] h-[70%] rounded-2xl overflow-hidden shadow-2xl">
-							<Image
-								src="/usable/IMG_20250803_122326_1.jpg"
-								alt="Jean-Luc Laheux au travail dans un jardin"
-								fill
-								className="object-cover blur-[2px] opacity-90 -scale-x-100"
-							/>
-						</div>
+					{imageUrl && (
+						<div className="relative h-[400px] lg:h-[500px]">
+							{/* Secondary Image (Background) */}
+							<div className="absolute top-0 right-0 w-[85%] h-[70%] rounded-2xl overflow-hidden shadow-2xl">
+								<Image src={imageUrl} alt="Travail dans un jardin" fill className="object-cover blur-[2px] opacity-90 -scale-x-100" />
+							</div>
 
-						{/* Primary Image (Foreground) */}
-						<div className="absolute bottom-0 left-0 w-[85%] h-[85%] rounded-2xl overflow-hidden shadow-2xl group">
-							<Image
-								src="/usable/IMG_20250803_122326_1.jpg"
-								alt="Jean-Luc Laheux travaillant avec des méthodes naturelles"
-								fill
-								className="object-cover group-hover:scale-105 transition-transform duration-700"
-							/>
-							{/* Overlay */}
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+							{/* Primary Image (Foreground) */}
+							<div className="absolute bottom-0 left-0 w-[85%] h-[85%] rounded-2xl overflow-hidden shadow-2xl group">
+								<Image
+									src={imageUrl}
+									alt="Travail avec des méthodes naturelles"
+									fill
+									className="object-cover group-hover:scale-105 transition-transform duration-700"
+								/>
+								{/* Overlay */}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-							{/* Content on Image */}
-							<div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-								<h3 className="text-xl font-bold mb-2">Une Approche Écologique</h3>
-								<p className="text-white/90 text-sm leading-relaxed">
-									Chaque intervention est l'occasion de créer un jardin plus vivant, plus résilient et plus respectueux
-									de l'environnement.
-								</p>
+								{/* Content on Image */}
+								{(data.imageOverlayTitle || data.imageOverlayDescription) && (
+									<div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+										{data.imageOverlayTitle && <h3 className="text-xl font-bold mb-2">{data.imageOverlayTitle}</h3>}
+										{data.imageOverlayDescription && (
+											<p className="text-white/90 text-sm leading-relaxed">{data.imageOverlayDescription}</p>
+										)}
+									</div>
+								)}
 							</div>
 						</div>
-					</div>
+					)}
 
 					{/* Right: Philosophy Cards */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-0">

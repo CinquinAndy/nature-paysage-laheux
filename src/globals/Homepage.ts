@@ -31,11 +31,6 @@ export const Homepage: GlobalConfig = {
 						description: 'Utilisez **mot** pour mettre en gras (effet blob). Exemple : **Transformez** Votre Jardin',
 					},
 				},
-				{
-					name: 'subtitle',
-					type: 'text',
-					label: 'Sous-titre',
-				},
 			],
 		},
 

@@ -627,7 +627,6 @@ export interface Homepage {
      * Utilisez **mot** pour mettre en gras (effet blob). Exemple : **Transformez** Votre Jardin
      */
     title: string;
-    subtitle?: string | null;
   };
   values: {
     /**
@@ -1105,7 +1104,6 @@ export interface HomepageSelect<T extends boolean = true> {
     | {
         backgroundImage?: T;
         title?: T;
-        subtitle?: T;
       };
   values?:
     | T

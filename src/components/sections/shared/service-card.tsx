@@ -1,7 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import type { Service } from '@/lib/data/services'
+import type { Service } from '@/payload-types'
+import { getMediaUrl } from '@/lib/payload'
 
 interface ServiceCardProps {
 	service: Service
@@ -11,11 +12,13 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service, showImage = true }: ServiceCardProps) {
+	const imageUrl = getMediaUrl(service.image)
+
 	return (
 		<Card className="relative min-h-[500px] h-full flex flex-col overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-transparent border-none z-20">
-			{showImage && service.image && (
+			{showImage && imageUrl && (
 				<Image
-					src={service.image}
+					src={imageUrl}
 					alt={service.title}
 					fill
 					className="object-cover group-hover:scale-105 transition-transform duration-300 h-full w-full z-10 brightness-75"
@@ -25,10 +28,10 @@ export function ServiceCard({ service, showImage = true }: ServiceCardProps) {
 				<ul className="flex flex-wrap gap-2">
 					{service.features.slice(0, 4).map(feature => (
 						<li
-							key={feature}
+							key={feature.feature}
 							className="flex items-start gap-2 text-sm border border-white rounded-2xl p-2 px-3 bg-white/5 backdrop-blur-sm"
 						>
-							<span className="text-white font-semibold text-xs">{feature}</span>
+							<span className="text-white font-semibold text-xs">{feature.feature}</span>
 						</li>
 					))}
 				</ul>
