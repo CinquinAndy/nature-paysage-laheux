@@ -14,4 +14,3 @@ export async function getMentionsLegalesPageData(): Promise<MentionsLegalesPage>
 
 	return mentionsLegalesPage as MentionsLegalesPage
 }
-
