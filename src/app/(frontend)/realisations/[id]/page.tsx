@@ -124,8 +124,8 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 						{/* Features List */}
 						<h3 className="mt-12 text-xl font-semibold text-foreground">Caractéristiques</h3>
 						<ul className="mt-6 max-w-xl space-y-4 text-gray-600">
-							{realisation.features.map((feature, index) => (
-								<li key={index} className="flex gap-x-3">
+							{realisation.features.map(feature => (
+								<li key={feature} className="flex gap-x-3">
 									<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
 									<span>
 										<strong className="font-semibold text-foreground">{feature}</strong>

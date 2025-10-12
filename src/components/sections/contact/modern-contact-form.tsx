@@ -76,7 +76,7 @@ export function ModernContactForm() {
 					duration: 5000,
 				})
 			}
-		} catch (error) {
+		} catch (_error) {
 			toast.error('Erreur', {
 				description: "Une erreur inattendue s'est produite. Veuillez réessayer.",
 				duration: 5000,

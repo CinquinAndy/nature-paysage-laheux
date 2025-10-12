@@ -79,7 +79,7 @@ export function Footer() {
 										href={`/prestations/${service.id}`}
 										className="text-muted-foreground hover:text-primary transition-colors"
 									>
-										{service.title.length > 30 ? service.title.substring(0, 30) + '...' : service.title}
+										{service.title.length > 30 ? `${service.title.substring(0, 30)}...` : service.title}
 									</Link>
 								</li>
 							))}

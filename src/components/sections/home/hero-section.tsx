@@ -10,11 +10,11 @@ export function HeroSection({ data }: HeroSectionProps) {
 	// Parse title to extract bold text (text between **)
 	const parseTitleWithBlob = (title: string) => {
 		const parts = title.split(/(\*\*.*?\*\*)/)
-		return parts.map((part, index) => {
+		return parts.map(part => {
 			if (part.startsWith('**') && part.endsWith('**')) {
 				const text = part.slice(2, -2)
 				return (
-					<span key={index} className="relative overflow-visible">
+					<span key={`blob-${text}`} className="relative overflow-visible">
 						<span className="z-10">{text}</span>
 						<Image
 							src="/blob.svg"
@@ -25,7 +25,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 					</span>
 				)
 			}
-			return <span key={index}>{part}</span>
+			return <span key={`text-${part}`}>{part}</span>
 		})
 	}
 

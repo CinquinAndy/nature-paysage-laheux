@@ -21,12 +21,12 @@ export function ValuesSection({ data }: ValuesSectionProps) {
 	// Parse title to extract bold text (text between **)
 	const parseTitleWithBold = (title: string) => {
 		const parts = title.split(/(\*\*.*?\*\*)/)
-		return parts.map((part, index) => {
+		return parts.map(part => {
 			if (part.startsWith('**') && part.endsWith('**')) {
 				const text = part.slice(2, -2)
-				return <strong key={index}>{text}</strong>
+				return <strong key={`strong-${text}`}>{text}</strong>
 			}
-			return <span key={index}>{part}</span>
+			return <span key={`text-${part}`}>{part}</span>
 		})
 	}
 

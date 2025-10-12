@@ -1,5 +1,4 @@
 import { Body, Container, Head, Heading, Hr, Html, Preview, Section, Text } from '@react-email/components'
-import * as React from 'react'
 
 interface ContactFormEmailProps {
 	name: string
@@ -340,11 +339,4 @@ const footerText = {
 	fontSize: '13px',
 	lineHeight: '1.6',
 	margin: '0 0 12px 0',
-}
-
-const footerNote = {
-	color: colors.primary,
-	fontSize: '12px',
-	fontWeight: '600',
-	margin: '0',
 }

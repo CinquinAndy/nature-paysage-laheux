@@ -13,7 +13,6 @@ import type { Homepage } from '@/payload-types'
 
 // Valeurs par défaut
 const DEFAULT_CENTER: [number, number] = [47.1339, -1.3433] // Monnières
-const DEFAULT_RADIUS = 20000 // 20km en mètres
 const DEFAULT_COMMUNES = [
 	'Monnières',
 	'Le Pallet',

@@ -100,9 +100,9 @@ export function AddressAutocomplete({
 
 			{isOpen && suggestions.length > 0 && (
 				<div className="absolute z-50 w-full mt-1 bg-background border border-border rounded-lg shadow-lg max-h-60 overflow-auto">
-					{suggestions.map((suggestion, index) => (
+					{suggestions.map(suggestion => (
 						<button
-							key={index}
+							key={suggestion.properties.label}
 							type="button"
 							onClick={() => handleSelect(suggestion)}
 							className="w-full text-left px-4 py-3 hover:bg-muted transition-colors focus:outline-none focus:bg-muted"

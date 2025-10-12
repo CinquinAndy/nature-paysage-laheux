@@ -96,8 +96,8 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 
 						{/* Features List */}
 						<ul className="mt-8 max-w-xl space-y-8 text-gray-600">
-							{service.features.map((feature, index) => (
-								<li key={index} className="flex gap-x-3">
+							{service.features.map(feature => (
+								<li key={feature} className="flex gap-x-3">
 									<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
 									<span>
 										<strong className="font-semibold text-foreground">{feature.split('.')[0]}.</strong>{' '}

@@ -43,15 +43,27 @@ export function getMediaInfo(media: number | Media | null | undefined): {
 	}
 }
 
+interface LexicalNode {
+	text?: string
+	children?: LexicalNode[]
+	[key: string]: unknown
+}
+
+interface LexicalRoot {
+	root?: {
+		children?: LexicalNode[]
+	}
+}
+
 /**
  * Convertit un champ Lexical en texte plain
  */
-export function lexicalToPlainText(lexical: any): string {
+export function lexicalToPlainText(lexical: LexicalRoot): string {
 	if (!lexical?.root?.children) return ''
 
-	const extractText = (children: any[]): string => {
+	const extractText = (children: LexicalNode[]): string => {
 		return children
-			.map((child: any) => {
+			.map((child: LexicalNode) => {
 				if (child.text) return child.text
 				if (child.children) return extractText(child.children)
 				return ''

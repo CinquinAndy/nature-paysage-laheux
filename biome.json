@@ -67,6 +67,9 @@
 				"rules": {
 					"complexity": {
 						"noBannedTypes": "off"
+					},
+					"suspicious": {
+						"noExplicitAny": "off"
 					}
 				}
 			}

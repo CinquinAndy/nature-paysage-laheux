@@ -21,19 +21,17 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 	// Parse title to extract bold text (text between **)
 	const parseTitleWithBold = (title: string) => {
 		const parts = title.split(/(\*\*.*?\*\*)/)
-		return parts.map((part, index) => {
+		return parts.map(part => {
 			if (part.startsWith('**') && part.endsWith('**')) {
 				const text = part.slice(2, -2)
 				return (
-					<>
+					<span key={`bold-${text}`}>
 						<br />
-						<span key={index} className="text-primary">
-							{text}
-						</span>
-					</>
+						<span className="text-primary">{text}</span>
+					</span>
 				)
 			}
-			return <span key={index}>{part}</span>
+			return <span key={`text-${part}`}>{part}</span>
 		})
 	}
 
