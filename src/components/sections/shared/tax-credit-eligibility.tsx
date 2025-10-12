@@ -140,7 +140,7 @@ const TaxCreditEligibility = (props: TaxCreditEligibilityProps) => {
 							</TabsTrigger>
 						))}
 					</TabsList>
-					<div className="mx-auto mt-8 max-w-screen-xl rounded-2xl bg-background border border-border p-6 lg:p-12">
+					<div className="mx-auto mt-8 container rounded-2xl bg-background border border-border p-6 lg:p-12">
 						{tabs.map(tab => (
 							<TabsContent
 								key={tab.value}
