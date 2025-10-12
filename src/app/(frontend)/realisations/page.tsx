@@ -5,7 +5,7 @@ import { RealisationCard } from '@/components/sections/shared/realisation-card'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getRealisations, getRealisationsPageData } from '@/lib/payload'
-import type { RealisationsPage } from '@/payload-types'
+import type { RealisationsPage as RealisationsPageType } from '@/payload-types'
 
 export const metadata: Metadata = {
 	title: 'Mes Réalisations de Jardins Écologiques | Jean-Luc Laheux',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 /**
  * Add Lorem Ipsum fallback values to realisations page data to easily identify missing content
  */
-function addLoremFallbacks(pageData: RealisationsPage): RealisationsPage {
+function addLoremFallbacks(pageData: RealisationsPageType): RealisationsPageType {
 	return {
 		...pageData,
 		hero: {
@@ -28,7 +28,7 @@ function addLoremFallbacks(pageData: RealisationsPage): RealisationsPage {
 			...pageData.introduction,
 			paragraph1:
 				pageData.introduction?.paragraph1 ||
-				"🚨 LOREM: Chaque jardin est unique et raconte une histoire. Ici, je partage avec vous mes interventions, mes découvertes et mes apprentissages au fil des saisons. Vous y trouverez des exemples concrets de ce que je réalise : transformations de jardins, créations de potagers, entretiens réguliers...",
+				'🚨 LOREM: Chaque jardin est unique et raconte une histoire. Ici, je partage avec vous mes interventions, mes découvertes et mes apprentissages au fil des saisons. Vous y trouverez des exemples concrets de ce que je réalise : transformations de jardins, créations de potagers, entretiens réguliers...',
 			paragraph2: pageData.introduction?.paragraph2 || null,
 		},
 		ctaSection: {
@@ -36,7 +36,7 @@ function addLoremFallbacks(pageData: RealisationsPage): RealisationsPage {
 			title: pageData.ctaSection?.title || '🚨 LOREM: Envie du Même Résultat Pour Votre Jardin ?',
 			description:
 				pageData.ctaSection?.description ||
-				"🚨 LOREM: Chaque projet est unique. Parlons du vôtre et donnons vie à votre jardin écologique.",
+				'🚨 LOREM: Chaque projet est unique. Parlons du vôtre et donnons vie à votre jardin écologique.',
 			buttonText: pageData.ctaSection?.buttonText || '🚨 LOREM: Demander un Devis Gratuit',
 			buttonUrl: pageData.ctaSection?.buttonUrl || '/contact',
 			benefits:
@@ -55,7 +55,7 @@ function addLoremFallbacks(pageData: RealisationsPage): RealisationsPage {
 	}
 }
 
-export default async function RealisationsPage() {
+export default async function RealisationsListPage() {
 	// Fetch all data from Payload CMS
 	const [pageDataRaw, realisations] = await Promise.all([getRealisationsPageData(), getRealisations()])
 

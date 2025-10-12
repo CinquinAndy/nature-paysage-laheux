@@ -829,6 +829,10 @@ export interface PrestationsPage {
         }[]
       | null;
     nonEligibleImage?: (number | null) | Media;
+    /**
+     * Note affichée en bas de la section (ex: L'entretien ultérieur de créations non-éligibles reste éligible au crédit d'impôt)
+     */
+    importantNote?: string | null;
   };
   ctaSection?: {
     title?: string | null;
@@ -1281,6 +1285,7 @@ export interface PrestationsPageSelect<T extends boolean = true> {
               id?: T;
             };
         nonEligibleImage?: T;
+        importantNote?: T;
       };
   ctaSection?:
     | T

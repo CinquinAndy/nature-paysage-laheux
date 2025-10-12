@@ -122,6 +122,15 @@ export const PrestationsPage: GlobalConfig = {
 					relationTo: 'media',
 					label: 'Image services non éligibles',
 				},
+				{
+					name: 'importantNote',
+					type: 'textarea',
+					label: 'Note importante',
+					admin: {
+						description:
+							"Note affichée en bas de la section (ex: L'entretien ultérieur de créations non-éligibles reste éligible au crédit d'impôt)",
+					},
+				},
 			],
 		},
 

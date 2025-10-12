@@ -87,6 +87,9 @@ function addLoremFallbacks(prestationsPage: PrestationsPageType): PrestationsPag
 								id: 'lorem-non-eligible-2',
 							},
 						],
+			importantNote:
+				prestationsPage.taxCreditEligibility?.importantNote ||
+				"🚨 LOREM: L'entretien ultérieur de créations non-éligibles reste éligible au crédit d'impôt.",
 		},
 		ctaSection: {
 			...prestationsPage.ctaSection,
@@ -188,6 +191,7 @@ export default async function PrestationsPage() {
 				heading={prestationsPage.taxCreditEligibility?.title || ''}
 				description={prestationsPage.taxCreditEligibility?.description || ''}
 				tabs={tabs}
+				importantNote={prestationsPage.taxCreditEligibility?.importantNote || undefined}
 			/>
 
 			{/* CTA Section with Shader */}

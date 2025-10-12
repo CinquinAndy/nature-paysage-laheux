@@ -26,10 +26,11 @@ interface TaxCreditEligibilityProps {
 	heading: string
 	description: string
 	tabs: Tab[]
+	importantNote?: string
 }
 
 const TaxCreditEligibility = (props: TaxCreditEligibilityProps) => {
-	const { heading, description, tabs } = props
+	const { heading, description, tabs, importantNote } = props
 
 	return (
 		<section className="py-16 md:py-24 bg-muted/30">
@@ -83,12 +84,13 @@ const TaxCreditEligibility = (props: TaxCreditEligibilityProps) => {
 						))}
 					</div>
 				</Tabs>
-				<div className="mt-8 text-center">
-					<p className="text-sm text-muted-foreground">
-						<strong>Note importante :</strong> L'entretien ultérieur de créations non-éligibles reste éligible au crédit
-						d'impôt.
-					</p>
-				</div>
+				{importantNote && (
+					<div className="mt-8 text-center">
+						<p className="text-sm text-muted-foreground">
+							<strong>Note importante :</strong> {importantNote}
+						</p>
+					</div>
+				)}
 			</div>
 		</section>
 	)
