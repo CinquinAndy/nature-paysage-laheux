@@ -121,14 +121,9 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 							<div className="mb-12">
 								<h2 className="text-2xl font-bold mb-4">Galerie Photos</h2>
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-									{realisation.images.map((img) => (
+									{realisation.images.map(img => (
 										<div key={img} className="relative aspect-[4/3] overflow-hidden rounded-lg">
-											<Image
-												src={img}
-												alt={`${realisation.title} - ${img}`}
-												fill
-												className="object-cover"
-											/>
+											<Image src={img} alt={`${realisation.title} - ${img}`} fill className="object-cover" />
 										</div>
 									))}
 								</div>

@@ -79,7 +79,7 @@ const defaultTabs: Tab[] = [
 		icon: <XCircle className="h-auto w-4 shrink-0" />,
 		label: 'Non éligible',
 		content: {
-			badge: "Non éligible",
+			badge: 'Non éligible',
 			title: "Prestations Non Éligibles au Crédit d'Impôt",
 			description:
 				"Ces prestations restent possibles mais ne bénéficient pas du crédit d'impôt. Elles seront facturées séparément.",

@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"baseUrl": ".",
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
@@ -21,8 +22,8 @@
 			"@/*": ["./src/*"],
 			"@payload-config": ["./src/payload.config.ts"]
 		},
-		"target": "ES2017"
+		"target": "ES2022"
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-	"exclude": ["node_modules", ".next", "out", "dist", "public/raw_photos"]
+	"exclude": ["node_modules"]
 }

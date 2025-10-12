@@ -1,12 +1,14 @@
+import type { ReactNode } from 'react'
 import { BlobMaskedImage } from '@/components/ui/blob-masked-image'
 
 interface PageHeroProps {
 	title: string
 	imageSrc: string
 	imageAlt: string
+	action?: ReactNode
 }
 
-export function PageHero({ title, imageSrc, imageAlt }: PageHeroProps) {
+export function PageHero({ title, imageSrc, imageAlt, action }: PageHeroProps) {
 	return (
 		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-4xl">
 			<div className="px-4 sm:px-6 lg:px-8 h-full w-full flex items-center justify-center mt-16">
@@ -36,6 +38,9 @@ export function PageHero({ title, imageSrc, imageAlt }: PageHeroProps) {
 								{title}
 							</h1>
 						</div>
+
+						{/* Action button in bottom left */}
+						{action && <div className="absolute bottom-8 left-8 z-10">{action}</div>}
 					</div>
 				</div>
 			</div>
