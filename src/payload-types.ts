@@ -96,9 +96,7 @@ export interface Config {
   globals: {
     homepage: Homepage;
     'prestations-page': PrestationsPage;
-    'prestations-detail-template': PrestationsDetailTemplate;
     'realisations-page': RealisationsPage;
-    'realisations-detail-template': RealisationsDetailTemplate;
     'faq-page': FaqPage;
     'contact-page': ContactPage;
     'mentions-legales-page': MentionsLegalesPage;
@@ -107,9 +105,7 @@ export interface Config {
   globalsSelect: {
     homepage: HomepageSelect<false> | HomepageSelect<true>;
     'prestations-page': PrestationsPageSelect<false> | PrestationsPageSelect<true>;
-    'prestations-detail-template': PrestationsDetailTemplateSelect<false> | PrestationsDetailTemplateSelect<true>;
     'realisations-page': RealisationsPageSelect<false> | RealisationsPageSelect<true>;
-    'realisations-detail-template': RealisationsDetailTemplateSelect<false> | RealisationsDetailTemplateSelect<true>;
     'faq-page': FaqPageSelect<false> | FaqPageSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
     'mentions-legales-page': MentionsLegalesPageSelect<false> | MentionsLegalesPageSelect<true>;
@@ -847,45 +843,6 @@ export interface PrestationsPage {
   createdAt?: string | null;
 }
 /**
- * Configuration du modèle pour les pages /prestations/[slug]. Le contenu dynamique provient de la collection "Prestations".
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "prestations-detail-template".
- */
-export interface PrestationsDetailTemplate {
-  id: number;
-  approachSection?: {
-    title?: string | null;
-    description?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-  };
-  pricingSection?: {
-    title?: string | null;
-    description?: string | null;
-  };
-  ctaSection?: {
-    title?: string | null;
-    description?: string | null;
-    buttonText?: string | null;
-    buttonUrl?: string | null;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
  * Configuration de la page /realisations. Les réalisations proviennent de la collection "Réalisations".
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -926,67 +883,6 @@ export interface RealisationsPage {
           id?: string | null;
         }[]
       | null;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * Configuration du modèle pour les pages /realisations/[id]. Le contenu dynamique provient de la collection "Réalisations".
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "realisations-detail-template".
- */
-export interface RealisationsDetailTemplate {
-  id: number;
-  processSection?: {
-    title?: string | null;
-    description?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-  };
-  taxCreditInfo?: {
-    title?: string | null;
-    description?: string | null;
-  };
-  testimonialSection?: {
-    title?: string | null;
-    /**
-     * Utilisé si la réalisation n'a pas son propre témoignage
-     */
-    defaultTestimonial?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    defaultAuthor?: string | null;
-  };
-  ctaSection?: {
-    title?: string | null;
-    description?: string | null;
-    buttonText?: string | null;
-    buttonUrl?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1400,35 +1296,6 @@ export interface PrestationsPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "prestations-detail-template_select".
- */
-export interface PrestationsDetailTemplateSelect<T extends boolean = true> {
-  approachSection?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-      };
-  pricingSection?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-      };
-  ctaSection?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        buttonText?: T;
-        buttonUrl?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "realisations-page_select".
  */
 export interface RealisationsPageSelect<T extends boolean = true> {
@@ -1457,42 +1324,6 @@ export interface RealisationsPageSelect<T extends boolean = true> {
               benefit?: T;
               id?: T;
             };
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "realisations-detail-template_select".
- */
-export interface RealisationsDetailTemplateSelect<T extends boolean = true> {
-  processSection?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-      };
-  taxCreditInfo?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-      };
-  testimonialSection?:
-    | T
-    | {
-        title?: T;
-        defaultTestimonial?: T;
-        defaultAuthor?: T;
-      };
-  ctaSection?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-        buttonText?: T;
-        buttonUrl?: T;
       };
   updatedAt?: T;
   createdAt?: T;

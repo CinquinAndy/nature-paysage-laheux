@@ -18,9 +18,7 @@ import { ContactPage } from './globals/ContactPage'
 import { FaqPage } from './globals/FaqPage'
 import { Homepage } from './globals/Homepage'
 import { MentionsLegalesPage } from './globals/MentionsLegalesPage'
-import { PrestationsDetailTemplate } from './globals/PrestationsDetailTemplate'
 import { PrestationsPage } from './globals/PrestationsPage'
-import { RealisationsDetailTemplate } from './globals/RealisationsDetailTemplate'
 import { RealisationsPage } from './globals/RealisationsPage'
 import { SiteSettings } from './globals/SiteSettings'
 
@@ -38,9 +36,7 @@ export default buildConfig({
 	globals: [
 		Homepage,
 		PrestationsPage,
-		PrestationsDetailTemplate,
 		RealisationsPage,
-		RealisationsDetailTemplate,
 		FaqPage,
 		ContactPage,
 		MentionsLegalesPage,
