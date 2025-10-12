@@ -42,3 +42,22 @@ export function getMediaInfo(media: number | Media | null | undefined): {
 		height: typeof media === 'object' ? media?.height : undefined,
 	}
 }
+
+/**
+ * Convertit un champ Lexical en texte plain
+ */
+export function lexicalToPlainText(lexical: any): string {
+	if (!lexical?.root?.children) return ''
+
+	const extractText = (children: any[]): string => {
+		return children
+			.map((child: any) => {
+				if (child.text) return child.text
+				if (child.children) return extractText(child.children)
+				return ''
+			})
+			.join('')
+	}
+
+	return extractText(lexical.root.children)
+}

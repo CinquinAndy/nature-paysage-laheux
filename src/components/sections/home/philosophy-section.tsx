@@ -1,10 +1,10 @@
-import { Award, Check, Heart, Leaf, Shield, X, LucideIcon } from 'lucide-react'
+import { Award, Check, Heart, Leaf, type LucideIcon, Shield, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { getMediaUrl } from '@/lib/payload'
 import { cn } from '@/lib/utils'
 import type { Homepage } from '@/payload-types'
-import { getMediaUrl } from '@/lib/payload'
 
 interface PhilosophySectionProps {
 	data: Homepage['philosophy']
@@ -25,9 +25,12 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 			if (part.startsWith('**') && part.endsWith('**')) {
 				const text = part.slice(2, -2)
 				return (
-					<span key={index} className="text-primary">
-						{text}
-					</span>
+					<>
+						<br />
+						<span key={index} className="text-primary">
+							{text}
+						</span>
+					</>
 				)
 			}
 			return <span key={index}>{part}</span>
@@ -64,7 +67,12 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 						<div className="relative h-[400px] lg:h-[500px]">
 							{/* Secondary Image (Background) */}
 							<div className="absolute top-0 right-0 w-[85%] h-[70%] rounded-2xl overflow-hidden shadow-2xl">
-								<Image src={imageUrl} alt="Travail dans un jardin" fill className="object-cover blur-[2px] opacity-90 -scale-x-100" />
+								<Image
+									src={imageUrl}
+									alt="Travail dans un jardin"
+									fill
+									className="object-cover blur-[2px] opacity-90 -scale-x-100"
+								/>
 							</div>
 
 							{/* Primary Image (Foreground) */}
@@ -94,7 +102,7 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 					{/* Right: Philosophy Cards */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
 						{philosophyPoints.map((point, index) => {
-							const Icon = point.icon
+							const Icon = iconMap[point.icon] || Leaf
 							return (
 								<div
 									key={point.title}
@@ -179,33 +187,35 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 				</div>
 
 				{/* Engagement Banner */}
-				<section className="overflow-hidden pt-0 md:pt-0">
-					<div className="relative mx-auto flex container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
-						{/* Title */}
-						<h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
-							Transparence & Crédit d'impôt
-						</h2>
+				{data.engagementBanner && (
+					<section className="overflow-hidden pt-0 md:pt-0">
+						<div className="relative mx-auto flex container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
+							{/* Title */}
+							{data.engagementBanner.title && (
+								<h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
+									{data.engagementBanner.title}
+								</h2>
+							)}
 
-						{/* Description */}
-						{true && (
-							<p className="text-muted-foreground opacity-0 animate-fade-in-up delay-300">
-								En tant que membre de la coopérative Unipros, je vous garantis transparence sur les tarifs et bénéfice
-								maximum du crédit d'impôt (50%). Chaque jardin mérite une attention particulière et des méthodes qui
-								respectent son écosystème unique.
-							</p>
-						)}
+							{/* Description */}
+							{data.engagementBanner.description && (
+								<p className="text-muted-foreground opacity-0 animate-fade-in-up delay-300">
+									{data.engagementBanner.description}
+								</p>
+							)}
 
-						{/* Action Button */}
-						<Button variant="default" size="lg" className="opacity-0 animate-fade-in-up delay-500" asChild>
-							<Link href="/contact">Demander un devis gratuit</Link>
-						</Button>
+							{/* Action Button */}
+							{data.engagementBanner.ctaLabel && (
+								<Button variant="default" size="lg" className="opacity-0 animate-fade-in-up delay-500" asChild>
+									<Link href={data.engagementBanner.ctaUrl || '/contact'}>{data.engagementBanner.ctaLabel}</Link>
+								</Button>
+							)}
 
-						{/* Glow Effect */}
-						{true && (
+							{/* Glow Effect */}
 							<div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
-						)}
-					</div>
-				</section>
+						</div>
+					</section>
+				)}
 			</div>
 		</section>
 	)

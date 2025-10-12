@@ -7,12 +7,7 @@ import { RealisationsPreviewSection } from '@/components/sections/home/realisati
 import { ServicesPreviewSection } from '@/components/sections/home/services-preview-section'
 import { TaxCreditSection } from '@/components/sections/home/tax-credit-section'
 import { ValuesSection } from '@/components/sections/home/values-section'
-import {
-	getHomepageData,
-	getFeaturedServices,
-	getLatestRealisations,
-	getHomepageFaq,
-} from '@/lib/payload'
+import { getFeaturedServices, getHomepageData, getHomepageFaq, getLatestRealisations } from '@/lib/payload'
 
 export default async function HomePage() {
 	// Fetch all data from Payload CMS

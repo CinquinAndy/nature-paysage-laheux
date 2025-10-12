@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import type { Homepage } from '@/payload-types'
 import { getMediaUrl } from '@/lib/payload'
+import type { Homepage } from '@/payload-types'
 
 interface HeroSectionProps {
 	data: Homepage['hero']
@@ -43,12 +43,6 @@ export function HeroSection({ data }: HeroSectionProps) {
 				/>
 				<h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-7xl font-extrabold text-white absolute bottom-6 left-4 sm:bottom-12 sm:left-8 xl:bottom-20 xl:left-20 max-w-full sm:max-w-4xl xl:max-w-7xl leading-tight z-10">
 					{parseTitleWithBlob(data.title)}{' '}
-					{data.subtitle && (
-						<>
-							<br />
-							{data.subtitle}
-						</>
-					)}
 				</h1>
 			</div>
 		</section>
