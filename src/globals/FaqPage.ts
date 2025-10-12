@@ -25,7 +25,7 @@ export const FaqPage: GlobalConfig = {
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Image d\'en-tête',
+					label: "Image d'en-tête",
 				},
 			],
 		},
@@ -66,7 +66,7 @@ export const FaqPage: GlobalConfig = {
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'Section Appel à l\'Action',
+			label: "Section Appel à l'Action",
 			fields: [
 				{
 					name: 'title',

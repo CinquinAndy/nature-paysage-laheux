@@ -57,7 +57,7 @@ export const PrestationsDetailTemplate: GlobalConfig = {
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'Section Appel à l\'Action',
+			label: "Section Appel à l'Action",
 			fields: [
 				{
 					name: 'title',

@@ -46,18 +46,18 @@ export const FAQ: CollectionConfig = {
 			name: 'showOnHomepage',
 			type: 'checkbox',
 			defaultValue: false,
-			label: 'Afficher sur la page d\'accueil',
+			label: "Afficher sur la page d'accueil",
 			admin: {
-				description: 'Cette question apparaîtra dans la section FAQ de la page d\'accueil (4 questions maximum)',
+				description: "Cette question apparaîtra dans la section FAQ de la page d'accueil (4 questions maximum)",
 			},
 		},
 		{
 			name: 'order',
 			type: 'number',
 			defaultValue: 0,
-			label: 'Ordre d\'affichage',
+			label: "Ordre d'affichage",
 			admin: {
-				description: 'Ordre d\'apparition dans la catégorie (plus petit numéro = apparaît en premier)',
+				description: "Ordre d'apparition dans la catégorie (plus petit numéro = apparaît en premier)",
 			},
 		},
 	],

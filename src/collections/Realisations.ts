@@ -27,7 +27,7 @@ export const Realisations: CollectionConfig = {
 			unique: true,
 			label: 'Identifiant URL (slug)',
 			admin: {
-				description: 'Utilisé dans l\'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.',
+				description: "Utilisé dans l'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.",
 			},
 			validate: (val: string) => {
 				if (!val) return 'Le slug est obligatoire'
@@ -112,7 +112,7 @@ export const Realisations: CollectionConfig = {
 			type: 'array',
 			label: 'Images supplémentaires',
 			admin: {
-				description: 'Galerie d\'images additionnelles du projet',
+				description: "Galerie d'images additionnelles du projet",
 			},
 			fields: [
 				{

@@ -35,7 +35,7 @@ export const RealisationsDetailTemplate: GlobalConfig = {
 		{
 			name: 'taxCreditInfo',
 			type: 'group',
-			label: 'Section Crédit d\'Impôt',
+			label: "Section Crédit d'Impôt",
 			fields: [
 				{
 					name: 'title',
@@ -70,7 +70,7 @@ export const RealisationsDetailTemplate: GlobalConfig = {
 					type: 'richText',
 					label: 'Témoignage par défaut',
 					admin: {
-						description: 'Utilisé si la réalisation n\'a pas son propre témoignage',
+						description: "Utilisé si la réalisation n'a pas son propre témoignage",
 					},
 				},
 				{
@@ -87,7 +87,7 @@ export const RealisationsDetailTemplate: GlobalConfig = {
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'Section Appel à l\'Action',
+			label: "Section Appel à l'Action",
 			fields: [
 				{
 					name: 'title',

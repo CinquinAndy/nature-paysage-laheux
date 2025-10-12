@@ -25,7 +25,7 @@ export const ContactPage: GlobalConfig = {
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Image d\'en-tête',
+					label: "Image d'en-tête",
 				},
 			],
 		},
@@ -76,7 +76,7 @@ export const ContactPage: GlobalConfig = {
 					type: 'textarea',
 					label: 'Texte de confidentialité',
 					admin: {
-						description: 'Texte affiché sous le bouton d\'envoi concernant la protection des données',
+						description: "Texte affiché sous le bouton d'envoi concernant la protection des données",
 					},
 				},
 			],

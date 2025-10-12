@@ -25,7 +25,7 @@ export const PrestationsPage: GlobalConfig = {
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Image d\'en-tête',
+					label: "Image d'en-tête",
 				},
 			],
 		},
@@ -36,7 +36,7 @@ export const PrestationsPage: GlobalConfig = {
 		{
 			name: 'taxCreditEligibility',
 			type: 'group',
-			label: 'Section Éligibilité Crédit d\'Impôt',
+			label: "Section Éligibilité Crédit d'Impôt",
 			fields: [
 				{
 					name: 'title',
@@ -54,7 +54,7 @@ export const PrestationsPage: GlobalConfig = {
 					type: 'array',
 					label: 'Services éligibles',
 					admin: {
-						description: 'Services qui bénéficient du crédit d\'impôt de 50%',
+						description: "Services qui bénéficient du crédit d'impôt de 50%",
 					},
 					fields: [
 						{
@@ -75,7 +75,7 @@ export const PrestationsPage: GlobalConfig = {
 					type: 'array',
 					label: 'Services non éligibles',
 					admin: {
-						description: 'Services qui NE bénéficient PAS du crédit d\'impôt',
+						description: "Services qui NE bénéficient PAS du crédit d'impôt",
 					},
 					fields: [
 						{
@@ -112,7 +112,7 @@ export const PrestationsPage: GlobalConfig = {
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'Section Appel à l\'Action',
+			label: "Section Appel à l'Action",
 			fields: [
 				{
 					name: 'title',

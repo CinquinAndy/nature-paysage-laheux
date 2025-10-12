@@ -25,7 +25,7 @@ export const RealisationsPage: GlobalConfig = {
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Image d\'en-tête',
+					label: "Image d'en-tête",
 				},
 			],
 		},
@@ -57,7 +57,7 @@ export const RealisationsPage: GlobalConfig = {
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'Section Appel à l\'Action',
+			label: "Section Appel à l'Action",
 			fields: [
 				{
 					name: 'title',
@@ -97,6 +97,7 @@ export const RealisationsPage: GlobalConfig = {
 		},
 	],
 	admin: {
-		description: 'Configuration de la page /realisations. Les réalisations proviennent de la collection "Réalisations".',
+		description:
+			'Configuration de la page /realisations. Les réalisations proviennent de la collection "Réalisations".',
 	},
 }

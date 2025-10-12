@@ -30,13 +30,13 @@ export const SiteSettings: GlobalConfig = {
 				{
 					name: 'company',
 					type: 'group',
-					label: 'Informations de l\'entreprise',
+					label: "Informations de l'entreprise",
 					fields: [
 						{
 							name: 'name',
 							type: 'text',
 							defaultValue: 'SASU Nature et Paysage Laheux',
-							label: 'Nom de l\'entreprise',
+							label: "Nom de l'entreprise",
 						},
 						{
 							name: 'representative',
@@ -100,7 +100,7 @@ export const SiteSettings: GlobalConfig = {
 				{
 					name: 'hours',
 					type: 'group',
-					label: 'Horaires d\'ouverture',
+					label: "Horaires d'ouverture",
 					fields: [
 						{
 							name: 'weekday',
@@ -133,15 +133,15 @@ export const SiteSettings: GlobalConfig = {
 		{
 			name: 'taxCredit',
 			type: 'group',
-			label: 'Crédit d\'Impôt',
+			label: "Crédit d'Impôt",
 			fields: [
 				{
 					name: 'percentage',
 					type: 'number',
 					defaultValue: 50,
-					label: 'Pourcentage du crédit d\'impôt',
+					label: "Pourcentage du crédit d'impôt",
 					admin: {
-						description: 'Pourcentage du crédit d\'impôt (généralement 50%)',
+						description: "Pourcentage du crédit d'impôt (généralement 50%)",
 					},
 				},
 				{
@@ -157,9 +157,9 @@ export const SiteSettings: GlobalConfig = {
 					name: 'maxAnnualCredit',
 					type: 'number',
 					defaultValue: 6000,
-					label: 'Crédit d\'impôt annuel maximum (€)',
+					label: "Crédit d'impôt annuel maximum (€)",
 					admin: {
-						description: 'Montant maximum de crédit d\'impôt pouvant être obtenu par an',
+						description: "Montant maximum de crédit d'impôt pouvant être obtenu par an",
 					},
 				},
 				{
@@ -167,20 +167,20 @@ export const SiteSettings: GlobalConfig = {
 					type: 'array',
 					label: 'Étapes pour en bénéficier',
 					admin: {
-						description: 'Les étapes pour profiter du crédit d\'impôt',
+						description: "Les étapes pour profiter du crédit d'impôt",
 					},
 					fields: [
 						{
 							name: 'number',
 							type: 'number',
 							required: true,
-							label: 'Numéro de l\'étape',
+							label: "Numéro de l'étape",
 						},
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
-							label: 'Titre de l\'étape',
+							label: "Titre de l'étape",
 						},
 						{
 							name: 'description',
@@ -202,7 +202,7 @@ export const SiteSettings: GlobalConfig = {
 						{
 							name: 'taxCredit',
 							type: 'number',
-							label: 'Montant du crédit d\'impôt (€)',
+							label: "Montant du crédit d'impôt (€)",
 						},
 						{
 							name: 'realCost',
@@ -247,7 +247,7 @@ export const SiteSettings: GlobalConfig = {
 				{
 					name: 'ctaButton',
 					type: 'group',
-					label: 'Bouton d\'appel à l\'action',
+					label: "Bouton d'appel à l'action",
 					fields: [
 						{
 							name: 'label',

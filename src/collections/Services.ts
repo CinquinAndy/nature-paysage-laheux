@@ -27,7 +27,7 @@ export const Services: CollectionConfig = {
 			unique: true,
 			label: 'Identifiant URL (slug)',
 			admin: {
-				description: 'Utilisé dans l\'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.',
+				description: "Utilisé dans l'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.",
 			},
 			validate: (val: string) => {
 				if (!val) return 'Le slug est obligatoire'
@@ -95,9 +95,9 @@ export const Services: CollectionConfig = {
 			name: 'eligibleTaxCredit',
 			type: 'checkbox',
 			defaultValue: true,
-			label: 'Éligible au crédit d\'impôt',
+			label: "Éligible au crédit d'impôt",
 			admin: {
-				description: 'Cette prestation est-elle éligible au crédit d\'impôt de 50% ?',
+				description: "Cette prestation est-elle éligible au crédit d'impôt de 50% ?",
 			},
 		},
 		{
@@ -113,9 +113,9 @@ export const Services: CollectionConfig = {
 			name: 'order',
 			type: 'number',
 			defaultValue: 0,
-			label: 'Ordre d\'affichage',
+			label: "Ordre d'affichage",
 			admin: {
-				description: 'Ordre d\'apparition des prestations (plus petit numéro = apparaît en premier)',
+				description: "Ordre d'apparition des prestations (plus petit numéro = apparaît en premier)",
 			},
 		},
 	],

@@ -25,7 +25,7 @@ export const MentionsLegalesPage: GlobalConfig = {
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Image d\'en-tête',
+					label: "Image d'en-tête",
 				},
 			],
 		},
@@ -40,7 +40,7 @@ export const MentionsLegalesPage: GlobalConfig = {
 			label: 'Contenu légal',
 			admin: {
 				description:
-					'Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d\'auteur, RGPD, etc.',
+					"Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d'auteur, RGPD, etc.",
 			},
 		},
 	],
