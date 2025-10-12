@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
-import { lexicalToPlainText } from '@/lib/payload/media-helpers'
+import { RichText } from '@/components/ui/rich-text'
 import type { Faq, Homepage } from '@/payload-types'
 
 interface Props {
@@ -44,8 +44,8 @@ export function FaqShortSection({ data, faqItems }: Props) {
 						{faqItems.map(item => (
 							<AccordionItem key={item.id} value={item.id.toString()}>
 								<AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-								<AccordionContent className="text-muted-foreground whitespace-pre-wrap">
-									{lexicalToPlainText(item.answer)}
+								<AccordionContent>
+									<RichText content={item.answer} className="text-muted-foreground" />
 								</AccordionContent>
 							</AccordionItem>
 						))}

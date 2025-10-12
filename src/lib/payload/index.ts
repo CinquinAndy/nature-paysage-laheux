@@ -1,4 +1,5 @@
 export * from './get-faq'
+export * from './get-faq-page-data'
 export * from './get-homepage-data'
 export * from './get-prestations-page-data'
 export * from './get-realisations'

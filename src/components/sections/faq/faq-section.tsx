@@ -5,13 +5,14 @@ import Link from 'next/link'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import type { FaqItem } from '@/lib/data/faq'
+import { RichText } from '@/components/ui/rich-text'
+import type { Faq } from '@/payload-types'
 
 interface FaqSectionProps {
 	title?: string
 	description?: string
 	categoryLabel?: string
-	items: FaqItem[]
+	items: Faq[]
 	showCta?: boolean
 }
 
@@ -23,7 +24,7 @@ export function FaqSection({
 	showCta = true,
 }: FaqSectionProps) {
 	return (
-		<div className="w-full py-20 lg:py-40">
+		<div className="w-full py-10 lg:py-20">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid lg:grid-cols-2 gap-10 lg:gap-20">
 					{/* Left Column - Intro */}
@@ -53,9 +54,11 @@ export function FaqSection({
 					{/* Right Column - Accordion */}
 					<AccordionRoot type="single" collapsible className="w-full">
 						{items.map(item => (
-							<AccordionItem key={item.id} value={item.id}>
+							<AccordionItem key={item.id} value={item.id.toString()}>
 								<AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-								<AccordionContent className="text-muted-foreground whitespace-pre-wrap">{item.answer}</AccordionContent>
+								<AccordionContent>
+									<RichText content={item.answer} className="text-muted-foreground" />
+								</AccordionContent>
 							</AccordionItem>
 						))}
 					</AccordionRoot>
