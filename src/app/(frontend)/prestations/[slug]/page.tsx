@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { RichText } from '@/components/ui/rich-text'
-import { getMediaUrl, getServices } from '@/lib/payload'
+import { getMediaUrl, getServiceBySlug, getServices } from '@/lib/payload'
 
 // Lazy load the image gallery modal
 const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
@@ -25,8 +25,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PrestationPageProps): Promise<Metadata> {
 	const { slug } = await params
-	const services = await getServices()
-	const service = services.find(s => s.slug === slug)
+	const service = await getServiceBySlug(slug)
 
 	if (!service) {
 		return {
@@ -36,37 +35,36 @@ export async function generateMetadata({ params }: PrestationPageProps): Promise
 
 	return {
 		title: `${service.title} | Jean-Luc Laheux - Loire-Atlantique`,
-		description: service.shortDescription,
+		description: service.shortDescription || '',
 	}
 }
 
 export default async function PrestationPage({ params }: PrestationPageProps) {
 	const { slug } = await params
-	const services = await getServices()
-	const service = services.find(s => s.slug === slug)
+	const service = await getServiceBySlug(slug)
 
 	if (!service) {
 		notFound()
 	}
 
-	const imageUrl = getMediaUrl(service.image)
-
-	// Mock gallery images - will be replaced with Payload CMS data later
+	// Build gallery images from Payload media
+	const mainImageUrl = getMediaUrl(service.image)
 	const galleryImages = [
-		{ src: imageUrl || '/placeholder.jpg', alt: service.title },
-		{ src: '/usable/IMG_20231117_093237.jpg', alt: 'Example 1' },
-		{ src: '/usable/IMG_20240310_161440.jpg', alt: 'Example 2' },
-		{ src: '/usable/IMG_20250402_142527.jpg', alt: 'Example 3' },
-	]
+		...(mainImageUrl ? [{ src: mainImageUrl, alt: service.title || 'Prestation' }] : []),
+		...(service.images?.map(imgItem => ({
+			src: getMediaUrl(typeof imgItem === 'object' && 'image' in imgItem ? imgItem.image : null) || '',
+			alt: service.title || 'Prestation',
+		})) || []),
+	].filter(img => img.src) // Filter out images without valid URLs
 
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
-				title={service.title}
-				imageSrc={imageUrl || '/placeholder.jpg'}
-				imageAlt={service.title}
-				action={<ImageGalleryModal images={galleryImages} />}
+				title={service.title || 'Prestation'}
+				imageSrc={mainImageUrl || '/usable/background.jpg'}
+				imageAlt={service.title || 'Prestation'}
+				action={galleryImages.length > 1 ? <ImageGalleryModal images={galleryImages} /> : undefined}
 			/>
 
 			{/* Breadcrumb Navigation */}
@@ -86,7 +84,9 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 			<div className="bg-white px-6 py-16 lg:px-8 ">
 				<div className="mx-auto max-w-3xl text-base/7 text-gray-700">
 					{/* Category Badge */}
-					<p className="text-base/7 font-semibold text-emerald-600 capitalize">{service.category}</p>
+					{service.category && (
+						<p className="text-base/7 font-semibold text-emerald-600 capitalize">{service.category}</p>
+					)}
 
 					{/* Title */}
 					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
@@ -94,27 +94,40 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 					</h1>
 
 					{/* Short Description */}
-					<p className="mt-6 text-xl/8">{service.shortDescription}</p>
+					{service.shortDescription && <p className="mt-6 text-xl/8">{service.shortDescription}</p>}
 
 					{/* Main Content */}
 					<div className="mt-10 max-w-2xl text-gray-600">
-						<RichText content={service.fullDescription} />
+						<h2 className="text-2xl font-semibold tracking-tight text-pretty text-foreground">Description</h2>
+						{service.fullDescription && (
+							<div className="mt-4">
+								<RichText content={service.fullDescription} />
+							</div>
+						)}
 
 						{/* Features List */}
-						<ul className="mt-8 max-w-xl space-y-8 text-gray-600">
-							{service.features.map(feature => (
-								<li key={feature.feature} className="flex gap-x-3">
-									<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
-									<span>
-										<strong className="font-semibold text-foreground">{feature.feature.split('.')[0]}.</strong>{' '}
-										{feature.feature.split('.').slice(1).join('.') || 'Un service de qualité professionnelle.'}
-									</span>
-								</li>
-							))}
-						</ul>
+						{service.features && service.features.length > 0 && (
+							<>
+								<h3 className="mt-12 text-xl font-semibold text-foreground">Points clés</h3>
+								<ul className="mt-6 max-w-xl space-y-4 text-gray-600">
+									{service.features.map((featureItem, index) => {
+										const featureText =
+											typeof featureItem === 'object' && 'feature' in featureItem ? featureItem.feature : ''
+										return (
+											<li key={featureText || index} className="flex gap-x-3">
+												<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
+												<span>
+													<strong className="font-semibold text-foreground">{featureText}</strong>
+												</span>
+											</li>
+										)
+									})}
+								</ul>
+							</>
+						)}
 
 						{/* Additional Content Section */}
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
+						<h2 className="mt-16 text-2xl font-semibold tracking-tight text-pretty text-foreground">
 							Une approche écologique et respectueuse
 						</h2>
 						<p className="mt-6">
@@ -135,14 +148,16 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 						)}
 
 						{/* Pricing */}
-						<div className="mt-10">
-							<h3 className="text-xl font-semibold text-foreground">Tarification</h3>
-							<p className="mt-2 text-lg font-medium text-emerald-600">{service.price}</p>
-							<p className="mt-2 text-sm text-gray-600">
-								Chaque jardin est unique. Je me déplace gratuitement pour évaluer vos besoins et vous proposer un devis
-								personnalisé et sans engagement.
-							</p>
-						</div>
+						{service.price && (
+							<div className="mt-10">
+								<h3 className="text-xl font-semibold text-foreground">Tarification</h3>
+								<p className="mt-2 text-lg font-medium text-emerald-600">{service.price}</p>
+								<p className="mt-2 text-sm text-gray-600">
+									Chaque jardin est unique. Je me déplace gratuitement pour évaluer vos besoins et vous proposer un
+									devis personnalisé et sans engagement.
+								</p>
+							</div>
+						)}
 					</div>
 
 					{/* CTA Section */}

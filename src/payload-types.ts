@@ -246,6 +246,15 @@ export interface Service {
     id?: string | null;
   }[];
   /**
+   * Galerie d'images additionnelles de la prestation
+   */
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Cette prestation est-elle éligible au crédit d'impôt de 50% ?
    */
   eligibleTaxCredit?: boolean | null;
@@ -516,6 +525,12 @@ export interface ServicesSelect<T extends boolean = true> {
     | T
     | {
         feature?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
         id?: T;
       };
   eligibleTaxCredit?: T;

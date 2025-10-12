@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button'
 import { CityCard } from '@/components/ui/grid-feature-cards'
 import { COMMUNE_COLORS } from '@/lib/data/commune-colors'
 import { COMMUNES_CONTOURS } from '@/lib/data/communes-contours'
-import { CONTACT_INFO } from '@/lib/data/contact-info'
 import type { Homepage } from '@/payload-types'
 
 // Valeurs par défaut
@@ -102,7 +101,7 @@ function AnimatedContainer({ className, delay = 0.1, children }: AnimatedContain
 export function InterventionZoneSection({ data }: Props) {
 	// Utiliser les données Payload ou les valeurs par défaut
 	const title = data?.title || "Zone d'Intervention en Loire-Atlantique"
-	const subtitle = data?.subtitle || `Basé à ${CONTACT_INFO.address.city}, j'interviens dans un rayon de 20 km.`
+	const subtitle = data?.subtitle || "Basé à Monnières, j'interviens dans un rayon de 20 km."
 	const centerLat = data?.mapCenterLat ?? DEFAULT_CENTER[0]
 	const centerLng = data?.mapCenterLng ?? DEFAULT_CENTER[1]
 	const radiusKm = data?.radiusKm ?? 20
@@ -161,8 +160,8 @@ export function InterventionZoneSection({ data }: Props) {
 								{data?.ctaSection?.description || (
 									<>
 										Contactez-moi pour vérifier si j'interviens dans votre secteur. <br />
-										Basé à {CONTACT_INFO.address.city}, je peux étendre ma zone d'intervention selon vos besoins et la
-										nature de votre projet.
+										Basé à Monnières, je peux étendre ma zone d'intervention selon vos besoins et la nature de votre
+										projet.
 									</>
 								)}
 							</p>

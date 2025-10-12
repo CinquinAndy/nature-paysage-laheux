@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
+import { RichText } from '@/components/ui/rich-text'
+import { getMediaUrl, getMentionsLegalesPageData } from '@/lib/payload'
+import type { MentionsLegalesPage as MentionsLegalesPageType } from '@/payload-types'
 
 export const metadata: Metadata = {
 	title: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
@@ -9,13 +12,57 @@ export const metadata: Metadata = {
 	robots: 'noindex, follow',
 }
 
-export default function MentionsLegalesPage() {
+/**
+ * Add Lorem Ipsum fallback values to easily identify missing content
+ */
+function addLoremFallbacks(pageData: MentionsLegalesPageType): MentionsLegalesPageType {
+	return {
+		...pageData,
+		hero: {
+			...pageData.hero,
+			title: pageData.hero?.title || '🚨 LOREM: Mentions Légales',
+			image: pageData.hero?.image || null,
+		},
+		content: pageData.content || {
+			root: {
+				type: 'root',
+				children: [
+					{
+						type: 'paragraph',
+						version: 1,
+						children: [
+							{
+								type: 'text',
+								version: 1,
+								text: '🚨 LOREM: Contenu des mentions légales à remplir dans Payload CMS. Inclure : Éditeur du site, Agrément SAP, Crédits photographiques, Protection des données personnelles (RGPD), Limitation de responsabilité, Droit applicable.',
+							},
+						],
+					},
+				],
+				direction: null,
+				format: '',
+				indent: 0,
+				version: 1,
+			},
+		},
+	}
+}
+
+export default async function MentionsLegalesPage() {
+	// Fetch data from Payload CMS
+	const pageDataRaw = await getMentionsLegalesPageData()
+
+	// Add Lorem Ipsum fallbacks
+	const pageData = addLoremFallbacks(pageDataRaw)
+
+	const heroImageUrl = getMediaUrl(pageData.hero?.image)
+
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
-				title="Mentions Légales"
-				imageSrc="/usable/PXL_20251006_080220831.jpg"
+				title={pageData.hero?.title || 'Mentions Légales'}
+				imageSrc={heroImageUrl || '/usable/PXL_20251006_080220831.jpg'}
 				imageAlt="Mentions légales Nature et Paysage Laheux"
 			/>
 
@@ -42,42 +89,12 @@ export default function MentionsLegalesPage() {
 						Mentions Légales
 					</h1>
 
-					{/* Main Content */}
+					{/* Main Content from Payload CMS */}
 					<div className="mt-10 max-w-2xl text-gray-600">
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground first:mt-0">
-							Éditeur du site
-						</h2>
-						<p className="mt-6">
-							<strong className="font-semibold text-foreground">SASU Nature et Paysage Laheux</strong>
-							<br />
-							Représentée par Jean-Luc Laheux, Président
-						</p>
-						<p className="mt-4">
-							37 bis la Miniere
-							<br />
-							44690 Monnières
-							<br />
-							France
-						</p>
-						<p className="mt-4">
-							<strong className="font-semibold text-foreground">SIRET :</strong> [EN ATTENTE]
-							<br />
-							<strong className="font-semibold text-foreground">Email :</strong> nature.paysage.laheux@gmail.com
-							<br />
-							<strong className="font-semibold text-foreground">Téléphone :</strong> 06 31 04 34 45
-						</p>
-						<p className="mt-4">
-							<strong className="font-semibold text-foreground">Responsable de publication :</strong> Jean-Luc Laheux
-						</p>
+						<RichText content={pageData.content} />
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
-							Agrément Services à la Personne
-						</h2>
-						<p className="mt-6">
-							SASU Nature et Paysage Laheux est agréée Services à la Personne (SAP). Cet agrément nous autorise à
-							exercer les activités de petits travaux de jardinage éligibles au crédit d&apos;impôt prévu à
-							l&apos;article 199 sexdecies du Code général des impôts.
-						</p>
+						{/* HARDCODED SECTIONS - NON-EDITABLE VIA PAYLOAD */}
+						{/* These sections ensure proper attribution and copyright protection */}
 
 						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Hébergement du site
@@ -149,89 +166,6 @@ export default function MentionsLegalesPage() {
 							44115 Haute-Goulaine
 						</p>
 						<p className="mt-4">Toute violation fera l&apos;objet de poursuites.</p>
-
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
-							Crédits photographiques
-						</h2>
-						<p className="mt-6">Les photographies présentes sur ce site sont la propriété de :</p>
-						<ul className="mt-4 space-y-2 list-disc pl-6">
-							<li>Cinquin Andy (création et design)</li>
-							<li>Jean-Luc Laheux (photos de réalisations jardins)</li>
-						</ul>
-						<p className="mt-4">Toute utilisation sans autorisation est interdite.</p>
-
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
-							Protection des données personnelles
-						</h2>
-
-						<h3 className="mt-8 text-xl font-semibold text-foreground">Responsable du traitement</h3>
-						<p className="mt-4">
-							SASU Nature et Paysage Laheux
-							<br />
-							37 bis la Miniere
-							<br />
-							44690 Monnières
-							<br />
-							Email : nature.paysage.laheux@gmail.com
-						</p>
-
-						<h3 className="mt-8 text-xl font-semibold text-foreground">Données collectées</h3>
-						<p className="mt-4">
-							Dans le cadre de la gestion des demandes de devis et des prestations, nous collectons :
-						</p>
-						<ul className="mt-4 space-y-2 list-disc pl-6">
-							<li>Identité : civilité, nom, prénom</li>
-							<li>Coordonnées : adresse, email, téléphone</li>
-							<li>Informations sur votre jardin : surface, type de prestations souhaitées</li>
-							<li>Photos de votre jardin (avec votre accord)</li>
-						</ul>
-
-						<h3 className="mt-8 text-xl font-semibold text-foreground">Finalités</h3>
-						<p className="mt-4">Ces données sont utilisées exclusivement pour :</p>
-						<ul className="mt-4 space-y-2 list-disc pl-6">
-							<li>Traiter votre demande de devis</li>
-							<li>Réaliser les prestations commandées</li>
-							<li>Établir les factures et attestations fiscales</li>
-							<li>Gérer notre relation client</li>
-						</ul>
-
-						<h3 className="mt-8 text-xl font-semibold text-foreground">Vos droits</h3>
-						<p className="mt-4">
-							Conformément au RGPD, vous disposez des droits suivants : droit d&apos;accès, de rectification,
-							d&apos;effacement, de limitation du traitement, d&apos;opposition et de portabilité.
-						</p>
-						<p className="mt-4">
-							<strong className="font-semibold text-foreground">Pour exercer vos droits :</strong>
-							<br />
-							Email : nature.paysage.laheux@gmail.com
-							<br />
-							Courrier : SASU Nature et Paysage Laheux, 37 bis la Miniere, 44690 Monnières
-						</p>
-						<p className="mt-4">Nous vous répondrons dans un délai d&apos;un mois.</p>
-						<p className="mt-4">
-							<strong className="font-semibold text-foreground">Réclamation :</strong> Si vous estimez que vos droits ne
-							sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL : www.cnil.fr
-						</p>
-
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
-							Limitation de responsabilité
-						</h2>
-						<p className="mt-6">
-							SASU Nature et Paysage Laheux s&apos;efforce d&apos;assurer l&apos;exactitude des informations diffusées
-							sur ce site. Toutefois, nous ne pouvons garantir l&apos;exhaustivité ou l&apos;absence d&apos;erreur.
-						</p>
-
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
-							Droit applicable
-						</h2>
-						<p className="mt-6">
-							Le présent site et les présentes mentions légales sont régis par le droit français. En cas de litige, une
-							solution amiable sera recherchée avant toute action judiciaire.
-						</p>
-
-						<p className="mt-12 text-sm text-foreground">
-							<strong className="font-semibold">Date de dernière mise à jour :</strong> Janvier 2025
-						</p>
 					</div>
 				</div>
 			</div>

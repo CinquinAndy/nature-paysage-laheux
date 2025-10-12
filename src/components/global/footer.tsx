@@ -2,15 +2,17 @@ import { Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
-import { CONTACT_INFO } from '@/lib/data/contact-info'
-import { getRealisations, getServices } from '@/lib/payload'
+import { getRealisations, getServices, getSiteSettings } from '@/lib/payload'
 
 export async function Footer() {
 	const currentYear = new Date().getFullYear()
-	const [services, realisations] = await Promise.all([
+	const [services, realisations, siteSettings] = await Promise.all([
 		getServices(6), // Limit to 6 services for the footer
 		getRealisations(6), // Limit to 6 realisations for the footer
+		getSiteSettings(),
 	])
+
+	const contactInfo = siteSettings.contact
 
 	return (
 		<footer className="bg-muted/30 border-t">
@@ -26,7 +28,7 @@ export async function Footer() {
 							</div>
 						</div>
 						<p className="text-sm text-muted-foreground">
-							{CONTACT_INFO.address.city}, {CONTACT_INFO.address.region}
+							{contactInfo.address?.city}, {contactInfo.address?.region}
 						</p>
 						<p className="text-sm text-muted-foreground">
 							Services à la personne
@@ -112,50 +114,54 @@ export async function Footer() {
 						<ul className="space-y-3 text-sm">
 							<li>
 								<Link
-									href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
+									href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
 									className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
 								>
 									<Phone className="h-4 w-4" />
-									{CONTACT_INFO.phone}
+									{contactInfo.phone}
 								</Link>
 							</li>
 							<li>
 								<Link
-									href={`mailto:${CONTACT_INFO.email}`}
+									href={`mailto:${contactInfo.email}`}
 									className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors break-all"
 								>
 									<Mail className="h-4 w-4 shrink-0" />
-									{CONTACT_INFO.email}
+									{contactInfo.email}
 								</Link>
 							</li>
 							<li>
 								<div className="flex items-start gap-2 text-muted-foreground">
 									<MapPin className="h-4 w-4 shrink-0 mt-0.5" />
 									<span>
-										{CONTACT_INFO.address.postalCode} {CONTACT_INFO.address.city}
+										{contactInfo.address?.postalCode} {contactInfo.address?.city}
 									</span>
 								</div>
 							</li>
 						</ul>
 						<div className="flex items-center gap-3 pt-2">
-							<Link
-								href={CONTACT_INFO.social.facebook}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-muted-foreground hover:text-primary transition-colors"
-								aria-label="Facebook"
-							>
-								<Facebook className="h-5 w-5" />
-							</Link>
-							<Link
-								href={CONTACT_INFO.social.linkedin}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-muted-foreground hover:text-primary transition-colors"
-								aria-label="LinkedIn"
-							>
-								<Linkedin className="h-5 w-5" />
-							</Link>
+							{contactInfo.social?.facebook && (
+								<Link
+									href={contactInfo.social.facebook}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-muted-foreground hover:text-primary transition-colors"
+									aria-label="Facebook"
+								>
+									<Facebook className="h-5 w-5" />
+								</Link>
+							)}
+							{contactInfo.social?.linkedin && (
+								<Link
+									href={contactInfo.social.linkedin}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-muted-foreground hover:text-primary transition-colors"
+									aria-label="LinkedIn"
+								>
+									<Linkedin className="h-5 w-5" />
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>
@@ -165,7 +171,7 @@ export async function Footer() {
 				{/* Bottom section */}
 				<div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
 					<p>
-						© {currentYear} {CONTACT_INFO.company.name} - Tous droits réservés
+						© {currentYear} {contactInfo.company?.name || 'Nature et Paysage Laheux'} - Tous droits réservés
 					</p>
 					<p>
 						Developed & Designed with ❤️ by{' '}

@@ -74,32 +74,49 @@ export const Services: CollectionConfig = {
 			],
 			defaultValue: 'entretien',
 		},
-		{
-			name: 'features',
-			type: 'array',
-			required: true,
-			label: 'Points clés',
-			admin: {
-				description: 'Liste des avantages et caractéristiques (4 à 6 éléments)',
-			},
-			fields: [
-				{
-					name: 'feature',
-					type: 'text',
-					required: true,
-					label: 'Point clé',
-				},
-			],
+	{
+		name: 'features',
+		type: 'array',
+		required: true,
+		label: 'Points clés',
+		admin: {
+			description: 'Liste des avantages et caractéristiques (4 à 6 éléments)',
 		},
-		{
-			name: 'eligibleTaxCredit',
-			type: 'checkbox',
-			defaultValue: true,
-			label: "Éligible au crédit d'impôt",
-			admin: {
-				description: "Cette prestation est-elle éligible au crédit d'impôt de 50% ?",
+		fields: [
+			{
+				name: 'feature',
+				type: 'text',
+				required: true,
+				label: 'Point clé',
 			},
+		],
+	},
+	{
+		name: 'images',
+		type: 'array',
+		label: 'Images supplémentaires',
+		admin: {
+			description: "Galerie d'images additionnelles de la prestation",
 		},
+		fields: [
+			{
+				name: 'image',
+				type: 'upload',
+				relationTo: 'media',
+				required: true,
+				label: 'Image',
+			},
+		],
+	},
+	{
+		name: 'eligibleTaxCredit',
+		type: 'checkbox',
+		defaultValue: true,
+		label: "Éligible au crédit d'impôt",
+		admin: {
+			description: "Cette prestation est-elle éligible au crédit d'impôt de 50% ?",
+		},
+	},
 		{
 			name: 'price',
 			type: 'text',

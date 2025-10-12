@@ -8,7 +8,7 @@ import { toast } from 'sonner'
 import { type ContactFormData, submitContactForm } from '@/actions/contact'
 import { AddressAutocomplete } from '@/components/ui/address-autocomplete'
 import { Button } from '@/components/ui/button'
-import { CONTACT_INFO } from '@/lib/data/contact-info'
+import type { ContactPage, SiteSetting } from '@/payload-types'
 
 const containerVariants = {
 	hidden: { opacity: 0 },
@@ -32,7 +32,18 @@ const itemVariants = {
 	},
 }
 
-export function ModernContactForm() {
+interface ModernContactFormProps {
+	formSection?: ContactPage['formSection']
+	contactInfo: SiteSetting['contact']
+	benefits?:
+		| {
+				benefit?: string | null
+				id?: string | null
+		  }[]
+		| null
+}
+
+export function ModernContactForm({ formSection, contactInfo, benefits }: ModernContactFormProps) {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -86,6 +97,14 @@ export function ModernContactForm() {
 		}
 	}
 
+	// Format phone for href
+	const phoneHref = contactInfo.phone.replace(/\s/g, '')
+
+	// Format full address
+	const fullAddress = [contactInfo.address?.postalCode, contactInfo.address?.city, contactInfo.address?.region]
+		.filter(Boolean)
+		.join(' ')
+
 	return (
 		<div className="relative isolate bg-background px-6 py-24 sm:py-32 lg:px-8">
 			{/* Background Pattern */}
@@ -114,9 +133,12 @@ export function ModernContactForm() {
 				variants={containerVariants}
 			>
 				<motion.div variants={itemVariants} className="text-center lg:text-left">
-					<h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Parlons de Votre Jardin</h2>
+					<h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+						{formSection?.title || 'Parlons de Votre Jardin'}
+					</h2>
 					<p className="mt-4 text-lg text-muted-foreground">
-						Demandez votre devis gratuit et bénéficiez de 50% de crédit d'impôt sur vos prestations.
+						{formSection?.subtitle ||
+							"Demandez votre devis gratuit et bénéficiez de 50% de crédit d'impôt sur vos prestations."}
 					</p>
 				</motion.div>
 
@@ -248,11 +270,11 @@ export function ModernContactForm() {
 										}`}
 									>
 										<option value="">Sélectionnez...</option>
-										<option value="<100">Moins de 100m²</option>
-										<option value="100-300">100-300m²</option>
-										<option value="300-500">300-500m²</option>
-										<option value="500-1000">500-1000m²</option>
-										<option value=">1000">Plus de 1000m²</option>
+										{formSection?.gardenSizeOptions?.map(option => (
+											<option key={option.id || option.value} value={option.value}>
+												{option.label}
+											</option>
+										))}
 									</select>
 								</div>
 							</motion.div>
@@ -302,8 +324,8 @@ export function ModernContactForm() {
 						</motion.div>
 
 						<motion.p variants={itemVariants} className="mt-4 text-sm text-muted-foreground">
-							En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande.
-							Réponse sous 48h maximum.
+							{formSection?.privacyText ||
+								'En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande. Réponse sous 48h maximum.'}
 						</motion.p>
 					</motion.form>
 
@@ -321,10 +343,10 @@ export function ModernContactForm() {
 									<div>
 										<p className="text-sm font-semibold text-foreground">Téléphone</p>
 										<Link
-											href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
+											href={`tel:${phoneHref}`}
 											className="text-base text-muted-foreground hover:text-primary transition-colors"
 										>
-											{CONTACT_INFO.phone}
+											{contactInfo.phone}
 										</Link>
 										<p className="text-xs text-muted-foreground mt-1">Le moyen le plus rapide</p>
 									</div>
@@ -339,10 +361,10 @@ export function ModernContactForm() {
 									<div>
 										<p className="text-sm font-semibold text-foreground">Email</p>
 										<Link
-											href={`mailto:${CONTACT_INFO.email}`}
+											href={`mailto:${contactInfo.email}`}
 											className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
 										>
-											{CONTACT_INFO.email}
+											{contactInfo.email}
 										</Link>
 										<p className="text-xs text-muted-foreground mt-1">Réponse sous 48h</p>
 									</div>
@@ -356,7 +378,7 @@ export function ModernContactForm() {
 									</div>
 									<div>
 										<p className="text-sm font-semibold text-foreground">Adresse</p>
-										<p className="text-sm text-muted-foreground">{CONTACT_INFO.address.full}</p>
+										<p className="text-sm text-muted-foreground">{fullAddress}</p>
 									</div>
 								</div>
 
@@ -369,29 +391,21 @@ export function ModernContactForm() {
 									<div>
 										<p className="text-sm font-semibold text-foreground">Horaires</p>
 										<p className="text-sm text-muted-foreground">Lundi - Vendredi</p>
-										<p className="text-sm text-muted-foreground">{CONTACT_INFO.hours.weekday}</p>
+										<p className="text-sm text-muted-foreground">{contactInfo.hours?.weekday}</p>
 									</div>
 								</div>
 							</div>
 
 							{/* Benefits */}
 							<div className="mt-8 space-y-3 pt-8 border-t border-border">
-								<div className="flex items-center gap-3">
-									<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-									<span className="text-sm text-muted-foreground">Devis gratuit et sans engagement</span>
-								</div>
-								<div className="flex items-center gap-3">
-									<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-									<span className="text-sm text-muted-foreground">Visite gratuite</span>
-								</div>
-								<div className="flex items-center gap-3">
-									<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-									<span className="text-sm text-muted-foreground">Réponse sous 48h</span>
-								</div>
-								<div className="flex items-center gap-3">
-									<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-									<span className="text-sm text-muted-foreground">50% de crédit d'impôt</span>
-								</div>
+								{benefits?.map(item =>
+									item.benefit ? (
+										<div key={item.id} className="flex items-center gap-3">
+											<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
+											<span className="text-sm text-muted-foreground">{item.benefit}</span>
+										</div>
+									) : null
+								)}
 							</div>
 						</div>
 					</motion.div>
