@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageHero } from '@/components/sections/shared/page-hero'
+import { Breadcrumb } from '@/components/ui/breadcrumb'
 
 export const metadata: Metadata = {
 	title: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function MentionsLegalesPage() {
 	return (
-		<div className="min-h-screen bg-background">
+		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
 				title="Mentions Légales"
@@ -18,10 +19,33 @@ export default function MentionsLegalesPage() {
 				imageAlt="Mentions légales Nature et Paysage Laheux"
 			/>
 
-			{/* Content */}
-			<section className="py-12 md:py-16">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-4xl mx-auto prose prose-gray">
+			{/* Breadcrumb Navigation */}
+			<div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+				<div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+					<Breadcrumb
+						items={[
+							{ label: 'Accueil', href: '/' },
+							{ label: 'Mentions Légales', href: '/mentions-legales' },
+						]}
+					/>
+				</div>
+			</div>
+
+			{/* Article Content in Prose Style */}
+			<div className="bg-white px-6 py-16 lg:px-8 dark:bg-gray-900">
+				<div className="mx-auto max-w-3xl text-base/7 text-gray-700 dark:text-gray-300">
+					{/* Category Badge */}
+					<p className="text-base/7 font-semibold text-emerald-600 dark:text-emerald-400">
+						Informations Légales
+					</p>
+
+					{/* Title */}
+					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
+						Mentions Légales
+					</h1>
+
+					{/* Main Content */}
+					<div className="mt-10 max-w-2xl text-gray-600 dark:text-gray-400">
 						<h2>Éditeur du site</h2>
 						<p>
 							<strong>SASU Nature et Paysage Laheux</strong>

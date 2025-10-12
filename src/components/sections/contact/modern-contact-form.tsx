@@ -1,11 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { CheckCircle2, Clock, Mail, MapPin, Phone, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
+import { AddressAutocomplete } from '@/components/ui/address-autocomplete'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
+import { submitContactForm, type ContactFormData } from '@/actions/contact'
 
 const containerVariants = {
 	hidden: { opacity: 0 },
@@ -42,11 +45,45 @@ export function ModernContactForm() {
 	})
 
 	const [focusedField, setFocusedField] = useState<string | null>(null)
+	const [isSubmitting, setIsSubmitting] = useState(false)
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		console.log('Form submitted:', formData)
-		alert('Merci pour votre demande ! Je vous répondrai sous 48h.')
+		setIsSubmitting(true)
+
+		try {
+			const result = await submitContactForm(formData as ContactFormData)
+
+			if (result.success) {
+				toast.success('Message envoyé !', {
+					description: 'Votre demande a été envoyée avec succès ! Je vous répondrai sous 48h.',
+					duration: 5000,
+				})
+				// Réinitialiser le formulaire
+				setFormData({
+					name: '',
+					email: '',
+					phone: '',
+					address: '',
+					city: '',
+					postalCode: '',
+					message: '',
+					gardenSize: '',
+				})
+			} else {
+				toast.error('Erreur', {
+					description: result.message,
+					duration: 5000,
+				})
+			}
+		} catch (error) {
+			toast.error('Erreur', {
+				description: "Une erreur inattendue s'est produite. Veuillez réessayer.",
+				duration: 5000,
+			})
+		} finally {
+			setIsSubmitting(false)
+		}
 	}
 
 	return (
@@ -168,20 +205,25 @@ export function ModernContactForm() {
 									Adresse du jardin
 								</label>
 								<div className="mt-2.5">
-									<input
-										id="address"
-										name="address"
-										type="text"
+									<AddressAutocomplete
 										value={formData.address}
-										onChange={e => setFormData({ ...formData, address: e.target.value })}
+										onChange={value => setFormData({ ...formData, address: value })}
+										onSelect={address => {
+											setFormData({
+												...formData,
+												address: address.properties.label,
+												city: address.properties.city,
+												postalCode: address.properties.postcode,
+											})
+										}}
 										onFocus={() => setFocusedField('address')}
 										onBlur={() => setFocusedField(null)}
+										placeholder="Commencez à taper une adresse..."
 										className={`block w-full rounded-lg bg-background px-4 py-3 text-base text-foreground border-2 transition-all duration-200 placeholder:text-muted-foreground focus:outline-none ${
 											focusedField === 'address'
 												? 'border-primary shadow-lg shadow-primary/20'
 												: 'border-border hover:border-primary/50'
 										}`}
-										placeholder="12 rue de la Nature"
 									/>
 								</div>
 							</motion.div>
@@ -245,9 +287,17 @@ export function ModernContactForm() {
 							<Button
 								type="submit"
 								size="lg"
-								className="w-full sm:w-auto px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+								disabled={isSubmitting}
+								className="w-full sm:w-auto px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
 							>
-								Envoyer ma demande
+								{isSubmitting ? (
+									<>
+										<Loader2 className="mr-2 h-5 w-5 animate-spin" />
+										Envoi en cours...
+									</>
+								) : (
+									'Envoyer ma demande'
+								)}
 							</Button>
 						</motion.div>
 

@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
+import { SERVICES } from '@/lib/data/services'
+import { REALISATIONS } from '@/lib/data/realisations'
 
 export function Footer() {
 	const currentYear = new Date().getFullYear()
@@ -10,7 +12,7 @@ export function Footer() {
 	return (
 		<footer className="bg-muted/30 border-t">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
 					{/* Column 1: About */}
 					<div className="space-y-4">
 						<div className="flex items-center gap-2">
@@ -70,17 +72,38 @@ export function Footer() {
 					{/* Column 3: Services */}
 					<div className="space-y-4">
 						<h3 className="font-semibold text-base">Mes Prestations</h3>
-						<ul className="space-y-2 text-sm text-muted-foreground">
-							<li>Tonte Écologique</li>
-							<li>Désherbage Naturel</li>
-							<li>Taille Raisonnée</li>
-							<li>Potager Permaculture</li>
-							<li>Entretien Massifs</li>
-							<li>Accompagnement Annuel</li>
+						<ul className="space-y-2 text-sm">
+							{SERVICES.map(service => (
+								<li key={service.id}>
+									<Link
+										href={`/prestations/${service.id}`}
+										className="text-muted-foreground hover:text-primary transition-colors"
+									>
+										{service.title.length > 30 ? service.title.substring(0, 30) + '...' : service.title}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
 
-					{/* Column 4: Contact */}
+					{/* Column 4: Recent Projects */}
+					<div className="space-y-4">
+						<h3 className="font-semibold text-base">Dernières Réalisations</h3>
+						<ul className="space-y-2 text-sm">
+							{REALISATIONS.slice(0, 6).map(realisation => (
+								<li key={realisation.id}>
+									<Link
+										href={`/realisations/${realisation.id}`}
+										className="text-muted-foreground hover:text-primary transition-colors"
+									>
+										{realisation.title}
+									</Link>
+								</li>
+							))}
+						</ul>
+					</div>
+
+					{/* Column 5: Contact */}
 					<div className="space-y-4">
 						<h3 className="font-semibold text-base">Contact</h3>
 						<ul className="space-y-3 text-sm">

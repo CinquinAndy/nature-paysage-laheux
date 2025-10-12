@@ -4,6 +4,7 @@ import type React from 'react'
 import '@/app/(frontend)/global.css'
 import { Footer } from '@/components/global/footer'
 import { NavigationBar } from '@/components/global/navigationbar'
+import { Toaster } from '@/components/ui/sonner'
 
 // Apple Garamond pour les titres
 const appleGaramond = localFont({
@@ -77,6 +78,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 				<NavigationBar />
 				<main>{children}</main>
 				<Footer />
+				<Toaster />
 			</body>
 		</html>
 	)

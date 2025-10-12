@@ -52,10 +52,7 @@ export default function ImageGalleryModal({ images }: ImageGalleryModalProps) {
 					{/* Gallery Grid */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 						{images.map((image, index) => (
-							<div
-								key={index}
-								className="relative group aspect-square overflow-hidden rounded-lg bg-gray-100"
-							>
+							<div key={index} className="relative group aspect-square overflow-hidden rounded-lg bg-gray-100">
 								<Image
 									src={image.src}
 									alt={image.alt}

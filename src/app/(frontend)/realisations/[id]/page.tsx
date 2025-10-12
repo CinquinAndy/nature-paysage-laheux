@@ -1,12 +1,13 @@
-import { ArrowLeft, Calendar, MapPin } from 'lucide-react'
+import { Calendar, CheckCircle, MapPin } from 'lucide-react'
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { PageHero } from '@/components/sections/shared/page-hero'
-import { Badge } from '@/components/ui/badge'
-import { CtaShader } from '@/components/ui/cta-shader'
+import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { REALISATIONS } from '@/lib/data/realisations'
+
+// Lazy load the image gallery modal
+const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
 
 interface RealisationPageProps {
 	params: Promise<{
@@ -56,136 +57,146 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 		notFound()
 	}
 
-	// Trouver d'autres réalisations similaires (même catégorie)
-	const similarRealisations = REALISATIONS.filter(
-		r => r.category === realisation.category && r.id !== realisation.id
-	).slice(0, 3)
+	// Mock gallery images - will be replaced with Payload CMS data later
+	const galleryImages = [
+		{ src: realisation.image, alt: realisation.title },
+		...(realisation.images?.map(img => ({ src: img, alt: realisation.title })) || []),
+		// Add some default images if not enough
+		{ src: '/usable/IMG_20231117_093237.jpg', alt: 'Photo 1' },
+		{ src: '/usable/IMG_20240310_161440.jpg', alt: 'Photo 2' },
+		{ src: '/usable/IMG_20250402_142527.jpg', alt: 'Photo 3' },
+	]
 
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
-			<PageHero title={realisation.title} imageSrc={realisation.image} imageAlt={realisation.title} />
+			<PageHero
+				title={realisation.title}
+				imageSrc={realisation.image}
+				imageAlt={realisation.title}
+				action={<ImageGalleryModal images={galleryImages} />}
+			/>
 
-			{/* Back Button */}
-			<section className="py-6 border-b">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<Link
-						href="/realisations"
-						className="inline-flex items-center gap-2 text-primary hover:underline font-semibold"
-					>
-						<ArrowLeft className="w-4 h-4" />
-						Retour aux réalisations
-					</Link>
+			{/* Breadcrumb Navigation */}
+			<div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+				<div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+					<Breadcrumb
+						items={[
+							{ label: 'Accueil', href: '/' },
+							{ label: 'Réalisations', href: '/realisations' },
+							{ label: realisation.title, href: `/realisations/${realisation.id}` },
+						]}
+					/>
 				</div>
-			</section>
+			</div>
 
-			{/* Content */}
-			<section className="py-12 md:py-16">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-4xl mx-auto">
-						{/* Meta Info */}
-						<div className="flex flex-wrap items-center gap-4 mb-8">
-							<Badge variant="outline" className="flex items-center gap-2 px-4 py-2 text-sm">
-								<Calendar className="w-4 h-4" />
-								{formatDate(realisation.date)}
-							</Badge>
-							<Badge variant="outline" className="flex items-center gap-2 px-4 py-2 text-sm">
-								<MapPin className="w-4 h-4" />
-								{realisation.location}
-							</Badge>
-							<Badge variant="default" className="px-4 py-2 text-sm capitalize">
-								{realisation.category}
-							</Badge>
+			{/* Article Content in Prose Style */}
+			<div className="bg-white px-6 py-16 lg:px-8 dark:bg-gray-900">
+				<div className="mx-auto max-w-3xl text-base/7 text-gray-700 dark:text-gray-300">
+					{/* Category Badge */}
+					<p className="text-base/7 font-semibold text-emerald-600 dark:text-emerald-400 capitalize">
+						{realisation.category}
+					</p>
+
+					{/* Title */}
+					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
+						{realisation.title}
+					</h1>
+
+					{/* Meta Info */}
+					<div className="mt-6 flex flex-wrap items-center gap-4">
+						<div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+							<Calendar className="size-4" />
+							<span>{formatDate(realisation.date)}</span>
 						</div>
-
-						{/* Features */}
-						<div className="mb-8">
-							<h2 className="text-2xl font-bold mb-4">Caractéristiques</h2>
-							<div className="flex flex-wrap gap-2">
-								{realisation.features.map(feature => (
-									<Badge key={feature} variant="secondary" className="px-3 py-1">
-										{feature}
-									</Badge>
-								))}
-							</div>
+						<div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+							<MapPin className="size-4" />
+							<span>{realisation.location}</span>
 						</div>
+					</div>
 
-						{/* Description */}
-						<div className="mb-12">
-							<h2 className="text-2xl font-bold mb-4">Description du Projet</h2>
-							<p className="text-lg text-muted-foreground leading-relaxed">{realisation.description}</p>
-						</div>
+					{/* Short Description */}
+					<p className="mt-6 text-xl/8">{realisation.shortDescription}</p>
 
-						{/* Additional Images if available */}
-						{realisation.images && realisation.images.length > 0 && (
-							<div className="mb-12">
-								<h2 className="text-2xl font-bold mb-4">Galerie Photos</h2>
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-									{realisation.images.map(img => (
-										<div key={img} className="relative aspect-[4/3] overflow-hidden rounded-lg">
-											<Image src={img} alt={`${realisation.title} - ${img}`} fill className="object-cover" />
-										</div>
-									))}
-								</div>
-							</div>
-						)}
+					{/* Main Content */}
+					<div className="mt-10 max-w-2xl text-gray-600 dark:text-gray-400">
+						<h2 className="text-2xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Description du Projet
+						</h2>
+						<p className="mt-4">{realisation.description}</p>
+
+						{/* Features List */}
+						<h3 className="mt-12 text-xl font-semibold text-gray-900 dark:text-white">Caractéristiques</h3>
+						<ul role="list" className="mt-6 max-w-xl space-y-4 text-gray-600 dark:text-gray-400">
+							{realisation.features.map((feature, index) => (
+								<li key={index} className="flex gap-x-3">
+									<CheckCircle
+										aria-hidden="true"
+										className="mt-1 size-5 flex-none text-emerald-600 dark:text-emerald-400"
+									/>
+									<span>
+										<strong className="font-semibold text-gray-900 dark:text-white">{feature}</strong>
+									</span>
+								</li>
+							))}
+						</ul>
+
+						{/* Process Section */}
+						<h2 className="mt-16 text-2xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+							Une approche écologique et respectueuse
+						</h2>
+						<p className="mt-6">
+							Chaque projet est réalisé avec une attention particulière portée à l&apos;environnement et à la
+							biodiversité locale. Mon engagement est de créer des espaces verts durables qui respectent
+							l&apos;écosystème et favorisent la vie du sol.
+						</p>
 
 						{/* Tax Credit Info */}
-						<div className="bg-primary/5 border border-primary/20 rounded-lg p-6 mb-12">
-							<h3 className="text-xl font-bold text-primary mb-2">Crédit d'Impôt</h3>
-							<p className="text-muted-foreground">
-								Cette prestation a bénéficié de <strong>50% de crédit d'impôt</strong> pour mon client. Toutes mes
-								prestations à domicile sont éligibles à cet avantage fiscal.
+						<div className="mt-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 p-6 border border-emerald-200 dark:border-emerald-800">
+							<h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-100">
+								Bénéficiez de 50% de crédit d&apos;impôt
+							</h3>
+							<p className="mt-2 text-sm text-emerald-800 dark:text-emerald-200">
+								Cette réalisation a bénéficié du crédit d&apos;impôt Services à la Personne. Toutes mes prestations sont
+								éligibles, l&apos;État vous rembourse 50% du montant payé.
 							</p>
+						</div>
+
+						{/* Client Testimonial (if available) */}
+						<div className="mt-16">
+							<h3 className="text-xl font-semibold text-gray-900 dark:text-white">Le mot du client</h3>
+							<figure className="mt-6 border-l-4 border-emerald-600 dark:border-emerald-400 pl-6">
+								<blockquote className="text-gray-700 dark:text-gray-300 italic">
+									<p>
+										&quot;Un travail soigné et respectueux de notre jardin. Jean-Luc a su comprendre nos besoins et
+										proposer des solutions écologiques adaptées. Nous sommes ravis du résultat !&quot;
+									</p>
+								</blockquote>
+								<figcaption className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+									— Client satisfait, {realisation.location}
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					{/* CTA Section */}
+					<div className="mt-16 max-w-2xl">
+						<div className="rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 text-center">
+							<h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Un projet similaire ?</h2>
+							<p className="mt-4 text-gray-600 dark:text-gray-400">
+								Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble. Bénéficiez de 50%
+								de crédit d&apos;impôt sur toutes mes prestations.
+							</p>
+							<a
+								href="/contact"
+								className="mt-6 inline-block rounded-lg bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-emerald-700 transition-colors duration-200"
+							>
+								Demander un devis gratuit
+							</a>
 						</div>
 					</div>
 				</div>
-			</section>
-
-			{/* Similar Realisations */}
-			{similarRealisations.length > 0 && (
-				<section className="py-12 bg-muted/30">
-					<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-						<h2 className="text-3xl font-bold mb-8 text-center">Réalisations Similaires</h2>
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-							{similarRealisations.map(similar => (
-								<Link
-									key={similar.id}
-									href={`/realisations/${similar.id}`}
-									className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all"
-								>
-									<Image
-										src={similar.image}
-										alt={similar.title}
-										fill
-										className="object-cover group-hover:scale-105 transition-transform duration-300"
-									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-										<div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-											<h3 className="font-bold mb-1">{similar.title}</h3>
-											<p className="text-xs text-white/80">{similar.location}</p>
-										</div>
-									</div>
-								</Link>
-							))}
-						</div>
-					</div>
-				</section>
-			)}
-
-			{/* CTA Section */}
-			<CtaShader
-				title="Un Projet Similaire ?"
-				description="Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble."
-				buttonText="Demander un Devis Gratuit"
-				buttonUrl="/contact"
-				items={[
-					'Visite et conseil gratuits',
-					'Approche écologique garantie',
-					'Réponse sous 48h',
-					"50% de crédit d'impôt sur toutes mes prestations",
-				]}
-			/>
+			</div>
 		</div>
 	)
 }

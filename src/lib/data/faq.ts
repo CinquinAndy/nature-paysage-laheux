@@ -99,7 +99,7 @@ export const FAQ_ITEMS: FaqItem[] = [
 		id: 'paiement',
 		question: 'Quels moyens de paiement acceptez-vous ?',
 		answer:
-			"J'accepte les chèques, virements bancaires et CESU préfinancés (Chèque Emploi Service Universel). Le paiement s'effectue après la prestation. Pour les contrats réguliers, nous pouvons convenir d'un échéancier de paiement mensuel.",
+			"J'accepte les chèques, virements bancaires et CESU préfinancés (Chèque Emploi Service Universel). Le paiement s'effectue après la prestation. Pour les contrats réguliers, je peux convenir avec vous d'un échéancier de paiement mensuel.",
 		category: 'tarifs',
 	},
 

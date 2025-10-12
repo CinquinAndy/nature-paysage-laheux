@@ -78,14 +78,14 @@ const steps: readonly Step[] = [
 		id: '1',
 		name: 'Étape 1',
 		title: 'Vous réalisez vos travaux',
-		description: 'Nous effectuons vos travaux de jardinage à votre domicile avec notre expertise professionnelle.',
+		description: "J'effectue vos travaux de jardinage à votre domicile avec mon expertise professionnelle.",
 	},
 	{
 		id: '2',
 		name: 'Étape 2',
 		title: 'Vous recevez votre attestation fiscale',
 		description:
-			"En début d'année, nous vous envoyons automatiquement votre attestation fiscale pour votre déclaration.",
+			"En début d'année, je vous envoie automatiquement votre attestation fiscale pour votre déclaration.",
 	},
 	{
 		id: '3',
