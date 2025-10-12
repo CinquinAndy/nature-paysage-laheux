@@ -14,7 +14,8 @@
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"payload": "payload",
-		"start": "next start"
+		"start": "next start",
+		"migrate": "tsx src/scripts/migrate-data.ts"
 	},
 	"dependencies": {
 		"@paper-design/shaders-react": "0.0.57",
@@ -69,6 +70,7 @@
 		"@types/react-dom": "19.2.1",
 		"@vitejs/plugin-react": "5.0.4",
 		"jsdom": "27.0.0",
+		"tsx": "^4.20.6",
 		"tw-animate-css": "1.4.0",
 		"typescript": "5.9.3",
 		"vite-tsconfig-paths": "5.1.4"
