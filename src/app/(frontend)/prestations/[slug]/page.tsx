@@ -64,7 +64,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 			/>
 
 			{/* Breadcrumb Navigation */}
-			<div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+			<div className="bg-white  border-b border-gray-200 ">
 				<div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
 					<Breadcrumb
 						items={[
@@ -77,15 +77,13 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 			</div>
 
 			{/* Article Content in Prose Style */}
-			<div className="bg-white px-6 py-16 lg:px-8 dark:bg-gray-900">
-				<div className="mx-auto max-w-3xl text-base/7 text-gray-700 dark:text-gray-300">
+			<div className="bg-white px-6 py-16 lg:px-8 ">
+				<div className="mx-auto max-w-3xl text-base/7 text-gray-700">
 					{/* Category Badge */}
-					<p className="text-base/7 font-semibold text-emerald-600 dark:text-emerald-400 capitalize">
-						{service.category}
-					</p>
+					<p className="text-base/7 font-semibold text-emerald-600 capitalize">{service.category}</p>
 
 					{/* Title */}
-					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
+					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
 						{service.title}
 					</h1>
 
@@ -93,19 +91,16 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 					<p className="mt-6 text-xl/8">{service.shortDescription}</p>
 
 					{/* Main Content */}
-					<div className="mt-10 max-w-2xl text-gray-600 dark:text-gray-400">
+					<div className="mt-10 max-w-2xl text-gray-600">
 						<p>{service.fullDescription}</p>
 
 						{/* Features List */}
-						<ul role="list" className="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-gray-400">
+						<ul className="mt-8 max-w-xl space-y-8 text-gray-600">
 							{service.features.map((feature, index) => (
 								<li key={index} className="flex gap-x-3">
-									<CheckCircle
-										aria-hidden="true"
-										className="mt-1 size-5 flex-none text-emerald-600 dark:text-emerald-400"
-									/>
+									<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
 									<span>
-										<strong className="font-semibold text-gray-900 dark:text-white">{feature.split('.')[0]}.</strong>{' '}
+										<strong className="font-semibold text-foreground">{feature.split('.')[0]}.</strong>{' '}
 										{feature.split('.').slice(1).join('.') || 'Un service de qualité professionnelle.'}
 									</span>
 								</li>
@@ -113,7 +108,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 						</ul>
 
 						{/* Additional Content Section */}
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Une approche écologique et respectueuse
 						</h2>
 						<p className="mt-6">
@@ -124,11 +119,11 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 
 						{/* Tax Credit Info */}
 						{service.eligibleTaxCredit && (
-							<div className="mt-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 p-6 border border-emerald-200 dark:border-emerald-800">
-								<h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-100">
+							<div className="mt-10 rounded-2xl bg-emerald-50 p-6 border border-emerald-200">
+								<h3 className="text-lg font-semibold text-emerald-900">
 									Bénéficiez de 50% de crédit d&apos;impôt
 								</h3>
-								<p className="mt-2 text-sm text-emerald-800 dark:text-emerald-200">
+								<p className="mt-2 text-sm text-emerald-800">
 									Cette prestation est éligible au crédit d&apos;impôt Services à la Personne. L&apos;État vous
 									rembourse 50% du montant payé, soit un vrai tarif divisé par deux.
 								</p>
@@ -137,9 +132,9 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 
 						{/* Pricing */}
 						<div className="mt-10">
-							<h3 className="text-xl font-semibold text-gray-900 dark:text-white">Tarification</h3>
-							<p className="mt-2 text-lg font-medium text-emerald-600 dark:text-emerald-400">{service.price}</p>
-							<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+							<h3 className="text-xl font-semibold text-foreground">Tarification</h3>
+							<p className="mt-2 text-lg font-medium text-emerald-600">{service.price}</p>
+							<p className="mt-2 text-sm text-gray-600">
 								Chaque jardin est unique. Je me déplace gratuitement pour évaluer vos besoins et vous proposer un devis
 								personnalisé et sans engagement.
 							</p>
@@ -148,9 +143,9 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 
 					{/* CTA Section */}
 					<div className="mt-16 max-w-2xl">
-						<div className="rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 text-center">
-							<h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Intéressé par cette prestation ?</h2>
-							<p className="mt-4 text-gray-600 dark:text-gray-400">
+						<div className="rounded-2xl bg-gray-50 p-8 text-center">
+							<h2 className="text-2xl font-semibold text-foreground">Intéressé par cette prestation ?</h2>
+							<p className="mt-4 text-gray-600">
 								Demandez votre devis gratuit et bénéficiez de 50% de crédit d&apos;impôt sur toutes mes prestations.
 							</p>
 							<a

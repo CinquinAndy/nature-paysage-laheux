@@ -51,9 +51,9 @@ export const NavigationBar = () => {
 							key={`mobile-link-${item.name}`}
 							href={item.link}
 							onClick={() => setIsMobileMenuOpen(false)}
-							className="relative text-black  font-semibold text-lg hover:text-primary transition-colors"
+							className="relative text-foreground  font-semibold text-lg hover:text-primary transition-colors"
 						>
-							<span className="block text-shadow-lg">{item.name}</span>
+							<span className="block">{item.name}</span>
 						</Link>
 					))}
 					<div className="flex w-full flex-col gap-4">

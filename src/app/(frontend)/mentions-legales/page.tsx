@@ -20,7 +20,7 @@ export default function MentionsLegalesPage() {
 			/>
 
 			{/* Breadcrumb Navigation */}
-			<div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+			<div className="bg-white border-b border-gray-200">
 				<div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
 					<Breadcrumb
 						items={[
@@ -32,27 +32,23 @@ export default function MentionsLegalesPage() {
 			</div>
 
 			{/* Article Content in Prose Style */}
-			<div className="bg-white px-6 py-16 lg:px-8 dark:bg-gray-900">
-				<div className="mx-auto max-w-3xl text-base/7 text-gray-700 dark:text-gray-300">
+			<div className="bg-white px-6 py-16 lg:px-8">
+				<div className="mx-auto max-w-3xl text-base/7 text-gray-700">
 					{/* Category Badge */}
-					<p className="text-base/7 font-semibold text-emerald-600 dark:text-emerald-400">
-						Informations Légales
-					</p>
+					<p className="text-base/7 font-semibold text-emerald-600">Informations Légales</p>
 
 					{/* Title */}
-					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
+					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
 						Mentions Légales
 					</h1>
 
 					{/* Main Content */}
-					<div className="mt-10 max-w-2xl text-gray-600 dark:text-gray-400">
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white first:mt-0">
+					<div className="mt-10 max-w-2xl text-gray-600">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground first:mt-0">
 							Éditeur du site
 						</h2>
 						<p className="mt-6">
-							<strong className="font-semibold text-gray-900 dark:text-white">
-								SASU Nature et Paysage Laheux
-							</strong>
+							<strong className="font-semibold text-foreground">SASU Nature et Paysage Laheux</strong>
 							<br />
 							Représentée par Jean-Luc Laheux, Président
 						</p>
@@ -64,19 +60,17 @@ export default function MentionsLegalesPage() {
 							France
 						</p>
 						<p className="mt-4">
-							<strong className="font-semibold text-gray-900 dark:text-white">SIRET :</strong> [EN ATTENTE]
+							<strong className="font-semibold text-foreground">SIRET :</strong> [EN ATTENTE]
 							<br />
-							<strong className="font-semibold text-gray-900 dark:text-white">Email :</strong>{' '}
-							nature.paysage.laheux@gmail.com
+							<strong className="font-semibold text-foreground">Email :</strong> nature.paysage.laheux@gmail.com
 							<br />
-							<strong className="font-semibold text-gray-900 dark:text-white">Téléphone :</strong> 06 31 04 34 45
+							<strong className="font-semibold text-foreground">Téléphone :</strong> 06 31 04 34 45
 						</p>
 						<p className="mt-4">
-							<strong className="font-semibold text-gray-900 dark:text-white">Responsable de publication :</strong>{' '}
-							Jean-Luc Laheux
+							<strong className="font-semibold text-foreground">Responsable de publication :</strong> Jean-Luc Laheux
 						</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Agrément Services à la Personne
 						</h2>
 						<p className="mt-6">
@@ -85,13 +79,13 @@ export default function MentionsLegalesPage() {
 							l&apos;article 199 sexdecies du Code général des impôts.
 						</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Hébergement du site
 						</h2>
 						<p className="mt-6">
 							Ce site est hébergé par :
 							<br />
-							<strong className="font-semibold text-gray-900 dark:text-white">netcup GmbH</strong>
+							<strong className="font-semibold text-foreground">netcup GmbH</strong>
 							<br />
 							Daimlerstraße 25
 							<br />
@@ -100,13 +94,11 @@ export default function MentionsLegalesPage() {
 							Allemagne
 						</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Création du site internet
 						</h2>
 						<p className="mt-6">
-							<strong className="font-semibold text-gray-900 dark:text-white">
-								Conception, développement et design :
-							</strong>
+							<strong className="font-semibold text-foreground">Conception, développement et design :</strong>
 						</p>
 						<p className="mt-4">
 							Cinquin Andy
@@ -123,7 +115,7 @@ export default function MentionsLegalesPage() {
 								href="https://andy-cinquin.fr"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="text-emerald-600 dark:text-emerald-400 hover:underline"
+								className="text-emerald-600 hover:underline"
 							>
 								https://andy-cinquin.fr
 							</Link>
@@ -133,7 +125,7 @@ export default function MentionsLegalesPage() {
 							hébergement.
 						</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Droit d&apos;auteur et propriété intellectuelle
 						</h2>
 						<p className="mt-6">
@@ -147,7 +139,7 @@ export default function MentionsLegalesPage() {
 							Code de la propriété intellectuelle.
 						</p>
 						<p className="mt-4">
-							<strong className="font-semibold text-gray-900 dark:text-white">Titulaire des droits :</strong>
+							<strong className="font-semibold text-foreground">Titulaire des droits :</strong>
 							<br />
 							Cinquin Andy
 							<br />
@@ -158,21 +150,21 @@ export default function MentionsLegalesPage() {
 						</p>
 						<p className="mt-4">Toute violation fera l&apos;objet de poursuites.</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Crédits photographiques
 						</h2>
 						<p className="mt-6">Les photographies présentes sur ce site sont la propriété de :</p>
-						<ul role="list" className="mt-4 space-y-2 list-disc pl-6">
+						<ul className="mt-4 space-y-2 list-disc pl-6">
 							<li>Cinquin Andy (création et design)</li>
 							<li>Jean-Luc Laheux (photos de réalisations jardins)</li>
 						</ul>
 						<p className="mt-4">Toute utilisation sans autorisation est interdite.</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Protection des données personnelles
 						</h2>
 
-						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Responsable du traitement</h3>
+						<h3 className="mt-8 text-xl font-semibold text-foreground">Responsable du traitement</h3>
 						<p className="mt-4">
 							SASU Nature et Paysage Laheux
 							<br />
@@ -183,33 +175,33 @@ export default function MentionsLegalesPage() {
 							Email : nature.paysage.laheux@gmail.com
 						</p>
 
-						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Données collectées</h3>
+						<h3 className="mt-8 text-xl font-semibold text-foreground">Données collectées</h3>
 						<p className="mt-4">
 							Dans le cadre de la gestion des demandes de devis et des prestations, nous collectons :
 						</p>
-						<ul role="list" className="mt-4 space-y-2 list-disc pl-6">
+						<ul className="mt-4 space-y-2 list-disc pl-6">
 							<li>Identité : civilité, nom, prénom</li>
 							<li>Coordonnées : adresse, email, téléphone</li>
 							<li>Informations sur votre jardin : surface, type de prestations souhaitées</li>
 							<li>Photos de votre jardin (avec votre accord)</li>
 						</ul>
 
-						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Finalités</h3>
+						<h3 className="mt-8 text-xl font-semibold text-foreground">Finalités</h3>
 						<p className="mt-4">Ces données sont utilisées exclusivement pour :</p>
-						<ul role="list" className="mt-4 space-y-2 list-disc pl-6">
+						<ul className="mt-4 space-y-2 list-disc pl-6">
 							<li>Traiter votre demande de devis</li>
 							<li>Réaliser les prestations commandées</li>
 							<li>Établir les factures et attestations fiscales</li>
 							<li>Gérer notre relation client</li>
 						</ul>
 
-						<h3 className="mt-8 text-xl font-semibold text-gray-900 dark:text-white">Vos droits</h3>
+						<h3 className="mt-8 text-xl font-semibold text-foreground">Vos droits</h3>
 						<p className="mt-4">
 							Conformément au RGPD, vous disposez des droits suivants : droit d&apos;accès, de rectification,
 							d&apos;effacement, de limitation du traitement, d&apos;opposition et de portabilité.
 						</p>
 						<p className="mt-4">
-							<strong className="font-semibold text-gray-900 dark:text-white">Pour exercer vos droits :</strong>
+							<strong className="font-semibold text-foreground">Pour exercer vos droits :</strong>
 							<br />
 							Email : nature.paysage.laheux@gmail.com
 							<br />
@@ -217,12 +209,11 @@ export default function MentionsLegalesPage() {
 						</p>
 						<p className="mt-4">Nous vous répondrons dans un délai d&apos;un mois.</p>
 						<p className="mt-4">
-							<strong className="font-semibold text-gray-900 dark:text-white">Réclamation :</strong> Si vous estimez
-							que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL :
-							www.cnil.fr
+							<strong className="font-semibold text-foreground">Réclamation :</strong> Si vous estimez que vos droits ne
+							sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL : www.cnil.fr
 						</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Limitation de responsabilité
 						</h2>
 						<p className="mt-6">
@@ -230,7 +221,7 @@ export default function MentionsLegalesPage() {
 							sur ce site. Toutefois, nous ne pouvons garantir l&apos;exhaustivité ou l&apos;absence d&apos;erreur.
 						</p>
 
-						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+						<h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-foreground">
 							Droit applicable
 						</h2>
 						<p className="mt-6">
@@ -238,7 +229,7 @@ export default function MentionsLegalesPage() {
 							solution amiable sera recherchée avant toute action judiciaire.
 						</p>
 
-						<p className="mt-12 text-sm text-gray-500 dark:text-gray-500">
+						<p className="mt-12 text-sm text-foreground">
 							<strong className="font-semibold">Date de dernière mise à jour :</strong> Janvier 2025
 						</p>
 					</div>
