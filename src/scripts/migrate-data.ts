@@ -11,8 +11,8 @@
 
 // Load environment variables BEFORE importing config
 import dotenv from 'dotenv'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 // Load .env file
 dotenv.config()
@@ -178,12 +178,32 @@ async function uploadImage(payload: any, imagePath: string): Promise<string | nu
 async function migrateServices(payload: any) {
 	console.log('\n📦 Migrating Services...')
 
+	// Check for existing services to avoid duplicates
+	const existingServices = await payload.find({
+		collection: 'services',
+		limit: 1000,
+	})
+	const existingSlugs = new Set(existingServices.docs.map((s: any) => s.slug))
+
 	for (let i = 0; i < SERVICES.length; i++) {
 		const service = SERVICES[i]
+
+		// Skip if already exists
+		if (existingSlugs.has(service.id)) {
+			console.log(`⏭️  Service already exists: ${service.title}`)
+			continue
+		}
 
 		try {
 			// Upload image
 			const imageId = await uploadImage(payload, service.image || '')
+
+			// Upload gallery images (required field)
+			const galleryImages = []
+			if (service.image) {
+				const galleryImgId = await uploadImage(payload, service.image)
+				if (galleryImgId) galleryImages.push(galleryImgId)
+			}
 
 			await payload.create({
 				collection: 'services',
@@ -193,11 +213,25 @@ async function migrateServices(payload: any) {
 					shortDescription: service.shortDescription,
 					fullDescription: textToLexical(service.fullDescription),
 					image: imageId,
+					images: galleryImages,
 					category: service.category,
 					features: service.features.map(f => ({ feature: f })),
 					eligibleTaxCredit: service.eligibleTaxCredit,
 					price: service.price,
 					order: i,
+					ctaSection: {
+						title: 'Intéressé par cette prestation ?',
+						description:
+							"Demandez votre devis gratuit et bénéficiez de 50% de crédit d'impôt sur toutes mes prestations.",
+						buttonText: 'Demander un devis gratuit',
+						buttonUrl: '/contact',
+						benefits: [
+							{ benefit: 'Devis gratuit sous 24h' },
+							{ benefit: "50% de crédit d'impôt" },
+							{ benefit: 'Méthodes 100% écologiques' },
+							{ benefit: 'Conseil personnalisé' },
+						],
+					},
 				},
 			})
 
@@ -214,20 +248,35 @@ async function migrateServices(payload: any) {
 async function migrateRealisations(payload: any) {
 	console.log('\n📦 Migrating Realisations...')
 
+	// Check for existing realisations to avoid duplicates
+	const existingRealisations = await payload.find({
+		collection: 'realisations',
+		limit: 1000,
+	})
+	const existingSlugs = new Set(existingRealisations.docs.map((r: any) => r.slug))
+
 	for (const realisation of REALISATIONS) {
+		// Skip if already exists
+		if (existingSlugs.has(realisation.id)) {
+			console.log(`⏭️  Realisation already exists: ${realisation.title}`)
+			continue
+		}
+
 		try {
 			// Upload main image
 			const imageId = await uploadImage(payload, realisation.image)
 
-			// Upload additional images if any
-			const additionalImages = realisation.images
-				? await Promise.all(
-						realisation.images.map(async img => {
-							const id = await uploadImage(payload, img)
-							return id ? { image: id } : null
-						})
-					)
-				: []
+			// Upload gallery images (using main image if no additional images)
+			const galleryImages = []
+			if (realisation.images && realisation.images.length > 0) {
+				for (const img of realisation.images) {
+					const id = await uploadImage(payload, img)
+					if (id) galleryImages.push(id)
+				}
+			} else if (imageId) {
+				// Use main image as gallery if no other images
+				galleryImages.push(imageId)
+			}
 
 			await payload.create({
 				collection: 'realisations',
@@ -241,11 +290,24 @@ async function migrateRealisations(payload: any) {
 					description: textToLexical(realisation.description),
 					category: realisation.category,
 					features: realisation.features.map(f => ({ feature: f })),
-					images: additionalImages.filter(Boolean),
+					images: galleryImages,
 					testimonial: {
 						quote: '',
 						author: '',
 						location: '',
+					},
+					ctaSection: {
+						title: 'Un projet similaire ?',
+						description:
+							"Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble. Bénéficiez de 50% de crédit d'impôt sur toutes mes prestations.",
+						buttonText: 'Demander un devis gratuit',
+						buttonUrl: '/contact',
+						benefits: [
+							{ benefit: 'Visite et devis gratuits' },
+							{ benefit: 'Approche personnalisée' },
+							{ benefit: "50% de crédit d'impôt" },
+							{ benefit: 'Méthodes écologiques' },
+						],
 					},
 				},
 			})
@@ -263,8 +325,21 @@ async function migrateRealisations(payload: any) {
 async function migrateFAQ(payload: any) {
 	console.log('\n📦 Migrating FAQ...')
 
+	// Check for existing FAQs to avoid duplicates
+	const existingFAQs = await payload.find({
+		collection: 'faq',
+		limit: 1000,
+	})
+	const existingQuestions = new Set(existingFAQs.docs.map((f: any) => f.question))
+
 	for (let i = 0; i < FAQ_ITEMS.length; i++) {
 		const faq = FAQ_ITEMS[i]
+
+		// Skip if already exists
+		if (existingQuestions.has(faq.question)) {
+			console.log(`⏭️  FAQ already exists: ${faq.question}`)
+			continue
+		}
 
 		try {
 			await payload.create({
@@ -302,16 +377,13 @@ async function migrateHomepage(payload: any) {
 				// Hero Section
 				hero: {
 					backgroundImage: heroBgImage,
-					imageAlt: 'Jardin naturel en Loire-Atlantique',
-					title: markdownToLexical("**Transformez** Votre Jardin, Votre Paysagiste d'Exception en Loire-Atlantique"),
-					subtitle: 'Entretien écologique et création de jardins naturels dans le vignoble nantais',
+					title: "**Transformez** Votre Jardin, Votre Paysagiste d'Exception en Loire-Atlantique",
 				},
 
 				// Values Section
 				values: {
-					sectionTitle: markdownToLexical('Une Approche **Écologique** et Sur-Mesure'),
+					sectionTitle: 'Une Approche **Écologique** et Sur-Mesure',
 					image: valuesImage,
-					imageAlt: 'Approche écologique du jardinage',
 					valuesList: [
 						{
 							icon: 'leaf',
@@ -351,12 +423,11 @@ async function migrateHomepage(payload: any) {
 
 				// Philosophy Section
 				philosophy: {
-					title: markdownToLexical('Mon Approche : **Nature & Respect**'),
+					title: 'Mon Approche : **Nature & Respect**',
 					introText:
 						'Passionné par le végétal et la biodiversité, je pratique un jardinage en harmonie avec la nature. Mon objectif : créer et entretenir des espaces verts vivants, résilients et beaux, sans aucun produit chimique.',
 					quote: 'travailler AVEC la nature, pas contre elle.',
 					primaryImage: valuesImage,
-					imageAlt: 'Philosophie de jardinage écologique',
 					imageOverlayTitle: 'Une Démarche Écologique Profonde',
 					imageOverlayDescription: "Chaque jardin mérite d'être un havre de biodiversité",
 					philosophyPoints: [
@@ -499,7 +570,7 @@ async function migrateSiteSettings(payload: any) {
 		await payload.updateGlobal({
 			slug: 'site-settings',
 			data: {
-				// Contact Information
+				// Contact Information only (simplified schema)
 				contact: {
 					phone: CONTACT_INFO.phone,
 					email: CONTACT_INFO.email,
@@ -525,47 +596,6 @@ async function migrateSiteSettings(payload: any) {
 						note: CONTACT_INFO.hours.note,
 					},
 				},
-
-				// Tax Credit Info
-				taxCredit: {
-					percentage: TAX_CREDIT_INFO.percentage,
-					maxAnnualExpense: TAX_CREDIT_INFO.maxAnnualExpense,
-					maxAnnualCredit: TAX_CREDIT_INFO.maxAnnualCredit,
-					steps: TAX_CREDIT_INFO.steps,
-					example: TAX_CREDIT_INFO.example,
-				},
-
-				// Navigation
-				navigation: {
-					mainMenu: [
-						{ label: 'Accueil', url: '/' },
-						{ label: 'Prestations', url: '/prestations' },
-						{ label: 'Réalisations', url: '/realisations' },
-						{ label: 'Mon Approche', url: '/#philosophie' },
-						{ label: 'Contact', url: '/contact' },
-					],
-					ctaButton: {
-						label: 'Devis Gratuit',
-						url: '/contact',
-					},
-				},
-
-				// Footer
-				footer: {
-					logoAlt: 'Nature et Paysage Laheux - Paysagiste écologique en Loire-Atlantique',
-					tagline: 'Jardinier paysagiste écologique à Monnières, Loire-Atlantique',
-					copyrightText: `© ${new Date().getFullYear()} Nature & Paysage Laheux - Tous droits réservés`,
-					developerName: 'Andy Cinquin',
-					developerUrl: 'https://andycinquin.com',
-				},
-
-				// SEO Defaults
-				seo: {
-					siteTitle: 'Nature & Paysage Laheux | Paysagiste Écologique Loire-Atlantique',
-					siteDescription:
-						"Jardinier paysagiste écologique à Monnières. Entretien naturel, taille raisonnée, potager en permaculture. 50% de crédit d'impôt. Zone : Vignoble Nantais, Clisson, Vallet.",
-					ogImage: null,
-				},
 			},
 		})
 
@@ -589,7 +619,6 @@ async function migrateOtherGlobals(payload: any) {
 				hero: {
 					title: 'Mes Prestations Écologiques',
 					image: null,
-					imageAlt: 'Prestations de jardinage écologique',
 				},
 				taxCreditEligibility: {
 					title: "Crédit d'Impôt : Ce Qui Est Pris en Charge",
@@ -643,14 +672,12 @@ async function migrateOtherGlobals(payload: any) {
 				hero: {
 					title: 'Mes Réalisations en Loire-Atlantique',
 					image: null,
-					imageAlt: 'Portfolio de réalisations',
 				},
 				introduction: {
 					paragraph1:
 						'Chaque jardin est unique et raconte une histoire. Découvrez quelques-unes de mes interventions en Loire-Atlantique.',
-					paragraph2: textToLexical(
-						"Du simple **entretien régulier** aux **aménagements paysagers**, en passant par les **potagers en permaculture**, je m'adapte à vos besoins et vos envies."
-					),
+					paragraph2:
+						"Du simple entretien régulier aux aménagements paysagers, en passant par les potagers en permaculture, je m'adapte à vos besoins et vos envies.",
 				},
 				ctaSection: {
 					title: 'Envie du Même Résultat Pour Votre Jardin ?',
@@ -678,7 +705,6 @@ async function migrateOtherGlobals(payload: any) {
 				hero: {
 					title: 'Questions Fréquentes',
 					image: null,
-					imageAlt: 'Foire aux questions',
 				},
 				categoryDescriptions: [
 					{ category: 'general', description: "Informations générales sur mes services et ma zone d'intervention" },
@@ -712,7 +738,6 @@ async function migrateOtherGlobals(payload: any) {
 				hero: {
 					title: 'Contactez-Moi',
 					image: null,
-					imageAlt: 'Page de contact',
 				},
 				formSection: {
 					title: 'Parlons de Votre Jardin',
@@ -749,7 +774,6 @@ async function migrateOtherGlobals(payload: any) {
 				hero: {
 					title: 'Mentions Légales',
 					image: null,
-					imageAlt: 'Mentions légales',
 				},
 				content: textToLexical(
 					`
@@ -805,67 +829,6 @@ Le présent site est soumis au droit français.
 		console.log('✓ Mentions Legales Page Global migrated')
 	} catch (error) {
 		console.error('❌ Failed to migrate Mentions Legales Page:', error)
-	}
-
-	// Templates (empty for now, will be populated based on dynamic routes)
-	try {
-		await payload.updateGlobal({
-			slug: 'prestations-detail-template',
-			data: {
-				approachSection: {
-					title: 'Une approche écologique et respectueuse',
-					description: textToLexical(
-						"Je pratique exclusivement des méthodes naturelles qui préservent la biodiversité et la santé de votre jardin. Aucun produit chimique, uniquement des techniques douces et respectueuses de l'environnement."
-					),
-				},
-				pricingSection: {
-					title: 'Tarification',
-					description:
-						"Chaque intervention est unique. Je me déplace gratuitement pour établir un devis personnalisé. Tous mes services bénéficient du crédit d'impôt de 50%.",
-				},
-				ctaSection: {
-					title: 'Intéressé par cette prestation ?',
-					description:
-						'Contactez-moi pour discuter de votre projet. Je me déplace gratuitement pour une visite et un devis sans engagement.',
-					buttonText: 'Demander un devis gratuit',
-					buttonUrl: '/contact',
-				},
-			},
-		})
-		console.log('✓ Prestations Detail Template Global migrated')
-
-		await payload.updateGlobal({
-			slug: 'realisations-detail-template',
-			data: {
-				processSection: {
-					title: 'Une approche écologique et respectueuse',
-					description: textToLexical(
-						"Chaque projet est réalisé avec soin, en respectant les principes de l'écologie et de la permaculture. Je privilégie les méthodes naturelles et durables pour un résultat pérenne."
-					),
-				},
-				taxCreditInfo: {
-					title: "Bénéficiez de 50% de crédit d'impôt",
-					description:
-						"Ce type de prestation est éligible au crédit d'impôt Services à la Personne. Concrètement, l'État vous rembourse 50% du montant.",
-				},
-				testimonialSection: {
-					title: 'Le mot du client',
-					defaultTestimonial: textToLexical(
-						'Un travail soigné et une vraie écoute de nos besoins. Le résultat est à la hauteur de nos attentes.'
-					),
-					defaultAuthor: 'Client satisfait',
-				},
-				ctaSection: {
-					title: 'Un projet similaire ?',
-					description: 'Contactez-moi pour discuter de votre projet et obtenir un devis personnalisé.',
-					buttonText: 'Me Contacter',
-					buttonUrl: '/contact',
-				},
-			},
-		})
-		console.log('✓ Realisations Detail Template Global migrated')
-	} catch (error) {
-		console.error('❌ Failed to migrate templates:', error)
 	}
 }
 

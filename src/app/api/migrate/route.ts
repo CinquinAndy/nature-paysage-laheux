@@ -1,8 +1,9 @@
+// biome-ignore lint/suspicious/noExplicitAny: Payload types are not fully typed in migration context
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
-import fs from 'fs'
+import fs from 'node:fs'
 import { NextResponse } from 'next/server'
-import path from 'path'
+import path from 'node:path'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
 import { FAQ_ITEMS } from '@/lib/data/faq'
 import { REALISATIONS } from '@/lib/data/realisations'
@@ -50,7 +51,7 @@ function textToLexical(text: string) {
 	}
 }
 
-function markdownToLexical(text: string) {
+function _markdownToLexical(text: string) {
 	const parts = text.split(/(\*\*.*?\*\*)/)
 	const children = parts
 		.map(part => {
@@ -133,7 +134,7 @@ async function uploadImage(payload: any, imagePath: string): Promise<string | nu
 	}
 }
 
-export async function POST(request: Request) {
+export async function POST(_request: Request) {
 	try {
 		const payload = await getPayloadHMR({ config: configPromise })
 
