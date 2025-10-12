@@ -8,8 +8,21 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
+import { FAQ } from './collections/FAQ'
 import { Media } from './collections/Media'
+import { Realisations } from './collections/Realisations'
+import { Services } from './collections/Services'
+import { ThirdPartyAccess } from './collections/ThirdPartyAccess'
 import { Users } from './collections/Users'
+import { ContactPage } from './globals/ContactPage'
+import { FaqPage } from './globals/FaqPage'
+import { Homepage } from './globals/Homepage'
+import { MentionsLegalesPage } from './globals/MentionsLegalesPage'
+import { PrestationsDetailTemplate } from './globals/PrestationsDetailTemplate'
+import { PrestationsPage } from './globals/PrestationsPage'
+import { RealisationsDetailTemplate } from './globals/RealisationsDetailTemplate'
+import { RealisationsPage } from './globals/RealisationsPage'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +34,18 @@ export default buildConfig({
 			baseDir: path.resolve(dirname),
 		},
 	},
-	collections: [Users, Media],
+	collections: [Users, Media, Services, Realisations, FAQ, ThirdPartyAccess],
+	globals: [
+		Homepage,
+		PrestationsPage,
+		PrestationsDetailTemplate,
+		RealisationsPage,
+		RealisationsDetailTemplate,
+		FaqPage,
+		ContactPage,
+		MentionsLegalesPage,
+		SiteSettings,
+	],
 	editor: lexicalEditor(),
 	secret: process.env.PAYLOAD_SECRET || '',
 	typescript: {

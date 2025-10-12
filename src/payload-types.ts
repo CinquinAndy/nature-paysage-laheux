@@ -13,286 +13,1703 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-	| 'Pacific/Midway'
-	| 'Pacific/Niue'
-	| 'Pacific/Honolulu'
-	| 'Pacific/Rarotonga'
-	| 'America/Anchorage'
-	| 'Pacific/Gambier'
-	| 'America/Los_Angeles'
-	| 'America/Tijuana'
-	| 'America/Denver'
-	| 'America/Phoenix'
-	| 'America/Chicago'
-	| 'America/Guatemala'
-	| 'America/New_York'
-	| 'America/Bogota'
-	| 'America/Caracas'
-	| 'America/Santiago'
-	| 'America/Buenos_Aires'
-	| 'America/Sao_Paulo'
-	| 'Atlantic/South_Georgia'
-	| 'Atlantic/Azores'
-	| 'Atlantic/Cape_Verde'
-	| 'Europe/London'
-	| 'Europe/Berlin'
-	| 'Africa/Lagos'
-	| 'Europe/Athens'
-	| 'Africa/Cairo'
-	| 'Europe/Moscow'
-	| 'Asia/Riyadh'
-	| 'Asia/Dubai'
-	| 'Asia/Baku'
-	| 'Asia/Karachi'
-	| 'Asia/Tashkent'
-	| 'Asia/Calcutta'
-	| 'Asia/Dhaka'
-	| 'Asia/Almaty'
-	| 'Asia/Jakarta'
-	| 'Asia/Bangkok'
-	| 'Asia/Shanghai'
-	| 'Asia/Singapore'
-	| 'Asia/Tokyo'
-	| 'Asia/Seoul'
-	| 'Australia/Brisbane'
-	| 'Australia/Sydney'
-	| 'Pacific/Guam'
-	| 'Pacific/Noumea'
-	| 'Pacific/Auckland'
-	| 'Pacific/Fiji'
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
-	auth: {
-		users: UserAuthOperations
-	}
-	blocks: {}
-	collections: {
-		users: User
-		media: Media
-		'payload-locked-documents': PayloadLockedDocument
-		'payload-preferences': PayloadPreference
-		'payload-migrations': PayloadMigration
-	}
-	collectionsJoins: {}
-	collectionsSelect: {
-		users: UsersSelect<false> | UsersSelect<true>
-		media: MediaSelect<false> | MediaSelect<true>
-		'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>
-		'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>
-		'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>
-	}
-	db: {
-		defaultIDType: number
-	}
-	globals: {}
-	globalsSelect: {}
-	locale: null
-	user: User & {
-		collection: 'users'
-	}
-	jobs: {
-		tasks: unknown
-		workflows: unknown
-	}
+  auth: {
+    users: UserAuthOperations;
+    'third-party-access': ThirdPartyAccessAuthOperations;
+  };
+  blocks: {};
+  collections: {
+    users: User;
+    media: Media;
+    services: Service;
+    realisations: Realisation;
+    faq: Faq;
+    'third-party-access': ThirdPartyAccess;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
+  };
+  collectionsJoins: {};
+  collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    realisations: RealisationsSelect<false> | RealisationsSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
+    'third-party-access': ThirdPartyAccessSelect<false> | ThirdPartyAccessSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+  };
+  db: {
+    defaultIDType: number;
+  };
+  globals: {
+    homepage: Homepage;
+    'prestations-page': PrestationsPage;
+    'prestations-detail-template': PrestationsDetailTemplate;
+    'realisations-page': RealisationsPage;
+    'realisations-detail-template': RealisationsDetailTemplate;
+    'faq-page': FaqPage;
+    'contact-page': ContactPage;
+    'mentions-legales-page': MentionsLegalesPage;
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
+    'prestations-page': PrestationsPageSelect<false> | PrestationsPageSelect<true>;
+    'prestations-detail-template': PrestationsDetailTemplateSelect<false> | PrestationsDetailTemplateSelect<true>;
+    'realisations-page': RealisationsPageSelect<false> | RealisationsPageSelect<true>;
+    'realisations-detail-template': RealisationsDetailTemplateSelect<false> | RealisationsDetailTemplateSelect<true>;
+    'faq-page': FaqPageSelect<false> | FaqPageSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    'mentions-legales-page': MentionsLegalesPageSelect<false> | MentionsLegalesPageSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
+  locale: null;
+  user:
+    | (User & {
+        collection: 'users';
+      })
+    | (ThirdPartyAccess & {
+        collection: 'third-party-access';
+      });
+  jobs: {
+    tasks: unknown;
+    workflows: unknown;
+  };
 }
 export interface UserAuthOperations {
-	forgotPassword: {
-		email: string
-		password: string
-	}
-	login: {
-		email: string
-		password: string
-	}
-	registerFirstUser: {
-		email: string
-		password: string
-	}
-	unlock: {
-		email: string
-		password: string
-	}
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface ThirdPartyAccessAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-	id: number
-	updatedAt: string
-	createdAt: string
-	email: string
-	resetPasswordToken?: string | null
-	resetPasswordExpiration?: string | null
-	salt?: string | null
-	hash?: string | null
-	loginAttempts?: number | null
-	lockUntil?: string | null
-	sessions?:
-		| {
-				id: string
-				createdAt?: string | null
-				expiresAt: string
-		  }[]
-		| null
-	password?: string | null
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
-	id: number
-	alt: string
-	updatedAt: string
-	createdAt: string
-	url?: string | null
-	thumbnailURL?: string | null
-	filename?: string | null
-	mimeType?: string | null
-	filesize?: number | null
-	width?: number | null
-	height?: number | null
-	focalX?: number | null
-	focalY?: number | null
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  title: string;
+  /**
+   * Used in the URL (e.g., tonte-pelouse)
+   */
+  slug: string;
+  /**
+   * Used in cards and previews
+   */
+  shortDescription: string;
+  /**
+   * Detailed description for the service page
+   */
+  fullDescription: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: number | Media;
+  category: 'entretien' | 'creation' | 'accompagnement';
+  /**
+   * List of key features/benefits (4-6 items)
+   */
+  features: {
+    feature: string;
+    id?: string | null;
+  }[];
+  /**
+   * Is this service eligible for 50% tax credit?
+   */
+  eligibleTaxCredit?: boolean | null;
+  /**
+   * How pricing is displayed to clients
+   */
+  price?: string | null;
+  /**
+   * Order in which services appear (lower number = first)
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "realisations".
+ */
+export interface Realisation {
+  id: number;
+  title: string;
+  slug: string;
+  /**
+   * e.g., Monnières, Vallet, etc.
+   */
+  location?: string | null;
+  /**
+   * When the project was completed
+   */
+  date?: string | null;
+  image: number | Media;
+  /**
+   * Brief description for cards/previews
+   */
+  shortDescription: string;
+  /**
+   * Complete project description
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category: 'entretien' | 'amenagement' | 'potager' | 'taille';
+  /**
+   * Main highlights of the project
+   */
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Gallery of additional project images
+   */
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  testimonial?: {
+    quote?: string | null;
+    author?: string | null;
+    location?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  /**
+   * Detailed answer to the question
+   */
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category: 'general' | 'services' | 'tarifs' | 'ecologie';
+  /**
+   * Display in the FAQ short section on homepage (top 4)
+   */
+  showOnHomepage?: boolean | null;
+  /**
+   * Order within category (lower number = first)
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "third-party-access".
+ */
+export interface ThirdPartyAccess {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-	id: number
-	document?:
-		| ({
-				relationTo: 'users'
-				value: number | User
-		  } | null)
-		| ({
-				relationTo: 'media'
-				value: number | Media
-		  } | null)
-	globalSlug?: string | null
-	user: {
-		relationTo: 'users'
-		value: number | User
-	}
-	updatedAt: string
-	createdAt: string
+  id: number;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'realisations';
+        value: number | Realisation;
+      } | null)
+    | ({
+        relationTo: 'faq';
+        value: number | Faq;
+      } | null)
+    | ({
+        relationTo: 'third-party-access';
+        value: number | ThirdPartyAccess;
+      } | null);
+  globalSlug?: string | null;
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'third-party-access';
+        value: number | ThirdPartyAccess;
+      };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-	id: number
-	user: {
-		relationTo: 'users'
-		value: number | User
-	}
-	key?: string | null
-	value?:
-		| {
-				[k: string]: unknown
-		  }
-		| unknown[]
-		| string
-		| number
-		| boolean
-		| null
-	updatedAt: string
-	createdAt: string
+  id: number;
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'third-party-access';
+        value: number | ThirdPartyAccess;
+      };
+  key?: string | null;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-	id: number
-	name?: string | null
-	batch?: number | null
-	updatedAt: string
-	createdAt: string
+  id: number;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-	updatedAt?: T
-	createdAt?: T
-	email?: T
-	resetPasswordToken?: T
-	resetPasswordExpiration?: T
-	salt?: T
-	hash?: T
-	loginAttempts?: T
-	lockUntil?: T
-	sessions?:
-		| T
-		| {
-				id?: T
-				createdAt?: T
-				expiresAt?: T
-		  }
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-	alt?: T
-	updatedAt?: T
-	createdAt?: T
-	url?: T
-	thumbnailURL?: T
-	filename?: T
-	mimeType?: T
-	filesize?: T
-	width?: T
-	height?: T
-	focalX?: T
-	focalY?: T
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  shortDescription?: T;
+  fullDescription?: T;
+  image?: T;
+  category?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  eligibleTaxCredit?: T;
+  price?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "realisations_select".
+ */
+export interface RealisationsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  location?: T;
+  date?: T;
+  image?: T;
+  shortDescription?: T;
+  description?: T;
+  category?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  testimonial?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        location?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  category?: T;
+  showOnHomepage?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "third-party-access_select".
+ */
+export interface ThirdPartyAccessSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-	document?: T
-	globalSlug?: T
-	user?: T
-	updatedAt?: T
-	createdAt?: T
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-	user?: T
-	key?: T
-	value?: T
-	updatedAt?: T
-	createdAt?: T
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-	name?: T
-	batch?: T
-	updatedAt?: T
-	createdAt?: T
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage".
+ */
+export interface Homepage {
+  id: number;
+  hero: {
+    backgroundImage: number | Media;
+    imageAlt?: string | null;
+    /**
+     * Use **word** syntax for bold text (shown with blob accent). Example: **Transformez** Votre Jardin
+     */
+    title: string;
+    subtitle?: string | null;
+  };
+  values: {
+    /**
+     * Use **word** syntax for bold text. Example: Une Approche **Écologique** et Sur-Mesure
+     */
+    sectionTitle: string;
+    image?: (number | null) | Media;
+    imageAlt?: string | null;
+    /**
+     * Exactly 4 values will be displayed
+     */
+    valuesList?:
+      | {
+          icon: 'leaf' | 'wrench' | 'map-pin' | 'trending-down';
+          /**
+           * e.g., "01", "02", etc.
+           */
+          number: string;
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Services are pulled from the Services collection
+   */
+  servicesPreview?: {
+    title?: string | null;
+    subtitle?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+  };
+  philosophy: {
+    /**
+     * Use **word** syntax for bold text. Example: Mon Approche : **Nature & Respect**
+     */
+    title: string;
+    introText?: string | null;
+    quote?: string | null;
+    primaryImage?: (number | null) | Media;
+    imageAlt?: string | null;
+    imageOverlayTitle?: string | null;
+    imageOverlayDescription?: string | null;
+    /**
+     * Exactly 4 philosophy cards
+     */
+    philosophyPoints?:
+      | {
+          icon: 'leaf' | 'heart' | 'award' | 'shield';
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Ecological practices I prioritize
+     */
+    preferences?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Practices I refuse to use
+     */
+    refusals?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    engagementBanner?: {
+      title?: string | null;
+      description?: string | null;
+      ctaLabel?: string | null;
+      ctaUrl?: string | null;
+    };
+  };
+  interventionZone?: {
+    title?: string | null;
+    subtitle?: string | null;
+    /**
+     * Latitude for map center point
+     */
+    mapCenterLat?: number | null;
+    /**
+     * Longitude for map center point
+     */
+    mapCenterLng?: number | null;
+    radiusKm?: number | null;
+    /**
+     * List of main cities where you operate
+     */
+    communes?:
+      | {
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
+    ctaSection?: {
+      title?: string | null;
+      description?: string | null;
+      ctaLabel?: string | null;
+      ctaUrl?: string | null;
+    };
+  };
+  /**
+   * Realisations are pulled from the Realisations collection (gallery of 6)
+   */
+  realisationsPreview?: {
+    title?: string | null;
+    description?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+  };
+  /**
+   * Top 4 FAQs are pulled from the FAQ collection (showOnHomepage = true)
+   */
+  faqShort?: {
+    title?: string | null;
+    description?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+  };
+  taxCredit?: {
+    title?: string | null;
+    subtitle?: string | null;
+    /**
+     * The 4 steps to benefit from tax credit
+     */
+    steps?:
+      | {
+          number: number;
+          title: string;
+          description?: string | null;
+          image1?: (number | null) | Media;
+          image2?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  finalCta?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    /**
+     * List of key benefits/reasons to contact
+     */
+    benefits?:
+      | {
+          benefit: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Configuration for /prestations page. Services themselves come from the Services collection.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prestations-page".
+ */
+export interface PrestationsPage {
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    imageAlt?: string | null;
+  };
+  taxCreditEligibility?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Services eligible for 50% tax credit
+     */
+    eligibleItems?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Services NOT eligible for tax credit
+     */
+    nonEligibleItems?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    eligibleImage?: (number | null) | Media;
+    nonEligibleImage?: (number | null) | Media;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Template configuration for /prestations/[slug] pages. Dynamic content comes from the Services collection.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prestations-detail-template".
+ */
+export interface PrestationsDetailTemplate {
+  id: number;
+  approachSection?: {
+    title?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  pricingSection?: {
+    title?: string | null;
+    description?: string | null;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Configuration for /realisations page. Realisations themselves come from the Realisations collection.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "realisations-page".
+ */
+export interface RealisationsPage {
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    imageAlt?: string | null;
+  };
+  introduction?: {
+    paragraph1?: string | null;
+    paragraph2?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Template configuration for /realisations/[id] pages. Dynamic content comes from the Realisations collection.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "realisations-detail-template".
+ */
+export interface RealisationsDetailTemplate {
+  id: number;
+  processSection?: {
+    title?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  taxCreditInfo?: {
+    title?: string | null;
+    description?: string | null;
+  };
+  testimonialSection?: {
+    title?: string | null;
+    /**
+     * Used if the realisation doesn't have its own testimonial
+     */
+    defaultTestimonial?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    defaultAuthor?: string | null;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Configuration for /faq page. FAQ items come from the FAQ collection.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq-page".
+ */
+export interface FaqPage {
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    imageAlt?: string | null;
+  };
+  /**
+   * Optional descriptions for each FAQ category
+   */
+  categoryDescriptions?:
+    | {
+        category?: ('general' | 'services' | 'tarifs' | 'ecologie') | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page".
+ */
+export interface ContactPage {
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    imageAlt?: string | null;
+  };
+  formSection?: {
+    title?: string | null;
+    subtitle?: string | null;
+    /**
+     * Options for the garden surface dropdown
+     */
+    gardenSizeOptions?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Text displayed below the submit button
+     */
+    privacyText?: string | null;
+  };
+  /**
+   * Contact information (phone, email, etc.) comes from Site Settings
+   */
+  contactInfoSidebar?: {
+    /**
+     * Key benefits displayed in the sidebar
+     */
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mentions-legales-page".
+ */
+export interface MentionsLegalesPage {
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+    imageAlt?: string | null;
+  };
+  /**
+   * Complete legal content in rich text format. Include all sections: Editeur, Hebergement, Droits, RGPD, etc.
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  contact: {
+    phone: string;
+    email: string;
+    company?: {
+      name?: string | null;
+      representative?: string | null;
+      legalForm?: string | null;
+    };
+    address?: {
+      postalCode?: string | null;
+      city?: string | null;
+      region?: string | null;
+      country?: string | null;
+    };
+    social?: {
+      facebook?: string | null;
+      linkedin?: string | null;
+    };
+    hours?: {
+      weekday?: string | null;
+      saturday?: string | null;
+      sunday?: string | null;
+      note?: string | null;
+    };
+  };
+  taxCredit?: {
+    /**
+     * Percentage of tax credit (usually 50%)
+     */
+    percentage?: number | null;
+    /**
+     * Maximum amount that can be claimed per year
+     */
+    maxAnnualExpense?: number | null;
+    /**
+     * Maximum tax credit that can be received per year
+     */
+    maxAnnualCredit?: number | null;
+    /**
+     * Steps to benefit from the tax credit
+     */
+    steps?:
+      | {
+          number: number;
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    example?: {
+      serviceCost?: number | null;
+      taxCredit?: number | null;
+      realCost?: number | null;
+    };
+  };
+  navigation?: {
+    /**
+     * Main navigation menu items
+     */
+    mainMenu?:
+      | {
+          label: string;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+    ctaButton?: {
+      label?: string | null;
+      url?: string | null;
+    };
+  };
+  footer?: {
+    logoAlt?: string | null;
+    tagline?: string | null;
+    copyrightText?: string | null;
+    developerName?: string | null;
+    developerUrl?: string | null;
+  };
+  seo?: {
+    siteTitle?: string | null;
+    siteDescription?: string | null;
+    /**
+     * Default image for social media sharing
+     */
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage_select".
+ */
+export interface HomepageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        backgroundImage?: T;
+        imageAlt?: T;
+        title?: T;
+        subtitle?: T;
+      };
+  values?:
+    | T
+    | {
+        sectionTitle?: T;
+        image?: T;
+        imageAlt?: T;
+        valuesList?:
+          | T
+          | {
+              icon?: T;
+              number?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  servicesPreview?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+      };
+  philosophy?:
+    | T
+    | {
+        title?: T;
+        introText?: T;
+        quote?: T;
+        primaryImage?: T;
+        imageAlt?: T;
+        imageOverlayTitle?: T;
+        imageOverlayDescription?: T;
+        philosophyPoints?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        preferences?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        refusals?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        engagementBanner?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              ctaLabel?: T;
+              ctaUrl?: T;
+            };
+      };
+  interventionZone?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        mapCenterLat?: T;
+        mapCenterLng?: T;
+        radiusKm?: T;
+        communes?:
+          | T
+          | {
+              name?: T;
+              id?: T;
+            };
+        ctaSection?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              ctaLabel?: T;
+              ctaUrl?: T;
+            };
+      };
+  realisationsPreview?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+      };
+  faqShort?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+      };
+  taxCredit?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        steps?:
+          | T
+          | {
+              number?: T;
+              title?: T;
+              description?: T;
+              image1?: T;
+              image2?: T;
+              id?: T;
+            };
+      };
+  finalCta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prestations-page_select".
+ */
+export interface PrestationsPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        imageAlt?: T;
+      };
+  taxCreditEligibility?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        eligibleItems?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        nonEligibleItems?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        eligibleImage?: T;
+        nonEligibleImage?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prestations-detail-template_select".
+ */
+export interface PrestationsDetailTemplateSelect<T extends boolean = true> {
+  approachSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  pricingSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "realisations-page_select".
+ */
+export interface RealisationsPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        imageAlt?: T;
+      };
+  introduction?:
+    | T
+    | {
+        paragraph1?: T;
+        paragraph2?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "realisations-detail-template_select".
+ */
+export interface RealisationsDetailTemplateSelect<T extends boolean = true> {
+  processSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  taxCreditInfo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  testimonialSection?:
+    | T
+    | {
+        title?: T;
+        defaultTestimonial?: T;
+        defaultAuthor?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq-page_select".
+ */
+export interface FaqPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        imageAlt?: T;
+      };
+  categoryDescriptions?:
+    | T
+    | {
+        category?: T;
+        description?: T;
+        id?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page_select".
+ */
+export interface ContactPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        imageAlt?: T;
+      };
+  formSection?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        gardenSizeOptions?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        privacyText?: T;
+      };
+  contactInfoSidebar?:
+    | T
+    | {
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mentions-legales-page_select".
+ */
+export interface MentionsLegalesPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        imageAlt?: T;
+      };
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  contact?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+        company?:
+          | T
+          | {
+              name?: T;
+              representative?: T;
+              legalForm?: T;
+            };
+        address?:
+          | T
+          | {
+              postalCode?: T;
+              city?: T;
+              region?: T;
+              country?: T;
+            };
+        social?:
+          | T
+          | {
+              facebook?: T;
+              linkedin?: T;
+            };
+        hours?:
+          | T
+          | {
+              weekday?: T;
+              saturday?: T;
+              sunday?: T;
+              note?: T;
+            };
+      };
+  taxCredit?:
+    | T
+    | {
+        percentage?: T;
+        maxAnnualExpense?: T;
+        maxAnnualCredit?: T;
+        steps?:
+          | T
+          | {
+              number?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        example?:
+          | T
+          | {
+              serviceCost?: T;
+              taxCredit?: T;
+              realCost?: T;
+            };
+      };
+  navigation?:
+    | T
+    | {
+        mainMenu?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+        ctaButton?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+            };
+      };
+  footer?:
+    | T
+    | {
+        logoAlt?: T;
+        tagline?: T;
+        copyrightText?: T;
+        developerName?: T;
+        developerUrl?: T;
+      };
+  seo?:
+    | T
+    | {
+        siteTitle?: T;
+        siteDescription?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-	[k: string]: unknown
+  [k: string]: unknown;
 }
 
+
 declare module 'payload' {
-	export interface GeneratedTypes extends Config {}
+  export interface GeneratedTypes extends Config {}
 }
