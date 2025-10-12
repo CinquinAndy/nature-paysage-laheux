@@ -2,7 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 export const Homepage: GlobalConfig = {
 	slug: 'homepage',
-	label: 'Page d\'Accueil',
+	label: "Page d'Accueil",
 	access: {
 		read: () => true,
 	},
@@ -168,7 +168,7 @@ export const Homepage: GlobalConfig = {
 				{
 					name: 'introText',
 					type: 'textarea',
-					label: 'Texte d\'introduction',
+					label: "Texte d'introduction",
 				},
 				{
 					name: 'quote',
@@ -184,12 +184,12 @@ export const Homepage: GlobalConfig = {
 				{
 					name: 'imageOverlayTitle',
 					type: 'text',
-					label: 'Titre sur l\'image',
+					label: "Titre sur l'image",
 				},
 				{
 					name: 'imageOverlayDescription',
 					type: 'textarea',
-					label: 'Description sur l\'image',
+					label: "Description sur l'image",
 				},
 				{
 					name: 'philosophyPoints',
@@ -253,7 +253,7 @@ export const Homepage: GlobalConfig = {
 					type: 'array',
 					label: 'Ce que je refuse (Liste rouge)',
 					admin: {
-						description: 'Pratiques que je n\'utilise jamais',
+						description: "Pratiques que je n'utilise jamais",
 					},
 					fields: [
 						{
@@ -272,7 +272,7 @@ export const Homepage: GlobalConfig = {
 				{
 					name: 'engagementBanner',
 					type: 'group',
-					label: 'Bannière d\'engagement',
+					label: "Bannière d'engagement",
 					fields: [
 						{
 							name: 'title',
@@ -306,7 +306,7 @@ export const Homepage: GlobalConfig = {
 		{
 			name: 'interventionZone',
 			type: 'group',
-			label: 'Section Zone d\'Intervention',
+			label: "Section Zone d'Intervention",
 			fields: [
 				{
 					name: 'title',
@@ -340,7 +340,7 @@ export const Homepage: GlobalConfig = {
 					name: 'radiusKm',
 					type: 'number',
 					defaultValue: 20,
-					label: 'Rayon d\'intervention (en km)',
+					label: "Rayon d'intervention (en km)",
 				},
 				{
 					name: 'communes',
@@ -361,7 +361,7 @@ export const Homepage: GlobalConfig = {
 				{
 					name: 'ctaSection',
 					type: 'group',
-					label: 'Section appel à l\'action',
+					label: "Section appel à l'action",
 					fields: [
 						{
 							name: 'title',
@@ -469,7 +469,7 @@ export const Homepage: GlobalConfig = {
 		{
 			name: 'taxCredit',
 			type: 'group',
-			label: 'Section Crédit d\'Impôt',
+			label: "Section Crédit d'Impôt",
 			fields: [
 				{
 					name: 'title',
@@ -485,24 +485,24 @@ export const Homepage: GlobalConfig = {
 				{
 					name: 'steps',
 					type: 'array',
-					label: 'Étapes pour bénéficier du crédit d\'impôt',
+					label: "Étapes pour bénéficier du crédit d'impôt",
 					minRows: 4,
 					maxRows: 4,
 					admin: {
-						description: 'Les 4 étapes pour profiter du crédit d\'impôt de 50%',
+						description: "Les 4 étapes pour profiter du crédit d'impôt de 50%",
 					},
 					fields: [
 						{
 							name: 'number',
 							type: 'number',
 							required: true,
-							label: 'Numéro de l\'étape',
+							label: "Numéro de l'étape",
 						},
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
-							label: 'Titre de l\'étape',
+							label: "Titre de l'étape",
 						},
 						{
 							name: 'description',
@@ -523,7 +523,7 @@ export const Homepage: GlobalConfig = {
 						},
 					],
 				},
-			},
+			],
 		},
 
 		// ===========================
@@ -532,7 +532,7 @@ export const Homepage: GlobalConfig = {
 		{
 			name: 'finalCta',
 			type: 'group',
-			label: 'Section Appel à l\'Action Final',
+			label: "Section Appel à l'Action Final",
 			fields: [
 				{
 					name: 'title',

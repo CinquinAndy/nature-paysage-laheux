@@ -2,98 +2,94 @@ import type { GlobalConfig } from 'payload'
 
 export const RealisationsPage: GlobalConfig = {
 	slug: 'realisations-page',
-	label: 'Realisations Page',
+	label: 'Page Réalisations',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// HERO SECTION
+		// SECTION HERO
 		// ===========================
 		{
 			name: 'hero',
 			type: 'group',
-			label: 'Hero Section',
+			label: 'Section Hero (En-tête)',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Mes Réalisations en Loire-Atlantique',
-					label: 'Page Title',
+					label: 'Titre de la page',
 				},
 				{
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Hero Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image d\'en-tête',
 				},
 			],
 		},
 
 		// ===========================
-		// INTRODUCTION SECTION
+		// SECTION INTRODUCTION
 		// ===========================
 		{
 			name: 'introduction',
 			type: 'group',
-			label: 'Introduction Section',
+			label: 'Section Introduction',
 			fields: [
 				{
 					name: 'paragraph1',
 					type: 'textarea',
-					label: 'First Paragraph',
+					label: 'Premier paragraphe',
 				},
 				{
 					name: 'paragraph2',
 					type: 'richText',
-					label: 'Second Paragraph',
+					label: 'Deuxième paragraphe',
 				},
 			],
 		},
 
 		// ===========================
-		// CTA SECTION
+		// SECTION APPEL À L'ACTION
 		// ===========================
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'CTA Section',
+			label: 'Section Appel à l\'Action',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Envie du Même Résultat Pour Votre Jardin ?',
-					label: 'CTA Title',
+					label: 'Titre',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'CTA Description',
+					label: 'Description',
 				},
 				{
 					name: 'buttonText',
 					type: 'text',
-					label: 'Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'buttonUrl',
 					type: 'text',
 					defaultValue: '/contact',
-					label: 'Button URL',
+					label: 'Lien du bouton',
 				},
 				{
 					name: 'benefits',
 					type: 'array',
-					label: 'Benefits List',
+					label: 'Liste des avantages',
 					fields: [
 						{
 							name: 'benefit',
 							type: 'text',
+							label: 'Avantage',
 						},
 					],
 				},
@@ -101,6 +97,6 @@ export const RealisationsPage: GlobalConfig = {
 		},
 	],
 	admin: {
-		description: 'Configuration for /realisations page. Realisations themselves come from the Realisations collection.',
+		description: 'Configuration de la page /realisations. Les réalisations proviennent de la collection "Réalisations".',
 	},
 }

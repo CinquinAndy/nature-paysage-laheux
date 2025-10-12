@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Realisations: CollectionConfig = {
 	slug: 'realisations',
+	labels: {
+		singular: 'Réalisation',
+		plural: 'Réalisations',
+	},
 	admin: {
 		useAsTitle: 'title',
 		defaultColumns: ['title', 'location', 'category', 'date'],
@@ -14,18 +18,21 @@ export const Realisations: CollectionConfig = {
 			name: 'title',
 			type: 'text',
 			required: true,
-			label: 'Project Title',
+			label: 'Titre du projet',
 		},
 		{
 			name: 'slug',
 			type: 'text',
 			required: true,
 			unique: true,
-			label: 'URL Slug',
+			label: 'Identifiant URL (slug)',
+			admin: {
+				description: 'Utilisé dans l\'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.',
+			},
 			validate: (val: string) => {
-				if (!val) return 'Slug is required'
+				if (!val) return 'Le slug est obligatoire'
 				if (!/^[a-z0-9-]+$/.test(val)) {
-					return 'Slug must contain only lowercase letters, numbers, and hyphens'
+					return 'Le slug doit contenir uniquement des lettres minuscules, chiffres et tirets'
 				}
 				return true
 			},
@@ -33,17 +40,17 @@ export const Realisations: CollectionConfig = {
 		{
 			name: 'location',
 			type: 'text',
-			label: 'Location (City/Town)',
+			label: 'Ville / Commune',
 			admin: {
-				description: 'e.g., Monnières, Vallet, etc.',
+				description: 'Par exemple : Monnières, Vallet, Clisson...',
 			},
 		},
 		{
 			name: 'date',
 			type: 'date',
-			label: 'Project Date',
+			label: 'Date du projet',
 			admin: {
-				description: 'When the project was completed',
+				description: 'Date de réalisation ou de fin du projet',
 			},
 		},
 		{
@@ -51,30 +58,31 @@ export const Realisations: CollectionConfig = {
 			type: 'upload',
 			relationTo: 'media',
 			required: true,
-			label: 'Main Image',
+			label: 'Image principale',
 		},
 		{
 			name: 'shortDescription',
 			type: 'textarea',
 			required: true,
-			label: 'Short Description',
+			label: 'Description courte',
 			admin: {
-				description: 'Brief description for cards/previews',
+				description: 'Brève description pour les cartes et aperçus (2-3 phrases)',
 			},
 		},
 		{
 			name: 'description',
 			type: 'richText',
 			required: true,
-			label: 'Full Description',
+			label: 'Description complète',
 			admin: {
-				description: 'Complete project description',
+				description: 'Description détaillée du projet et des travaux réalisés',
 			},
 		},
 		{
 			name: 'category',
 			type: 'select',
 			required: true,
+			label: 'Catégorie',
 			options: [
 				{ label: 'Entretien', value: 'entretien' },
 				{ label: 'Aménagement', value: 'amenagement' },
@@ -86,24 +94,25 @@ export const Realisations: CollectionConfig = {
 		{
 			name: 'features',
 			type: 'array',
-			label: 'Key Features',
+			label: 'Caractéristiques principales',
 			admin: {
-				description: 'Main highlights of the project',
+				description: 'Points forts et aspects remarquables du projet',
 			},
 			fields: [
 				{
 					name: 'feature',
 					type: 'text',
 					required: true,
+					label: 'Caractéristique',
 				},
 			],
 		},
 		{
 			name: 'images',
 			type: 'array',
-			label: 'Additional Images',
+			label: 'Images supplémentaires',
 			admin: {
-				description: 'Gallery of additional project images',
+				description: 'Galerie d\'images additionnelles du projet',
 			},
 			fields: [
 				{
@@ -111,28 +120,29 @@ export const Realisations: CollectionConfig = {
 					type: 'upload',
 					relationTo: 'media',
 					required: true,
+					label: 'Image',
 				},
 			],
 		},
 		{
 			name: 'testimonial',
 			type: 'group',
-			label: 'Client Testimonial',
+			label: 'Témoignage client',
 			fields: [
 				{
 					name: 'quote',
 					type: 'textarea',
-					label: 'Testimonial Quote',
+					label: 'Citation du client',
 				},
 				{
 					name: 'author',
 					type: 'text',
-					label: 'Client Name',
+					label: 'Nom du client',
 				},
 				{
 					name: 'location',
 					type: 'text',
-					label: 'Client Location',
+					label: 'Ville du client',
 				},
 			],
 		},

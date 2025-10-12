@@ -2,116 +2,112 @@ import type { GlobalConfig } from 'payload'
 
 export const ContactPage: GlobalConfig = {
 	slug: 'contact-page',
-	label: 'Contact Page',
+	label: 'Page de Contact',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// HERO SECTION
+		// SECTION HERO
 		// ===========================
 		{
 			name: 'hero',
 			type: 'group',
-			label: 'Hero Section',
+			label: 'Section Hero (En-tête)',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Contactez-Moi',
-					label: 'Page Title',
+					label: 'Titre de la page',
 				},
 				{
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Hero Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image d\'en-tête',
 				},
 			],
 		},
 
 		// ===========================
-		// FORM SECTION
+		// SECTION FORMULAIRE
 		// ===========================
 		{
 			name: 'formSection',
 			type: 'group',
-			label: 'Form Section',
+			label: 'Section Formulaire',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Parlons de Votre Jardin',
-					label: 'Form Title',
+					label: 'Titre du formulaire',
 				},
 				{
 					name: 'subtitle',
 					type: 'text',
-					label: 'Form Subtitle',
+					label: 'Sous-titre du formulaire',
 				},
 				{
 					name: 'gardenSizeOptions',
 					type: 'array',
-					label: 'Garden Size Options',
+					label: 'Options de surface de jardin',
 					admin: {
-						description: 'Options for the garden surface dropdown',
+						description: 'Options proposées dans le menu déroulant pour la surface du jardin',
 					},
 					fields: [
 						{
 							name: 'label',
 							type: 'text',
 							required: true,
-							label: 'Display Label',
+							label: 'Libellé affiché',
 						},
 						{
 							name: 'value',
 							type: 'text',
 							required: true,
-							label: 'Value',
+							label: 'Valeur technique',
 						},
 					],
 				},
 				{
 					name: 'privacyText',
 					type: 'textarea',
-					label: 'Privacy Policy Text',
+					label: 'Texte de confidentialité',
 					admin: {
-						description: 'Text displayed below the submit button',
+						description: 'Texte affiché sous le bouton d\'envoi concernant la protection des données',
 					},
 				},
 			],
 		},
 
 		// ===========================
-		// CONTACT INFO SIDEBAR
+		// ENCART INFORMATIONS DE CONTACT
 		// ===========================
 		{
 			name: 'contactInfoSidebar',
 			type: 'group',
-			label: 'Contact Info Sidebar',
+			label: 'Encart Informations',
 			fields: [
 				{
 					name: 'benefits',
 					type: 'array',
-					label: 'Benefits List',
+					label: 'Liste des avantages',
 					admin: {
-						description: 'Key benefits displayed in the sidebar',
+						description: 'Avantages clés affichés dans l\'encart (ex: "Réponse sous 24h")',
 					},
 					fields: [
 						{
 							name: 'benefit',
 							type: 'text',
+							label: 'Avantage',
 						},
 					],
 				},
 			],
 			admin: {
-				description: 'Contact information (phone, email, etc.) comes from Site Settings',
+				description: 'Les coordonnées (téléphone, email, etc.) proviennent des Paramètres du Site',
 			},
 		},
 	],

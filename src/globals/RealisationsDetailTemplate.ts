@@ -2,120 +2,120 @@ import type { GlobalConfig } from 'payload'
 
 export const RealisationsDetailTemplate: GlobalConfig = {
 	slug: 'realisations-detail-template',
-	label: 'Realisations Detail Template',
+	label: 'Modèle Page Réalisation',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// PROCESS SECTION
+		// SECTION PROCESSUS
 		// ===========================
 		{
 			name: 'processSection',
 			type: 'group',
-			label: 'Process Section',
+			label: 'Section Processus',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Une approche écologique et respectueuse',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'richText',
-					label: 'Section Description',
+					label: 'Description',
 				},
 			],
 		},
 
 		// ===========================
-		// TAX CREDIT INFO SECTION
+		// SECTION CRÉDIT D'IMPÔT
 		// ===========================
 		{
 			name: 'taxCreditInfo',
 			type: 'group',
-			label: 'Tax Credit Info Section',
+			label: 'Section Crédit d\'Impôt',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: "Bénéficiez de 50% de crédit d'impôt",
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Section Description',
+					label: 'Description',
 				},
 			],
 		},
 
 		// ===========================
-		// TESTIMONIAL SECTION
+		// SECTION TÉMOIGNAGE
 		// ===========================
 		{
 			name: 'testimonialSection',
 			type: 'group',
-			label: 'Testimonial Section',
+			label: 'Section Témoignage',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Le mot du client',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'defaultTestimonial',
 					type: 'richText',
-					label: 'Default Testimonial',
+					label: 'Témoignage par défaut',
 					admin: {
-						description: "Used if the realisation doesn't have its own testimonial",
+						description: 'Utilisé si la réalisation n\'a pas son propre témoignage',
 					},
 				},
 				{
 					name: 'defaultAuthor',
 					type: 'text',
-					label: 'Default Author',
+					label: 'Auteur par défaut',
 				},
 			],
 		},
 
 		// ===========================
-		// CTA SECTION
+		// SECTION APPEL À L'ACTION
 		// ===========================
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'CTA Section',
+			label: 'Section Appel à l\'Action',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Un projet similaire ?',
-					label: 'CTA Title',
+					label: 'Titre',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'CTA Description',
+					label: 'Description',
 				},
 				{
 					name: 'buttonText',
 					type: 'text',
-					label: 'Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'buttonUrl',
 					type: 'text',
 					defaultValue: '/contact',
-					label: 'Button URL',
+					label: 'Lien du bouton',
 				},
 			],
 		},
 	],
 	admin: {
 		description:
-			'Template configuration for /realisations/[id] pages. Dynamic content comes from the Realisations collection.',
+			'Configuration du modèle pour les pages /realisations/[id]. Le contenu dynamique provient de la collection "Réalisations".',
 	},
 }

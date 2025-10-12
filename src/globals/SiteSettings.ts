@@ -2,125 +2,125 @@ import type { GlobalConfig } from 'payload'
 
 export const SiteSettings: GlobalConfig = {
 	slug: 'site-settings',
-	label: 'Site Settings',
+	label: 'Paramètres du Site',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// CONTACT INFORMATION
+		// INFORMATIONS DE CONTACT
 		// ===========================
 		{
 			name: 'contact',
 			type: 'group',
-			label: 'Contact Information',
+			label: 'Informations de Contact',
 			fields: [
 				{
 					name: 'phone',
 					type: 'text',
 					required: true,
-					label: 'Phone Number',
+					label: 'Numéro de téléphone',
 				},
 				{
 					name: 'email',
 					type: 'email',
 					required: true,
-					label: 'Email Address',
+					label: 'Adresse email',
 				},
 				{
 					name: 'company',
 					type: 'group',
-					label: 'Company Details',
+					label: 'Informations de l\'entreprise',
 					fields: [
 						{
 							name: 'name',
 							type: 'text',
 							defaultValue: 'SASU Nature et Paysage Laheux',
-							label: 'Company Name',
+							label: 'Nom de l\'entreprise',
 						},
 						{
 							name: 'representative',
 							type: 'text',
 							defaultValue: 'Jean-Luc Laheux',
-							label: 'Legal Representative',
+							label: 'Représentant légal',
 						},
 						{
 							name: 'legalForm',
 							type: 'text',
 							defaultValue: 'SASU',
-							label: 'Legal Form',
+							label: 'Forme juridique',
 						},
 					],
 				},
 				{
 					name: 'address',
 					type: 'group',
-					label: 'Address',
+					label: 'Adresse',
 					fields: [
 						{
 							name: 'postalCode',
 							type: 'text',
-							label: 'Postal Code',
+							label: 'Code postal',
 						},
 						{
 							name: 'city',
 							type: 'text',
-							label: 'City',
+							label: 'Ville',
 						},
 						{
 							name: 'region',
 							type: 'text',
-							label: 'Region',
+							label: 'Région',
 						},
 						{
 							name: 'country',
 							type: 'text',
 							defaultValue: 'France',
-							label: 'Country',
+							label: 'Pays',
 						},
 					],
 				},
 				{
 					name: 'social',
 					type: 'group',
-					label: 'Social Media',
+					label: 'Réseaux sociaux',
 					fields: [
 						{
 							name: 'facebook',
 							type: 'text',
-							label: 'Facebook URL',
+							label: 'URL Facebook',
 						},
 						{
 							name: 'linkedin',
 							type: 'text',
-							label: 'LinkedIn URL',
+							label: 'URL LinkedIn',
 						},
 					],
 				},
 				{
 					name: 'hours',
 					type: 'group',
-					label: 'Business Hours',
+					label: 'Horaires d\'ouverture',
 					fields: [
 						{
 							name: 'weekday',
 							type: 'text',
-							label: 'Weekday Hours',
+							label: 'Horaires en semaine',
 						},
 						{
 							name: 'saturday',
 							type: 'text',
-							label: 'Saturday Hours',
+							label: 'Horaires le samedi',
 						},
 						{
 							name: 'sunday',
 							type: 'text',
-							label: 'Sunday Hours',
+							label: 'Horaires le dimanche',
 						},
 						{
 							name: 'note',
 							type: 'textarea',
-							label: 'Additional Note',
+							label: 'Note complémentaire',
 						},
 					],
 				},
@@ -128,86 +128,86 @@ export const SiteSettings: GlobalConfig = {
 		},
 
 		// ===========================
-		// TAX CREDIT INFORMATION
+		// INFORMATIONS CRÉDIT D'IMPÔT
 		// ===========================
 		{
 			name: 'taxCredit',
 			type: 'group',
-			label: 'Tax Credit Information',
+			label: 'Crédit d\'Impôt',
 			fields: [
 				{
 					name: 'percentage',
 					type: 'number',
 					defaultValue: 50,
-					label: 'Tax Credit Percentage',
+					label: 'Pourcentage du crédit d\'impôt',
 					admin: {
-						description: 'Percentage of tax credit (usually 50%)',
+						description: 'Pourcentage du crédit d\'impôt (généralement 50%)',
 					},
 				},
 				{
 					name: 'maxAnnualExpense',
 					type: 'number',
 					defaultValue: 12000,
-					label: 'Maximum Annual Expense (€)',
+					label: 'Plafond annuel de dépenses (€)',
 					admin: {
-						description: 'Maximum amount that can be claimed per year',
+						description: 'Montant maximum pouvant être déclaré par an',
 					},
 				},
 				{
 					name: 'maxAnnualCredit',
 					type: 'number',
 					defaultValue: 6000,
-					label: 'Maximum Annual Credit (€)',
+					label: 'Crédit d\'impôt annuel maximum (€)',
 					admin: {
-						description: 'Maximum tax credit that can be received per year',
+						description: 'Montant maximum de crédit d\'impôt pouvant être obtenu par an',
 					},
 				},
 				{
 					name: 'steps',
 					type: 'array',
-					label: 'Steps to Benefit',
+					label: 'Étapes pour en bénéficier',
 					admin: {
-						description: 'Steps to benefit from the tax credit',
+						description: 'Les étapes pour profiter du crédit d\'impôt',
 					},
 					fields: [
 						{
 							name: 'number',
 							type: 'number',
 							required: true,
-							label: 'Step Number',
+							label: 'Numéro de l\'étape',
 						},
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
-							label: 'Step Title',
+							label: 'Titre de l\'étape',
 						},
 						{
 							name: 'description',
 							type: 'textarea',
-							label: 'Step Description',
+							label: 'Description',
 						},
 					],
 				},
 				{
 					name: 'example',
 					type: 'group',
-					label: 'Example Calculation',
+					label: 'Exemple de calcul',
 					fields: [
 						{
 							name: 'serviceCost',
 							type: 'number',
-							label: 'Service Cost (€)',
+							label: 'Coût du service (€)',
 						},
 						{
 							name: 'taxCredit',
 							type: 'number',
-							label: 'Tax Credit Amount (€)',
+							label: 'Montant du crédit d\'impôt (€)',
 						},
 						{
 							name: 'realCost',
 							type: 'number',
-							label: 'Real Cost After Credit (€)',
+							label: 'Coût réel après crédit (€)',
 						},
 					],
 				},
@@ -225,16 +225,16 @@ export const SiteSettings: GlobalConfig = {
 				{
 					name: 'mainMenu',
 					type: 'array',
-					label: 'Main Menu Items',
+					label: 'Menu principal',
 					admin: {
-						description: 'Main navigation menu items',
+						description: 'Liens du menu de navigation principal',
 					},
 					fields: [
 						{
 							name: 'label',
 							type: 'text',
 							required: true,
-							label: 'Menu Label',
+							label: 'Libellé du lien',
 						},
 						{
 							name: 'url',
@@ -247,19 +247,19 @@ export const SiteSettings: GlobalConfig = {
 				{
 					name: 'ctaButton',
 					type: 'group',
-					label: 'CTA Button',
+					label: 'Bouton d\'appel à l\'action',
 					fields: [
 						{
 							name: 'label',
 							type: 'text',
 							defaultValue: 'Devis Gratuit',
-							label: 'Button Label',
+							label: 'Texte du bouton',
 						},
 						{
 							name: 'url',
 							type: 'text',
 							defaultValue: '/contact',
-							label: 'Button URL',
+							label: 'Lien du bouton',
 						},
 					],
 				},
@@ -267,66 +267,66 @@ export const SiteSettings: GlobalConfig = {
 		},
 
 		// ===========================
-		// FOOTER
+		// PIED DE PAGE
 		// ===========================
 		{
 			name: 'footer',
 			type: 'group',
-			label: 'Footer',
+			label: 'Pied de page',
 			fields: [
 				{
 					name: 'logoAlt',
 					type: 'text',
-					label: 'Logo Alt Text',
+					label: 'Texte alternatif du logo',
 				},
 				{
 					name: 'tagline',
 					type: 'text',
-					label: 'Footer Tagline',
+					label: 'Slogan',
 				},
 				{
 					name: 'copyrightText',
 					type: 'text',
-					label: 'Copyright Text',
+					label: 'Texte de copyright',
 				},
 				{
 					name: 'developerName',
 					type: 'text',
-					label: 'Developer Name',
+					label: 'Nom du développeur',
 				},
 				{
 					name: 'developerUrl',
 					type: 'text',
-					label: 'Developer URL',
+					label: 'URL du développeur',
 				},
 			],
 		},
 
 		// ===========================
-		// SEO DEFAULTS
+		// PARAMÈTRES SEO PAR DÉFAUT
 		// ===========================
 		{
 			name: 'seo',
 			type: 'group',
-			label: 'SEO Defaults',
+			label: 'Référencement (SEO)',
 			fields: [
 				{
 					name: 'siteTitle',
 					type: 'text',
-					label: 'Default Site Title',
+					label: 'Titre du site par défaut',
 				},
 				{
 					name: 'siteDescription',
 					type: 'textarea',
-					label: 'Default Site Description',
+					label: 'Description du site par défaut',
 				},
 				{
 					name: 'ogImage',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Default OG Image',
+					label: 'Image de partage par défaut',
 					admin: {
-						description: 'Default image for social media sharing',
+						description: 'Image utilisée par défaut lors des partages sur les réseaux sociaux',
 					},
 				},
 			],

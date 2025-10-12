@@ -2,93 +2,92 @@ import type { GlobalConfig } from 'payload'
 
 export const PrestationsPage: GlobalConfig = {
 	slug: 'prestations-page',
-	label: 'Prestations Page',
+	label: 'Page Prestations',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// HERO SECTION
+		// SECTION HERO
 		// ===========================
 		{
 			name: 'hero',
 			type: 'group',
-			label: 'Hero Section',
+			label: 'Section Hero (En-tête)',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Mes Prestations Écologiques',
-					label: 'Page Title',
+					label: 'Titre de la page',
 				},
 				{
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Hero Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image d\'en-tête',
 				},
 			],
 		},
 
 		// ===========================
-		// TAX CREDIT ELIGIBILITY SECTION
+		// SECTION ÉLIGIBILITÉ CRÉDIT D'IMPÔT
 		// ===========================
 		{
 			name: 'taxCreditEligibility',
 			type: 'group',
-			label: 'Tax Credit Eligibility Section',
+			label: 'Section Éligibilité Crédit d\'Impôt',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: "Crédit d'Impôt : Ce Qui Est Pris en Charge",
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Section Description',
+					label: 'Description',
 				},
 				{
 					name: 'eligibleItems',
 					type: 'array',
-					label: 'Eligible Services',
+					label: 'Services éligibles',
 					admin: {
-						description: 'Services eligible for 50% tax credit',
+						description: 'Services qui bénéficient du crédit d\'impôt de 50%',
 					},
 					fields: [
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'text',
+							label: 'Description',
 						},
 					],
 				},
 				{
 					name: 'nonEligibleItems',
 					type: 'array',
-					label: 'Non-Eligible Services',
+					label: 'Services non éligibles',
 					admin: {
-						description: 'Services NOT eligible for tax credit',
+						description: 'Services qui NE bénéficient PAS du crédit d\'impôt',
 					},
 					fields: [
 						{
 							name: 'title',
 							type: 'text',
 							required: true,
+							label: 'Titre',
 						},
 						{
 							name: 'description',
 							type: 'text',
+							label: 'Description',
 						},
 					],
 				},
@@ -96,54 +95,55 @@ export const PrestationsPage: GlobalConfig = {
 					name: 'eligibleImage',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Eligible Services Image',
+					label: 'Image services éligibles',
 				},
 				{
 					name: 'nonEligibleImage',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Non-Eligible Services Image',
+					label: 'Image services non éligibles',
 				},
 			],
 		},
 
 		// ===========================
-		// CTA SECTION
+		// SECTION APPEL À L'ACTION
 		// ===========================
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'CTA Section',
+			label: 'Section Appel à l\'Action',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
-					label: 'CTA Title',
+					label: 'Titre',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'CTA Description',
+					label: 'Description',
 				},
 				{
 					name: 'buttonText',
 					type: 'text',
-					label: 'Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'buttonUrl',
 					type: 'text',
 					defaultValue: '/contact',
-					label: 'Button URL',
+					label: 'Lien du bouton',
 				},
 				{
 					name: 'benefits',
 					type: 'array',
-					label: 'Benefits List',
+					label: 'Liste des avantages',
 					fields: [
 						{
 							name: 'benefit',
 							type: 'text',
+							label: 'Avantage',
 						},
 					],
 				},
@@ -151,6 +151,6 @@ export const PrestationsPage: GlobalConfig = {
 		},
 	],
 	admin: {
-		description: 'Configuration for /prestations page. Services themselves come from the Services collection.',
+		description: 'Configuration de la page /prestations. Les prestations proviennent de la collection "Prestations".',
 	},
 }

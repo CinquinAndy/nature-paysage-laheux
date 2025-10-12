@@ -2,53 +2,49 @@ import type { GlobalConfig } from 'payload'
 
 export const FaqPage: GlobalConfig = {
 	slug: 'faq-page',
-	label: 'FAQ Page',
+	label: 'Page FAQ',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// HERO SECTION
+		// SECTION HERO
 		// ===========================
 		{
 			name: 'hero',
 			type: 'group',
-			label: 'Hero Section',
+			label: 'Section Hero (En-tête)',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Questions Fréquentes',
-					label: 'Page Title',
+					label: 'Titre de la page',
 				},
 				{
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Hero Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image d\'en-tête',
 				},
 			],
 		},
 
 		// ===========================
-		// CATEGORY DESCRIPTIONS
+		// DESCRIPTIONS DES CATÉGORIES
 		// ===========================
 		{
 			name: 'categoryDescriptions',
 			type: 'array',
-			label: 'Category Descriptions',
+			label: 'Descriptions des catégories',
 			admin: {
-				description: 'Optional descriptions for each FAQ category',
+				description: 'Descriptions optionnelles pour chaque catégorie de FAQ',
 			},
 			fields: [
 				{
 					name: 'category',
 					type: 'select',
+					label: 'Catégorie',
 					options: [
 						{ label: 'Questions Générales', value: 'general' },
 						{ label: 'Prestations & Services', value: 'services' },
@@ -59,49 +55,51 @@ export const FaqPage: GlobalConfig = {
 				{
 					name: 'description',
 					type: 'textarea',
+					label: 'Description',
 				},
 			],
 		},
 
 		// ===========================
-		// CTA SECTION
+		// SECTION APPEL À L'ACTION
 		// ===========================
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'CTA Section',
+			label: 'Section Appel à l\'Action',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Une Autre Question ?',
-					label: 'CTA Title',
+					label: 'Titre',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'CTA Description',
+					label: 'Description',
 				},
 				{
 					name: 'buttonText',
 					type: 'text',
 					defaultValue: 'Me Contacter',
-					label: 'Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'buttonUrl',
 					type: 'text',
 					defaultValue: '/contact',
-					label: 'Button URL',
+					label: 'Lien du bouton',
 				},
 				{
 					name: 'benefits',
 					type: 'array',
-					label: 'Benefits List',
+					label: 'Liste des avantages',
 					fields: [
 						{
 							name: 'benefit',
 							type: 'text',
+							label: 'Avantage',
 						},
 					],
 				},
@@ -109,6 +107,6 @@ export const FaqPage: GlobalConfig = {
 		},
 	],
 	admin: {
-		description: 'Configuration for /faq page. FAQ items come from the FAQ collection.',
+		description: 'Configuration de la page /faq. Les questions proviennent de la collection "Questions FAQ".',
 	},
 }

@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const FAQ: CollectionConfig = {
 	slug: 'faq',
+	labels: {
+		singular: 'Question FAQ',
+		plural: 'Questions FAQ',
+	},
 	admin: {
 		useAsTitle: 'question',
 		defaultColumns: ['question', 'category', 'showOnHomepage', 'order'],
@@ -20,15 +24,16 @@ export const FAQ: CollectionConfig = {
 			name: 'answer',
 			type: 'richText',
 			required: true,
-			label: 'Answer',
+			label: 'Réponse',
 			admin: {
-				description: 'Detailed answer to the question',
+				description: 'Réponse détaillée à la question',
 			},
 		},
 		{
 			name: 'category',
 			type: 'select',
 			required: true,
+			label: 'Catégorie',
 			options: [
 				{ label: 'Questions Générales', value: 'general' },
 				{ label: 'Prestations & Services', value: 'services' },
@@ -41,18 +46,18 @@ export const FAQ: CollectionConfig = {
 			name: 'showOnHomepage',
 			type: 'checkbox',
 			defaultValue: false,
-			label: 'Show on Homepage',
+			label: 'Afficher sur la page d\'accueil',
 			admin: {
-				description: 'Display in the FAQ short section on homepage (top 4)',
+				description: 'Cette question apparaîtra dans la section FAQ de la page d\'accueil (4 questions maximum)',
 			},
 		},
 		{
 			name: 'order',
 			type: 'number',
 			defaultValue: 0,
-			label: 'Display Order',
+			label: 'Ordre d\'affichage',
 			admin: {
-				description: 'Order within category (lower number = first)',
+				description: 'Ordre d\'apparition dans la catégorie (plus petit numéro = apparaît en premier)',
 			},
 		},
 	],

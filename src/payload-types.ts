@@ -215,15 +215,15 @@ export interface Service {
   id: number;
   title: string;
   /**
-   * Used in the URL (e.g., tonte-pelouse)
+   * Utilisé dans l'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.
    */
   slug: string;
   /**
-   * Used in cards and previews
+   * Utilisée dans les cartes et aperçus (2-3 phrases maximum)
    */
   shortDescription: string;
   /**
-   * Detailed description for the service page
+   * Description détaillée affichée sur la page de la prestation
    */
   fullDescription: {
     root: {
@@ -243,22 +243,22 @@ export interface Service {
   image: number | Media;
   category: 'entretien' | 'creation' | 'accompagnement';
   /**
-   * List of key features/benefits (4-6 items)
+   * Liste des avantages et caractéristiques (4 à 6 éléments)
    */
   features: {
     feature: string;
     id?: string | null;
   }[];
   /**
-   * Is this service eligible for 50% tax credit?
+   * Cette prestation est-elle éligible au crédit d'impôt de 50% ?
    */
   eligibleTaxCredit?: boolean | null;
   /**
-   * How pricing is displayed to clients
+   * Comment le tarif est affiché aux clients (généralement "Sur devis personnalisé")
    */
   price?: string | null;
   /**
-   * Order in which services appear (lower number = first)
+   * Ordre d'apparition des prestations (plus petit numéro = apparaît en premier)
    */
   order?: number | null;
   updatedAt: string;
@@ -271,22 +271,25 @@ export interface Service {
 export interface Realisation {
   id: number;
   title: string;
+  /**
+   * Utilisé dans l'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.
+   */
   slug: string;
   /**
-   * e.g., Monnières, Vallet, etc.
+   * Par exemple : Monnières, Vallet, Clisson...
    */
   location?: string | null;
   /**
-   * When the project was completed
+   * Date de réalisation ou de fin du projet
    */
   date?: string | null;
   image: number | Media;
   /**
-   * Brief description for cards/previews
+   * Brève description pour les cartes et aperçus (2-3 phrases)
    */
   shortDescription: string;
   /**
-   * Complete project description
+   * Description détaillée du projet et des travaux réalisés
    */
   description: {
     root: {
@@ -305,7 +308,7 @@ export interface Realisation {
   };
   category: 'entretien' | 'amenagement' | 'potager' | 'taille';
   /**
-   * Main highlights of the project
+   * Points forts et aspects remarquables du projet
    */
   features?:
     | {
@@ -314,7 +317,7 @@ export interface Realisation {
       }[]
     | null;
   /**
-   * Gallery of additional project images
+   * Galerie d'images additionnelles du projet
    */
   images?:
     | {
@@ -338,7 +341,7 @@ export interface Faq {
   id: number;
   question: string;
   /**
-   * Detailed answer to the question
+   * Réponse détaillée à la question
    */
   answer: {
     root: {
@@ -357,11 +360,11 @@ export interface Faq {
   };
   category: 'general' | 'services' | 'tarifs' | 'ecologie';
   /**
-   * Display in the FAQ short section on homepage (top 4)
+   * Cette question apparaîtra dans la section FAQ de la page d'accueil (4 questions maximum)
    */
   showOnHomepage?: boolean | null;
   /**
-   * Order within category (lower number = first)
+   * Ordre d'apparition dans la catégorie (plus petit numéro = apparaît en premier)
    */
   order?: number | null;
   updatedAt: string;
@@ -624,28 +627,26 @@ export interface Homepage {
   id: number;
   hero: {
     backgroundImage: number | Media;
-    imageAlt?: string | null;
     /**
-     * Use **word** syntax for bold text (shown with blob accent). Example: **Transformez** Votre Jardin
+     * Utilisez **mot** pour mettre en gras (effet blob). Exemple : **Transformez** Votre Jardin
      */
     title: string;
     subtitle?: string | null;
   };
   values: {
     /**
-     * Use **word** syntax for bold text. Example: Une Approche **Écologique** et Sur-Mesure
+     * Utilisez **mot** pour mettre en gras. Exemple : Une Approche **Écologique** et Sur-Mesure
      */
     sectionTitle: string;
     image?: (number | null) | Media;
-    imageAlt?: string | null;
     /**
-     * Exactly 4 values will be displayed
+     * Exactement 4 valeurs seront affichées
      */
     valuesList?:
       | {
           icon: 'leaf' | 'wrench' | 'map-pin' | 'trending-down';
           /**
-           * e.g., "01", "02", etc.
+           * Par exemple : "01", "02", "03", "04"
            */
           number: string;
           title: string;
@@ -655,7 +656,7 @@ export interface Homepage {
       | null;
   };
   /**
-   * Services are pulled from the Services collection
+   * Les prestations sont automatiquement récupérées depuis la collection "Prestations"
    */
   servicesPreview?: {
     title?: string | null;
@@ -665,17 +666,16 @@ export interface Homepage {
   };
   philosophy: {
     /**
-     * Use **word** syntax for bold text. Example: Mon Approche : **Nature & Respect**
+     * Utilisez **mot** pour mettre en gras. Exemple : Mon Approche : **Nature & Respect**
      */
     title: string;
     introText?: string | null;
     quote?: string | null;
     primaryImage?: (number | null) | Media;
-    imageAlt?: string | null;
     imageOverlayTitle?: string | null;
     imageOverlayDescription?: string | null;
     /**
-     * Exactly 4 philosophy cards
+     * Exactement 4 cartes de philosophie seront affichées
      */
     philosophyPoints?:
       | {
@@ -686,7 +686,7 @@ export interface Homepage {
         }[]
       | null;
     /**
-     * Ecological practices I prioritize
+     * Pratiques écologiques que je favorise
      */
     preferences?:
       | {
@@ -696,7 +696,7 @@ export interface Homepage {
         }[]
       | null;
     /**
-     * Practices I refuse to use
+     * Pratiques que je n'utilise jamais
      */
     refusals?:
       | {
@@ -716,16 +716,16 @@ export interface Homepage {
     title?: string | null;
     subtitle?: string | null;
     /**
-     * Latitude for map center point
+     * Coordonnée latitude pour centrer la carte (ne pas modifier sans raison)
      */
     mapCenterLat?: number | null;
     /**
-     * Longitude for map center point
+     * Coordonnée longitude pour centrer la carte (ne pas modifier sans raison)
      */
     mapCenterLng?: number | null;
     radiusKm?: number | null;
     /**
-     * List of main cities where you operate
+     * Liste des villes où vous intervenez
      */
     communes?:
       | {
@@ -741,7 +741,7 @@ export interface Homepage {
     };
   };
   /**
-   * Realisations are pulled from the Realisations collection (gallery of 6)
+   * Les 6 dernières réalisations sont automatiquement récupérées depuis la collection "Réalisations"
    */
   realisationsPreview?: {
     title?: string | null;
@@ -750,7 +750,7 @@ export interface Homepage {
     ctaUrl?: string | null;
   };
   /**
-   * Top 4 FAQs are pulled from the FAQ collection (showOnHomepage = true)
+   * Les 4 questions marquées "À afficher sur la page d'accueil" sont automatiquement récupérées
    */
   faqShort?: {
     title?: string | null;
@@ -762,7 +762,7 @@ export interface Homepage {
     title?: string | null;
     subtitle?: string | null;
     /**
-     * The 4 steps to benefit from tax credit
+     * Les 4 étapes pour profiter du crédit d'impôt de 50%
      */
     steps?:
       | {
@@ -781,7 +781,7 @@ export interface Homepage {
     buttonText?: string | null;
     buttonUrl?: string | null;
     /**
-     * List of key benefits/reasons to contact
+     * Points clés qui encouragent à prendre contact
      */
     benefits?:
       | {
@@ -794,7 +794,7 @@ export interface Homepage {
   createdAt?: string | null;
 }
 /**
- * Configuration for /prestations page. Services themselves come from the Services collection.
+ * Configuration de la page /prestations. Les prestations proviennent de la collection "Prestations".
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "prestations-page".
@@ -804,13 +804,12 @@ export interface PrestationsPage {
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
-    imageAlt?: string | null;
   };
   taxCreditEligibility?: {
     title?: string | null;
     description?: string | null;
     /**
-     * Services eligible for 50% tax credit
+     * Services qui bénéficient du crédit d'impôt de 50%
      */
     eligibleItems?:
       | {
@@ -820,7 +819,7 @@ export interface PrestationsPage {
         }[]
       | null;
     /**
-     * Services NOT eligible for tax credit
+     * Services qui NE bénéficient PAS du crédit d'impôt
      */
     nonEligibleItems?:
       | {
@@ -848,7 +847,7 @@ export interface PrestationsPage {
   createdAt?: string | null;
 }
 /**
- * Template configuration for /prestations/[slug] pages. Dynamic content comes from the Services collection.
+ * Configuration du modèle pour les pages /prestations/[slug]. Le contenu dynamique provient de la collection "Prestations".
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "prestations-detail-template".
@@ -887,7 +886,7 @@ export interface PrestationsDetailTemplate {
   createdAt?: string | null;
 }
 /**
- * Configuration for /realisations page. Realisations themselves come from the Realisations collection.
+ * Configuration de la page /realisations. Les réalisations proviennent de la collection "Réalisations".
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "realisations-page".
@@ -897,7 +896,6 @@ export interface RealisationsPage {
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
-    imageAlt?: string | null;
   };
   introduction?: {
     paragraph1?: string | null;
@@ -933,7 +931,7 @@ export interface RealisationsPage {
   createdAt?: string | null;
 }
 /**
- * Template configuration for /realisations/[id] pages. Dynamic content comes from the Realisations collection.
+ * Configuration du modèle pour les pages /realisations/[id]. Le contenu dynamique provient de la collection "Réalisations".
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "realisations-detail-template".
@@ -965,7 +963,7 @@ export interface RealisationsDetailTemplate {
   testimonialSection?: {
     title?: string | null;
     /**
-     * Used if the realisation doesn't have its own testimonial
+     * Utilisé si la réalisation n'a pas son propre témoignage
      */
     defaultTestimonial?: {
       root: {
@@ -994,7 +992,7 @@ export interface RealisationsDetailTemplate {
   createdAt?: string | null;
 }
 /**
- * Configuration for /faq page. FAQ items come from the FAQ collection.
+ * Configuration de la page /faq. Les questions proviennent de la collection "Questions FAQ".
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faq-page".
@@ -1004,10 +1002,9 @@ export interface FaqPage {
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
-    imageAlt?: string | null;
   };
   /**
-   * Optional descriptions for each FAQ category
+   * Descriptions optionnelles pour chaque catégorie de FAQ
    */
   categoryDescriptions?:
     | {
@@ -1040,13 +1037,12 @@ export interface ContactPage {
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
-    imageAlt?: string | null;
   };
   formSection?: {
     title?: string | null;
     subtitle?: string | null;
     /**
-     * Options for the garden surface dropdown
+     * Options proposées dans le menu déroulant pour la surface du jardin
      */
     gardenSizeOptions?:
       | {
@@ -1056,16 +1052,16 @@ export interface ContactPage {
         }[]
       | null;
     /**
-     * Text displayed below the submit button
+     * Texte affiché sous le bouton d'envoi concernant la protection des données
      */
     privacyText?: string | null;
   };
   /**
-   * Contact information (phone, email, etc.) comes from Site Settings
+   * Les coordonnées (téléphone, email, etc.) proviennent des Paramètres du Site
    */
   contactInfoSidebar?: {
     /**
-     * Key benefits displayed in the sidebar
+     * Avantages clés affichés dans l'encart (ex: "Réponse sous 24h")
      */
     benefits?:
       | {
@@ -1086,10 +1082,9 @@ export interface MentionsLegalesPage {
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
-    imageAlt?: string | null;
   };
   /**
-   * Complete legal content in rich text format. Include all sections: Editeur, Hebergement, Droits, RGPD, etc.
+   * Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d'auteur, RGPD, etc.
    */
   content: {
     root: {
@@ -1142,19 +1137,19 @@ export interface SiteSetting {
   };
   taxCredit?: {
     /**
-     * Percentage of tax credit (usually 50%)
+     * Pourcentage du crédit d'impôt (généralement 50%)
      */
     percentage?: number | null;
     /**
-     * Maximum amount that can be claimed per year
+     * Montant maximum pouvant être déclaré par an
      */
     maxAnnualExpense?: number | null;
     /**
-     * Maximum tax credit that can be received per year
+     * Montant maximum de crédit d'impôt pouvant être obtenu par an
      */
     maxAnnualCredit?: number | null;
     /**
-     * Steps to benefit from the tax credit
+     * Les étapes pour profiter du crédit d'impôt
      */
     steps?:
       | {
@@ -1172,7 +1167,7 @@ export interface SiteSetting {
   };
   navigation?: {
     /**
-     * Main navigation menu items
+     * Liens du menu de navigation principal
      */
     mainMenu?:
       | {
@@ -1197,7 +1192,7 @@ export interface SiteSetting {
     siteTitle?: string | null;
     siteDescription?: string | null;
     /**
-     * Default image for social media sharing
+     * Image utilisée par défaut lors des partages sur les réseaux sociaux
      */
     ogImage?: (number | null) | Media;
   };
@@ -1213,7 +1208,6 @@ export interface HomepageSelect<T extends boolean = true> {
     | T
     | {
         backgroundImage?: T;
-        imageAlt?: T;
         title?: T;
         subtitle?: T;
       };
@@ -1222,7 +1216,6 @@ export interface HomepageSelect<T extends boolean = true> {
     | {
         sectionTitle?: T;
         image?: T;
-        imageAlt?: T;
         valuesList?:
           | T
           | {
@@ -1248,7 +1241,6 @@ export interface HomepageSelect<T extends boolean = true> {
         introText?: T;
         quote?: T;
         primaryImage?: T;
-        imageAlt?: T;
         imageOverlayTitle?: T;
         imageOverlayDescription?: T;
         philosophyPoints?:
@@ -1365,7 +1357,6 @@ export interface PrestationsPageSelect<T extends boolean = true> {
     | {
         title?: T;
         image?: T;
-        imageAlt?: T;
       };
   taxCreditEligibility?:
     | T
@@ -1446,7 +1437,6 @@ export interface RealisationsPageSelect<T extends boolean = true> {
     | {
         title?: T;
         image?: T;
-        imageAlt?: T;
       };
   introduction?:
     | T
@@ -1518,7 +1508,6 @@ export interface FaqPageSelect<T extends boolean = true> {
     | {
         title?: T;
         image?: T;
-        imageAlt?: T;
       };
   categoryDescriptions?:
     | T
@@ -1555,7 +1544,6 @@ export interface ContactPageSelect<T extends boolean = true> {
     | {
         title?: T;
         image?: T;
-        imageAlt?: T;
       };
   formSection?:
     | T
@@ -1595,7 +1583,6 @@ export interface MentionsLegalesPageSelect<T extends boolean = true> {
     | {
         title?: T;
         image?: T;
-        imageAlt?: T;
       };
   content?: T;
   updatedAt?: T;

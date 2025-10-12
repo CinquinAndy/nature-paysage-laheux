@@ -2,91 +2,91 @@ import type { GlobalConfig } from 'payload'
 
 export const PrestationsDetailTemplate: GlobalConfig = {
 	slug: 'prestations-detail-template',
-	label: 'Prestations Detail Template',
+	label: 'Modèle Page Prestation',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// APPROACH SECTION
+		// SECTION APPROCHE
 		// ===========================
 		{
 			name: 'approachSection',
 			type: 'group',
-			label: 'Ecological Approach Section',
+			label: 'Section Approche Écologique',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Une approche écologique et respectueuse',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'richText',
-					label: 'Section Description',
+					label: 'Description',
 				},
 			],
 		},
 
 		// ===========================
-		// PRICING SECTION
+		// SECTION TARIFICATION
 		// ===========================
 		{
 			name: 'pricingSection',
 			type: 'group',
-			label: 'Pricing Section',
+			label: 'Section Tarification',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Tarification',
-					label: 'Section Title',
+					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Pricing Description',
+					label: 'Description des tarifs',
 				},
 			],
 		},
 
 		// ===========================
-		// CTA SECTION
+		// SECTION APPEL À L'ACTION
 		// ===========================
 		{
 			name: 'ctaSection',
 			type: 'group',
-			label: 'CTA Section',
+			label: 'Section Appel à l\'Action',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Intéressé par cette prestation ?',
-					label: 'CTA Title',
+					label: 'Titre',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'CTA Description',
+					label: 'Description',
 				},
 				{
 					name: 'buttonText',
 					type: 'text',
 					defaultValue: 'Demander un devis gratuit',
-					label: 'Button Text',
+					label: 'Texte du bouton',
 				},
 				{
 					name: 'buttonUrl',
 					type: 'text',
 					defaultValue: '/contact',
-					label: 'Button URL',
+					label: 'Lien du bouton',
 				},
 			],
 		},
 	],
 	admin: {
 		description:
-			'Template configuration for /prestations/[slug] pages. Dynamic content comes from the Services collection.',
+			'Configuration du modèle pour les pages /prestations/[slug]. Le contenu dynamique provient de la collection "Prestations".',
 	},
 }

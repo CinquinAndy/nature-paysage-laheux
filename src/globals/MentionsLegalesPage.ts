@@ -2,50 +2,45 @@ import type { GlobalConfig } from 'payload'
 
 export const MentionsLegalesPage: GlobalConfig = {
 	slug: 'mentions-legales-page',
-	label: 'Mentions Légales Page',
+	label: 'Page Mentions Légales',
 	access: {
 		read: () => true,
 	},
 	fields: [
 		// ===========================
-		// HERO SECTION
+		// SECTION HERO
 		// ===========================
 		{
 			name: 'hero',
 			type: 'group',
-			label: 'Hero Section',
+			label: 'Section Hero (En-tête)',
 			fields: [
 				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Mentions Légales',
-					label: 'Page Title',
+					label: 'Titre de la page',
 				},
 				{
 					name: 'image',
 					type: 'upload',
 					relationTo: 'media',
-					label: 'Hero Image',
-				},
-				{
-					name: 'imageAlt',
-					type: 'text',
-					label: 'Image Alt Text',
+					label: 'Image d\'en-tête',
 				},
 			],
 		},
 
 		// ===========================
-		// CONTENT
+		// CONTENU LÉGAL
 		// ===========================
 		{
 			name: 'content',
 			type: 'richText',
 			required: true,
-			label: 'Legal Content',
+			label: 'Contenu légal',
 			admin: {
 				description:
-					'Complete legal content in rich text format. Include all sections: Editeur, Hebergement, Droits, RGPD, etc.',
+					'Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d\'auteur, RGPD, etc.',
 			},
 		},
 	],
