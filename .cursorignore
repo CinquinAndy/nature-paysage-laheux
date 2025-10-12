@@ -63,7 +63,7 @@ tsconfig.tsbuildinfo
 *.db
 
 # IDE
-.vscode/
+# .vscode/
 .idea/
 
 # Autres
