@@ -29,8 +29,8 @@ export const Services: CollectionConfig = {
 			admin: {
 				description: "Utilisé dans l'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.",
 			},
-			validate: (val: string) => {
-				if (!val) return 'Le slug est obligatoire'
+			validate: (val: unknown) => {
+				if (!val || typeof val !== 'string') return 'Le slug est obligatoire'
 				if (!/^[a-z0-9-]+$/.test(val)) {
 					return 'Le slug doit contenir uniquement des lettres minuscules, chiffres et tirets'
 				}

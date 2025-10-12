@@ -4,10 +4,11 @@ import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
 import { REALISATIONS } from '@/lib/data/realisations'
-import { SERVICES } from '@/lib/data/services'
+import { getServices } from '@/lib/payload'
 
-export function Footer() {
+export async function Footer() {
 	const currentYear = new Date().getFullYear()
+	const services = await getServices(6) // Limit to 6 services for the footer
 
 	return (
 		<footer className="bg-muted/30 border-t">
@@ -73,10 +74,10 @@ export function Footer() {
 					<div className="space-y-4">
 						<h3 className="font-semibold text-base">Mes Prestations</h3>
 						<ul className="space-y-2 text-sm">
-							{SERVICES.map(service => (
+							{services.map(service => (
 								<li key={service.id}>
 									<Link
-										href={`/prestations/${service.id}`}
+										href={`/prestations/${service.slug}`}
 										className="text-muted-foreground hover:text-primary transition-colors"
 									>
 										{service.title.length > 30 ? `${service.title.substring(0, 30)}...` : service.title}

@@ -41,13 +41,22 @@ export const PrestationsPage: GlobalConfig = {
 				{
 					name: 'title',
 					type: 'text',
-					defaultValue: "Crédit d'Impôt : Ce Qui Est Pris en Charge",
 					label: 'Titre de la section',
 				},
 				{
 					name: 'description',
 					type: 'textarea',
-					label: 'Description',
+					label: 'Description de la section',
+				},
+				{
+					name: 'eligibleTitle',
+					type: 'text',
+					label: "Titre de l'onglet éligible",
+				},
+				{
+					name: 'eligibleDescription',
+					type: 'textarea',
+					label: "Description de l'onglet éligible",
 				},
 				{
 					name: 'eligibleItems',
@@ -71,6 +80,22 @@ export const PrestationsPage: GlobalConfig = {
 					],
 				},
 				{
+					name: 'eligibleImage',
+					type: 'upload',
+					relationTo: 'media',
+					label: 'Image services éligibles',
+				},
+				{
+					name: 'nonEligibleTitle',
+					type: 'text',
+					label: "Titre de l'onglet non éligible",
+				},
+				{
+					name: 'nonEligibleDescription',
+					type: 'textarea',
+					label: "Description de l'onglet non éligible",
+				},
+				{
 					name: 'nonEligibleItems',
 					type: 'array',
 					label: 'Services non éligibles',
@@ -90,12 +115,6 @@ export const PrestationsPage: GlobalConfig = {
 							label: 'Description',
 						},
 					],
-				},
-				{
-					name: 'eligibleImage',
-					type: 'upload',
-					relationTo: 'media',
-					label: 'Image services éligibles',
 				},
 				{
 					name: 'nonEligibleImage',

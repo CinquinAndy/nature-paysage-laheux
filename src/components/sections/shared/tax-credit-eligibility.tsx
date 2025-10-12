@@ -8,7 +8,6 @@ interface EligibilityItem {
 }
 
 interface TabContent {
-	badge: string
 	title: string
 	description: string
 	items: EligibilityItem[]
@@ -24,102 +23,13 @@ interface Tab {
 }
 
 interface TaxCreditEligibilityProps {
-	badge?: string
-	heading?: string
-	description?: string
-	tabs?: Tab[]
+	heading: string
+	description: string
+	tabs: Tab[]
 }
 
-const defaultTabs: Tab[] = [
-	{
-		value: 'eligible',
-		icon: <CheckCircle2 className="h-auto w-4 shrink-0" />,
-		label: "Éligible au crédit d'impôt",
-		content: {
-			badge: "Crédit d'impôt 50%",
-			title: "Prestations Éligibles au Crédit d'Impôt",
-			description:
-				"Ces services bénéficient du crédit d'impôt de 50% sur le montant TTC. Vous ne payez que la moitié du prix !",
-			items: [
-				{
-					text: 'Tonte de pelouse et entretien',
-					description: 'Tonte régulière, scarification, aération',
-				},
-				{
-					text: 'Désherbage manuel et écologique',
-					description: 'Sans produits chimiques, respect du sol',
-				},
-				{
-					text: 'Taille raisonnée des haies et arbustes',
-					description: 'Taille douce respectueuse de la plante',
-				},
-				{
-					text: 'Entretien des massifs et parterres',
-					description: 'Désherbage, paillage, plantation de vivaces',
-				},
-				{
-					text: 'Débroussaillage léger',
-					description: 'Nettoyage et entretien de zones végétalisées',
-				},
-				{
-					text: 'Ramassage de feuilles et déchets verts',
-					description: 'Nettoyage saisonnier du jardin',
-				},
-				{
-					text: 'Création et entretien de potager',
-					description: 'Accompagnement en permaculture',
-				},
-			],
-			imageSrc: '/usable/IMG_20250803_123919.jpg',
-			imageAlt: "Prestations éligibles au crédit d'impôt",
-		},
-	},
-	{
-		value: 'non-eligible',
-		icon: <XCircle className="h-auto w-4 shrink-0" />,
-		label: 'Non éligible',
-		content: {
-			badge: 'Non éligible',
-			title: "Prestations Non Éligibles au Crédit d'Impôt",
-			description:
-				"Ces prestations restent possibles mais ne bénéficient pas du crédit d'impôt. Elles seront facturées séparément.",
-			items: [
-				{
-					text: 'Vente de plantes et végétaux',
-					description: 'Fourniture de plants, arbres, arbustes',
-				},
-				{
-					text: 'Fourniture de matériaux en gros volume',
-					description: 'Terre, paillage, graviers, dalles',
-				},
-				{
-					text: 'Création paysagère complexe',
-					description: 'Aménagement complet de jardin, terrasses',
-				},
-				{
-					text: 'Travaux de terrassement importants',
-					description: 'Nivellement, excavation, drainage',
-				},
-				{
-					text: "Installation de systèmes d'arrosage automatique",
-					description: 'Matériel et installation',
-				},
-				{
-					text: "Construction d'ouvrages",
-					description: 'Murets, clôtures, pergolas',
-				},
-			],
-			imageSrc: '/usable/IMG_20240310_161440.jpg',
-			imageAlt: "Prestations non éligibles au crédit d'impôt",
-		},
-	},
-]
-
 const TaxCreditEligibility = (props: TaxCreditEligibilityProps) => {
-	const heading = props.heading || "Crédit d'Impôt : Ce Qui Est Pris en Charge"
-	const description =
-		props.description || "Par souci d'honnêteté, voici ce qui bénéficie ou non du crédit d'impôt de 50% selon la loi."
-	const tabs = props.tabs || defaultTabs
+	const { heading, description, tabs } = props
 
 	return (
 		<section className="py-16 md:py-24 bg-muted/30">

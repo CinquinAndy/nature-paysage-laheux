@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
-import { SERVICES } from '@/lib/data/services'
+import { RichText } from '@/components/ui/rich-text'
+import { getMediaUrl, getServices } from '@/lib/payload'
 
 // Lazy load the image gallery modal
 const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
@@ -16,14 +17,16 @@ interface PrestationPageProps {
 }
 
 export async function generateStaticParams() {
-	return SERVICES.map(service => ({
-		slug: service.id,
+	const services = await getServices()
+	return services.map(service => ({
+		slug: service.slug,
 	}))
 }
 
 export async function generateMetadata({ params }: PrestationPageProps): Promise<Metadata> {
 	const { slug } = await params
-	const service = SERVICES.find(s => s.id === slug)
+	const services = await getServices()
+	const service = services.find(s => s.slug === slug)
 
 	if (!service) {
 		return {
@@ -39,15 +42,18 @@ export async function generateMetadata({ params }: PrestationPageProps): Promise
 
 export default async function PrestationPage({ params }: PrestationPageProps) {
 	const { slug } = await params
-	const service = SERVICES.find(s => s.id === slug)
+	const services = await getServices()
+	const service = services.find(s => s.slug === slug)
 
 	if (!service) {
 		notFound()
 	}
 
+	const imageUrl = getMediaUrl(service.image)
+
 	// Mock gallery images - will be replaced with Payload CMS data later
 	const galleryImages = [
-		{ src: service.image || '/placeholder.jpg', alt: service.title },
+		{ src: imageUrl || '/placeholder.jpg', alt: service.title },
 		{ src: '/usable/IMG_20231117_093237.jpg', alt: 'Example 1' },
 		{ src: '/usable/IMG_20240310_161440.jpg', alt: 'Example 2' },
 		{ src: '/usable/IMG_20250402_142527.jpg', alt: 'Example 3' },
@@ -58,7 +64,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 			{/* Hero Section */}
 			<PageHero
 				title={service.title}
-				imageSrc={service.image || '/placeholder.jpg'}
+				imageSrc={imageUrl || '/placeholder.jpg'}
 				imageAlt={service.title}
 				action={<ImageGalleryModal images={galleryImages} />}
 			/>
@@ -70,7 +76,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 						items={[
 							{ label: 'Accueil', href: '/' },
 							{ label: 'Prestations', href: '/prestations' },
-							{ label: service.title, href: `/prestations/${service.id}` },
+							{ label: service.title, href: `/prestations/${service.slug}` },
 						]}
 					/>
 				</div>
@@ -92,16 +98,16 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 
 					{/* Main Content */}
 					<div className="mt-10 max-w-2xl text-gray-600">
-						<p>{service.fullDescription}</p>
+						<RichText content={service.fullDescription} />
 
 						{/* Features List */}
 						<ul className="mt-8 max-w-xl space-y-8 text-gray-600">
 							{service.features.map(feature => (
-								<li key={feature} className="flex gap-x-3">
+								<li key={feature.feature} className="flex gap-x-3">
 									<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
 									<span>
-										<strong className="font-semibold text-foreground">{feature.split('.')[0]}.</strong>{' '}
-										{feature.split('.').slice(1).join('.') || 'Un service de qualité professionnelle.'}
+										<strong className="font-semibold text-foreground">{feature.feature.split('.')[0]}.</strong>{' '}
+										{feature.feature.split('.').slice(1).join('.') || 'Un service de qualité professionnelle.'}
 									</span>
 								</li>
 							))}
