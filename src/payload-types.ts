@@ -13,780 +13,780 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-	| 'Pacific/Midway'
-	| 'Pacific/Niue'
-	| 'Pacific/Honolulu'
-	| 'Pacific/Rarotonga'
-	| 'America/Anchorage'
-	| 'Pacific/Gambier'
-	| 'America/Los_Angeles'
-	| 'America/Tijuana'
-	| 'America/Denver'
-	| 'America/Phoenix'
-	| 'America/Chicago'
-	| 'America/Guatemala'
-	| 'America/New_York'
-	| 'America/Bogota'
-	| 'America/Caracas'
-	| 'America/Santiago'
-	| 'America/Buenos_Aires'
-	| 'America/Sao_Paulo'
-	| 'Atlantic/South_Georgia'
-	| 'Atlantic/Azores'
-	| 'Atlantic/Cape_Verde'
-	| 'Europe/London'
-	| 'Europe/Berlin'
-	| 'Africa/Lagos'
-	| 'Europe/Athens'
-	| 'Africa/Cairo'
-	| 'Europe/Moscow'
-	| 'Asia/Riyadh'
-	| 'Asia/Dubai'
-	| 'Asia/Baku'
-	| 'Asia/Karachi'
-	| 'Asia/Tashkent'
-	| 'Asia/Calcutta'
-	| 'Asia/Dhaka'
-	| 'Asia/Almaty'
-	| 'Asia/Jakarta'
-	| 'Asia/Bangkok'
-	| 'Asia/Shanghai'
-	| 'Asia/Singapore'
-	| 'Asia/Tokyo'
-	| 'Asia/Seoul'
-	| 'Australia/Brisbane'
-	| 'Australia/Sydney'
-	| 'Pacific/Guam'
-	| 'Pacific/Noumea'
-	| 'Pacific/Auckland'
-	| 'Pacific/Fiji'
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
-	auth: {
-		users: UserAuthOperations
-		'third-party-access': ThirdPartyAccessAuthOperations
-	}
-	blocks: {}
-	collections: {
-		users: User
-		media: Media
-		services: Service
-		realisations: Realisation
-		faq: Faq
-		'third-party-access': ThirdPartyAccess
-		'payload-locked-documents': PayloadLockedDocument
-		'payload-preferences': PayloadPreference
-		'payload-migrations': PayloadMigration
-	}
-	collectionsJoins: {}
-	collectionsSelect: {
-		users: UsersSelect<false> | UsersSelect<true>
-		media: MediaSelect<false> | MediaSelect<true>
-		services: ServicesSelect<false> | ServicesSelect<true>
-		realisations: RealisationsSelect<false> | RealisationsSelect<true>
-		faq: FaqSelect<false> | FaqSelect<true>
-		'third-party-access': ThirdPartyAccessSelect<false> | ThirdPartyAccessSelect<true>
-		'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>
-		'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>
-		'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>
-	}
-	db: {
-		defaultIDType: number
-	}
-	globals: {
-		homepage: Homepage
-		'prestations-page': PrestationsPage
-		'realisations-page': RealisationsPage
-		'faq-page': FaqPage
-		'contact-page': ContactPage
-		'mentions-legales-page': MentionsLegalesPage
-		'site-settings': SiteSetting
-	}
-	globalsSelect: {
-		homepage: HomepageSelect<false> | HomepageSelect<true>
-		'prestations-page': PrestationsPageSelect<false> | PrestationsPageSelect<true>
-		'realisations-page': RealisationsPageSelect<false> | RealisationsPageSelect<true>
-		'faq-page': FaqPageSelect<false> | FaqPageSelect<true>
-		'contact-page': ContactPageSelect<false> | ContactPageSelect<true>
-		'mentions-legales-page': MentionsLegalesPageSelect<false> | MentionsLegalesPageSelect<true>
-		'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>
-	}
-	locale: null
-	user:
-		| (User & {
-				collection: 'users'
-		  })
-		| (ThirdPartyAccess & {
-				collection: 'third-party-access'
-		  })
-	jobs: {
-		tasks: unknown
-		workflows: unknown
-	}
+  auth: {
+    users: UserAuthOperations;
+    'third-party-access': ThirdPartyAccessAuthOperations;
+  };
+  blocks: {};
+  collections: {
+    users: User;
+    media: Media;
+    services: Service;
+    realisations: Realisation;
+    faq: Faq;
+    'third-party-access': ThirdPartyAccess;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
+  };
+  collectionsJoins: {};
+  collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    realisations: RealisationsSelect<false> | RealisationsSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
+    'third-party-access': ThirdPartyAccessSelect<false> | ThirdPartyAccessSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+  };
+  db: {
+    defaultIDType: number;
+  };
+  globals: {
+    homepage: Homepage;
+    'prestations-page': PrestationsPage;
+    'realisations-page': RealisationsPage;
+    'faq-page': FaqPage;
+    'contact-page': ContactPage;
+    'mentions-legales-page': MentionsLegalesPage;
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
+    'prestations-page': PrestationsPageSelect<false> | PrestationsPageSelect<true>;
+    'realisations-page': RealisationsPageSelect<false> | RealisationsPageSelect<true>;
+    'faq-page': FaqPageSelect<false> | FaqPageSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    'mentions-legales-page': MentionsLegalesPageSelect<false> | MentionsLegalesPageSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
+  locale: null;
+  user:
+    | (User & {
+        collection: 'users';
+      })
+    | (ThirdPartyAccess & {
+        collection: 'third-party-access';
+      });
+  jobs: {
+    tasks: unknown;
+    workflows: unknown;
+  };
 }
 export interface UserAuthOperations {
-	forgotPassword: {
-		email: string
-		password: string
-	}
-	login: {
-		email: string
-		password: string
-	}
-	registerFirstUser: {
-		email: string
-		password: string
-	}
-	unlock: {
-		email: string
-		password: string
-	}
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
 }
 export interface ThirdPartyAccessAuthOperations {
-	forgotPassword: {
-		email: string
-		password: string
-	}
-	login: {
-		email: string
-		password: string
-	}
-	registerFirstUser: {
-		email: string
-		password: string
-	}
-	unlock: {
-		email: string
-		password: string
-	}
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-	id: number
-	updatedAt: string
-	createdAt: string
-	email: string
-	resetPasswordToken?: string | null
-	resetPasswordExpiration?: string | null
-	salt?: string | null
-	hash?: string | null
-	loginAttempts?: number | null
-	lockUntil?: string | null
-	sessions?:
-		| {
-				id: string
-				createdAt?: string | null
-				expiresAt: string
-		  }[]
-		| null
-	password?: string | null
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
-	id: number
-	alt?: string | null
-	updatedAt: string
-	createdAt: string
-	url?: string | null
-	thumbnailURL?: string | null
-	filename?: string | null
-	mimeType?: string | null
-	filesize?: number | null
-	width?: number | null
-	height?: number | null
-	focalX?: number | null
-	focalY?: number | null
+  id: number;
+  alt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
-	id: number
-	title: string
-	/**
-	 * Utilisé dans l'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.
-	 */
-	slug: string
-	/**
-	 * Utilisée dans les cartes et aperçus (2-3 phrases maximum)
-	 */
-	shortDescription: string
-	/**
-	 * Description détaillée affichée sur la page de la prestation
-	 */
-	fullDescription: {
-		root: {
-			type: string
-			children: {
-				type: any
-				version: number
-				[k: string]: unknown
-			}[]
-			direction: ('ltr' | 'rtl') | null
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-			indent: number
-			version: number
-		}
-		[k: string]: unknown
-	}
-	image: number | Media
-	category: 'entretien' | 'creation' | 'accompagnement'
-	/**
-	 * Liste des avantages et caractéristiques (4 à 6 éléments)
-	 */
-	features: {
-		feature: string
-		id?: string | null
-	}[]
-	/**
-	 * Cette prestation est-elle éligible au crédit d'impôt de 50% ?
-	 */
-	eligibleTaxCredit?: boolean | null
-	/**
-	 * Comment le tarif est affiché aux clients (généralement "Sur devis personnalisé")
-	 */
-	price?: string | null
-	/**
-	 * Ordre d'apparition des prestations (plus petit numéro = apparaît en premier)
-	 */
-	order?: number | null
-	updatedAt: string
-	createdAt: string
+  id: number;
+  title: string;
+  /**
+   * Utilisé dans l'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.
+   */
+  slug: string;
+  /**
+   * Utilisée dans les cartes et aperçus (2-3 phrases maximum)
+   */
+  shortDescription: string;
+  /**
+   * Description détaillée affichée sur la page de la prestation
+   */
+  fullDescription: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: number | Media;
+  category: 'entretien' | 'creation' | 'accompagnement';
+  /**
+   * Liste des avantages et caractéristiques (4 à 6 éléments)
+   */
+  features: {
+    feature: string;
+    id?: string | null;
+  }[];
+  /**
+   * Cette prestation est-elle éligible au crédit d'impôt de 50% ?
+   */
+  eligibleTaxCredit?: boolean | null;
+  /**
+   * Comment le tarif est affiché aux clients (généralement "Sur devis personnalisé")
+   */
+  price?: string | null;
+  /**
+   * Ordre d'apparition des prestations (plus petit numéro = apparaît en premier)
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "realisations".
  */
 export interface Realisation {
-	id: number
-	title: string
-	/**
-	 * Utilisé dans l'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.
-	 */
-	slug: string
-	/**
-	 * Par exemple : Monnières, Vallet, Clisson...
-	 */
-	location?: string | null
-	/**
-	 * Date de réalisation ou de fin du projet
-	 */
-	date?: string | null
-	image: number | Media
-	/**
-	 * Brève description pour les cartes et aperçus (2-3 phrases)
-	 */
-	shortDescription: string
-	/**
-	 * Description détaillée du projet et des travaux réalisés
-	 */
-	description: {
-		root: {
-			type: string
-			children: {
-				type: any
-				version: number
-				[k: string]: unknown
-			}[]
-			direction: ('ltr' | 'rtl') | null
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-			indent: number
-			version: number
-		}
-		[k: string]: unknown
-	}
-	category: 'entretien' | 'amenagement' | 'potager' | 'taille'
-	/**
-	 * Points forts et aspects remarquables du projet
-	 */
-	features?:
-		| {
-				feature: string
-				id?: string | null
-		  }[]
-		| null
-	/**
-	 * Galerie d'images additionnelles du projet
-	 */
-	images?:
-		| {
-				image: number | Media
-				id?: string | null
-		  }[]
-		| null
-	testimonial?: {
-		quote?: string | null
-		author?: string | null
-		location?: string | null
-	}
-	updatedAt: string
-	createdAt: string
+  id: number;
+  title: string;
+  /**
+   * Utilisé dans l'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.
+   */
+  slug: string;
+  /**
+   * Par exemple : Monnières, Vallet, Clisson...
+   */
+  location?: string | null;
+  /**
+   * Date de réalisation ou de fin du projet
+   */
+  date?: string | null;
+  image: number | Media;
+  /**
+   * Brève description pour les cartes et aperçus (2-3 phrases)
+   */
+  shortDescription: string;
+  /**
+   * Description détaillée du projet et des travaux réalisés
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category: 'entretien' | 'amenagement' | 'potager' | 'taille';
+  /**
+   * Points forts et aspects remarquables du projet
+   */
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Galerie d'images additionnelles du projet
+   */
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  testimonial?: {
+    quote?: string | null;
+    author?: string | null;
+    location?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faq".
  */
 export interface Faq {
-	id: number
-	question: string
-	/**
-	 * Réponse détaillée à la question
-	 */
-	answer: {
-		root: {
-			type: string
-			children: {
-				type: any
-				version: number
-				[k: string]: unknown
-			}[]
-			direction: ('ltr' | 'rtl') | null
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-			indent: number
-			version: number
-		}
-		[k: string]: unknown
-	}
-	category: 'general' | 'services' | 'tarifs' | 'ecologie'
-	/**
-	 * Cette question apparaîtra dans la section FAQ de la page d'accueil (4 questions maximum)
-	 */
-	showOnHomepage?: boolean | null
-	/**
-	 * Ordre d'apparition dans la catégorie (plus petit numéro = apparaît en premier)
-	 */
-	order?: number | null
-	updatedAt: string
-	createdAt: string
+  id: number;
+  question: string;
+  /**
+   * Réponse détaillée à la question
+   */
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category: 'general' | 'services' | 'tarifs' | 'ecologie';
+  /**
+   * Cette question apparaîtra dans la section FAQ de la page d'accueil (4 questions maximum)
+   */
+  showOnHomepage?: boolean | null;
+  /**
+   * Ordre d'apparition dans la catégorie (plus petit numéro = apparaît en premier)
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "third-party-access".
  */
 export interface ThirdPartyAccess {
-	id: number
-	updatedAt: string
-	createdAt: string
-	enableAPIKey?: boolean | null
-	apiKey?: string | null
-	apiKeyIndex?: string | null
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-	id: number
-	document?:
-		| ({
-				relationTo: 'users'
-				value: number | User
-		  } | null)
-		| ({
-				relationTo: 'media'
-				value: number | Media
-		  } | null)
-		| ({
-				relationTo: 'services'
-				value: number | Service
-		  } | null)
-		| ({
-				relationTo: 'realisations'
-				value: number | Realisation
-		  } | null)
-		| ({
-				relationTo: 'faq'
-				value: number | Faq
-		  } | null)
-		| ({
-				relationTo: 'third-party-access'
-				value: number | ThirdPartyAccess
-		  } | null)
-	globalSlug?: string | null
-	user:
-		| {
-				relationTo: 'users'
-				value: number | User
-		  }
-		| {
-				relationTo: 'third-party-access'
-				value: number | ThirdPartyAccess
-		  }
-	updatedAt: string
-	createdAt: string
+  id: number;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'realisations';
+        value: number | Realisation;
+      } | null)
+    | ({
+        relationTo: 'faq';
+        value: number | Faq;
+      } | null)
+    | ({
+        relationTo: 'third-party-access';
+        value: number | ThirdPartyAccess;
+      } | null);
+  globalSlug?: string | null;
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'third-party-access';
+        value: number | ThirdPartyAccess;
+      };
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-	id: number
-	user:
-		| {
-				relationTo: 'users'
-				value: number | User
-		  }
-		| {
-				relationTo: 'third-party-access'
-				value: number | ThirdPartyAccess
-		  }
-	key?: string | null
-	value?:
-		| {
-				[k: string]: unknown
-		  }
-		| unknown[]
-		| string
-		| number
-		| boolean
-		| null
-	updatedAt: string
-	createdAt: string
+  id: number;
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'third-party-access';
+        value: number | ThirdPartyAccess;
+      };
+  key?: string | null;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-	id: number
-	name?: string | null
-	batch?: number | null
-	updatedAt: string
-	createdAt: string
+  id: number;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-	updatedAt?: T
-	createdAt?: T
-	email?: T
-	resetPasswordToken?: T
-	resetPasswordExpiration?: T
-	salt?: T
-	hash?: T
-	loginAttempts?: T
-	lockUntil?: T
-	sessions?:
-		| T
-		| {
-				id?: T
-				createdAt?: T
-				expiresAt?: T
-		  }
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-	alt?: T
-	updatedAt?: T
-	createdAt?: T
-	url?: T
-	thumbnailURL?: T
-	filename?: T
-	mimeType?: T
-	filesize?: T
-	width?: T
-	height?: T
-	focalX?: T
-	focalY?: T
+  alt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
-	title?: T
-	slug?: T
-	shortDescription?: T
-	fullDescription?: T
-	image?: T
-	category?: T
-	features?:
-		| T
-		| {
-				feature?: T
-				id?: T
-		  }
-	eligibleTaxCredit?: T
-	price?: T
-	order?: T
-	updatedAt?: T
-	createdAt?: T
+  title?: T;
+  slug?: T;
+  shortDescription?: T;
+  fullDescription?: T;
+  image?: T;
+  category?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  eligibleTaxCredit?: T;
+  price?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "realisations_select".
  */
 export interface RealisationsSelect<T extends boolean = true> {
-	title?: T
-	slug?: T
-	location?: T
-	date?: T
-	image?: T
-	shortDescription?: T
-	description?: T
-	category?: T
-	features?:
-		| T
-		| {
-				feature?: T
-				id?: T
-		  }
-	images?:
-		| T
-		| {
-				image?: T
-				id?: T
-		  }
-	testimonial?:
-		| T
-		| {
-				quote?: T
-				author?: T
-				location?: T
-		  }
-	updatedAt?: T
-	createdAt?: T
+  title?: T;
+  slug?: T;
+  location?: T;
+  date?: T;
+  image?: T;
+  shortDescription?: T;
+  description?: T;
+  category?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  testimonial?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        location?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faq_select".
  */
 export interface FaqSelect<T extends boolean = true> {
-	question?: T
-	answer?: T
-	category?: T
-	showOnHomepage?: T
-	order?: T
-	updatedAt?: T
-	createdAt?: T
+  question?: T;
+  answer?: T;
+  category?: T;
+  showOnHomepage?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "third-party-access_select".
  */
 export interface ThirdPartyAccessSelect<T extends boolean = true> {
-	updatedAt?: T
-	createdAt?: T
-	enableAPIKey?: T
-	apiKey?: T
-	apiKeyIndex?: T
+  updatedAt?: T;
+  createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-	document?: T
-	globalSlug?: T
-	user?: T
-	updatedAt?: T
-	createdAt?: T
+  document?: T;
+  globalSlug?: T;
+  user?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-	user?: T
-	key?: T
-	value?: T
-	updatedAt?: T
-	createdAt?: T
+  user?: T;
+  key?: T;
+  value?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-	name?: T
-	batch?: T
-	updatedAt?: T
-	createdAt?: T
+  name?: T;
+  batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homepage".
  */
 export interface Homepage {
-	id: number
-	hero: {
-		backgroundImage: number | Media
-		/**
-		 * Utilisez **mot** pour mettre en gras (effet blob). Exemple : **Transformez** Votre Jardin
-		 */
-		title: string
-	}
-	values: {
-		/**
-		 * Utilisez **mot** pour mettre en gras. Exemple : Une Approche **Écologique** et Sur-Mesure
-		 */
-		sectionTitle: string
-		image?: (number | null) | Media
-		/**
-		 * Exactement 4 valeurs seront affichées
-		 */
-		valuesList?:
-			| {
-					icon: 'leaf' | 'wrench' | 'map-pin' | 'trending-down'
-					/**
-					 * Par exemple : "01", "02", "03", "04"
-					 */
-					number: string
-					title: string
-					description: string
-					id?: string | null
-			  }[]
-			| null
-	}
-	/**
-	 * Les prestations sont automatiquement récupérées depuis la collection "Prestations"
-	 */
-	servicesPreview?: {
-		title?: string | null
-		subtitle?: string | null
-		ctaLabel?: string | null
-		ctaUrl?: string | null
-	}
-	philosophy: {
-		/**
-		 * Utilisez **mot** pour mettre en gras. Exemple : Mon Approche : **Nature & Respect**
-		 */
-		title: string
-		introText?: string | null
-		quote?: string | null
-		primaryImage?: (number | null) | Media
-		imageOverlayTitle?: string | null
-		imageOverlayDescription?: string | null
-		/**
-		 * Exactement 4 cartes de philosophie seront affichées
-		 */
-		philosophyPoints?:
-			| {
-					icon: 'leaf' | 'heart' | 'award' | 'shield'
-					title: string
-					description: string
-					id?: string | null
-			  }[]
-			| null
-		/**
-		 * Pratiques écologiques que je favorise
-		 */
-		preferences?:
-			| {
-					title: string
-					description?: string | null
-					id?: string | null
-			  }[]
-			| null
-		/**
-		 * Pratiques que je n'utilise jamais
-		 */
-		refusals?:
-			| {
-					title: string
-					description?: string | null
-					id?: string | null
-			  }[]
-			| null
-		engagementBanner?: {
-			title?: string | null
-			description?: string | null
-			ctaLabel?: string | null
-			ctaUrl?: string | null
-		}
-	}
-	interventionZone?: {
-		title?: string | null
-		subtitle?: string | null
-		/**
-		 * Coordonnée latitude pour centrer la carte (ne pas modifier sans raison)
-		 */
-		mapCenterLat?: number | null
-		/**
-		 * Coordonnée longitude pour centrer la carte (ne pas modifier sans raison)
-		 */
-		mapCenterLng?: number | null
-		radiusKm?: number | null
-		/**
-		 * Liste des villes où vous intervenez
-		 */
-		communes?:
-			| {
-					name: string
-					id?: string | null
-			  }[]
-			| null
-		ctaSection?: {
-			title?: string | null
-			description?: string | null
-			ctaLabel?: string | null
-			ctaUrl?: string | null
-		}
-	}
-	/**
-	 * Les 6 dernières réalisations sont automatiquement récupérées depuis la collection "Réalisations"
-	 */
-	realisationsPreview?: {
-		title?: string | null
-		description?: string | null
-		ctaLabel?: string | null
-		ctaUrl?: string | null
-	}
-	/**
-	 * Les 4 questions marquées "À afficher sur la page d'accueil" sont automatiquement récupérées
-	 */
-	faqShort?: {
-		title?: string | null
-		description?: string | null
-		ctaLabel?: string | null
-		ctaUrl?: string | null
-	}
-	taxCredit?: {
-		title?: string | null
-		subtitle?: string | null
-		/**
-		 * Les 4 étapes pour profiter du crédit d'impôt de 50%
-		 */
-		steps?:
-			| {
-					number: number
-					title: string
-					description?: string | null
-					image1?: (number | null) | Media
-					image2?: (number | null) | Media
-					id?: string | null
-			  }[]
-			| null
-	}
-	finalCta?: {
-		title?: string | null
-		description?: string | null
-		buttonText?: string | null
-		buttonUrl?: string | null
-		/**
-		 * Points clés qui encouragent à prendre contact
-		 */
-		benefits?:
-			| {
-					benefit: string
-					id?: string | null
-			  }[]
-			| null
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  hero: {
+    backgroundImage: number | Media;
+    /**
+     * Utilisez **mot** pour mettre en gras (effet blob). Exemple : **Transformez** Votre Jardin
+     */
+    title: string;
+  };
+  values: {
+    /**
+     * Utilisez **mot** pour mettre en gras. Exemple : Une Approche **Écologique** et Sur-Mesure
+     */
+    sectionTitle: string;
+    image?: (number | null) | Media;
+    /**
+     * Exactement 4 valeurs seront affichées
+     */
+    valuesList?:
+      | {
+          icon: 'leaf' | 'wrench' | 'map-pin' | 'trending-down';
+          /**
+           * Par exemple : "01", "02", "03", "04"
+           */
+          number: string;
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Les prestations sont automatiquement récupérées depuis la collection "Prestations"
+   */
+  servicesPreview?: {
+    title?: string | null;
+    subtitle?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+  };
+  philosophy: {
+    /**
+     * Utilisez **mot** pour mettre en gras. Exemple : Mon Approche : **Nature & Respect**
+     */
+    title: string;
+    introText?: string | null;
+    quote?: string | null;
+    primaryImage?: (number | null) | Media;
+    imageOverlayTitle?: string | null;
+    imageOverlayDescription?: string | null;
+    /**
+     * Exactement 4 cartes de philosophie seront affichées
+     */
+    philosophyPoints?:
+      | {
+          icon: 'leaf' | 'heart' | 'award' | 'shield';
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Pratiques écologiques que je favorise
+     */
+    preferences?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Pratiques que je n'utilise jamais
+     */
+    refusals?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    engagementBanner?: {
+      title?: string | null;
+      description?: string | null;
+      ctaLabel?: string | null;
+      ctaUrl?: string | null;
+    };
+  };
+  interventionZone?: {
+    title?: string | null;
+    subtitle?: string | null;
+    /**
+     * Coordonnée latitude pour centrer la carte (ne pas modifier sans raison)
+     */
+    mapCenterLat?: number | null;
+    /**
+     * Coordonnée longitude pour centrer la carte (ne pas modifier sans raison)
+     */
+    mapCenterLng?: number | null;
+    radiusKm?: number | null;
+    /**
+     * Liste des villes où vous intervenez
+     */
+    communes?:
+      | {
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
+    ctaSection?: {
+      title?: string | null;
+      description?: string | null;
+      ctaLabel?: string | null;
+      ctaUrl?: string | null;
+    };
+  };
+  /**
+   * Les 6 dernières réalisations sont automatiquement récupérées depuis la collection "Réalisations"
+   */
+  realisationsPreview?: {
+    title?: string | null;
+    description?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+  };
+  /**
+   * Les 4 questions marquées "À afficher sur la page d'accueil" sont automatiquement récupérées
+   */
+  faqShort?: {
+    title?: string | null;
+    description?: string | null;
+    ctaLabel?: string | null;
+    ctaUrl?: string | null;
+  };
+  taxCredit?: {
+    title?: string | null;
+    subtitle?: string | null;
+    /**
+     * Les 4 étapes pour profiter du crédit d'impôt de 50%
+     */
+    steps?:
+      | {
+          number: number;
+          title: string;
+          description?: string | null;
+          image1?: (number | null) | Media;
+          image2?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  finalCta?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    /**
+     * Points clés qui encouragent à prendre contact
+     */
+    benefits?:
+      | {
+          benefit: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * Configuration de la page /prestations. Les prestations proviennent de la collection "Prestations".
@@ -795,55 +795,55 @@ export interface Homepage {
  * via the `definition` "prestations-page".
  */
 export interface PrestationsPage {
-	id: number
-	hero?: {
-		title?: string | null
-		image?: (number | null) | Media
-	}
-	taxCreditEligibility?: {
-		title?: string | null
-		description?: string | null
-		eligibleTitle?: string | null
-		eligibleDescription?: string | null
-		/**
-		 * Services qui bénéficient du crédit d'impôt de 50%
-		 */
-		eligibleItems?:
-			| {
-					title: string
-					description?: string | null
-					id?: string | null
-			  }[]
-			| null
-		eligibleImage?: (number | null) | Media
-		nonEligibleTitle?: string | null
-		nonEligibleDescription?: string | null
-		/**
-		 * Services qui NE bénéficient PAS du crédit d'impôt
-		 */
-		nonEligibleItems?:
-			| {
-					title: string
-					description?: string | null
-					id?: string | null
-			  }[]
-			| null
-		nonEligibleImage?: (number | null) | Media
-	}
-	ctaSection?: {
-		title?: string | null
-		description?: string | null
-		buttonText?: string | null
-		buttonUrl?: string | null
-		benefits?:
-			| {
-					benefit?: string | null
-					id?: string | null
-			  }[]
-			| null
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+  };
+  taxCreditEligibility?: {
+    title?: string | null;
+    description?: string | null;
+    eligibleTitle?: string | null;
+    eligibleDescription?: string | null;
+    /**
+     * Services qui bénéficient du crédit d'impôt de 50%
+     */
+    eligibleItems?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    eligibleImage?: (number | null) | Media;
+    nonEligibleTitle?: string | null;
+    nonEligibleDescription?: string | null;
+    /**
+     * Services qui NE bénéficient PAS du crédit d'impôt
+     */
+    nonEligibleItems?:
+      | {
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    nonEligibleImage?: (number | null) | Media;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * Configuration de la page /realisations. Les réalisations proviennent de la collection "Réalisations".
@@ -852,43 +852,43 @@ export interface PrestationsPage {
  * via the `definition` "realisations-page".
  */
 export interface RealisationsPage {
-	id: number
-	hero?: {
-		title?: string | null
-		image?: (number | null) | Media
-	}
-	introduction?: {
-		paragraph1?: string | null
-		paragraph2?: {
-			root: {
-				type: string
-				children: {
-					type: any
-					version: number
-					[k: string]: unknown
-				}[]
-				direction: ('ltr' | 'rtl') | null
-				format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-				indent: number
-				version: number
-			}
-			[k: string]: unknown
-		} | null
-	}
-	ctaSection?: {
-		title?: string | null
-		description?: string | null
-		buttonText?: string | null
-		buttonUrl?: string | null
-		benefits?:
-			| {
-					benefit?: string | null
-					id?: string | null
-			  }[]
-			| null
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+  };
+  introduction?: {
+    paragraph1?: string | null;
+    paragraph2?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * Configuration de la page /faq. Les questions proviennent de la collection "Questions FAQ".
@@ -897,642 +897,643 @@ export interface RealisationsPage {
  * via the `definition` "faq-page".
  */
 export interface FaqPage {
-	id: number
-	hero?: {
-		title?: string | null
-		image?: (number | null) | Media
-	}
-	/**
-	 * Descriptions optionnelles pour chaque catégorie de FAQ
-	 */
-	categoryDescriptions?:
-		| {
-				category?: ('general' | 'services' | 'tarifs' | 'ecologie') | null
-				description?: string | null
-				id?: string | null
-		  }[]
-		| null
-	ctaSection?: {
-		title?: string | null
-		description?: string | null
-		buttonText?: string | null
-		buttonUrl?: string | null
-		benefits?:
-			| {
-					benefit?: string | null
-					id?: string | null
-			  }[]
-			| null
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
+   * Descriptions optionnelles pour chaque catégorie de FAQ
+   */
+  categoryDescriptions?:
+    | {
+        category?: ('general' | 'services' | 'tarifs' | 'ecologie') | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contact-page".
  */
 export interface ContactPage {
-	id: number
-	hero?: {
-		title?: string | null
-		image?: (number | null) | Media
-	}
-	formSection?: {
-		title?: string | null
-		subtitle?: string | null
-		/**
-		 * Options proposées dans le menu déroulant pour la surface du jardin
-		 */
-		gardenSizeOptions?:
-			| {
-					label: string
-					value: string
-					id?: string | null
-			  }[]
-			| null
-		/**
-		 * Texte affiché sous le bouton d'envoi concernant la protection des données
-		 */
-		privacyText?: string | null
-	}
-	/**
-	 * Les coordonnées (téléphone, email, etc.) proviennent des Paramètres du Site
-	 */
-	contactInfoSidebar?: {
-		/**
-		 * Avantages clés affichés dans l'encart (ex: "Réponse sous 24h")
-		 */
-		benefits?:
-			| {
-					benefit?: string | null
-					id?: string | null
-			  }[]
-			| null
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+  };
+  formSection?: {
+    title?: string | null;
+    subtitle?: string | null;
+    /**
+     * Options proposées dans le menu déroulant pour la surface du jardin
+     */
+    gardenSizeOptions?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Texte affiché sous le bouton d'envoi concernant la protection des données
+     */
+    privacyText?: string | null;
+  };
+  /**
+   * Les coordonnées (téléphone, email, etc.) proviennent des Paramètres du Site
+   */
+  contactInfoSidebar?: {
+    /**
+     * Avantages clés affichés dans l'encart (ex: "Réponse sous 24h")
+     */
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "mentions-legales-page".
  */
 export interface MentionsLegalesPage {
-	id: number
-	hero?: {
-		title?: string | null
-		image?: (number | null) | Media
-	}
-	/**
-	 * Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d'auteur, RGPD, etc.
-	 */
-	content: {
-		root: {
-			type: string
-			children: {
-				type: any
-				version: number
-				[k: string]: unknown
-			}[]
-			direction: ('ltr' | 'rtl') | null
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-			indent: number
-			version: number
-		}
-		[k: string]: unknown
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  hero?: {
+    title?: string | null;
+    image?: (number | null) | Media;
+  };
+  /**
+   * Contenu légal complet. Inclure toutes les sections : Éditeur du site, Hébergement, Droits d'auteur, RGPD, etc.
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
-	id: number
-	contact: {
-		phone: string
-		email: string
-		company?: {
-			name?: string | null
-			representative?: string | null
-			legalForm?: string | null
-		}
-		address?: {
-			postalCode?: string | null
-			city?: string | null
-			region?: string | null
-			country?: string | null
-		}
-		social?: {
-			facebook?: string | null
-			linkedin?: string | null
-		}
-		hours?: {
-			weekday?: string | null
-			saturday?: string | null
-			sunday?: string | null
-			note?: string | null
-		}
-	}
-	taxCredit?: {
-		/**
-		 * Pourcentage du crédit d'impôt (généralement 50%)
-		 */
-		percentage?: number | null
-		/**
-		 * Montant maximum pouvant être déclaré par an
-		 */
-		maxAnnualExpense?: number | null
-		/**
-		 * Montant maximum de crédit d'impôt pouvant être obtenu par an
-		 */
-		maxAnnualCredit?: number | null
-		/**
-		 * Les étapes pour profiter du crédit d'impôt
-		 */
-		steps?:
-			| {
-					number: number
-					title: string
-					description?: string | null
-					id?: string | null
-			  }[]
-			| null
-		example?: {
-			serviceCost?: number | null
-			taxCredit?: number | null
-			realCost?: number | null
-		}
-	}
-	navigation?: {
-		/**
-		 * Liens du menu de navigation principal
-		 */
-		mainMenu?:
-			| {
-					label: string
-					url: string
-					id?: string | null
-			  }[]
-			| null
-		ctaButton?: {
-			label?: string | null
-			url?: string | null
-		}
-	}
-	footer?: {
-		logoAlt?: string | null
-		tagline?: string | null
-		copyrightText?: string | null
-		developerName?: string | null
-		developerUrl?: string | null
-	}
-	seo?: {
-		siteTitle?: string | null
-		siteDescription?: string | null
-		/**
-		 * Image utilisée par défaut lors des partages sur les réseaux sociaux
-		 */
-		ogImage?: (number | null) | Media
-	}
-	updatedAt?: string | null
-	createdAt?: string | null
+  id: number;
+  contact: {
+    phone: string;
+    email: string;
+    company?: {
+      name?: string | null;
+      representative?: string | null;
+      legalForm?: string | null;
+    };
+    address?: {
+      postalCode?: string | null;
+      city?: string | null;
+      region?: string | null;
+      country?: string | null;
+    };
+    social?: {
+      facebook?: string | null;
+      linkedin?: string | null;
+    };
+    hours?: {
+      weekday?: string | null;
+      saturday?: string | null;
+      sunday?: string | null;
+      note?: string | null;
+    };
+  };
+  taxCredit?: {
+    /**
+     * Pourcentage du crédit d'impôt (généralement 50%)
+     */
+    percentage?: number | null;
+    /**
+     * Montant maximum pouvant être déclaré par an
+     */
+    maxAnnualExpense?: number | null;
+    /**
+     * Montant maximum de crédit d'impôt pouvant être obtenu par an
+     */
+    maxAnnualCredit?: number | null;
+    /**
+     * Les étapes pour profiter du crédit d'impôt
+     */
+    steps?:
+      | {
+          number: number;
+          title: string;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    example?: {
+      serviceCost?: number | null;
+      taxCredit?: number | null;
+      realCost?: number | null;
+    };
+  };
+  navigation?: {
+    /**
+     * Liens du menu de navigation principal
+     */
+    mainMenu?:
+      | {
+          label: string;
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+    ctaButton?: {
+      label?: string | null;
+      url?: string | null;
+    };
+  };
+  footer?: {
+    logoAlt?: string | null;
+    tagline?: string | null;
+    copyrightText?: string | null;
+    developerName?: string | null;
+    developerUrl?: string | null;
+  };
+  seo?: {
+    siteTitle?: string | null;
+    siteDescription?: string | null;
+    /**
+     * Image utilisée par défaut lors des partages sur les réseaux sociaux
+     */
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				backgroundImage?: T
-				title?: T
-		  }
-	values?:
-		| T
-		| {
-				sectionTitle?: T
-				image?: T
-				valuesList?:
-					| T
-					| {
-							icon?: T
-							number?: T
-							title?: T
-							description?: T
-							id?: T
-					  }
-		  }
-	servicesPreview?:
-		| T
-		| {
-				title?: T
-				subtitle?: T
-				ctaLabel?: T
-				ctaUrl?: T
-		  }
-	philosophy?:
-		| T
-		| {
-				title?: T
-				introText?: T
-				quote?: T
-				primaryImage?: T
-				imageOverlayTitle?: T
-				imageOverlayDescription?: T
-				philosophyPoints?:
-					| T
-					| {
-							icon?: T
-							title?: T
-							description?: T
-							id?: T
-					  }
-				preferences?:
-					| T
-					| {
-							title?: T
-							description?: T
-							id?: T
-					  }
-				refusals?:
-					| T
-					| {
-							title?: T
-							description?: T
-							id?: T
-					  }
-				engagementBanner?:
-					| T
-					| {
-							title?: T
-							description?: T
-							ctaLabel?: T
-							ctaUrl?: T
-					  }
-		  }
-	interventionZone?:
-		| T
-		| {
-				title?: T
-				subtitle?: T
-				mapCenterLat?: T
-				mapCenterLng?: T
-				radiusKm?: T
-				communes?:
-					| T
-					| {
-							name?: T
-							id?: T
-					  }
-				ctaSection?:
-					| T
-					| {
-							title?: T
-							description?: T
-							ctaLabel?: T
-							ctaUrl?: T
-					  }
-		  }
-	realisationsPreview?:
-		| T
-		| {
-				title?: T
-				description?: T
-				ctaLabel?: T
-				ctaUrl?: T
-		  }
-	faqShort?:
-		| T
-		| {
-				title?: T
-				description?: T
-				ctaLabel?: T
-				ctaUrl?: T
-		  }
-	taxCredit?:
-		| T
-		| {
-				title?: T
-				subtitle?: T
-				steps?:
-					| T
-					| {
-							number?: T
-							title?: T
-							description?: T
-							image1?: T
-							image2?: T
-							id?: T
-					  }
-		  }
-	finalCta?:
-		| T
-		| {
-				title?: T
-				description?: T
-				buttonText?: T
-				buttonUrl?: T
-				benefits?:
-					| T
-					| {
-							benefit?: T
-							id?: T
-					  }
-		  }
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  hero?:
+    | T
+    | {
+        backgroundImage?: T;
+        title?: T;
+      };
+  values?:
+    | T
+    | {
+        sectionTitle?: T;
+        image?: T;
+        valuesList?:
+          | T
+          | {
+              icon?: T;
+              number?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  servicesPreview?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+      };
+  philosophy?:
+    | T
+    | {
+        title?: T;
+        introText?: T;
+        quote?: T;
+        primaryImage?: T;
+        imageOverlayTitle?: T;
+        imageOverlayDescription?: T;
+        philosophyPoints?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        preferences?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        refusals?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        engagementBanner?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              ctaLabel?: T;
+              ctaUrl?: T;
+            };
+      };
+  interventionZone?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        mapCenterLat?: T;
+        mapCenterLng?: T;
+        radiusKm?: T;
+        communes?:
+          | T
+          | {
+              name?: T;
+              id?: T;
+            };
+        ctaSection?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              ctaLabel?: T;
+              ctaUrl?: T;
+            };
+      };
+  realisationsPreview?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+      };
+  faqShort?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+        ctaUrl?: T;
+      };
+  taxCredit?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        steps?:
+          | T
+          | {
+              number?: T;
+              title?: T;
+              description?: T;
+              image1?: T;
+              image2?: T;
+              id?: T;
+            };
+      };
+  finalCta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "prestations-page_select".
  */
 export interface PrestationsPageSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				title?: T
-				image?: T
-		  }
-	taxCreditEligibility?:
-		| T
-		| {
-				title?: T
-				description?: T
-				eligibleTitle?: T
-				eligibleDescription?: T
-				eligibleItems?:
-					| T
-					| {
-							title?: T
-							description?: T
-							id?: T
-					  }
-				eligibleImage?: T
-				nonEligibleTitle?: T
-				nonEligibleDescription?: T
-				nonEligibleItems?:
-					| T
-					| {
-							title?: T
-							description?: T
-							id?: T
-					  }
-				nonEligibleImage?: T
-		  }
-	ctaSection?:
-		| T
-		| {
-				title?: T
-				description?: T
-				buttonText?: T
-				buttonUrl?: T
-				benefits?:
-					| T
-					| {
-							benefit?: T
-							id?: T
-					  }
-		  }
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+      };
+  taxCreditEligibility?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        eligibleTitle?: T;
+        eligibleDescription?: T;
+        eligibleItems?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        eligibleImage?: T;
+        nonEligibleTitle?: T;
+        nonEligibleDescription?: T;
+        nonEligibleItems?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        nonEligibleImage?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "realisations-page_select".
  */
 export interface RealisationsPageSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				title?: T
-				image?: T
-		  }
-	introduction?:
-		| T
-		| {
-				paragraph1?: T
-				paragraph2?: T
-		  }
-	ctaSection?:
-		| T
-		| {
-				title?: T
-				description?: T
-				buttonText?: T
-				buttonUrl?: T
-				benefits?:
-					| T
-					| {
-							benefit?: T
-							id?: T
-					  }
-		  }
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+      };
+  introduction?:
+    | T
+    | {
+        paragraph1?: T;
+        paragraph2?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faq-page_select".
  */
 export interface FaqPageSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				title?: T
-				image?: T
-		  }
-	categoryDescriptions?:
-		| T
-		| {
-				category?: T
-				description?: T
-				id?: T
-		  }
-	ctaSection?:
-		| T
-		| {
-				title?: T
-				description?: T
-				buttonText?: T
-				buttonUrl?: T
-				benefits?:
-					| T
-					| {
-							benefit?: T
-							id?: T
-					  }
-		  }
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+      };
+  categoryDescriptions?:
+    | T
+    | {
+        category?: T;
+        description?: T;
+        id?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contact-page_select".
  */
 export interface ContactPageSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				title?: T
-				image?: T
-		  }
-	formSection?:
-		| T
-		| {
-				title?: T
-				subtitle?: T
-				gardenSizeOptions?:
-					| T
-					| {
-							label?: T
-							value?: T
-							id?: T
-					  }
-				privacyText?: T
-		  }
-	contactInfoSidebar?:
-		| T
-		| {
-				benefits?:
-					| T
-					| {
-							benefit?: T
-							id?: T
-					  }
-		  }
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+      };
+  formSection?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        gardenSizeOptions?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        privacyText?: T;
+      };
+  contactInfoSidebar?:
+    | T
+    | {
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "mentions-legales-page_select".
  */
 export interface MentionsLegalesPageSelect<T extends boolean = true> {
-	hero?:
-		| T
-		| {
-				title?: T
-				image?: T
-		  }
-	content?: T
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  hero?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+      };
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
-	contact?:
-		| T
-		| {
-				phone?: T
-				email?: T
-				company?:
-					| T
-					| {
-							name?: T
-							representative?: T
-							legalForm?: T
-					  }
-				address?:
-					| T
-					| {
-							postalCode?: T
-							city?: T
-							region?: T
-							country?: T
-					  }
-				social?:
-					| T
-					| {
-							facebook?: T
-							linkedin?: T
-					  }
-				hours?:
-					| T
-					| {
-							weekday?: T
-							saturday?: T
-							sunday?: T
-							note?: T
-					  }
-		  }
-	taxCredit?:
-		| T
-		| {
-				percentage?: T
-				maxAnnualExpense?: T
-				maxAnnualCredit?: T
-				steps?:
-					| T
-					| {
-							number?: T
-							title?: T
-							description?: T
-							id?: T
-					  }
-				example?:
-					| T
-					| {
-							serviceCost?: T
-							taxCredit?: T
-							realCost?: T
-					  }
-		  }
-	navigation?:
-		| T
-		| {
-				mainMenu?:
-					| T
-					| {
-							label?: T
-							url?: T
-							id?: T
-					  }
-				ctaButton?:
-					| T
-					| {
-							label?: T
-							url?: T
-					  }
-		  }
-	footer?:
-		| T
-		| {
-				logoAlt?: T
-				tagline?: T
-				copyrightText?: T
-				developerName?: T
-				developerUrl?: T
-		  }
-	seo?:
-		| T
-		| {
-				siteTitle?: T
-				siteDescription?: T
-				ogImage?: T
-		  }
-	updatedAt?: T
-	createdAt?: T
-	globalType?: T
+  contact?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+        company?:
+          | T
+          | {
+              name?: T;
+              representative?: T;
+              legalForm?: T;
+            };
+        address?:
+          | T
+          | {
+              postalCode?: T;
+              city?: T;
+              region?: T;
+              country?: T;
+            };
+        social?:
+          | T
+          | {
+              facebook?: T;
+              linkedin?: T;
+            };
+        hours?:
+          | T
+          | {
+              weekday?: T;
+              saturday?: T;
+              sunday?: T;
+              note?: T;
+            };
+      };
+  taxCredit?:
+    | T
+    | {
+        percentage?: T;
+        maxAnnualExpense?: T;
+        maxAnnualCredit?: T;
+        steps?:
+          | T
+          | {
+              number?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        example?:
+          | T
+          | {
+              serviceCost?: T;
+              taxCredit?: T;
+              realCost?: T;
+            };
+      };
+  navigation?:
+    | T
+    | {
+        mainMenu?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              id?: T;
+            };
+        ctaButton?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+            };
+      };
+  footer?:
+    | T
+    | {
+        logoAlt?: T;
+        tagline?: T;
+        copyrightText?: T;
+        developerName?: T;
+        developerUrl?: T;
+      };
+  seo?:
+    | T
+    | {
+        siteTitle?: T;
+        siteDescription?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-	[k: string]: unknown
+  [k: string]: unknown;
 }
 
+
 declare module 'payload' {
-	export interface GeneratedTypes extends Config {}
+  export interface GeneratedTypes extends Config {}
 }

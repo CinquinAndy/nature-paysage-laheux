@@ -4,19 +4,21 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
-import { REALISATIONS } from '@/lib/data/realisations'
+import { RichText } from '@/components/ui/rich-text'
+import { getMediaUrl, getRealisationBySlug, getRealisations } from '@/lib/payload'
 
 // Lazy load the image gallery modal
 const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
 
 interface RealisationPageProps {
 	params: Promise<{
-		id: string
+		slug: string
 	}>
 }
 
 // Fonction pour formater la date en français
-function formatDate(dateString: string): string {
+function formatDate(dateString: string | null | undefined): string {
+	if (!dateString) return ''
 	const date = new Date(dateString)
 	return date.toLocaleDateString('fr-FR', {
 		day: 'numeric',
