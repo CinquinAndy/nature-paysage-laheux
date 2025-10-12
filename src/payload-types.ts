@@ -261,6 +261,18 @@ export interface Service {
    * Ordre d'apparition des prestations (plus petit numéro = apparaît en premier)
    */
   order?: number | null;
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -324,6 +336,18 @@ export interface Realisation {
     quote?: string | null;
     author?: string | null;
     location?: string | null;
+  };
+  ctaSection?: {
+    title?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonUrl?: string | null;
+    benefits?:
+      | {
+          benefit?: string | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -521,6 +545,20 @@ export interface ServicesSelect<T extends boolean = true> {
   eligibleTaxCredit?: T;
   price?: T;
   order?: T;
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -550,6 +588,20 @@ export interface RealisationsSelect<T extends boolean = true> {
         quote?: T;
         author?: T;
         location?: T;
+      };
+  ctaSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        buttonText?: T;
+        buttonUrl?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

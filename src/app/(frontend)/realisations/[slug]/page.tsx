@@ -1,9 +1,10 @@
-import { Calendar, CheckCircle, MapPin } from 'lucide-react'
+import { Calendar, MapPin } from 'lucide-react'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
+import { CtaShader } from '@/components/ui/cta-shader'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getRealisationBySlug, getRealisations } from '@/lib/payload'
 
@@ -70,8 +71,6 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs
 
-	const features = realisation.features || []
-
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
@@ -96,7 +95,7 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 			</div>
 
 			{/* Article Content in Prose Style */}
-			<div className="bg-white px-6 py-16 lg:px-8 ">
+			<div className="bg-white px-6 py-16 lg:px-8">
 				<div className="mx-auto max-w-3xl text-base/7 text-gray-700">
 					{/* Category Badge */}
 					{realisation.category && (
@@ -127,90 +126,42 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 					{/* Short Description */}
 					{realisation.shortDescription && <p className="mt-6 text-xl/8">{realisation.shortDescription}</p>}
 
-					{/* Main Content */}
-					<div className="mt-10 max-w-2xl text-gray-600">
-						<h2 className="text-2xl font-semibold tracking-tight text-pretty text-foreground">Description du Projet</h2>
-						{realisation.description && (
-							<div className="mt-4">
-								<RichText content={realisation.description} />
-							</div>
-						)}
-
-						{/* Features List */}
-						{features.length > 0 && (
-							<>
-								<h3 className="mt-12 text-xl font-semibold text-foreground">Caractéristiques</h3>
-								<ul className="mt-6 max-w-xl space-y-4 text-gray-600">
-									{features.map((featureItem, index) => {
-										const featureText =
-											typeof featureItem === 'object' && 'feature' in featureItem ? featureItem.feature : ''
-										return (
-											<li key={featureText || index} className="flex gap-x-3">
-												<CheckCircle aria-hidden="true" className="mt-1 size-5 flex-none text-emerald-600" />
-												<span>
-													<strong className="font-semibold text-foreground">{featureText}</strong>
-												</span>
-											</li>
-										)
-									})}
-								</ul>
-							</>
-						)}
-
-						{/* Process Section */}
-						<h2 className="mt-16 text-2xl font-semibold tracking-tight text-pretty text-foreground">
-							Une approche écologique et respectueuse
-						</h2>
-						<p className="mt-6">
-							Chaque projet est réalisé avec une attention particulière portée à l&apos;environnement et à la
-							biodiversité locale. Mon engagement est de créer des espaces verts durables qui respectent
-							l&apos;écosystème et favorisent la vie du sol.
-						</p>
-
-						{/* Tax Credit Info */}
-						<div className="mt-10 rounded-2xl bg-emerald-50 p-6 border border-emerald-200">
-							<h3 className="text-lg font-semibold text-emerald-900">Bénéficiez de 50% de crédit d&apos;impôt</h3>
-							<p className="mt-2 text-sm text-emerald-800">
-								Cette réalisation a bénéficié du crédit d&apos;impôt Services à la Personne. Toutes mes prestations sont
-								éligibles, l&apos;État vous rembourse 50% du montant payé.
-							</p>
+					{/* Main Content from Payload CMS */}
+					{realisation.description && (
+						<div className="mt-10">
+							<RichText content={realisation.description} />
 						</div>
+					)}
 
-						{/* Client Testimonial (if available) */}
-						{realisation.testimonial?.quote && (
-							<div className="mt-16">
-								<h3 className="text-xl font-semibold text-foreground">Le mot du client</h3>
-								<figure className="mt-6 border-l-4 border-emerald-600 pl-6">
-									<blockquote className="text-gray-700 italic">
-										<p>&quot;{realisation.testimonial.quote}&quot;</p>
-									</blockquote>
-									<figcaption className="mt-4 text-sm text-gray-600">
-										— {realisation.testimonial.author || 'Client satisfait'}
-										{realisation.testimonial.location && `, ${realisation.testimonial.location}`}
-									</figcaption>
-								</figure>
-							</div>
-						)}
-					</div>
-
-					{/* CTA Section */}
-					<div className="mt-16 max-w-2xl">
-						<div className="rounded-2xl bg-gray-50 p-8 text-center">
-							<h2 className="text-2xl font-semibold text-foreground">Un projet similaire ?</h2>
-							<p className="mt-4 text-gray-600">
-								Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble. Bénéficiez de 50%
-								de crédit d&apos;impôt sur toutes mes prestations.
-							</p>
-							<a
-								href="/contact"
-								className="mt-6 inline-block rounded-lg bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-emerald-700 transition-colors duration-200"
-							>
-								Demander un devis gratuit
-							</a>
+					{/* Client Testimonial (if available) */}
+					{realisation.testimonial?.quote && (
+						<div className="mt-16">
+							<h3 className="text-xl font-semibold text-foreground">Le mot du client</h3>
+							<figure className="mt-6 border-l-4 border-emerald-600 pl-6">
+								<blockquote className="text-gray-700 italic">
+									<p>&quot;{realisation.testimonial.quote}&quot;</p>
+								</blockquote>
+								<figcaption className="mt-4 text-sm text-gray-600">
+									— {realisation.testimonial.author || 'Client satisfait'}
+									{realisation.testimonial.location && `, ${realisation.testimonial.location}`}
+								</figcaption>
+							</figure>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
+
+			{/* CTA Section from Payload CMS */}
+			<CtaShader
+				title={realisation.ctaSection?.title || 'Un projet similaire ?'}
+				description={
+					realisation.ctaSection?.description ||
+					"Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble. Bénéficiez de 50% de crédit d'impôt sur toutes mes prestations."
+				}
+				buttonText={realisation.ctaSection?.buttonText || 'Demander un devis gratuit'}
+				buttonUrl={realisation.ctaSection?.buttonUrl || '/contact'}
+				items={realisation.ctaSection?.benefits?.map(b => b.benefit || '').filter(Boolean) || []}
+			/>
 		</div>
 	)
 }

@@ -141,5 +141,49 @@ export const Realisations: CollectionConfig = {
 				},
 			],
 		},
+		{
+			name: 'ctaSection',
+			type: 'group',
+			label: "Section Appel à l'Action",
+			fields: [
+				{
+					name: 'title',
+					type: 'text',
+					defaultValue: 'Un projet similaire ?',
+					label: 'Titre',
+				},
+				{
+					name: 'description',
+					type: 'textarea',
+					defaultValue:
+						"Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble. Bénéficiez de 50% de crédit d'impôt sur toutes mes prestations.",
+					label: 'Description',
+				},
+				{
+					name: 'buttonText',
+					type: 'text',
+					defaultValue: 'Demander un devis gratuit',
+					label: 'Texte du bouton',
+				},
+				{
+					name: 'buttonUrl',
+					type: 'text',
+					defaultValue: '/contact',
+					label: 'Lien du bouton',
+				},
+				{
+					name: 'benefits',
+					type: 'array',
+					label: 'Liste des avantages',
+					fields: [
+						{
+							name: 'benefit',
+							type: 'text',
+							label: 'Avantage',
+						},
+					],
+				},
+			],
+		},
 	],
 }
