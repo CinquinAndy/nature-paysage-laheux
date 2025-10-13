@@ -87,11 +87,6 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 						<p className="text-base/7 font-semibold text-emerald-600 capitalize">{service.category}</p>
 					)}
 
-					{/* Title */}
-					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
-						{service.title}
-					</h1>
-
 					{/* Short Description */}
 					{service.shortDescription && <p className="mt-6 text-xl/8">{parseLineBreaks(service.shortDescription)}</p>}
 

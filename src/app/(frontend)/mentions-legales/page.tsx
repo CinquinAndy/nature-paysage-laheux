@@ -45,11 +45,6 @@ export default async function MentionsLegalesPage() {
 					{/* Category Badge */}
 					<p className="text-base/7 font-semibold text-emerald-600">Informations Légales</p>
 
-					{/* Title */}
-					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
-						Mentions Légales
-					</h1>
-
 					{/* Main Content from Payload CMS */}
 					<div className="mt-10">{pageData.content && <RichText content={pageData.content} />}</div>
 				</div>

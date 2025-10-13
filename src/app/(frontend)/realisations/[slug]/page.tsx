@@ -101,11 +101,6 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 						<p className="text-base/7 font-semibold text-emerald-600 capitalize">{realisation.category}</p>
 					)}
 
-					{/* Title */}
-					<h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-foreground sm:text-5xl">
-						{realisation.title}
-					</h1>
-
 					{/* Meta Info */}
 					<div className="mt-6 flex flex-wrap items-center gap-4">
 						{realisation.date && (
