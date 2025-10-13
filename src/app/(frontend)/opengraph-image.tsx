@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
+import { loadFont, OG_IMAGE_ALT, OG_IMAGE_CONTENT_TYPE, OG_IMAGE_SIZE, OGImageTemplate } from '@/lib/og-image'
 import { getHomepageData } from '@/lib/payload'
-import { OGImageTemplate, OG_IMAGE_SIZE, OG_IMAGE_ALT, OG_IMAGE_CONTENT_TYPE, loadFont } from '@/lib/og-image'
 
 export const alt = OG_IMAGE_ALT
 export const size = OG_IMAGE_SIZE
@@ -26,4 +26,3 @@ export default async function Image() {
 		],
 	})
 }
-

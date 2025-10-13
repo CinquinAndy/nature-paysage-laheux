@@ -2,8 +2,8 @@
 
 import { Check } from 'lucide-react'
 import Link from 'next/link'
-import { parseLineBreaks } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { parseLineBreaks } from '@/lib/utils'
 
 interface CtaShaderProps {
 	title?: string
@@ -40,12 +40,12 @@ export function CtaShader({
 							className="flex flex-col items-start justify-between gap-8 rounded-lg bg-background backdrop-blur-md
 						 border border-white/20 px-6 py-10 md:flex-row lg:px-20 lg:py-16 shadow-2xl h-full"
 						>
-						<div className="md:w-1/2 h-full">
-							<h4 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-								{parseLineBreaks(title)}
-							</h4>
-							<p className="text-foreground/90 text-lg mb-6">{parseLineBreaks(description)}</p>
-						</div>
+							<div className="md:w-1/2 h-full">
+								<h4 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+									{parseLineBreaks(title)}
+								</h4>
+								<p className="text-foreground/90 text-lg mb-6">{parseLineBreaks(description)}</p>
+							</div>
 							<div className="md:w-1/3 h-full flex flex-col justify-between ">
 								<ul className="flex flex-col space-y-3 text-sm font-medium">
 									{items.map(item => (

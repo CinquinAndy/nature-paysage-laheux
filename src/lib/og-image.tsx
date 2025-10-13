@@ -60,4 +60,3 @@ export const OG_IMAGE_SIZE = {
 
 export const OG_IMAGE_ALT = 'Nature Paysage Laheux - Éco-Paysagiste Loire-Atlantique'
 export const OG_IMAGE_CONTENT_TYPE = 'image/png'
-
