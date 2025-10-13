@@ -57,9 +57,8 @@ const BulkAltTextGenerator: React.FC = () => {
 			style={{
 				width: '100%',
 				display: 'flex',
-				justifyContent: 'flex-end',
 				marginBottom: '16px',
-				marginRight: '24px',
+				marginLeft: '36px',
 				marginTop: '16px',
 			}}
 		>
@@ -67,18 +66,17 @@ const BulkAltTextGenerator: React.FC = () => {
 				<div
 					style={{
 						padding: '16px',
-						backgroundColor: 'white',
 						border: '1px solid #e5e7eb',
 						borderRadius: '8px',
 						boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
 					}}
 				>
 					<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-						<div style={{ textAlign: 'right' }}>
-							<h3 style={{ fontSize: '16px', fontWeight: '600', color: '#111827', margin: 0 }}>
+						<div style={{ textAlign: 'left' }}>
+							<h3 style={{ fontSize: '16px', fontWeight: '600', color: '#fff', margin: 0 }}>
 								Génération en masse avec ForVoyez
 							</h3>
-							<p style={{ fontSize: '14px', color: '#4b5563', marginTop: '4px', marginBottom: 0 }}>
+							<p style={{ fontSize: '14px', color: '#fff', marginTop: '4px', marginBottom: 0 }}>
 								Générer automatiquement les alt text manquants pour toutes les images
 							</p>
 						</div>
