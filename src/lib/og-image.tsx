@@ -22,30 +22,9 @@ export async function loadFont(): Promise<Buffer> {
  */
 export function OGImageTemplate({ title }: { title: string }) {
 	return (
-		<div
-			style={{
-				height: '100%',
-				width: '100%',
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				justifyContent: 'center',
-				backgroundColor: '#F5F1EC',
-				padding: '80px',
-			}}
-		>
-			<div
-				style={{
-					fontSize: 72,
-					fontWeight: 700,
-					color: '#1F2937',
-					textAlign: 'center',
-					lineHeight: 1.2,
-					maxWidth: '1040px',
-				}}
-			>
-				{title}
-			</div>
+		<div tw="h-full w-full flex flex-col items-center justify-center bg-[#F5F1EC] p-20 relative">
+			<img src="/og.svg" alt="Blob" tw="absolute top-0 left-0 w-full h-full" />
+			<div tw="text-[72px] font-bold text-gray-800 text-center leading-[1.2] max-w-[1040px]">{title}</div>
 		</div>
 	)
 }
