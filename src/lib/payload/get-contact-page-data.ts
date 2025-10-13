@@ -12,5 +12,19 @@ export async function getContactPageData(): Promise<ContactPage> {
 		depth: 2, // Include related media
 	})
 
+	// Validate critical fields
+	if (!contactPage.hero?.title) {
+		throw new Error('Contact Page: Missing hero.title in Payload CMS')
+	}
+	if (!contactPage.hero?.image) {
+		throw new Error('Contact Page: Missing hero.image in Payload CMS')
+	}
+	if (!contactPage.formSection) {
+		throw new Error('Contact Page: Missing formSection in Payload CMS')
+	}
+	if (!contactPage.contactInfoSidebar) {
+		throw new Error('Contact Page: Missing contactInfoSidebar in Payload CMS')
+	}
+
 	return contactPage as ContactPage
 }

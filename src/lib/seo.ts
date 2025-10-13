@@ -60,14 +60,16 @@ export function generateSEOMetadata(
 	pathname: string,
 	options?: {
 		robots?: string
-		fallbackTitle?: string
-		fallbackDescription?: string
 	}
 ): Metadata {
-	// Generate title with fallback logic
-	const title = data.seo_title || data.title || options?.fallbackTitle || 'Nature Paysage Laheux'
+	// Get title - use seo_title or fall back to title
+	const title = data.seo_title || data.title
 
-	// Generate description with fallback logic
+	if (!title) {
+		throw new Error(`Missing SEO title for page: ${pathname}. Please set either seo_title or title in Payload CMS.`)
+	}
+
+	// Get description - use seo_description, shortDescription, or extract from rich text
 	let rawDescription = data.seo_description
 
 	if (!rawDescription) {
@@ -76,13 +78,17 @@ export function generateSEOMetadata(
 		} else if (data.description) {
 			const plainText = extractPlainText(data.description)
 			rawDescription = truncateText(plainText, 155)
-		} else {
-			rawDescription = options?.fallbackDescription || ''
 		}
 	}
 
+	if (!rawDescription) {
+		throw new Error(
+			`Missing SEO description for page: ${pathname}. Please set seo_description, shortDescription, or description in Payload CMS.`
+		)
+	}
+
 	// Ensure description doesn't exceed 155 characters
-	const description = rawDescription && rawDescription.length > 155 ? truncateText(rawDescription, 155) : rawDescription
+	const description = rawDescription.length > 155 ? truncateText(rawDescription, 155) : rawDescription
 
 	// Generate canonical URL
 	const canonicalUrl = `${SITE_URL}${pathname}`

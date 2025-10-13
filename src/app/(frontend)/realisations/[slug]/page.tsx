@@ -41,14 +41,7 @@ export async function generateMetadata({ params }: RealisationPageProps): Promis
 		}
 	}
 
-	const titleWithLocation = realisation.location
-		? `${realisation.title} - ${realisation.location} | Jean-Luc Laheux`
-		: `${realisation.title} | Jean-Luc Laheux`
-
-	return generateSEOMetadata(realisation, `/realisations/${slug}`, {
-		fallbackTitle: titleWithLocation,
-		fallbackDescription: realisation.shortDescription || '',
-	})
+	return generateSEOMetadata(realisation, `/realisations/${slug}`)
 }
 
 // Génération des chemins statiques
@@ -68,12 +61,12 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 	}
 
 	// Build gallery images from Payload media
-	const mainImageUrl = getMediaUrl(realisation.image)
+	const mainImageUrl = getMediaUrl(realisation.image!)!
 	const galleryImages = [
-		...(mainImageUrl ? [{ src: mainImageUrl, alt: realisation.title || 'Réalisation' }] : []),
+		{ src: mainImageUrl, alt: realisation.title! },
 		...(realisation.images?.map(imgItem => ({
-			src: getMediaUrl(imgItem) || '',
-			alt: realisation.title || 'Réalisation',
+			src: getMediaUrl(imgItem)!,
+			alt: realisation.title!,
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs
 
@@ -81,9 +74,9 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
-				title={realisation.title || 'Réalisation'}
-				imageSrc={mainImageUrl || '/usable/IMG_20250803_122326_1.jpg'}
-				imageAlt={realisation.title || 'Réalisation'}
+				title={realisation.title!}
+				imageSrc={mainImageUrl}
+				imageAlt={realisation.title!}
 				action={galleryImages.length > 1 ? <ImageGalleryModal images={galleryImages} /> : undefined}
 			/>
 
@@ -94,7 +87,7 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 						items={[
 							{ label: 'Accueil', href: '/' },
 							{ label: 'Réalisations', href: '/realisations' },
-							{ label: realisation.title || 'Réalisation', href: `/realisations/${realisation.slug}` },
+							{ label: realisation.title!, href: `/realisations/${realisation.slug}` },
 						]}
 					/>
 				</div>
@@ -161,14 +154,11 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 
 			{/* CTA Section from Payload CMS */}
 			<CtaShader
-				title={realisation.ctaSection?.title || 'Un projet similaire ?'}
-				description={
-					realisation.ctaSection?.description ||
-					"Discutons de votre jardin et créons ensemble un espace écologique qui vous ressemble. Bénéficiez de 50% de crédit d'impôt sur toutes mes prestations."
-				}
-				buttonText={realisation.ctaSection?.buttonText || 'Demander un devis gratuit'}
-				buttonUrl={realisation.ctaSection?.buttonUrl || '/contact'}
-				items={realisation.ctaSection?.benefits?.map(b => b.benefit || '').filter(Boolean) || []}
+				title={realisation.ctaSection!.title!}
+				description={realisation.ctaSection!.description!}
+				buttonText={realisation.ctaSection!.buttonText!}
+				buttonUrl={realisation.ctaSection!.buttonUrl!}
+				items={realisation.ctaSection!.benefits!.map(b => b.benefit).filter((item): item is string => !!item)}
 			/>
 		</div>
 	)

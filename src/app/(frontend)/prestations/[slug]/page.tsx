@@ -35,10 +35,7 @@ export async function generateMetadata({ params }: PrestationPageProps): Promise
 		}
 	}
 
-	return generateSEOMetadata(service, `/prestations/${slug}`, {
-		fallbackTitle: `${service.title} | Jean-Luc Laheux - Loire-Atlantique`,
-		fallbackDescription: service.shortDescription || '',
-	})
+	return generateSEOMetadata(service, `/prestations/${slug}`)
 }
 
 export default async function PrestationPage({ params }: PrestationPageProps) {
@@ -50,12 +47,12 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 	}
 
 	// Build gallery images from Payload media
-	const mainImageUrl = getMediaUrl(service.image)
+	const mainImageUrl = getMediaUrl(service.image!)!
 	const galleryImages = [
-		...(mainImageUrl ? [{ src: mainImageUrl, alt: service.title || 'Prestation' }] : []),
+		{ src: mainImageUrl, alt: service.title! },
 		...(service.images?.map(imgItem => ({
-			src: getMediaUrl(imgItem) || '',
-			alt: service.title || 'Prestation',
+			src: getMediaUrl(imgItem)!,
+			alt: service.title!,
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs
 
@@ -63,9 +60,9 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
-				title={service.title || 'Prestation'}
-				imageSrc={mainImageUrl || '/usable/background.jpg'}
-				imageAlt={service.title || 'Prestation'}
+				title={service.title!}
+				imageSrc={mainImageUrl}
+				imageAlt={service.title!}
 				action={galleryImages.length > 1 ? <ImageGalleryModal images={galleryImages} /> : undefined}
 			/>
 
@@ -109,14 +106,11 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 
 			{/* CTA Section from Payload CMS */}
 			<CtaShader
-				title={service.ctaSection?.title || 'Intéressé par cette prestation ?'}
-				description={
-					service.ctaSection?.description ||
-					"Demandez votre devis gratuit et bénéficiez de 50% de crédit d'impôt sur toutes mes prestations."
-				}
-				buttonText={service.ctaSection?.buttonText || 'Demander un devis gratuit'}
-				buttonUrl={service.ctaSection?.buttonUrl || '/contact'}
-				items={service.ctaSection?.benefits?.map(b => b.benefit || '').filter(Boolean) || []}
+				title={service.ctaSection!.title!}
+				description={service.ctaSection!.description!}
+				buttonText={service.ctaSection!.buttonText!}
+				buttonUrl={service.ctaSection!.buttonUrl!}
+				items={service.ctaSection!.benefits!.map(b => b.benefit).filter((item): item is string => !!item)}
 			/>
 		</div>
 	)

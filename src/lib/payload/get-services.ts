@@ -21,7 +21,7 @@ export async function getFeaturedServices(count: number = 6): Promise<Service[]>
 	return getServices(count)
 }
 
-export async function getServiceBySlug(slug: string): Promise<Service | null> {
+export async function getServiceBySlug(slug: string): Promise<Service> {
 	const payload = await getPayload({
 		config: configPromise,
 	})
@@ -37,5 +37,22 @@ export async function getServiceBySlug(slug: string): Promise<Service | null> {
 		limit: 1,
 	})
 
-	return result.docs.length > 0 ? (result.docs[0] as Service) : null
+	if (result.docs.length === 0) {
+		throw new Error(`Service not found: ${slug}. Please check the slug or create the service in Payload CMS.`)
+	}
+
+	const service = result.docs[0] as Service
+
+	// Validate critical fields
+	if (!service.title) {
+		throw new Error(`Service ${slug}: Missing title in Payload CMS`)
+	}
+	if (!service.image) {
+		throw new Error(`Service ${slug}: Missing image in Payload CMS`)
+	}
+	if (!service.ctaSection) {
+		throw new Error(`Service ${slug}: Missing ctaSection in Payload CMS`)
+	}
+
+	return service
 }

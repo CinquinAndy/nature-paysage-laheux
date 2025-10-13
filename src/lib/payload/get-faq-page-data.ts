@@ -12,5 +12,16 @@ export async function getFaqPageData(): Promise<FaqPage> {
 		depth: 2, // Include related media
 	})
 
+	// Validate critical fields
+	if (!faqPage.hero?.title) {
+		throw new Error('FAQ Page: Missing hero.title in Payload CMS')
+	}
+	if (!faqPage.hero?.image) {
+		throw new Error('FAQ Page: Missing hero.image in Payload CMS')
+	}
+	if (!faqPage.ctaSection) {
+		throw new Error('FAQ Page: Missing ctaSection in Payload CMS')
+	}
+
 	return faqPage as FaqPage
 }
