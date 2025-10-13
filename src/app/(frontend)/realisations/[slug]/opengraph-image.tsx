@@ -1,0 +1,54 @@
+import { ImageResponse } from 'next/og'
+import { getRealisationBySlug, getRealisations } from '@/lib/payload'
+import { OGImageTemplate, OG_IMAGE_SIZE, OG_IMAGE_ALT, OG_IMAGE_CONTENT_TYPE, loadFont } from '@/lib/og-image'
+
+export const alt = OG_IMAGE_ALT
+export const size = OG_IMAGE_SIZE
+export const contentType = OG_IMAGE_CONTENT_TYPE
+
+export async function generateStaticParams() {
+	const realisations = await getRealisations()
+	return realisations.map(realisation => ({
+		slug: realisation.slug || '',
+	}))
+}
+
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params
+	const realisation = await getRealisationBySlug(slug)
+	const font = await loadFont()
+
+	if (!realisation) {
+		return new ImageResponse(<OGImageTemplate title="Réalisation non trouvée" />, {
+			...size,
+			fonts: [
+				{
+					name: 'Apple Garamond',
+					data: font,
+					style: 'normal',
+					weight: 700,
+				},
+			],
+		})
+	}
+
+	// Extract title with fallback logic (include location if available)
+	let title = realisation.seo_title || realisation.title || 'Réalisation'
+
+	if (!realisation.seo_title && realisation.location) {
+		title = `${realisation.title} - ${realisation.location}`
+	}
+
+	return new ImageResponse(<OGImageTemplate title={title} />, {
+		...size,
+		fonts: [
+			{
+				name: 'Apple Garamond',
+				data: font,
+				style: 'normal',
+				weight: 700,
+			},
+		],
+	})
+}
+
