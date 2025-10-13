@@ -4,19 +4,14 @@ import { useState } from 'react'
 
 const BulkAltTextGenerator: React.FC = () => {
 	const [isGenerating, setIsGenerating] = useState(false)
-	const [progress, setProgress] = useState<{
-		total: number
-		processed: number
-		succeeded: number
-		failed: number
-	} | null>(null)
+	const [totalImages, setTotalImages] = useState<number | null>(null)
 	const [error, setError] = useState<string | null>(null)
 	const [isDone, setIsDone] = useState(false)
 
 	const handleBulkGenerate = async () => {
 		setIsGenerating(true)
 		setError(null)
-		setProgress(null)
+		setTotalImages(null)
 		setIsDone(false)
 
 		try {
@@ -33,18 +28,14 @@ const BulkAltTextGenerator: React.FC = () => {
 				throw new Error(data.error || 'Failed to generate alt texts')
 			}
 
-			setProgress({
-				total: data.total,
-				processed: data.processed,
-				succeeded: data.succeeded,
-				failed: data.failed,
-			})
+			// Generation happens in background - show immediate feedback
+			setTotalImages(data.total)
 			setIsDone(true)
 
-			// Reload after showing results
+			// Reload after 30 seconds to show generated alt texts
 			setTimeout(() => {
 				window.location.reload()
-			}, 5000)
+			}, 30000)
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An error occurred')
 		} finally {
@@ -101,7 +92,7 @@ const BulkAltTextGenerator: React.FC = () => {
 							{isGenerating ? '⏳ Génération en cours...' : '✨ Générer tous les alt texts'}
 						</button>
 
-						{progress && (
+						{totalImages !== null && (
 							<div
 								style={{
 									padding: '12px',
@@ -112,26 +103,21 @@ const BulkAltTextGenerator: React.FC = () => {
 							>
 								<div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
 									<p style={{ fontWeight: '500', color: '#1e3a8a', margin: 0 }}>
-										{isDone ? '✅ Génération terminée !' : '⏳ Traitement en cours...'}
+										✅ Génération lancée en arrière-plan !
 									</p>
 									<p style={{ color: '#1d4ed8', margin: 0 }}>
-										Total: <span style={{ fontWeight: '600' }}>{progress.total}</span> images
+										Total: <span style={{ fontWeight: '600' }}>{totalImages}</span> images en cours de traitement
 									</p>
-									<p style={{ color: '#1d4ed8', margin: 0 }}>
-										Traités: <span style={{ fontWeight: '600' }}>{progress.processed}</span>
+									<p style={{ color: '#15803d', margin: 0, marginTop: '8px' }}>
+										Les alt texts seront générés dans les prochaines minutes.
 									</p>
-									<p style={{ color: '#15803d', margin: 0 }}>
-										Réussis: <span style={{ fontWeight: '600' }}>{progress.succeeded}</span>
+									<p style={{ fontSize: '12px', color: '#1d4ed8', marginTop: '4px', marginBottom: 0 }}>
+										Consultez les logs du serveur pour suivre la progression.
 									</p>
-									{progress.failed > 0 && (
-										<p style={{ color: '#b91c1c', margin: 0 }}>
-											Échoués: <span style={{ fontWeight: '600' }}>{progress.failed}</span>
-										</p>
-									)}
 								</div>
 								{isDone && (
 									<p style={{ fontSize: '12px', color: '#2563eb', marginTop: '8px', marginBottom: 0 }}>
-										La page va se recharger dans 5 secondes...
+										La page va se recharger dans 30 secondes...
 									</p>
 								)}
 							</div>
@@ -150,7 +136,7 @@ const BulkAltTextGenerator: React.FC = () => {
 							</div>
 						)}
 
-						{isGenerating && !progress && (
+						{isGenerating && totalImages === null && (
 							<div
 								style={{
 									padding: '12px',

@@ -37,25 +37,36 @@ export async function POST(req: NextRequest) {
 			imageUrl = `${origin}${imageUrl}`
 		}
 
-		// Generate alt text using ForVoyez
-		const altText = await generateAltText(imageUrl, media.filename || 'image.jpg')
+		// Launch generation in background - don't block the response
+		setImmediate(async () => {
+			try {
+				console.log(`🔄 Background: Generating alt text for ${media.filename}...`)
 
-		if (!altText) {
-			return NextResponse.json({ error: 'Failed to generate alt text' }, { status: 500 })
-		}
+				// Generate alt text using ForVoyez
+				const altText = await generateAltText(imageUrl, media.filename || 'image.jpg')
 
-		// Update the media document with the generated alt text
-		const updatedMedia = await payload.update({
-			collection: 'media',
-			id: mediaId,
-			data: {
-				alt: altText,
-			},
+				if (altText) {
+					// Update the media document with the generated alt text
+					await payload.update({
+						collection: 'media',
+						id: mediaId,
+						data: {
+							alt: altText,
+						},
+					})
+
+					console.log(`✅ Auto-generated alt text for ${media.filename}: "${altText}"`)
+				}
+			} catch (error) {
+				console.error(`❌ Error generating alt text for ${media.filename}:`, error)
+			}
 		})
 
+		// Return immediately
 		return NextResponse.json({
 			success: true,
-			alt: updatedMedia.alt,
+			message: 'Alt text generation started in background',
+			filename: media.filename,
 		})
 	} catch (error) {
 		console.error('Error generating alt text:', error)

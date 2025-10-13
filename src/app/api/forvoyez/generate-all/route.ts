@@ -69,54 +69,47 @@ export async function POST(req: NextRequest) {
 				success: true,
 				message: 'No media without alt text found',
 				total: 0,
-				processed: 0,
-				succeeded: 0,
-				failed: 0,
 			})
 		}
 
 		const origin = req.nextUrl.origin
-		const results = {
-			total: totalCount,
-			processed: 0,
-			succeeded: 0,
-			failed: 0,
-			details: [] as Array<{
-				id: string | number
-				filename: string | null | undefined
-				success: boolean
-				alt?: string
-				error?: string
-			}>,
-		}
 
-		// Process images sequentially to avoid rate limiting
-		for (const media of mediaWithoutAlt.docs) {
-			const result = await generateAltTextForMedia(payload, media.id, origin)
-			results.processed++
+		// Launch generation in background - don't block the response
+		setImmediate(async () => {
+			console.log(`🔄 Background: Starting bulk generation for ${totalCount} images...`)
 
-			if (result.success) {
-				results.succeeded++
-			} else {
-				results.failed++
+			let succeeded = 0
+			let failed = 0
+
+			// Process images sequentially to avoid rate limiting
+			for (const media of mediaWithoutAlt.docs) {
+				try {
+					const result = await generateAltTextForMedia(payload, media.id, origin)
+
+					if (result.success) {
+						succeeded++
+						console.log(`✅ [${succeeded + failed}/${totalCount}] Generated for ${media.filename}`)
+					} else {
+						failed++
+						console.error(`❌ [${succeeded + failed}/${totalCount}] Failed for ${media.filename}: ${result.error}`)
+					}
+
+					// Add a small delay between requests to avoid overwhelming ForVoyez API
+					await new Promise(resolve => setTimeout(resolve, 500))
+				} catch (error) {
+					failed++
+					console.error(`❌ [${succeeded + failed}/${totalCount}] Error for ${media.filename}:`, error)
+				}
 			}
 
-			results.details.push({
-				id: media.id,
-				filename: media.filename,
-				success: result.success,
-				alt: result.alt,
-				error: result.error,
-			})
+			console.log(`✅ Bulk generation complete: ${succeeded} succeeded, ${failed} failed out of ${totalCount}`)
+		})
 
-			// Optional: Add a small delay between requests to avoid overwhelming ForVoyez API
-			await new Promise(resolve => setTimeout(resolve, 500))
-		}
-
+		// Return immediately
 		return NextResponse.json({
 			success: true,
-			message: `Processed ${results.processed} images: ${results.succeeded} succeeded, ${results.failed} failed`,
-			...results,
+			message: `Alt text generation started in background for ${totalCount} images`,
+			total: totalCount,
 		})
 	} catch (error) {
 		console.error('Error in bulk alt text generation:', error)
