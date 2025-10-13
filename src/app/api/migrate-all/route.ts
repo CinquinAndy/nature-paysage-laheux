@@ -1,13 +1,14 @@
 // biome-ignore lint/suspicious/noExplicitAny: Payload types are not fully typed in migration context
+
+import fs from 'node:fs'
+import path from 'node:path'
+import config from '@payload-config'
 import { type NextRequest, NextResponse } from 'next/server'
 import { getPayload } from 'payload'
-import config from '@payload-config'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
 import { FAQ_ITEMS } from '@/lib/data/faq'
 import { REALISATIONS } from '@/lib/data/realisations'
 import { SERVICES, TAX_CREDIT_INFO } from '@/lib/data/services'
-import fs from 'node:fs'
-import path from 'node:path'
 
 /**
  * Secure API endpoint to migrate all data to Payload CMS
@@ -33,29 +34,29 @@ function textToLexical(text: string) {
 
 	return {
 		root: {
-			type: 'root',
-			format: '',
+			type: 'root' as const,
+			format: '' as const,
 			indent: 0,
 			version: 1,
 			children: paragraphs.map(para => ({
-				type: 'paragraph',
-				format: '',
+				type: 'paragraph' as const,
+				format: '' as const,
 				indent: 0,
 				version: 1,
 				children: [
 					{
-						type: 'text',
+						type: 'text' as const,
 						format: 0,
 						text: para.trim(),
-						mode: 'normal',
+						mode: 'normal' as const,
 						style: '',
 						detail: 0,
 						version: 1,
 					},
 				],
-				direction: 'ltr',
+				direction: 'ltr' as const,
 			})),
-			direction: 'ltr',
+			direction: 'ltr' as const,
 		},
 	}
 }
@@ -63,12 +64,15 @@ function textToLexical(text: string) {
 /**
  * Upload image from public folder to Payload Media collection
  */
-async function uploadImage(payload: any, imagePath: string): Promise<string | null> {
+async function uploadImage(payload: any, imagePath: string): Promise<number | null> {
 	if (!imagePath) return null
 
-	// Remove leading slash and "usable/" prefix
-	const cleanPath = imagePath.replace(/^\//, '').replace(/^usable\//, '')
-	const fullPath = path.join(process.cwd(), 'public', 'usable', cleanPath)
+	// Support both /clean_images/ and /usable/ paths, and clean them
+	const cleanPath = imagePath
+		.replace(/^\//, '')
+		.replace(/^clean_images\//, '')
+		.replace(/^usable\//, '')
+	const fullPath = path.join(process.cwd(), 'public', 'clean_images', cleanPath)
 
 	if (!fs.existsSync(fullPath)) {
 		console.warn(`⚠️  Image not found: ${fullPath}`)
@@ -306,9 +310,9 @@ async function migrateFAQ(payload: any) {
 async function migrateGlobals(payload: any) {
 	const results: Record<string, string> = {}
 
-	// Upload placeholder images
-	const heroBgImage = await uploadImage(payload, '/usable/background.jpg')
-	const valuesImage = await uploadImage(payload, '/usable/jardin_paysagiste_travail.jpg')
+	// Upload placeholder images from clean_images directory
+	const heroBgImage = await uploadImage(payload, 'background.webp')
+	const valuesImage = await uploadImage(payload, 'jardin_paysagiste_travail.webp')
 
 	// Homepage
 	try {

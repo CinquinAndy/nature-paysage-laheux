@@ -9,10 +9,10 @@
  *   pnpm tsx src/scripts/migrate-data.ts
  */
 
-// Load environment variables BEFORE importing config
-import dotenv from 'dotenv'
 import fs from 'node:fs'
 import path from 'node:path'
+// Load environment variables BEFORE importing config
+import dotenv from 'dotenv'
 
 // Load .env file
 dotenv.config()
@@ -49,29 +49,29 @@ function textToLexical(text: string) {
 
 	return {
 		root: {
-			type: 'root',
-			format: '',
+			type: 'root' as const,
+			format: '' as const,
 			indent: 0,
 			version: 1,
 			children: paragraphs.map(para => ({
-				type: 'paragraph',
-				format: '',
+				type: 'paragraph' as const,
+				format: '' as const,
 				indent: 0,
 				version: 1,
 				children: [
 					{
-						type: 'text',
+						type: 'text' as const,
 						format: 0,
 						text: para.trim(),
-						mode: 'normal',
+						mode: 'normal' as const,
 						style: '',
 						detail: 0,
 						version: 1,
 					},
 				],
-				direction: 'ltr',
+				direction: 'ltr' as const,
 			})),
-			direction: 'ltr',
+			direction: 'ltr' as const,
 		},
 	}
 }
@@ -134,9 +134,12 @@ function markdownToLexical(text: string) {
 async function uploadImage(payload: any, imagePath: string): Promise<string | null> {
 	if (!imagePath) return null
 
-	// Remove leading slash and "usable/" prefix
-	const cleanPath = imagePath.replace(/^\//, '').replace(/^usable\//, '')
-	const fullPath = path.join(process.cwd(), 'public', 'usable', cleanPath)
+	// Support both /clean_images/ and /usable/ paths, and clean them
+	const cleanPath = imagePath
+		.replace(/^\//, '')
+		.replace(/^clean_images\//, '')
+		.replace(/^usable\//, '')
+	const fullPath = path.join(process.cwd(), 'public', 'clean_images', cleanPath)
 
 	if (!fs.existsSync(fullPath)) {
 		console.warn(`⚠️  Image not found: ${fullPath}`)
@@ -367,9 +370,9 @@ async function migrateHomepage(payload: any) {
 	console.log('\n🌍 Migrating Homepage Global...')
 
 	try {
-		// Upload images
-		const heroBgImage = await uploadImage(payload, '/usable/bg.jpg')
-		const valuesImage = await uploadImage(payload, '/usable/bg.jpg')
+		// Upload images from clean_images directory
+		const heroBgImage = await uploadImage(payload, 'background.webp')
+		const valuesImage = await uploadImage(payload, 'jardin_paysagiste_travail.webp')
 
 		await payload.updateGlobal({
 			slug: 'homepage',

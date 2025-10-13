@@ -1,9 +1,10 @@
 // biome-ignore lint/suspicious/noExplicitAny: Payload types are not fully typed in migration context
+
+import fs from 'node:fs'
+import path from 'node:path'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
-import fs from 'node:fs'
 import { NextResponse } from 'next/server'
-import path from 'node:path'
 import { CONTACT_INFO } from '@/lib/data/contact-info'
 import { FAQ_ITEMS } from '@/lib/data/faq'
 import { REALISATIONS } from '@/lib/data/realisations'
@@ -24,29 +25,29 @@ function textToLexical(text: string) {
 
 	return {
 		root: {
-			type: 'root',
-			format: '',
+			type: 'root' as const,
+			format: '' as const,
 			indent: 0,
 			version: 1,
 			children: paragraphs.map(para => ({
-				type: 'paragraph',
-				format: '',
+				type: 'paragraph' as const,
+				format: '' as const,
 				indent: 0,
 				version: 1,
 				children: [
 					{
-						type: 'text',
+						type: 'text' as const,
 						format: 0,
 						text: para.trim(),
-						mode: 'normal',
+						mode: 'normal' as const,
 						style: '',
 						detail: 0,
 						version: 1,
 					},
 				],
-				direction: 'ltr',
+				direction: 'ltr' as const,
 			})),
-			direction: 'ltr',
+			direction: 'ltr' as const,
 		},
 	}
 }
@@ -99,11 +100,15 @@ function _markdownToLexical(text: string) {
 	}
 }
 
-async function uploadImage(payload: any, imagePath: string): Promise<string | null> {
+async function uploadImage(payload: any, imagePath: string): Promise<number | null> {
 	if (!imagePath) return null
 
-	const cleanPath = imagePath.replace(/^\//, '').replace(/^usable\//, '')
-	const fullPath = path.join(process.cwd(), 'public', 'usable', cleanPath)
+	// Support both /clean_images/ and /usable/ paths, and clean them
+	const cleanPath = imagePath
+		.replace(/^\//, '')
+		.replace(/^clean_images\//, '')
+		.replace(/^usable\//, '')
+	const fullPath = path.join(process.cwd(), 'public', 'clean_images', cleanPath)
 
 	if (!fs.existsSync(fullPath)) {
 		console.warn(`⚠️  Image not found: ${fullPath}`)
@@ -166,6 +171,12 @@ export async function POST(_request: Request) {
 				}
 
 				const imageId = await uploadImage(payload, service.image || '')
+
+				if (!imageId) {
+					log(`⚠️  Skipping service ${service.title}: no image uploaded`)
+					continue
+				}
+
 				log(`  Creating service with slug: ${formattedSlug}`)
 				await payload.create({
 					collection: 'services',
@@ -175,6 +186,7 @@ export async function POST(_request: Request) {
 						shortDescription: service.shortDescription,
 						fullDescription: textToLexical(service.fullDescription),
 						image: imageId,
+						images: [imageId],
 						category: service.category,
 						features: service.features.map(f => ({ feature: f })),
 						eligibleTaxCredit: service.eligibleTaxCredit,
@@ -208,6 +220,12 @@ export async function POST(_request: Request) {
 				}
 
 				const imageId = await uploadImage(payload, realisation.image)
+
+				if (!imageId) {
+					log(`⚠️  Skipping realisation ${realisation.title}: no image uploaded`)
+					continue
+				}
+
 				await payload.create({
 					collection: 'realisations',
 					data: {
@@ -220,7 +238,7 @@ export async function POST(_request: Request) {
 						description: textToLexical(realisation.description),
 						category: realisation.category,
 						features: realisation.features.map(f => ({ feature: f })),
-						images: [],
+						images: [imageId],
 						testimonial: {
 							quote: '',
 							author: '',
@@ -270,22 +288,19 @@ export async function POST(_request: Request) {
 		// Migrate Homepage Global
 		log('\n🌍 Migrating Homepage Global...')
 		try {
-			const heroBgImage = await uploadImage(payload, '/usable/bg.jpg')
-			const valuesImage = await uploadImage(payload, '/usable/bg.jpg')
+			const heroBgImage = await uploadImage(payload, 'background.webp')
+			const valuesImage = await uploadImage(payload, 'jardin_paysagiste_travail.webp')
 
 			await payload.updateGlobal({
 				slug: 'homepage',
 				data: {
 					hero: {
-						backgroundImage: heroBgImage,
-						imageAlt: 'Jardin naturel en Loire-Atlantique',
+						...(heroBgImage && { backgroundImage: heroBgImage }),
 						title: "**Transformez** Votre Jardin, Votre Paysagiste d'Exception en Loire-Atlantique",
-						subtitle: 'Entretien écologique et création de jardins naturels dans le vignoble nantais',
 					},
 					values: {
 						sectionTitle: 'Une Approche **Écologique** et Sur-Mesure',
-						image: valuesImage,
-						imageAlt: 'Approche écologique du jardinage',
+						...(valuesImage && { image: valuesImage }),
 						valuesList: [
 							{
 								icon: 'leaf',
@@ -325,8 +340,7 @@ export async function POST(_request: Request) {
 						introText:
 							'Passionné par le végétal et la biodiversité, je pratique un jardinage en harmonie avec la nature. Mon objectif : créer et entretenir des espaces verts vivants, résilients et beaux, sans aucun produit chimique.',
 						quote: 'travailler AVEC la nature, pas contre elle.',
-						primaryImage: valuesImage,
-						imageAlt: 'Philosophie de jardinage écologique',
+						...(valuesImage && { primaryImage: valuesImage }),
 						imageOverlayTitle: 'Une Démarche Écologique Profonde',
 						imageOverlayDescription: "Chaque jardin mérite d'être un havre de biodiversité",
 						philosophyPoints: [
@@ -481,39 +495,6 @@ export async function POST(_request: Request) {
 							note: CONTACT_INFO.hours.note,
 						},
 					},
-					taxCredit: {
-						percentage: TAX_CREDIT_INFO.percentage,
-						maxAnnualExpense: TAX_CREDIT_INFO.maxAnnualExpense,
-						maxAnnualCredit: TAX_CREDIT_INFO.maxAnnualCredit,
-						steps: TAX_CREDIT_INFO.steps,
-						example: TAX_CREDIT_INFO.example,
-					},
-					navigation: {
-						mainMenu: [
-							{ label: 'Accueil', url: '/' },
-							{ label: 'Prestations', url: '/prestations' },
-							{ label: 'Réalisations', url: '/realisations' },
-							{ label: 'Mon Approche', url: '/#philosophie' },
-							{ label: 'Contact', url: '/contact' },
-						],
-						ctaButton: {
-							label: 'Devis Gratuit',
-							url: '/contact',
-						},
-					},
-					footer: {
-						logoAlt: 'Nature et Paysage Laheux - Paysagiste écologique en Loire-Atlantique',
-						tagline: 'Jardinier paysagiste écologique à Monnières, Loire-Atlantique',
-						copyrightText: `© ${new Date().getFullYear()} Nature & Paysage Laheux - Tous droits réservés`,
-						developerName: 'Andy Cinquin',
-						developerUrl: 'https://andycinquin.com',
-					},
-					seo: {
-						siteTitle: 'Nature & Paysage Laheux | Paysagiste Écologique Loire-Atlantique',
-						siteDescription:
-							"Jardinier paysagiste écologique à Monnières. Entretien naturel, taille raisonnée, potager en permaculture. 50% de crédit d'impôt. Zone : Vignoble Nantais, Clisson, Vallet.",
-						ogImage: null,
-					},
 				},
 			})
 			log('✓ Site Settings Global migrated')
@@ -529,11 +510,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'prestations-page',
 				data: {
-					hero: {
-						title: 'Mes Prestations Écologiques',
-						image: null,
-						imageAlt: 'Prestations de jardinage écologique',
-					},
+				hero: {
+					title: 'Mes Prestations Écologiques',
+					image: null,
+				},
 					taxCreditEligibility: {
 						title: "Crédit d'Impôt : Ce Qui Est Pris en Charge",
 						description:
@@ -583,17 +563,14 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'realisations-page',
 				data: {
-					hero: {
-						title: 'Mes Réalisations en Loire-Atlantique',
-						image: null,
-						imageAlt: 'Portfolio de réalisations',
-					},
+				hero: {
+					title: 'Mes Réalisations en Loire-Atlantique',
+					image: null,
+				},
 					introduction: {
 						paragraph1:
 							'Chaque jardin est unique et raconte une histoire. Découvrez quelques-unes de mes interventions en Loire-Atlantique.',
-						paragraph2: textToLexical(
-							"Du simple **entretien régulier** aux **aménagements paysagers**, en passant par les **potagers en permaculture**, je m'adapte à vos besoins et vos envies."
-						),
+						paragraph2: "Du simple entretien régulier aux aménagements paysagers, en passant par les potagers en permaculture, je m'adapte à vos besoins et vos envies.",
 					},
 					ctaSection: {
 						title: 'Envie du Même Résultat Pour Votre Jardin ?',
@@ -618,11 +595,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'faq-page',
 				data: {
-					hero: {
-						title: 'Questions Fréquentes',
-						image: null,
-						imageAlt: 'Foire aux questions',
-					},
+				hero: {
+					title: 'Questions Fréquentes',
+					image: null,
+				},
 					categoryDescriptions: [
 						{
 							category: 'general',
@@ -655,11 +631,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'contact-page',
 				data: {
-					hero: {
-						title: 'Contactez-Moi',
-						image: null,
-						imageAlt: 'Page de contact',
-					},
+				hero: {
+					title: 'Contactez-Moi',
+					image: null,
+				},
 					formSection: {
 						title: 'Parlons de Votre Jardin',
 						subtitle: 'Remplissez ce formulaire, je vous réponds sous 24h',
@@ -692,11 +667,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'mentions-legales-page',
 				data: {
-					hero: {
-						title: 'Mentions Légales',
-						image: null,
-						imageAlt: 'Mentions légales',
-					},
+				hero: {
+					title: 'Mentions Légales',
+					image: null,
+				},
 					content: textToLexical(
 						`
 ÉDITEUR DU SITE
@@ -753,66 +727,6 @@ Le présent site est soumis au droit français.
 			log(`❌ Failed to migrate Mentions Legales Page: ${error}`)
 		}
 
-		// Templates
-		try {
-			await payload.updateGlobal({
-				slug: 'prestations-detail-template',
-				data: {
-					approachSection: {
-						title: 'Une approche écologique et respectueuse',
-						description: textToLexical(
-							"Je pratique exclusivement des méthodes naturelles qui préservent la biodiversité et la santé de votre jardin. Aucun produit chimique, uniquement des techniques douces et respectueuses de l'environnement."
-						),
-					},
-					pricingSection: {
-						title: 'Tarification',
-						description:
-							"Chaque intervention est unique. Je me déplace gratuitement pour établir un devis personnalisé. Tous mes services bénéficient du crédit d'impôt de 50%.",
-					},
-					ctaSection: {
-						title: 'Intéressé par cette prestation ?',
-						description:
-							'Contactez-moi pour discuter de votre projet. Je me déplace gratuitement pour une visite et un devis sans engagement.',
-						buttonText: 'Demander un devis gratuit',
-						buttonUrl: '/contact',
-					},
-				},
-			})
-			log('✓ Prestations Detail Template Global migrated')
-
-			await payload.updateGlobal({
-				slug: 'realisations-detail-template',
-				data: {
-					processSection: {
-						title: 'Une approche écologique et respectueuse',
-						description: textToLexical(
-							"Chaque projet est réalisé avec soin, en respectant les principes de l'écologie et de la permaculture. Je privilégie les méthodes naturelles et durables pour un résultat pérenne."
-						),
-					},
-					taxCreditInfo: {
-						title: "Bénéficiez de 50% de crédit d'impôt",
-						description:
-							"Ce type de prestation est éligible au crédit d'impôt Services à la Personne. Concrètement, l'État vous rembourse 50% du montant.",
-					},
-					testimonialSection: {
-						title: 'Le mot du client',
-						defaultTestimonial: textToLexical(
-							'Un travail soigné et une vraie écoute de nos besoins. Le résultat est à la hauteur de nos attentes.'
-						),
-						defaultAuthor: 'Client satisfait',
-					},
-					ctaSection: {
-						title: 'Un projet similaire ?',
-						description: 'Contactez-moi pour discuter de votre projet et obtenir un devis personnalisé.',
-						buttonText: 'Me Contacter',
-						buttonUrl: '/contact',
-					},
-				},
-			})
-			log('✓ Realisations Detail Template Global migrated')
-		} catch (error) {
-			log(`❌ Failed to migrate templates: ${error}`)
-		}
 
 		log('\n✅ Migration completed successfully!')
 		log('\n📊 Summary:')
