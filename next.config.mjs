@@ -39,8 +39,10 @@ const nextConfig = {
 	trailingSlash: false,
 	images: {
 		remotePatterns: [
+			{ protocol: 'http', hostname: 'localhost' },
+			{ protocol: 'https', hostname: '*.nature-paysage-laheux.fr' },
+			{ protocol: 'https', hostname: 'nature-paysage-laheux.fr' },
 			{ protocol: 'https', hostname: '*.andy-cinquin.fr' },
-			{ protocol: 'https', hostname: 'cdnjs.cloudflare.com' },
 			{ protocol: 'https', hostname: 'cdnjs.cloudflare.com' },
 		],
 		qualities: [75, 90, 100], // Add quality configurations
