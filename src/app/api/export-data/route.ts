@@ -1,5 +1,3 @@
-// biome-ignore lint/suspicious/noExplicitAny: Payload types are not fully typed in migration context
-
 import fs from 'node:fs'
 import path from 'node:path'
 import config from '@payload-config'
@@ -126,13 +124,13 @@ export async function GET(request: NextRequest) {
 			stats,
 			timestamp: new Date().toISOString(),
 		})
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.error('Export failed:', error)
 		return NextResponse.json(
 			{
 				success: false,
-				error: error.message,
-				stack: error.stack,
+				error: error instanceof Error ? error.message : 'Unknown error',
+				stack: error instanceof Error ? error.stack : undefined,
 			},
 			{ status: 500 }
 		)

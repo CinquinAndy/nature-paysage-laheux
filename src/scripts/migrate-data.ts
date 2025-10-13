@@ -27,7 +27,7 @@ console.log('✓ Environment variables loaded')
 console.log(`  - PAYLOAD_SECRET: ${process.env.PAYLOAD_SECRET.substring(0, 10)}...`)
 console.log(`  - DATABASE_URI: ${process.env.DATABASE_URI?.includes('@') ? 'Connected' : 'Missing'}`)
 
-import { getPayload } from 'payload'
+import { getPayload, type Payload } from 'payload'
 import { CONTACT_INFO } from '../lib/data/contact-info'
 import { FAQ_ITEMS } from '../lib/data/faq'
 import { REALISATIONS } from '../lib/data/realisations'
@@ -80,7 +80,7 @@ function textToLexical(text: string) {
  * Convert markdown-like text to Lexical with bold support
  * **word** becomes bold text
  */
-function markdownToLexical(text: string) {
+function _markdownToLexical(text: string) {
 	const parts = text.split(/(\*\*.*?\*\*)/)
 	const children = parts
 		.map(part => {
@@ -131,7 +131,7 @@ function markdownToLexical(text: string) {
 /**
  * Upload image from public folder to Payload Media collection
  */
-async function uploadImage(payload: any, imagePath: string): Promise<string | null> {
+async function uploadImage(payload: Payload, imagePath: string): Promise<string | null> {
 	if (!imagePath) return null
 
 	// Support both /clean_images/ and /usable/ paths, and clean them
@@ -178,7 +178,7 @@ async function uploadImage(payload: any, imagePath: string): Promise<string | nu
 /**
  * Migrate Services Collection
  */
-async function migrateServices(payload: any) {
+async function migrateServices(payload: Payload) {
 	console.log('\n📦 Migrating Services...')
 
 	// Check for existing services to avoid duplicates
@@ -186,7 +186,7 @@ async function migrateServices(payload: any) {
 		collection: 'services',
 		limit: 1000,
 	})
-	const existingSlugs = new Set(existingServices.docs.map((s: any) => s.slug))
+	const existingSlugs = new Set(existingServices.docs.map(s => s.slug))
 
 	for (let i = 0; i < SERVICES.length; i++) {
 		const service = SERVICES[i]
@@ -248,7 +248,7 @@ async function migrateServices(payload: any) {
 /**
  * Migrate Realisations Collection
  */
-async function migrateRealisations(payload: any) {
+async function migrateRealisations(payload: Payload) {
 	console.log('\n📦 Migrating Realisations...')
 
 	// Check for existing realisations to avoid duplicates
@@ -256,7 +256,7 @@ async function migrateRealisations(payload: any) {
 		collection: 'realisations',
 		limit: 1000,
 	})
-	const existingSlugs = new Set(existingRealisations.docs.map((r: any) => r.slug))
+	const existingSlugs = new Set(existingRealisations.docs.map(r => r.slug))
 
 	for (const realisation of REALISATIONS) {
 		// Skip if already exists
@@ -325,7 +325,7 @@ async function migrateRealisations(payload: any) {
 /**
  * Migrate FAQ Collection
  */
-async function migrateFAQ(payload: any) {
+async function migrateFAQ(payload: Payload) {
 	console.log('\n📦 Migrating FAQ...')
 
 	// Check for existing FAQs to avoid duplicates
@@ -333,7 +333,7 @@ async function migrateFAQ(payload: any) {
 		collection: 'faq',
 		limit: 1000,
 	})
-	const existingQuestions = new Set(existingFAQs.docs.map((f: any) => f.question))
+	const existingQuestions = new Set(existingFAQs.docs.map(f => f.question))
 
 	for (let i = 0; i < FAQ_ITEMS.length; i++) {
 		const faq = FAQ_ITEMS[i]
@@ -366,7 +366,7 @@ async function migrateFAQ(payload: any) {
 /**
  * Migrate Homepage Global
  */
-async function migrateHomepage(payload: any) {
+async function migrateHomepage(payload: Payload) {
 	console.log('\n🌍 Migrating Homepage Global...')
 
 	try {
@@ -566,7 +566,7 @@ async function migrateHomepage(payload: any) {
 /**
  * Migrate Site Settings Global
  */
-async function migrateSiteSettings(payload: any) {
+async function migrateSiteSettings(payload: Payload) {
 	console.log('\n🌍 Migrating Site Settings Global...')
 
 	try {
@@ -611,7 +611,7 @@ async function migrateSiteSettings(payload: any) {
 /**
  * Migrate other Page Globals (with default/placeholder content)
  */
-async function migrateOtherGlobals(payload: any) {
+async function migrateOtherGlobals(payload: Payload) {
 	console.log('\n🌍 Migrating Other Page Globals...')
 
 	// Prestations Page
@@ -846,8 +846,12 @@ async function migrate() {
 
 	try {
 		// Build new config with overridden secret
+		const payloadSecret = process.env.PAYLOAD_SECRET
+		if (!payloadSecret) {
+			throw new Error('PAYLOAD_SECRET is not defined')
+		}
 		const configWithSecret = Object.assign({}, config, {
-			secret: process.env.PAYLOAD_SECRET!,
+			secret: payloadSecret,
 		})
 
 		// Initialize Payload
@@ -862,7 +866,7 @@ async function migrate() {
 		await migrateSiteSettings(payload)
 		await migrateOtherGlobals(payload)
 
-		console.log('\n' + '='.repeat(50))
+		console.log(`\n${'='.repeat(50)}`)
 		console.log('✅ Migration completed successfully!')
 		console.log('\nYou can now access the Payload Admin at: http://localhost:3002/admin')
 		console.log('Create your first admin user to start managing content.')

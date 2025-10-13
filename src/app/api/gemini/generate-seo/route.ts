@@ -94,16 +94,26 @@ export async function POST(req: NextRequest) {
 
 		// Update the document/global with generated SEO
 		if (updateTarget.global) {
+			const globalSlug = updateTarget.global as
+				| 'homepage'
+				| 'site-settings'
+				| 'prestations-page'
+				| 'realisations-page'
+				| 'faq-page'
+				| 'contact-page'
+				| 'mentions-legales-page'
+				| 'third-party-access'
 			await payload.updateGlobal({
-				slug: updateTarget.global as any,
+				slug: globalSlug,
 				data: {
 					seo_title: seoContent.title,
 					seo_description: seoContent.description,
 				},
 			})
 		} else if (updateTarget.collection && updateTarget.id) {
+			const collectionSlug = updateTarget.collection as 'services' | 'realisations' | 'faq' | 'media' | 'users'
 			await payload.update({
-				collection: updateTarget.collection as any,
+				collection: collectionSlug,
 				id: updateTarget.id,
 				data: {
 					seo_title: seoContent.title,
