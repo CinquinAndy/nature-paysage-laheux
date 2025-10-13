@@ -28,7 +28,7 @@ export function CtaShader({
 	items = defaultItems,
 }: CtaShaderProps) {
 	return (
-		<section className="relative py-32 overflow-hidden bg-sidebar-accent">
+		<section className="relative px-4 md:px-0 py-32 overflow-hidden bg-sidebar-accent">
 			{/* Enhanced Multi-Layer Shader Background */}
 			{/* <EnhancedShaderBackground variant={shaderVariant} colors={shaderColors} /> */}
 
@@ -46,7 +46,7 @@ export function CtaShader({
 								</h4>
 								<p className="text-foreground/90 text-lg mb-6">{parseLineBreaks(description)}</p>
 							</div>
-							<div className="md:w-1/3 h-full flex flex-col justify-between ">
+							<div className="md:w-1/3 h-full flex flex-col justify-between gap-8 md:gap-0 ">
 								<ul className="flex flex-col space-y-3 text-sm font-medium">
 									{items.map(item => (
 										<li className="flex items-center text-foreground" key={item}>

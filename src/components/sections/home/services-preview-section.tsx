@@ -10,24 +10,24 @@ interface ServicesPreviewSectionProps {
 }
 
 export function ServicesPreviewSection({ data, services }: ServicesPreviewSectionProps) {
-	const title = data?.title || "Mes Prestations d'Entretien de Jardin"
-	const subtitle = data?.subtitle || "Toutes mes prestations bénéficient de 50% de réduction d'impôt"
-	const ctaLabel = data?.ctaLabel || 'Voir Toutes Mes Prestations'
-	const ctaUrl = data?.ctaUrl || '/prestations'
+	const title = data?.title
+	const subtitle = data?.subtitle
+	const ctaLabel = data?.ctaLabel
+	const ctaUrl = data?.ctaUrl
 
 	return (
 		<section className="py-16 md:py-24 bg-muted/30">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex justify-between">
+				<div className="flex flex-col md:flex-row justify-between items-start md:items-start mb-10 md:mb-0">
 					{/* Section Header */}
-					<div className="text-left mb-12 md:mb-16">
+					<div className="text-left md:mb-16">
 						<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{title}</h2>
 						<p className="text-lg text-muted-foreground mb-6 max-w-2xl">{subtitle}</p>
 					</div>
 					{/* CTA */}
 					<div className="text-center">
 						<Button size="lg" variant="primary" asChild>
-							<Link href={ctaUrl} className="flex items-center">
+							<Link href={ctaUrl!} className="flex items-center">
 								{ctaLabel}
 								<ArrowRight className="ml-2 h-4 w-4" />
 							</Link>
