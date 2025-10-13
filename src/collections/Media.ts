@@ -7,6 +7,15 @@ export const Media: CollectionConfig = {
 	},
 	fields: [
 		{
+			name: 'altGenerator',
+			type: 'ui',
+			admin: {
+				components: {
+					Field: '@/components/fields/AltTextGenerator',
+				},
+			},
+		},
+		{
 			name: 'alt',
 			type: 'text',
 			required: false,
