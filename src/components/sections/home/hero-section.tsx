@@ -7,15 +7,24 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
-	// Parse title to extract bold text (text between **)
+	// Parse title to extract bold text (text between **) and handle line breaks
 	const parseTitleWithBlob = (title: string) => {
 		const parts = title.split(/(\*\*.*?\*\*)/)
-		return parts.map(part => {
+		return parts.map((part, partIndex) => {
 			if (part.startsWith('**') && part.endsWith('**')) {
 				const text = part.slice(2, -2)
+				// Handle \n inside bold text
+				const textParts = text.split('\\n')
 				return (
-					<span key={`blob-${text}`} className="relative overflow-visible">
-						<span className="z-10">{text}</span>
+					<span key={`blob-${partIndex}`} className="relative overflow-visible">
+						<span className="z-10">
+							{textParts.map((textPart, i) => (
+								<span key={`blob-text-${partIndex}-${i}`}>
+									{textPart}
+									{i < textParts.length - 1 && <br />}
+								</span>
+							))}
+						</span>
 						<Image
 							src="/blob.svg"
 							alt="Blob"
@@ -25,7 +34,18 @@ export function HeroSection({ data }: HeroSectionProps) {
 					</span>
 				)
 			}
-			return <span key={`text-${part}`}>{part}</span>
+			// Handle \n in regular text
+			const textParts = part.split('\\n')
+			return (
+				<span key={`text-${partIndex}`}>
+					{textParts.map((textPart, i) => (
+						<span key={`text-part-${partIndex}-${i}`}>
+							{textPart}
+							{i < textParts.length - 1 && <br />}
+						</span>
+					))}
+				</span>
+			)
 		})
 	}
 
