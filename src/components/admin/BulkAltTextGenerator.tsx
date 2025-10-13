@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '../ui/button'
 
 const BulkAltTextGenerator: React.FC = () => {
 	const [isGenerating, setIsGenerating] = useState(false)
@@ -54,56 +53,118 @@ const BulkAltTextGenerator: React.FC = () => {
 	}
 
 	return (
-		<div className="flex justify-end mb-4 mr-6 mt-4">
-			<div className="max-w-md">
-				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-					<div className="flex flex-col gap-3">
-						<div className="text-right">
-							<h3 className="text-base font-semibold text-gray-900">Génération en masse avec ForVoyez</h3>
-							<p className="text-sm text-gray-600 mt-1">
+		<div
+			style={{
+				width: '100%',
+				display: 'flex',
+				justifyContent: 'flex-end',
+				marginBottom: '16px',
+				marginRight: '24px',
+				marginTop: '16px',
+			}}
+		>
+			<div style={{ maxWidth: '28rem' }}>
+				<div
+					style={{
+						padding: '16px',
+						backgroundColor: 'white',
+						border: '1px solid #e5e7eb',
+						borderRadius: '8px',
+						boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+					}}
+				>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+						<div style={{ textAlign: 'right' }}>
+							<h3 style={{ fontSize: '16px', fontWeight: '600', color: '#111827', margin: 0 }}>
+								Génération en masse avec ForVoyez
+							</h3>
+							<p style={{ fontSize: '14px', color: '#4b5563', marginTop: '4px', marginBottom: 0 }}>
 								Générer automatiquement les alt text manquants pour toutes les images
 							</p>
 						</div>
-						<Button type="button" onClick={handleBulkGenerate} disabled={isGenerating} className="w-full">
+						<button
+							type="button"
+							onClick={handleBulkGenerate}
+							disabled={isGenerating}
+							style={{
+								width: '100%',
+								padding: '8px 16px',
+								backgroundColor: isGenerating ? '#9ca3af' : '#3b82f6',
+								color: 'white',
+								border: 'none',
+								borderRadius: '6px',
+								fontSize: '14px',
+								fontWeight: '500',
+								cursor: isGenerating ? 'not-allowed' : 'pointer',
+								opacity: isGenerating ? 0.6 : 1,
+							}}
+						>
 							{isGenerating ? '⏳ Génération en cours...' : '✨ Générer tous les alt texts'}
-						</Button>
+						</button>
 
-				{progress && (
-					<div className="p-3 bg-blue-50 border border-blue-200 rounded-md">
-						<div className="text-sm space-y-1">
-							<p className="font-medium text-blue-900">
-								{isDone ? '✅ Génération terminée !' : '⏳ Traitement en cours...'}
-							</p>
-							<p className="text-blue-700">
-								Total: <span className="font-semibold">{progress.total}</span> images
-							</p>
-							<p className="text-blue-700">
-								Traités: <span className="font-semibold">{progress.processed}</span>
-							</p>
-							<p className="text-green-700">
-								Réussis: <span className="font-semibold">{progress.succeeded}</span>
-							</p>
-							{progress.failed > 0 && (
-								<p className="text-red-700">
-									Échoués: <span className="font-semibold">{progress.failed}</span>
+						{progress && (
+							<div
+								style={{
+									padding: '12px',
+									backgroundColor: '#eff6ff',
+									border: '1px solid #bfdbfe',
+									borderRadius: '6px',
+								}}
+							>
+								<div style={{ fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+									<p style={{ fontWeight: '500', color: '#1e3a8a', margin: 0 }}>
+										{isDone ? '✅ Génération terminée !' : '⏳ Traitement en cours...'}
+									</p>
+									<p style={{ color: '#1d4ed8', margin: 0 }}>
+										Total: <span style={{ fontWeight: '600' }}>{progress.total}</span> images
+									</p>
+									<p style={{ color: '#1d4ed8', margin: 0 }}>
+										Traités: <span style={{ fontWeight: '600' }}>{progress.processed}</span>
+									</p>
+									<p style={{ color: '#15803d', margin: 0 }}>
+										Réussis: <span style={{ fontWeight: '600' }}>{progress.succeeded}</span>
+									</p>
+									{progress.failed > 0 && (
+										<p style={{ color: '#b91c1c', margin: 0 }}>
+											Échoués: <span style={{ fontWeight: '600' }}>{progress.failed}</span>
+										</p>
+									)}
+								</div>
+								{isDone && (
+									<p style={{ fontSize: '12px', color: '#2563eb', marginTop: '8px', marginBottom: 0 }}>
+										La page va se recharger dans 5 secondes...
+									</p>
+								)}
+							</div>
+						)}
+
+						{error && (
+							<div
+								style={{
+									padding: '12px',
+									backgroundColor: '#fef2f2',
+									border: '1px solid #fecaca',
+									borderRadius: '6px',
+								}}
+							>
+								<p style={{ fontSize: '14px', color: '#b91c1c', margin: 0 }}>{error}</p>
+							</div>
+						)}
+
+						{isGenerating && !progress && (
+							<div
+								style={{
+									padding: '12px',
+									backgroundColor: '#f9fafb',
+									border: '1px solid #e5e7eb',
+									borderRadius: '6px',
+								}}
+							>
+								<p style={{ fontSize: '14px', color: '#374151', margin: 0 }}>
+									⏳ Recherche des images sans alt text...
 								</p>
-							)}
-						</div>
-						{isDone && <p className="text-xs text-blue-600 mt-2">La page va se recharger dans 5 secondes...</p>}
-					</div>
-				)}
-
-				{error && (
-					<div className="p-3 bg-red-50 border border-red-200 rounded-md">
-						<p className="text-sm text-red-700">{error}</p>
-					</div>
-				)}
-
-				{isGenerating && !progress && (
-					<div className="p-3 bg-gray-50 border border-gray-200 rounded-md">
-						<p className="text-sm text-gray-700">⏳ Recherche des images sans alt text...</p>
-					</div>
-				)}
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
