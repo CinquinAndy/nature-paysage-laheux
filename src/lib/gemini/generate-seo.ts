@@ -1,4 +1,4 @@
-import { google } from '@ai-sdk/google'
+import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { generateText } from 'ai'
 
 interface SeoContent {
@@ -35,12 +35,11 @@ export async function generateSeoContent(context: PageContext): Promise<SeoConte
 			return null
 		}
 
+		const google = createGoogleGenerativeAI({ apiKey })
 		const prompt = buildSeoPrompt(context)
 
 		const { text } = await generateText({
-			model: google('gemini-2.0-flash-thinking-exp-1219', {
-				apiKey,
-			}),
+			model: google('gemini-2.0-flash-exp'),
 			prompt,
 			temperature: 0.7,
 		})

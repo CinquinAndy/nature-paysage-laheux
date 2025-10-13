@@ -50,7 +50,6 @@ const SeoGenerator: React.FC = () => {
 			style={{
 				marginBottom: '16px',
 				padding: '12px',
-				backgroundColor: '#f3f4f6',
 				borderRadius: '6px',
 			}}
 		>
