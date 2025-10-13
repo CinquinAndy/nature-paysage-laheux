@@ -1,0 +1,31 @@
+# Robots.txt for nature-paysage-laheux.fr
+
+# Allow all search engines
+User-agent: *
+
+# Block admin panel (Payload CMS)
+Disallow: /admin
+Disallow: /admin/
+
+# Block API routes (except media files)
+Disallow: /api/
+Allow: /api/media/file/
+
+# Block internal Next.js routes
+Disallow: /_next/
+Disallow: /api/graphql
+Disallow: /api/graphql-playground
+
+# Allow all public pages
+Allow: /
+Allow: /prestations
+Allow: /prestations/
+Allow: /realisations
+Allow: /realisations/
+Allow: /contact
+Allow: /faq
+Allow: /mentions-legales
+
+# Sitemap location
+Sitemap: https://nature-paysage-laheux.fr/sitemap.xml
+
