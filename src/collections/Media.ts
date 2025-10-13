@@ -2,6 +2,11 @@ import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
 	slug: 'media',
+	admin: {
+		components: {
+			beforeList: ['@/components/admin/BulkAltTextGenerator'],
+		},
+	},
 	access: {
 		read: () => true,
 	},

@@ -1,4 +1,5 @@
 import { default as default_f3d30925126ccfadaa4cfb9665f27775 } from '@/components/fields/AltTextGenerator'
+import { default as default_a62a4680a03e3fb5c446bfa0d955511e } from '@/components/admin/BulkAltTextGenerator'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -26,6 +27,7 @@ import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc056
 
 export const importMap = {
   "@/components/fields/AltTextGenerator#default": default_f3d30925126ccfadaa4cfb9665f27775,
+  "@/components/admin/BulkAltTextGenerator#default": default_a62a4680a03e3fb5c446bfa0d955511e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
