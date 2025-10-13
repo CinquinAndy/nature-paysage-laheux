@@ -37,7 +37,7 @@ const AltTextGenerator: React.FC = () => {
 
 			// Show success message with the generated alt text
 			setSuccess(`✅ Alt text généré : "${data.alt}"`)
-			
+
 			// Reload after a short delay to let user see the success message
 			setTimeout(() => {
 				window.location.reload()
