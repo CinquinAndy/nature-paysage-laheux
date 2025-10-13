@@ -61,6 +61,7 @@ const baskerville = localFont({
 })
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://nature-paysage-laheux.fr'),
 	appleWebApp: {
 		title: 'Nature Paysage Laheux',
 	},
