@@ -7,6 +7,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getRealisationBySlug, getRealisations } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import { parseLineBreaks } from '@/lib/utils'
 
 // Lazy load the image gallery modal
@@ -40,10 +41,14 @@ export async function generateMetadata({ params }: RealisationPageProps): Promis
 		}
 	}
 
-	return {
-		title: `${realisation.title} - ${realisation.location} | Jean-Luc Laheux`,
-		description: realisation.shortDescription || '',
-	}
+	const titleWithLocation = realisation.location
+		? `${realisation.title} - ${realisation.location} | Jean-Luc Laheux`
+		: `${realisation.title} | Jean-Luc Laheux`
+
+	return generateSEOMetadata(realisation, `/realisations/${slug}`, {
+		fallbackTitle: titleWithLocation,
+		fallbackDescription: realisation.shortDescription || '',
+	})
 }
 
 // Génération des chemins statiques

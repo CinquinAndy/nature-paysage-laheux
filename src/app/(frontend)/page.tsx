@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { FaqShortSection } from '@/components/sections/home/faq-short-section'
 import { FinalCtaSection } from '@/components/sections/home/final-cta-section'
 import { HeroSection } from '@/components/sections/home/hero-section'
@@ -8,7 +9,18 @@ import { ServicesPreviewSection } from '@/components/sections/home/services-prev
 import { TaxCreditSection } from '@/components/sections/home/tax-credit-section'
 import { ValuesSection } from '@/components/sections/home/values-section'
 import { getFeaturedServices, getHomepageData, getHomepageFaq, getLatestRealisations } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import type { Homepage } from '@/payload-types'
+
+export async function generateMetadata(): Promise<Metadata> {
+	const homepage = await getHomepageData()
+
+	return generateSEOMetadata(homepage, '/', {
+		fallbackTitle: 'Nature Paysage Laheux - Éco-Paysagiste Loire-Atlantique',
+		fallbackDescription:
+			"Jean-Luc Laheux, éco-paysagiste en Loire-Atlantique. Entretien de jardin écologique, taille, potagers. 50% de crédit d'impôt. Devis gratuit.",
+	})
+}
 
 /**
  * Add Lorem Ipsum fallback values to homepage data to easily identify missing content

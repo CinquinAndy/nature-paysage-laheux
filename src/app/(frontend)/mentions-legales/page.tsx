@@ -3,11 +3,16 @@ import { PageHero } from '@/components/sections/shared/page-hero'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getMentionsLegalesPageData } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-	title: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
-	description: 'Mentions légales et informations sur le site nature-paysage-laheux.fr',
-	robots: 'noindex, follow',
+export async function generateMetadata(): Promise<Metadata> {
+	const mentionsLegalesPage = await getMentionsLegalesPageData()
+
+	return generateSEOMetadata(mentionsLegalesPage, '/mentions-legales', {
+		fallbackTitle: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
+		fallbackDescription: 'Mentions légales et informations sur le site nature-paysage-laheux.fr',
+		robots: 'noindex, follow',
+	})
 }
 
 export default async function MentionsLegalesPage() {

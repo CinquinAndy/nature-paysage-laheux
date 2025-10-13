@@ -61,8 +61,6 @@ const baskerville = localFont({
 })
 
 export const metadata: Metadata = {
-	title: 'Nature Paysage Laheux',
-	description: 'A blank template using Payload in a Next.js app.',
 	appleWebApp: {
 		title: 'Nature Paysage Laheux',
 	},

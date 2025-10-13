@@ -4,12 +4,17 @@ import { PageHero } from '@/components/sections/shared/page-hero'
 import { RealisationCard } from '@/components/sections/shared/realisation-card'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { getMediaUrl, getRealisations, getRealisationsPageData } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import type { RealisationsPage as RealisationsPageType } from '@/payload-types'
 
-export const metadata: Metadata = {
-	title: 'Mes Réalisations de Jardins Écologiques | Jean-Luc Laheux',
-	description:
-		"Découvrez mes réalisations d'entretien de jardin écologique en Loire-Atlantique. Photos avant-après, projets de potagers, tailles, rénovations naturelles.",
+export async function generateMetadata(): Promise<Metadata> {
+	const realisationsPage = await getRealisationsPageData()
+
+	return generateSEOMetadata(realisationsPage, '/realisations', {
+		fallbackTitle: 'Mes Réalisations de Jardins Écologiques | Jean-Luc Laheux',
+		fallbackDescription:
+			"Découvrez mes réalisations d'entretien de jardin écologique en Loire-Atlantique. Photos avant-après, projets de potagers, tailles, rénovations naturelles.",
+	})
 }
 
 /**

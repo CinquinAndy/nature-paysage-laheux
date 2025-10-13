@@ -6,6 +6,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getServiceBySlug, getServices } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import { parseLineBreaks } from '@/lib/utils'
 
 // Lazy load the image gallery modal
@@ -34,10 +35,10 @@ export async function generateMetadata({ params }: PrestationPageProps): Promise
 		}
 	}
 
-	return {
-		title: `${service.title} | Jean-Luc Laheux - Loire-Atlantique`,
-		description: service.shortDescription || '',
-	}
+	return generateSEOMetadata(service, `/prestations/${slug}`, {
+		fallbackTitle: `${service.title} | Jean-Luc Laheux - Loire-Atlantique`,
+		fallbackDescription: service.shortDescription || '',
+	})
 }
 
 export default async function PrestationPage({ params }: PrestationPageProps) {
