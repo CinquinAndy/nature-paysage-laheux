@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import type React from 'react'
 import '@/app/(frontend)/global.css'
+import Script from 'next/script'
 import { Footer } from '@/components/global/footer'
 import { NavigationBar } from '@/components/global/navigationbar'
 import { Toaster } from '@/components/ui/sonner'
@@ -73,7 +74,19 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
 	return (
 		<html lang="fr" className={`${appleGaramond.variable} ${baskerville.variable}`}>
+			<head>
+				{/* Preconnect for third-party domains */}
+				<link rel="preconnect" href="https://umami.wadefade.fr" />
+
+				{/* DNS Prefetch for better performance */}
+				<link rel="dns-prefetch" href="https://umami.wadefade.fr" />
+			</head>
 			<body>
+				<Script
+					src="https://umami.wadefade.fr/script.js"
+					data-website-id="42b0ae21-43c1-425c-b6a6-36268746ad2b"
+					strategy="afterInteractive"
+				/>
 				<NavigationBar />
 				<main>{children}</main>
 				<Footer />
