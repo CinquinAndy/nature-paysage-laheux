@@ -14,8 +14,7 @@
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"payload": "payload",
-		"start": "next start",
-		"migrate": "tsx src/scripts/migrate-data.ts"
+		"start": "next start"
 	},
 	"dependencies": {
 		"@ai-sdk/google": "^2.0.20",
