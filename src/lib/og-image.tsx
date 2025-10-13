@@ -23,7 +23,12 @@ export async function loadFont(): Promise<Buffer> {
 export function OGImageTemplate({ title }: { title: string }) {
 	return (
 		<div tw="h-full w-full flex flex-col items-center justify-center bg-[#F5F1EC] p-20 relative">
-			<img src="/og.svg" alt="Blob" tw="absolute top-0 left-0 w-full h-full" />
+			{/* biome-ignore lint: it's for og image, not really important to set the classic nextjs image */}
+			<img
+				src="https://r2-andycinquin.andy-cinquin.fr/og_de5f87a262.svg"
+				alt="Blob"
+				tw="absolute top-0 left-0 w-full h-full"
+			/>
 			<div tw="text-[72px] font-bold text-gray-800 text-center leading-[1.2] max-w-[1040px]">{title}</div>
 		</div>
 	)
