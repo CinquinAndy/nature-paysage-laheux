@@ -2,12 +2,17 @@ import type { Metadata } from 'next'
 import { ModernContactForm } from '@/components/sections/contact/modern-contact-form'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { getContactPageData, getMediaUrl, getSiteSettings } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import type { ContactPage as ContactPageType, SiteSetting } from '@/payload-types'
 
-export const metadata: Metadata = {
-	title: 'Contact | Jean-Luc Laheux Eco-Paysagiste',
-	description:
-		"Contactez Jean-Luc Laheux pour un devis gratuit. 50% de crédit d'impôt sur toutes mes prestations. Réponse sous 48h.",
+export async function generateMetadata(): Promise<Metadata> {
+	const contactPage = await getContactPageData()
+
+	return generateSEOMetadata(contactPage, '/contact', {
+		fallbackTitle: 'Contact | Jean-Luc Laheux Eco-Paysagiste',
+		fallbackDescription:
+			"Contactez Jean-Luc Laheux pour un devis gratuit. 50% de crédit d'impôt sur toutes mes prestations. Réponse sous 48h.",
+	})
 }
 
 /**

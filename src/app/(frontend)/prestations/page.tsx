@@ -6,12 +6,17 @@ import { ServiceCard } from '@/components/sections/shared/service-card'
 import { TaxCreditEligibility } from '@/components/sections/shared/tax-credit-eligibility'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { getMediaUrl, getPrestationsPageData, getServices } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import type { PrestationsPage as PrestationsPageType } from '@/payload-types'
 
-export const metadata: Metadata = {
-	title: "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux - Loire-Atlantique",
-	description:
-		"Tonte écologique, désherbage naturel, taille raisonnée, potager en permaculture. Toutes mes prestations bénéficient de 50% de crédit d'impôt. Devis gratuit.",
+export async function generateMetadata(): Promise<Metadata> {
+	const prestationsPage = await getPrestationsPageData()
+
+	return generateSEOMetadata(prestationsPage, '/prestations', {
+		fallbackTitle: "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux - Loire-Atlantique",
+		fallbackDescription:
+			"Tonte écologique, désherbage naturel, taille raisonnée, potager en permaculture. Toutes mes prestations bénéficient de 50% de crédit d'impôt. Devis gratuit.",
+	})
 }
 
 /**

@@ -3,12 +3,17 @@ import { FaqSection } from '@/components/sections/faq/faq-section'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { getFaq, getFaqPageData, getMediaUrl } from '@/lib/payload'
+import { generateSEOMetadata } from '@/lib/seo'
 import type { FaqPage } from '@/payload-types'
 
-export const metadata: Metadata = {
-	title: 'Questions Fréquentes | Jean-Luc Laheux Eco-Paysagiste',
-	description:
-		"Toutes vos questions sur le crédit d'impôt jardinage, mes méthodes écologiques et mes prestations en Loire-Atlantique. Réponses claires et transparentes.",
+export async function generateMetadata(): Promise<Metadata> {
+	const faqPage = await getFaqPageData()
+
+	return generateSEOMetadata(faqPage, '/faq', {
+		fallbackTitle: 'Questions Fréquentes | Jean-Luc Laheux Eco-Paysagiste',
+		fallbackDescription:
+			"Toutes vos questions sur le crédit d'impôt jardinage, mes méthodes écologiques et mes prestations en Loire-Atlantique. Réponses claires et transparentes.",
+	})
 }
 
 /**
