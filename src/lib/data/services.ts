@@ -27,7 +27,7 @@ export const SERVICES: Service[] = [
 		eligibleTaxCredit: true,
 		price: 'Sur devis personnalisé',
 		category: 'entretien',
-		image: '/usable/IMG_20231117_093237.jpg',
+		image: 'ex1.webp',
 	},
 	{
 		id: 'desherbage-ecologique',
@@ -44,7 +44,7 @@ export const SERVICES: Service[] = [
 		eligibleTaxCredit: true,
 		price: 'Sur devis personnalisé',
 		category: 'entretien',
-		image: '/usable/IMG_20240310_161440.jpg',
+		image: 'ex2.webp',
 	},
 	{
 		id: 'taille-haies-arbustes',
@@ -61,7 +61,7 @@ export const SERVICES: Service[] = [
 		eligibleTaxCredit: true,
 		price: 'Sur devis personnalisé',
 		category: 'entretien',
-		image: '/usable/IMG_20250402_142527.jpg',
+		image: 'ex3.webp',
 	},
 	{
 		id: 'potager-permaculture',
@@ -78,7 +78,7 @@ export const SERVICES: Service[] = [
 		eligibleTaxCredit: true,
 		price: 'Sur devis personnalisé',
 		category: 'creation',
-		image: '/usable/IMG_20250803_122326_1.jpg',
+		image: 'ex4.webp',
 	},
 	{
 		id: 'entretien-massifs',
@@ -90,7 +90,7 @@ export const SERVICES: Service[] = [
 		eligibleTaxCredit: true,
 		price: 'Sur devis personnalisé',
 		category: 'entretien',
-		image: '/usable/IMG_20250803_123919.jpg',
+		image: 'ex5.webp',
 	},
 	{
 		id: 'accompagnement-annuel',
@@ -102,7 +102,7 @@ export const SERVICES: Service[] = [
 		eligibleTaxCredit: true,
 		price: 'Sur devis personnalisé',
 		category: 'accompagnement',
-		image: '/usable/PXL_20251006_080220831.jpg',
+		image: 'ex6.webp',
 	},
 ]
 

@@ -510,10 +510,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'prestations-page',
 				data: {
-				hero: {
-					title: 'Mes Prestations Écologiques',
-					image: null,
-				},
+					hero: {
+						title: 'Mes Prestations Écologiques',
+						image: null,
+					},
 					taxCreditEligibility: {
 						title: "Crédit d'Impôt : Ce Qui Est Pris en Charge",
 						description:
@@ -563,14 +563,15 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'realisations-page',
 				data: {
-				hero: {
-					title: 'Mes Réalisations en Loire-Atlantique',
-					image: null,
-				},
+					hero: {
+						title: 'Mes Réalisations en Loire-Atlantique',
+						image: null,
+					},
 					introduction: {
 						paragraph1:
 							'Chaque jardin est unique et raconte une histoire. Découvrez quelques-unes de mes interventions en Loire-Atlantique.',
-						paragraph2: "Du simple entretien régulier aux aménagements paysagers, en passant par les potagers en permaculture, je m'adapte à vos besoins et vos envies.",
+						paragraph2:
+							"Du simple entretien régulier aux aménagements paysagers, en passant par les potagers en permaculture, je m'adapte à vos besoins et vos envies.",
 					},
 					ctaSection: {
 						title: 'Envie du Même Résultat Pour Votre Jardin ?',
@@ -595,10 +596,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'faq-page',
 				data: {
-				hero: {
-					title: 'Questions Fréquentes',
-					image: null,
-				},
+					hero: {
+						title: 'Questions Fréquentes',
+						image: null,
+					},
 					categoryDescriptions: [
 						{
 							category: 'general',
@@ -631,10 +632,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'contact-page',
 				data: {
-				hero: {
-					title: 'Contactez-Moi',
-					image: null,
-				},
+					hero: {
+						title: 'Contactez-Moi',
+						image: null,
+					},
 					formSection: {
 						title: 'Parlons de Votre Jardin',
 						subtitle: 'Remplissez ce formulaire, je vous réponds sous 24h',
@@ -667,10 +668,10 @@ export async function POST(_request: Request) {
 			await payload.updateGlobal({
 				slug: 'mentions-legales-page',
 				data: {
-				hero: {
-					title: 'Mentions Légales',
-					image: null,
-				},
+					hero: {
+						title: 'Mentions Légales',
+						image: null,
+					},
 					content: textToLexical(
 						`
 ÉDITEUR DU SITE
@@ -726,7 +727,6 @@ Le présent site est soumis au droit français.
 		} catch (error) {
 			log(`❌ Failed to migrate Mentions Legales Page: ${error}`)
 		}
-
 
 		log('\n✅ Migration completed successfully!')
 		log('\n📊 Summary:')
