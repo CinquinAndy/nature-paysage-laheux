@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
+import { loadFont, OG_IMAGE_ALT, OG_IMAGE_CONTENT_TYPE, OG_IMAGE_SIZE, OGImageTemplate } from '@/lib/og-image'
 import { getServiceBySlug, getServices } from '@/lib/payload'
-import { OGImageTemplate, OG_IMAGE_SIZE, OG_IMAGE_ALT, OG_IMAGE_CONTENT_TYPE, loadFont } from '@/lib/og-image'
 
 export const alt = OG_IMAGE_ALT
 export const size = OG_IMAGE_SIZE
@@ -33,8 +33,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 	}
 
 	// Extract title with fallback logic
-	const title =
-		service.seo_title || service.title || `${service.title} | Jean-Luc Laheux - Loire-Atlantique`
+	const title = service.seo_title || service.title || `${service.title} | Jean-Luc Laheux - Loire-Atlantique`
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,
@@ -48,4 +47,3 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 		],
 	})
 }
-
