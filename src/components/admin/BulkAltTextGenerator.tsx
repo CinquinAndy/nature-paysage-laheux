@@ -54,24 +54,19 @@ const BulkAltTextGenerator: React.FC = () => {
 	}
 
 	return (
-		<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm mb-4">
-			<div className="flex flex-col gap-3">
-				<div className="flex items-center justify-between">
-					<div>
-						<h3 className="text-base font-semibold text-gray-900">Génération en masse avec ForVoyez</h3>
-						<p className="text-sm text-gray-600 mt-1">
-							Générer automatiquement les alt text manquants pour toutes les images
-						</p>
-					</div>
-					<Button
-						type="button"
-						onClick={handleBulkGenerate}
-						disabled={isGenerating}
-						className="whitespace-nowrap"
-					>
-						{isGenerating ? '⏳ Génération en cours...' : '✨ Générer tous les alt texts'}
-					</Button>
-				</div>
+		<div className="flex justify-end mb-4 mr-6 mt-4">
+			<div className="max-w-md">
+				<div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+					<div className="flex flex-col gap-3">
+						<div className="text-right">
+							<h3 className="text-base font-semibold text-gray-900">Génération en masse avec ForVoyez</h3>
+							<p className="text-sm text-gray-600 mt-1">
+								Générer automatiquement les alt text manquants pour toutes les images
+							</p>
+						</div>
+						<Button type="button" onClick={handleBulkGenerate} disabled={isGenerating} className="w-full">
+							{isGenerating ? '⏳ Génération en cours...' : '✨ Générer tous les alt texts'}
+						</Button>
 
 				{progress && (
 					<div className="p-3 bg-blue-50 border border-blue-200 rounded-md">
@@ -94,9 +89,7 @@ const BulkAltTextGenerator: React.FC = () => {
 								</p>
 							)}
 						</div>
-						{isDone && (
-							<p className="text-xs text-blue-600 mt-2">La page va se recharger dans 5 secondes...</p>
-						)}
+						{isDone && <p className="text-xs text-blue-600 mt-2">La page va se recharger dans 5 secondes...</p>}
 					</div>
 				)}
 
@@ -111,10 +104,11 @@ const BulkAltTextGenerator: React.FC = () => {
 						<p className="text-sm text-gray-700">⏳ Recherche des images sans alt text...</p>
 					</div>
 				)}
+					</div>
+				</div>
 			</div>
 		</div>
 	)
 }
 
 export default BulkAltTextGenerator
-

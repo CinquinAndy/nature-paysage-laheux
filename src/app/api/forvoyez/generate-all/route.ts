@@ -7,7 +7,7 @@ import config from '@/payload.config'
 async function generateAltTextForMedia(
 	payload: Payload,
 	mediaId: string | number,
-	origin: string,
+	origin: string
 ): Promise<{ success: boolean; alt?: string; error?: string }> {
 	try {
 		const media = await payload.findByID({
@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
 			})
 
 			// Optional: Add a small delay between requests to avoid overwhelming ForVoyez API
-			await new Promise((resolve) => setTimeout(resolve, 500))
+			await new Promise(resolve => setTimeout(resolve, 500))
 		}
 
 		return NextResponse.json({
@@ -154,4 +154,3 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
 	}
 }
-
