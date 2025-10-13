@@ -12,7 +12,6 @@ import { FAQ } from './collections/FAQ'
 import { Media } from './collections/Media'
 import { Realisations } from './collections/Realisations'
 import { Services } from './collections/Services'
-import { ThirdPartyAccess } from './collections/ThirdPartyAccess'
 import { Users } from './collections/Users'
 import { ContactPage } from './globals/ContactPage'
 import { FaqPage } from './globals/FaqPage'
@@ -32,7 +31,7 @@ export default buildConfig({
 			baseDir: path.resolve(dirname),
 		},
 	},
-	collections: [Users, Media, Services, Realisations, FAQ, ThirdPartyAccess],
+	collections: [Users, Media, Services, Realisations, FAQ],
 	globals: [Homepage, PrestationsPage, RealisationsPage, FaqPage, ContactPage, MentionsLegalesPage, SiteSettings],
 	editor: lexicalEditor(),
 	secret: process.env.PAYLOAD_SECRET || '',
