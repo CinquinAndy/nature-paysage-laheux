@@ -4,7 +4,7 @@ import { useDocumentInfo, useFormFields } from '@payloadcms/ui'
 import { useState } from 'react'
 import { Button } from '../ui/button'
 
-export const AltTextGenerator: React.FC = () => {
+const AltTextGenerator: React.FC = () => {
 	const [isGenerating, setIsGenerating] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 	const { id } = useDocumentInfo()
@@ -50,12 +50,7 @@ export const AltTextGenerator: React.FC = () => {
 	return (
 		<div className="field-type">
 			<div className="flex flex-col gap-2">
-				<Button
-					type="button"
-					onClick={handleGenerate}
-					disabled={isGenerating || !id}
-					className="w-full"
-				>
+				<Button type="button" onClick={handleGenerate} disabled={isGenerating || !id} className="w-full">
 					{isGenerating ? 'Génération en cours...' : '✨ Générer alt text avec ForVoyez'}
 				</Button>
 				{error && <p className="text-sm text-red-500">{error}</p>}
@@ -65,3 +60,4 @@ export const AltTextGenerator: React.FC = () => {
 	)
 }
 
+export default AltTextGenerator

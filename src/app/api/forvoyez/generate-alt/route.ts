@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
 			console.error('ForVoyez API error:', errorText)
 			return NextResponse.json(
 				{ error: `ForVoyez API error: ${forvoyezResponse.status}` },
-				{ status: forvoyezResponse.status },
+				{ status: forvoyezResponse.status }
 			)
 		}
 
@@ -92,4 +92,3 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
 	}
 }
-

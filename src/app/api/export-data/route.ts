@@ -1,15 +1,16 @@
 // biome-ignore lint/suspicious/noExplicitAny: Payload types are not fully typed in migration context
-import { type NextRequest, NextResponse } from 'next/server'
-import { getPayload } from 'payload'
-import config from '@payload-config'
+
 import fs from 'node:fs'
 import path from 'node:path'
+import config from '@payload-config'
+import { type NextRequest, NextResponse } from 'next/server'
+import { getPayload } from 'payload'
 
 /**
  * Export all Payload CMS data to a JSON backup file
- * 
+ *
  * Usage: GET /api/export-data?secret=YOUR_PAYLOAD_SECRET
- * 
+ *
  * This will create a timestamped backup file in /backups directory with:
  * - All collections (Services, Realisations, FAQ, Media, Users)
  * - All globals (Homepage, SiteSettings, all page configs)
@@ -141,4 +142,3 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
 	return GET(request)
 }
-
