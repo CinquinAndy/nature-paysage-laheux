@@ -5,7 +5,7 @@ import { PageHero } from '@/components/sections/shared/page-hero'
 import { ServiceCard } from '@/components/sections/shared/service-card'
 import { TaxCreditEligibility } from '@/components/sections/shared/tax-credit-eligibility'
 import { CtaShader } from '@/components/ui/cta-shader'
-import { getMediaUrl, getPrestationsPageData, getServices } from '@/lib/payload'
+import { getMediaUrl, getMediaUrlOptional, getPrestationsPageData, getServices } from '@/lib/payload'
 import { generateSEOMetadata } from '@/lib/seo'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,8 +20,8 @@ export default async function PrestationsPage() {
 
 	// Transform taxCreditEligibility data to tabs format
 	const taxCredit = prestationsPage.taxCreditEligibility!
-	const eligibleImageUrl = getMediaUrl(taxCredit.eligibleImage)!
-	const nonEligibleImageUrl = getMediaUrl(taxCredit.nonEligibleImage)!
+	const eligibleImageUrl = getMediaUrlOptional(taxCredit.eligibleImage) || ''
+	const nonEligibleImageUrl = getMediaUrlOptional(taxCredit.nonEligibleImage) || ''
 
 	const tabs = [
 		{
@@ -56,7 +56,7 @@ export default async function PrestationsPage() {
 		},
 	]
 
-	const heroImageUrl = getMediaUrl(prestationsPage.hero!.image!)!
+	const heroImageUrl = getMediaUrl(prestationsPage.hero!.image!)
 
 	return (
 		<div className="min-h-screen">

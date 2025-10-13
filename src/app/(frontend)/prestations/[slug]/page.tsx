@@ -47,11 +47,11 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 	}
 
 	// Build gallery images from Payload media
-	const mainImageUrl = getMediaUrl(service.image!)!
+	const mainImageUrl = getMediaUrl(service.image!)
 	const galleryImages = [
 		{ src: mainImageUrl, alt: service.title! },
 		...(service.images?.map(imgItem => ({
-			src: getMediaUrl(imgItem)!,
+			src: getMediaUrl(imgItem),
 			alt: service.title!,
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs

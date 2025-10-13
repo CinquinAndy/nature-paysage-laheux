@@ -36,7 +36,8 @@
 			},
 			"style": {
 				"useConst": "error",
-				"useTemplate": "error"
+				"useTemplate": "error",
+				"noNonNullAssertion": "off"
 			},
 			"suspicious": {
 				"noArrayIndexKey": "warn",

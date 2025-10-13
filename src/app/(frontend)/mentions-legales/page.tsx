@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function MentionsLegalesPage() {
 	const pageData = await getMentionsLegalesPageData()
 
-	const heroImageUrl = getMediaUrl(pageData.hero!.image!)!
+	const heroImageUrl = getMediaUrl(pageData.hero!.image!)
 
 	return (
 		<div className="min-h-screen">

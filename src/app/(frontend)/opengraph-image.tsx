@@ -10,9 +10,8 @@ export default async function Image() {
 	const homepage = await getHomepageData()
 	const font = await loadFont()
 
-	// Extract title with fallback logic
-	const title =
-		homepage.seo_title || homepage.hero?.title?.replace(/\*\*/g, '') || 'Nature Paysage Laheux - Éco-Paysagiste'
+	// Extract title (validated in getHomepageData)
+	const title = homepage.seo_title || homepage.hero!.title!.replace(/\*\*/g, '')
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,

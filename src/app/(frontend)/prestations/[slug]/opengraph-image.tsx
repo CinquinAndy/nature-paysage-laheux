@@ -18,22 +18,8 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 	const service = await getServiceBySlug(slug)
 	const font = await loadFont()
 
-	if (!service) {
-		return new ImageResponse(<OGImageTemplate title="Prestation non trouvée" />, {
-			...size,
-			fonts: [
-				{
-					name: 'Apple Garamond',
-					data: font,
-					style: 'normal',
-					weight: 700,
-				},
-			],
-		})
-	}
-
-	// Extract title with fallback logic
-	const title = service.seo_title || service.title || `${service.title} | Jean-Luc Laheux - Loire-Atlantique`
+	// Extract title (validated in getServiceBySlug)
+	const title = service.seo_title || service.title!
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,

@@ -18,25 +18,11 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 	const realisation = await getRealisationBySlug(slug)
 	const font = await loadFont()
 
-	if (!realisation) {
-		return new ImageResponse(<OGImageTemplate title="Réalisation non trouvée" />, {
-			...size,
-			fonts: [
-				{
-					name: 'Apple Garamond',
-					data: font,
-					style: 'normal',
-					weight: 700,
-				},
-			],
-		})
-	}
-
-	// Extract title with fallback logic (include location if available)
-	let title = realisation.seo_title || realisation.title || 'Réalisation'
+	// Extract title (validated in getRealisationBySlug, include location if available)
+	let title = realisation.seo_title || realisation.title!
 
 	if (!realisation.seo_title && realisation.location) {
-		title = `${realisation.title} - ${realisation.location}`
+		title = `${realisation.title!} - ${realisation.location}`
 	}
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {

@@ -10,9 +10,8 @@ export default async function Image() {
 	const prestationsPage = await getPrestationsPageData()
 	const font = await loadFont()
 
-	// Extract title with fallback logic
-	const title =
-		prestationsPage.seo_title || prestationsPage.hero?.title || "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux"
+	// Extract title (validated in getPrestationsPageData)
+	const title = prestationsPage.seo_title || prestationsPage.hero!.title!
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,
