@@ -1,8 +1,8 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
-import { generateSeoContent } from '@/lib/gemini/generate-seo'
 import type { PageContext } from '@/lib/gemini/generate-seo'
+import { generateSeoContent } from '@/lib/gemini/generate-seo'
 import config from '@/payload.config'
 
 export async function POST(req: NextRequest) {
@@ -122,4 +122,3 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
 	}
 }
-

@@ -7,7 +7,15 @@ interface SeoContent {
 }
 
 export interface PageContext {
-	pageType: 'homepage' | 'service' | 'realisation' | 'faq' | 'contact' | 'mentions-legales' | 'prestations' | 'realisations'
+	pageType:
+		| 'homepage'
+		| 'service'
+		| 'realisation'
+		| 'faq'
+		| 'contact'
+		| 'mentions-legales'
+		| 'prestations'
+		| 'realisations'
 	title?: string
 	description?: string
 	content?: string
@@ -30,7 +38,9 @@ export async function generateSeoContent(context: PageContext): Promise<SeoConte
 		const prompt = buildSeoPrompt(context)
 
 		const { text } = await generateText({
-			model: google('gemini-2.0-flash-thinking-exp-1219'),
+			model: google('gemini-2.0-flash-thinking-exp-1219', {
+				apiKey,
+			}),
 			prompt,
 			temperature: 0.7,
 		})
@@ -165,4 +175,3 @@ function parseSeoResponse(text: string): SeoContent {
 
 	return { title, description }
 }
-

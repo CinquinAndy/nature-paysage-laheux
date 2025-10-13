@@ -1,4 +1,4 @@
-import type { CollectionConfig} from 'payload'
+import type { CollectionConfig } from 'payload'
 import { seoFields } from '@/lib/payload/seo-fields'
 
 export const Services: CollectionConfig = {

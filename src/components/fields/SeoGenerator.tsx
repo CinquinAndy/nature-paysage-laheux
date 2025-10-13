@@ -73,13 +73,10 @@ const SeoGenerator: React.FC = () => {
 			>
 				{isGenerating ? '⏳ Génération en cours...' : '🤖 Générer SEO avec Gemini'}
 			</button>
-			{success && (
-				<p style={{ fontSize: '14px', color: '#059669', marginTop: '8px', marginBottom: 0 }}>{success}</p>
-			)}
+			{success && <p style={{ fontSize: '14px', color: '#059669', marginTop: '8px', marginBottom: 0 }}>{success}</p>}
 			{error && <p style={{ fontSize: '14px', color: '#dc2626', marginTop: '8px', marginBottom: 0 }}>{error}</p>}
 		</div>
 	)
 }
 
 export default SeoGenerator
-
