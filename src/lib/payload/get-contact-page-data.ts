@@ -25,6 +25,9 @@ export async function getContactPageData(): Promise<ContactPage> {
 	if (!contactPage.contactInfoSidebar) {
 		throw new Error('Contact Page: Missing contactInfoSidebar in Payload CMS')
 	}
+	if (!contactPage.contactInfoSidebar.benefits || contactPage.contactInfoSidebar.benefits.length === 0) {
+		throw new Error('Contact Page: Missing contactInfoSidebar.benefits in Payload CMS')
+	}
 
 	return contactPage as ContactPage
 }

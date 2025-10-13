@@ -10,11 +10,8 @@ export default async function Image() {
 	const mentionsLegalesPage = await getMentionsLegalesPageData()
 	const font = await loadFont()
 
-	// Extract title with fallback logic
-	const title =
-		mentionsLegalesPage.seo_title ||
-		mentionsLegalesPage.hero?.title ||
-		'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste'
+	// Extract title (validated in getMentionsLegalesPageData)
+	const title = mentionsLegalesPage.seo_title || mentionsLegalesPage.hero!.title!
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,

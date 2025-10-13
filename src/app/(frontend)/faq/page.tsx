@@ -45,7 +45,7 @@ export default async function Page() {
 			{/* Hero Section */}
 			<PageHero
 				title={faqPage.hero!.title!}
-				imageSrc={getMediaUrl(faqPage.hero!.image!)!}
+				imageSrc={getMediaUrl(faqPage.hero!.image!)}
 				imageAlt="Questions fréquentes sur les services d'éco-paysagisme"
 			/>
 

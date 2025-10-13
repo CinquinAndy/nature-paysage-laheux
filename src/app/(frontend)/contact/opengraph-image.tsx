@@ -10,8 +10,8 @@ export default async function Image() {
 	const contactPage = await getContactPageData()
 	const font = await loadFont()
 
-	// Extract title with fallback logic
-	const title = contactPage.seo_title || contactPage.hero?.title || 'Contact | Jean-Luc Laheux Eco-Paysagiste'
+	// Extract title (validated in getContactPageData)
+	const title = contactPage.seo_title || contactPage.hero!.title!
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,

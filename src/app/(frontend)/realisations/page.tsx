@@ -16,7 +16,7 @@ export default async function RealisationsListPage() {
 	// Fetch all data from Payload CMS
 	const [pageData, realisations] = await Promise.all([getRealisationsPageData(), getRealisations()])
 
-	const heroImageUrl = getMediaUrl(pageData.hero!.image!)!
+	const heroImageUrl = getMediaUrl(pageData.hero!.image!)
 
 	return (
 		<div className="min-h-screen">

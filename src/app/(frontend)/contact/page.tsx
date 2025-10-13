@@ -14,7 +14,7 @@ export default async function ContactPage() {
 	// Fetch data from Payload CMS
 	const [contactPage, siteSettings] = await Promise.all([getContactPageData(), getSiteSettings()])
 
-	const heroImageUrl = getMediaUrl(contactPage.hero!.image!)!
+	const heroImageUrl = getMediaUrl(contactPage.hero!.image!)
 
 	return (
 		<div className="min-h-screen">
@@ -29,7 +29,7 @@ export default async function ContactPage() {
 			<ModernContactForm
 				formSection={contactPage.formSection!}
 				contactInfo={siteSettings.contact!}
-				benefits={contactPage.contactInfoSidebar?.benefits}
+				benefits={contactPage.contactInfoSidebar!.benefits!}
 			/>
 		</div>
 	)

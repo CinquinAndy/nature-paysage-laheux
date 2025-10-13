@@ -61,11 +61,11 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 	}
 
 	// Build gallery images from Payload media
-	const mainImageUrl = getMediaUrl(realisation.image!)!
+	const mainImageUrl = getMediaUrl(realisation.image!)
 	const galleryImages = [
 		{ src: mainImageUrl, alt: realisation.title! },
 		...(realisation.images?.map(imgItem => ({
-			src: getMediaUrl(imgItem)!,
+			src: getMediaUrl(imgItem),
 			alt: realisation.title!,
 		})) || []),
 	].filter(img => img.src) // Filter out images without valid URLs

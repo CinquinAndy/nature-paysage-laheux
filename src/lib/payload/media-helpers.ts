@@ -2,8 +2,29 @@ import type { Media } from '@/payload-types'
 
 /**
  * Récupère l'URL d'un média depuis Payload
+ * Throws an error if media is missing or not populated
  */
-export function getMediaUrl(media: number | Media | null | undefined): string | null {
+export function getMediaUrl(media: number | Media | null | undefined): string {
+	if (!media) {
+		throw new Error('Media is required but was not provided')
+	}
+
+	if (typeof media === 'number') {
+		throw new Error('Media must be populated (depth >= 1) but received an ID')
+	}
+
+	if (!media.url) {
+		throw new Error('Media object exists but has no URL')
+	}
+
+	return media.url
+}
+
+/**
+ * Récupère l'URL d'un média depuis Payload (version optionnelle)
+ * Returns null if media is missing
+ */
+export function getMediaUrlOptional(media: number | Media | null | undefined): string | null {
 	if (!media) return null
 
 	if (typeof media === 'number') {

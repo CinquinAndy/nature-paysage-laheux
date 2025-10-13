@@ -10,11 +10,8 @@ export default async function Image() {
 	const realisationsPage = await getRealisationsPageData()
 	const font = await loadFont()
 
-	// Extract title with fallback logic
-	const title =
-		realisationsPage.seo_title ||
-		realisationsPage.hero?.title ||
-		'Mes Réalisations de Jardins Écologiques | Jean-Luc Laheux'
+	// Extract title (validated in getRealisationsPageData)
+	const title = realisationsPage.seo_title || realisationsPage.hero!.title!
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,

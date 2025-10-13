@@ -10,8 +10,8 @@ export default async function Image() {
 	const faqPage = await getFaqPageData()
 	const font = await loadFont()
 
-	// Extract title with fallback logic
-	const title = faqPage.seo_title || faqPage.hero?.title || 'Questions Fréquentes | Jean-Luc Laheux Eco-Paysagiste'
+	// Extract title (validated in getFaqPageData)
+	const title = faqPage.seo_title || faqPage.hero!.title!
 
 	return new ImageResponse(<OGImageTemplate title={title} />, {
 		...size,
