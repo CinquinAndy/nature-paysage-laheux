@@ -23,19 +23,14 @@ export async function POST(req: NextRequest) {
 			return NextResponse.json({ error: 'Media not found' }, { status: 404 })
 		}
 
-		// Get the S3 URL directly
-		// With S3 plugin, Payload stores the full S3 URL in media.url
-		// or it might be in media.tmpURL or other S3-specific fields
+		// Get the image URL (Payload serves S3 images via /api/media/file/)
 		let imageUrl = media.url
 
 		if (!imageUrl) {
 			return NextResponse.json({ error: 'Image URL not found' }, { status: 404 })
 		}
 
-		// Debug: log the media object structure to understand S3 URL format
-		console.log('Media object:', JSON.stringify(media, null, 2))
-
-		// If URL is relative (shouldn't happen with S3, but fallback)
+		// Convert relative URL to absolute for fetch
 		if (imageUrl.startsWith('/')) {
 			const origin = req.nextUrl.origin
 			imageUrl = `${origin}${imageUrl}`

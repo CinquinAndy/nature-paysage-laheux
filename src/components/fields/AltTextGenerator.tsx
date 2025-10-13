@@ -1,15 +1,14 @@
 'use client'
 
-import { useDocumentInfo, useFormFields } from '@payloadcms/ui'
+import { useDocumentInfo } from '@payloadcms/ui'
 import { useState } from 'react'
 import { Button } from '../ui/button'
 
 const AltTextGenerator: React.FC = () => {
 	const [isGenerating, setIsGenerating] = useState(false)
 	const [error, setError] = useState<string | null>(null)
+	const [success, setSuccess] = useState<string | null>(null)
 	const { id } = useDocumentInfo()
-
-	const alt = useFormFields(([fields]) => fields.alt)
 
 	const handleGenerate = async () => {
 		if (!id) {
@@ -19,6 +18,7 @@ const AltTextGenerator: React.FC = () => {
 
 		setIsGenerating(true)
 		setError(null)
+		setSuccess(null)
 
 		try {
 			const response = await fetch('/api/forvoyez/generate-alt', {
@@ -35,14 +35,15 @@ const AltTextGenerator: React.FC = () => {
 				throw new Error(data.error || 'Failed to generate alt text')
 			}
 
-			// Update the form field value
-			if (alt && typeof alt.value === 'string') {
-				// Force a page reload to update the form with the new value
+			// Show success message with the generated alt text
+			setSuccess(`✅ Alt text généré : "${data.alt}"`)
+			
+			// Reload after a short delay to let user see the success message
+			setTimeout(() => {
 				window.location.reload()
-			}
+			}, 2000)
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An error occurred')
-		} finally {
 			setIsGenerating(false)
 		}
 	}
@@ -51,8 +52,9 @@ const AltTextGenerator: React.FC = () => {
 		<div className="field-type">
 			<div className="flex flex-col gap-2">
 				<Button type="button" onClick={handleGenerate} disabled={isGenerating || !id} className="w-full">
-					{isGenerating ? 'Génération en cours...' : '✨ Générer alt text avec ForVoyez'}
+					{isGenerating ? '⏳ Génération en cours...' : '✨ Générer alt text avec ForVoyez'}
 				</Button>
+				{success && <p className="text-sm text-green-600 font-medium">{success}</p>}
 				{error && <p className="text-sm text-red-500">{error}</p>}
 				{!id && <p className="text-sm text-gray-500">Sauvegardez d'abord l'image pour générer l'alt text</p>}
 			</div>
