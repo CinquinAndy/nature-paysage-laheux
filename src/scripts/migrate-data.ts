@@ -131,7 +131,7 @@ function _markdownToLexical(text: string) {
 /**
  * Upload image from public folder to Payload Media collection
  */
-async function uploadImage(payload: Payload, imagePath: string): Promise<string | null> {
+async function uploadImage(payload: Payload, imagePath: string): Promise<number | null> {
 	if (!imagePath) return null
 
 	// Support both /clean_images/ and /usable/ paths, and clean them
@@ -201,8 +201,14 @@ async function migrateServices(payload: Payload) {
 			// Upload image
 			const imageId = await uploadImage(payload, service.image || '')
 
+			// Skip if main image failed to upload (required field)
+			if (!imageId) {
+				console.log(`⏭️  Skipping service (no image): ${service.title}`)
+				continue
+			}
+
 			// Upload gallery images (required field)
-			const galleryImages = []
+			const galleryImages: number[] = []
 			if (service.image) {
 				const galleryImgId = await uploadImage(payload, service.image)
 				if (galleryImgId) galleryImages.push(galleryImgId)
@@ -269,8 +275,14 @@ async function migrateRealisations(payload: Payload) {
 			// Upload main image
 			const imageId = await uploadImage(payload, realisation.image)
 
+			// Skip if main image failed to upload (required field)
+			if (!imageId) {
+				console.log(`⏭️  Skipping realisation (no image): ${realisation.title}`)
+				continue
+			}
+
 			// Upload gallery images (using main image if no additional images)
-			const galleryImages = []
+			const galleryImages: number[] = []
 			if (realisation.images && realisation.images.length > 0) {
 				for (const img of realisation.images) {
 					const id = await uploadImage(payload, img)
@@ -374,6 +386,12 @@ async function migrateHomepage(payload: Payload) {
 		const heroBgImage = await uploadImage(payload, 'background.webp')
 		const valuesImage = await uploadImage(payload, 'jardin_paysagiste_travail.webp')
 
+		// Skip if required images failed to upload
+		if (!heroBgImage) {
+			console.log('⏭️  Skipping homepage migration (missing hero background image)')
+			return
+		}
+
 		await payload.updateGlobal({
 			slug: 'homepage',
 			data: {
@@ -386,7 +404,7 @@ async function migrateHomepage(payload: Payload) {
 				// Values Section
 				values: {
 					sectionTitle: 'Une Approche **Écologique** et Sur-Mesure',
-					image: valuesImage,
+					image: valuesImage || undefined,
 					valuesList: [
 						{
 							icon: 'leaf',
@@ -430,7 +448,7 @@ async function migrateHomepage(payload: Payload) {
 					introText:
 						'Passionné par le végétal et la biodiversité, je pratique un jardinage en harmonie avec la nature. Mon objectif : créer et entretenir des espaces verts vivants, résilients et beaux, sans aucun produit chimique.',
 					quote: 'travailler AVEC la nature, pas contre elle.',
-					primaryImage: valuesImage,
+					primaryImage: valuesImage || undefined,
 					imageOverlayTitle: 'Une Démarche Écologique Profonde',
 					imageOverlayDescription: "Chaque jardin mérite d'être un havre de biodiversité",
 					philosophyPoints: [

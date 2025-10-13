@@ -27,9 +27,9 @@ export function ValuesSection({ data }: ValuesSectionProps) {
 				// Handle \n inside bold text
 				const textParts = text.split('\\n')
 				return (
-					<strong key={`strong-${partIndex}`}>
+					<strong key={`strong-${part.slice(0, 30)}-${partIndex}`}>
 						{textParts.map((textPart, i) => (
-							<span key={`strong-text-${partIndex}-${i}`}>
+							<span key={`${textPart.slice(0, 30)}-${i}`}>
 								{textPart}
 								{i < textParts.length - 1 && <br />}
 							</span>
@@ -40,9 +40,9 @@ export function ValuesSection({ data }: ValuesSectionProps) {
 			// Handle \n in regular text
 			const textParts = part.split('\\n')
 			return (
-				<span key={`text-${partIndex}`}>
+				<span key={`text-${part.slice(0, 30)}-${partIndex}`}>
 					{textParts.map((textPart, i) => (
-						<span key={`text-part-${partIndex}-${i}`}>
+						<span key={`${textPart.slice(0, 30)}-${i}`}>
 							{textPart}
 							{i < textParts.length - 1 && <br />}
 						</span>

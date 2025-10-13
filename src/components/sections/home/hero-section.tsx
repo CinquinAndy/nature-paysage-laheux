@@ -16,10 +16,10 @@ export function HeroSection({ data }: HeroSectionProps) {
 				// Handle \n inside bold text
 				const textParts = text.split('\\n')
 				return (
-					<span key={`blob-${partIndex}`} className="relative overflow-visible">
+					<span key={`blob-${part.slice(0, 30)}-${partIndex}`} className="relative overflow-visible">
 						<span className="z-10">
 							{textParts.map((textPart, i) => (
-								<span key={`blob-text-${partIndex}-${i}`}>
+								<span key={`${textPart.slice(0, 30)}-${i}`}>
 									{textPart}
 									{i < textParts.length - 1 && <br />}
 								</span>
@@ -37,9 +37,9 @@ export function HeroSection({ data }: HeroSectionProps) {
 			// Handle \n in regular text
 			const textParts = part.split('\\n')
 			return (
-				<span key={`text-${partIndex}`}>
+				<span key={`text-${part.slice(0, 30)}-${partIndex}`}>
 					{textParts.map((textPart, i) => (
-						<span key={`text-part-${partIndex}-${i}`}>
+						<span key={`${textPart.slice(0, 30)}-${i}`}>
 							{textPart}
 							{i < textParts.length - 1 && <br />}
 						</span>
