@@ -7,6 +7,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getRealisationBySlug, getRealisations } from '@/lib/payload'
+import { parseLineBreaks } from '@/lib/utils'
 
 // Lazy load the image gallery modal
 const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
@@ -124,7 +125,9 @@ export default async function RealisationPage({ params }: RealisationPageProps) 
 					</div>
 
 					{/* Short Description */}
-					{realisation.shortDescription && <p className="mt-6 text-xl/8">{realisation.shortDescription}</p>}
+					{realisation.shortDescription && (
+						<p className="mt-6 text-xl/8">{parseLineBreaks(realisation.shortDescription)}</p>
+					)}
 
 					{/* Main Content from Payload CMS */}
 					{realisation.description && (

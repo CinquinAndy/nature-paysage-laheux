@@ -6,6 +6,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { CtaShader } from '@/components/ui/cta-shader'
 import { RichText } from '@/components/ui/rich-text'
 import { getMediaUrl, getServiceBySlug, getServices } from '@/lib/payload'
+import { parseLineBreaks } from '@/lib/utils'
 
 // Lazy load the image gallery modal
 const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
@@ -94,7 +95,7 @@ export default async function PrestationPage({ params }: PrestationPageProps) {
 					</h1>
 
 					{/* Short Description */}
-					{service.shortDescription && <p className="mt-6 text-xl/8">{service.shortDescription}</p>}
+					{service.shortDescription && <p className="mt-6 text-xl/8">{parseLineBreaks(service.shortDescription)}</p>}
 
 					{/* Main Content from Payload CMS */}
 					{service.fullDescription && (
