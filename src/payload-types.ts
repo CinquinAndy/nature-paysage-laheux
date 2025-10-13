@@ -209,6 +209,14 @@ export interface Media {
  */
 export interface Service {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   title: string;
   /**
    * Utilisé dans l'URL de la page (ex : tonte-pelouse). Ne modifier que si nécessaire.
@@ -282,6 +290,14 @@ export interface Service {
  */
 export interface Realisation {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   title: string;
   /**
    * Utilisé dans l'URL de la page (ex : jardin-monnieres). Ne modifier que si nécessaire.
@@ -529,6 +545,8 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   title?: T;
   slug?: T;
   shortDescription?: T;
@@ -567,6 +585,8 @@ export interface ServicesSelect<T extends boolean = true> {
  * via the `definition` "realisations_select".
  */
 export interface RealisationsSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   title?: T;
   slug?: T;
   location?: T;
@@ -668,6 +688,14 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Homepage {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   hero: {
     backgroundImage: number | Media;
     /**
@@ -843,6 +871,14 @@ export interface Homepage {
  */
 export interface PrestationsPage {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -904,6 +940,14 @@ export interface PrestationsPage {
  */
 export interface RealisationsPage {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -935,6 +979,14 @@ export interface RealisationsPage {
  */
 export interface FaqPage {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -970,6 +1022,14 @@ export interface FaqPage {
  */
 export interface ContactPage {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -1015,6 +1075,14 @@ export interface ContactPage {
  */
 export interface MentionsLegalesPage {
   id: number;
+  /**
+   * Titre optimisé pour les moteurs de recherche (max 60 caractères)
+   */
+  seo_title?: string | null;
+  /**
+   * Description optimisée pour les moteurs de recherche (max 155 caractères)
+   */
+  seo_description?: string | null;
   hero?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -1079,6 +1147,8 @@ export interface SiteSetting {
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   hero?:
     | T
     | {
@@ -1226,6 +1296,8 @@ export interface HomepageSelect<T extends boolean = true> {
  * via the `definition` "prestations-page_select".
  */
 export interface PrestationsPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   hero?:
     | T
     | {
@@ -1282,6 +1354,8 @@ export interface PrestationsPageSelect<T extends boolean = true> {
  * via the `definition` "realisations-page_select".
  */
 export interface RealisationsPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   hero?:
     | T
     | {
@@ -1317,6 +1391,8 @@ export interface RealisationsPageSelect<T extends boolean = true> {
  * via the `definition` "faq-page_select".
  */
 export interface FaqPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   hero?:
     | T
     | {
@@ -1353,6 +1429,8 @@ export interface FaqPageSelect<T extends boolean = true> {
  * via the `definition` "contact-page_select".
  */
 export interface ContactPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   hero?:
     | T
     | {
@@ -1392,6 +1470,8 @@ export interface ContactPageSelect<T extends boolean = true> {
  * via the `definition` "mentions-legales-page_select".
  */
 export interface MentionsLegalesPageSelect<T extends boolean = true> {
+  seo_title?: T;
+  seo_description?: T;
   hero?:
     | T
     | {

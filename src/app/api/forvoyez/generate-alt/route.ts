@@ -1,8 +1,8 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
-import config from '@/payload.config'
 import { generateAltText } from '@/lib/forvoyez/generate-alt-text'
+import config from '@/payload.config'
 
 export async function POST(req: NextRequest) {
 	try {

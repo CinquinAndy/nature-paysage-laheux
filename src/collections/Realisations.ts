@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { seoFields } from '@/lib/payload/seo-fields'
 
 export const Realisations: CollectionConfig = {
 	slug: 'realisations',
@@ -14,6 +15,7 @@ export const Realisations: CollectionConfig = {
 		read: () => true,
 	},
 	fields: [
+		...seoFields,
 		{
 			name: 'title',
 			type: 'text',

@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { seoFields } from '@/lib/payload/seo-fields'
 
 export const RealisationsPage: GlobalConfig = {
 	slug: 'realisations-page',
@@ -7,6 +8,7 @@ export const RealisationsPage: GlobalConfig = {
 		read: () => true,
 	},
 	fields: [
+		...seoFields,
 		// ===========================
 		// SECTION HERO
 		// ===========================
