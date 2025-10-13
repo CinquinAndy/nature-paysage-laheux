@@ -102,14 +102,17 @@ export async function POST(req: NextRequest) {
 				| 'faq-page'
 				| 'contact-page'
 				| 'mentions-legales-page'
-				| 'third-party-access'
-			await payload.updateGlobal({
-				slug: globalSlug,
-				data: {
-					seo_title: seoContent.title,
-					seo_description: seoContent.description,
-				},
-			})
+
+			// Only update globals that have SEO fields (not site-settings)
+			if (globalSlug !== 'site-settings') {
+				await payload.updateGlobal({
+					slug: globalSlug,
+					data: {
+						seo_title: seoContent.title,
+						seo_description: seoContent.description,
+					},
+				})
+			}
 		} else if (updateTarget.collection && updateTarget.id) {
 			const collectionSlug = updateTarget.collection as 'services' | 'realisations' | 'faq' | 'media' | 'users'
 			await payload.update({

@@ -13,7 +13,7 @@ export function cn(...inputs: ClassValue[]) {
 export function parseLineBreaks(text: string): React.ReactNode[] {
 	const parts = text.split('\\n')
 	return parts.map((part, i) => (
-		<span key={`line-${i}`}>
+		<span key={`${part.slice(0, 50)}-${i}`}>
 			{part}
 			{i < parts.length - 1 && <br />}
 		</span>

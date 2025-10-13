@@ -27,11 +27,11 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 				// Handle \n inside bold text
 				const textParts = text.split('\\n')
 				return (
-					<span key={`bold-${partIndex}`}>
+					<span key={`bold-${part.slice(0, 30)}-${partIndex}`}>
 						<br />
 						<span className="text-primary">
 							{textParts.map((textPart, i) => (
-								<span key={`bold-text-${partIndex}-${i}`}>
+								<span key={`${textPart.slice(0, 30)}-${i}`}>
 									{textPart}
 									{i < textParts.length - 1 && <br />}
 								</span>
@@ -43,9 +43,9 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 			// Handle \n in regular text
 			const textParts = part.split('\\n')
 			return (
-				<span key={`text-${partIndex}`}>
+				<span key={`text-${part.slice(0, 30)}-${partIndex}`}>
 					{textParts.map((textPart, i) => (
-						<span key={`text-part-${partIndex}-${i}`}>
+						<span key={`${textPart.slice(0, 30)}-${i}`}>
 							{textPart}
 							{i < textParts.length - 1 && <br />}
 						</span>
