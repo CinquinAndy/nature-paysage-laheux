@@ -12,7 +12,6 @@ Disallow: /api/
 Allow: /api/media/file/
 
 # Block internal Next.js routes
-Disallow: /_next/
 Disallow: /api/graphql
 Disallow: /api/graphql-playground
 
