@@ -12,5 +12,16 @@ export async function getMentionsLegalesPageData(): Promise<MentionsLegalesPage>
 		depth: 2, // Include related media
 	})
 
+	// Validate critical fields
+	if (!mentionsLegalesPage.hero?.title) {
+		throw new Error('Mentions Legales Page: Missing hero.title in Payload CMS')
+	}
+	if (!mentionsLegalesPage.hero?.image) {
+		throw new Error('Mentions Legales Page: Missing hero.image in Payload CMS')
+	}
+	if (!mentionsLegalesPage.content) {
+		throw new Error('Mentions Legales Page: Missing content in Payload CMS')
+	}
+
 	return mentionsLegalesPage as MentionsLegalesPage
 }

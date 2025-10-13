@@ -7,128 +7,21 @@ import { TaxCreditEligibility } from '@/components/sections/shared/tax-credit-el
 import { CtaShader } from '@/components/ui/cta-shader'
 import { getMediaUrl, getPrestationsPageData, getServices } from '@/lib/payload'
 import { generateSEOMetadata } from '@/lib/seo'
-import type { PrestationsPage as PrestationsPageType } from '@/payload-types'
 
 export async function generateMetadata(): Promise<Metadata> {
 	const prestationsPage = await getPrestationsPageData()
 
-	return generateSEOMetadata(prestationsPage, '/prestations', {
-		fallbackTitle: "Mes Prestations d'Eco-Paysagiste | Jean-Luc Laheux - Loire-Atlantique",
-		fallbackDescription:
-			"Tonte écologique, désherbage naturel, taille raisonnée, potager en permaculture. Toutes mes prestations bénéficient de 50% de crédit d'impôt. Devis gratuit.",
-	})
-}
-
-/**
- * Add Lorem Ipsum fallback values to prestations page data to easily identify missing content
- */
-function addLoremFallbacks(prestationsPage: PrestationsPageType): PrestationsPageType {
-	return {
-		...prestationsPage,
-		hero: {
-			...prestationsPage.hero,
-			title: prestationsPage.hero?.title || '🚨 LOREM: Mes Prestations Écologiques',
-		},
-		taxCreditEligibility: {
-			...prestationsPage.taxCreditEligibility,
-			title:
-				prestationsPage.taxCreditEligibility?.title ||
-				"🚨 LOREM: Quelles Prestations Sont Éligibles au Crédit d'Impôt ?",
-			description:
-				prestationsPage.taxCreditEligibility?.description ||
-				"🚨 LOREM: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Découvrez quels services bénéficient du crédit d'impôt de 50%.",
-			eligibleTitle:
-				prestationsPage.taxCreditEligibility?.eligibleTitle || "🚨 LOREM: Services Éligibles au Crédit d'Impôt de 50%",
-			eligibleDescription:
-				prestationsPage.taxCreditEligibility?.eligibleDescription ||
-				'🚨 LOREM: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ces prestations vous permettent de récupérer 50% de leur coût.',
-			eligibleItems:
-				prestationsPage.taxCreditEligibility?.eligibleItems &&
-				prestationsPage.taxCreditEligibility.eligibleItems.length > 0
-					? prestationsPage.taxCreditEligibility.eligibleItems.map((item, i) => ({
-							...item,
-							title: item.title || `🚨 LOREM: Service Éligible ${i + 1}`,
-							description: item.description || '🚨 LOREM: Description du service éligible',
-						}))
-					: [
-							{
-								title: '🚨 LOREM: Tonte de pelouse',
-								description: '🚨 LOREM: Description du service éligible',
-								id: 'lorem-eligible-1',
-							},
-							{
-								title: '🚨 LOREM: Désherbage',
-								description: '🚨 LOREM: Description du service éligible',
-								id: 'lorem-eligible-2',
-							},
-							{
-								title: '🚨 LOREM: Taille de haies',
-								description: '🚨 LOREM: Description du service éligible',
-								id: 'lorem-eligible-3',
-							},
-						],
-			nonEligibleTitle:
-				prestationsPage.taxCreditEligibility?.nonEligibleTitle || "🚨 LOREM: Services Non Éligibles au Crédit d'Impôt",
-			nonEligibleDescription:
-				prestationsPage.taxCreditEligibility?.nonEligibleDescription ||
-				"🚨 LOREM: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ces prestations ne permettent pas de bénéficier du crédit d'impôt.",
-			nonEligibleItems:
-				prestationsPage.taxCreditEligibility?.nonEligibleItems &&
-				prestationsPage.taxCreditEligibility.nonEligibleItems.length > 0
-					? prestationsPage.taxCreditEligibility.nonEligibleItems.map((item, i) => ({
-							...item,
-							title: item.title || `🚨 LOREM: Service Non Éligible ${i + 1}`,
-							description: item.description || '🚨 LOREM: Description du service non éligible',
-						}))
-					: [
-							{
-								title: '🚨 LOREM: Création de jardin',
-								description: '🚨 LOREM: Description du service non éligible',
-								id: 'lorem-non-eligible-1',
-							},
-							{
-								title: '🚨 LOREM: Aménagement paysager',
-								description: '🚨 LOREM: Description du service non éligible',
-								id: 'lorem-non-eligible-2',
-							},
-						],
-			importantNote:
-				prestationsPage.taxCreditEligibility?.importantNote ||
-				"🚨 LOREM: L'entretien ultérieur de créations non-éligibles reste éligible au crédit d'impôt.",
-		},
-		ctaSection: {
-			...prestationsPage.ctaSection,
-			title: prestationsPage.ctaSection?.title || '🚨 LOREM: Prêt à Profiter de Mes Services ?',
-			description:
-				prestationsPage.ctaSection?.description ||
-				'🚨 LOREM: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Contactez-moi dès maintenant pour un devis gratuit et personnalisé.',
-			buttonText: prestationsPage.ctaSection?.buttonText || '🚨 LOREM: Demander un Devis Gratuit',
-			buttonUrl: prestationsPage.ctaSection?.buttonUrl || '/contact',
-			benefits:
-				prestationsPage.ctaSection?.benefits && prestationsPage.ctaSection.benefits.length > 0
-					? prestationsPage.ctaSection.benefits.map((item, i) => ({
-							...item,
-							benefit: item.benefit || `🚨 LOREM: Avantage ${i + 1}`,
-						}))
-					: [
-							{ benefit: '🚨 LOREM: Devis gratuit sous 24h', id: 'lorem-cta-benefit-1' },
-							{ benefit: "🚨 LOREM: 50% de crédit d'impôt", id: 'lorem-cta-benefit-2' },
-							{ benefit: '🚨 LOREM: Approche écologique', id: 'lorem-cta-benefit-3' },
-						],
-		},
-	}
+	return generateSEOMetadata(prestationsPage, '/prestations')
 }
 
 export default async function PrestationsPage() {
 	// Fetch all data from Payload CMS
-	const [prestationsPageRaw, services] = await Promise.all([getPrestationsPageData(), getServices()])
-
-	// Add Lorem Ipsum fallbacks to easily identify missing content
-	const prestationsPage = addLoremFallbacks(prestationsPageRaw)
+	const [prestationsPage, services] = await Promise.all([getPrestationsPageData(), getServices()])
 
 	// Transform taxCreditEligibility data to tabs format
-	const eligibleImageUrl = getMediaUrl(prestationsPage.taxCreditEligibility?.eligibleImage) || ''
-	const nonEligibleImageUrl = getMediaUrl(prestationsPage.taxCreditEligibility?.nonEligibleImage) || ''
+	const taxCredit = prestationsPage.taxCreditEligibility!
+	const eligibleImageUrl = getMediaUrl(taxCredit.eligibleImage)!
+	const nonEligibleImageUrl = getMediaUrl(taxCredit.nonEligibleImage)!
 
 	const tabs = [
 		{
@@ -136,10 +29,10 @@ export default async function PrestationsPage() {
 			icon: <CheckCircle2 className="h-auto w-4 shrink-0" />,
 			label: "Éligible au crédit d'impôt",
 			content: {
-				title: prestationsPage.taxCreditEligibility?.eligibleTitle || '',
-				description: prestationsPage.taxCreditEligibility?.eligibleDescription || '',
-				items: (prestationsPage.taxCreditEligibility?.eligibleItems || []).map(item => ({
-					text: item.title,
+				title: taxCredit.eligibleTitle!,
+				description: taxCredit.eligibleDescription!,
+				items: taxCredit.eligibleItems!.map(item => ({
+					text: item.title!,
 					description: item.description || undefined,
 				})),
 				imageSrc: eligibleImageUrl,
@@ -151,10 +44,10 @@ export default async function PrestationsPage() {
 			icon: <XCircle className="h-auto w-4 shrink-0" />,
 			label: 'Non éligible',
 			content: {
-				title: prestationsPage.taxCreditEligibility?.nonEligibleTitle || '',
-				description: prestationsPage.taxCreditEligibility?.nonEligibleDescription || '',
-				items: (prestationsPage.taxCreditEligibility?.nonEligibleItems || []).map(item => ({
-					text: item.title,
+				title: taxCredit.nonEligibleTitle!,
+				description: taxCredit.nonEligibleDescription!,
+				items: taxCredit.nonEligibleItems!.map(item => ({
+					text: item.title!,
 					description: item.description || undefined,
 				})),
 				imageSrc: nonEligibleImageUrl,
@@ -163,14 +56,14 @@ export default async function PrestationsPage() {
 		},
 	]
 
-	const heroImageUrl = getMediaUrl(prestationsPage.hero?.image)
+	const heroImageUrl = getMediaUrl(prestationsPage.hero!.image!)!
 
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
-				title={prestationsPage.hero?.title || ''}
-				imageSrc={heroImageUrl || ''}
+				title={prestationsPage.hero!.title!}
+				imageSrc={heroImageUrl}
 				imageAlt="Prestations paysagistes écologiques"
 			/>
 
@@ -193,21 +86,19 @@ export default async function PrestationsPage() {
 
 			{/* Tax Credit Eligibility Section with Tabs */}
 			<TaxCreditEligibility
-				heading={prestationsPage.taxCreditEligibility?.title || ''}
-				description={prestationsPage.taxCreditEligibility?.description || ''}
+				heading={taxCredit.title!}
+				description={taxCredit.description!}
 				tabs={tabs}
-				importantNote={prestationsPage.taxCreditEligibility?.importantNote || undefined}
+				importantNote={taxCredit.importantNote || undefined}
 			/>
 
 			{/* CTA Section with Shader */}
 			<CtaShader
-				title={prestationsPage.ctaSection?.title || ''}
-				description={prestationsPage.ctaSection?.description || ''}
-				buttonText={prestationsPage.ctaSection?.buttonText || ''}
-				buttonUrl={prestationsPage.ctaSection?.buttonUrl || '/contact'}
-				items={(prestationsPage.ctaSection?.benefits || [])
-					.map(item => item.benefit)
-					.filter((item): item is string => !!item)}
+				title={prestationsPage.ctaSection!.title!}
+				description={prestationsPage.ctaSection!.description!}
+				buttonText={prestationsPage.ctaSection!.buttonText!}
+				buttonUrl={prestationsPage.ctaSection!.buttonUrl!}
+				items={prestationsPage.ctaSection!.benefits!.map(item => item.benefit).filter((item): item is string => !!item)}
 			/>
 		</div>
 	)

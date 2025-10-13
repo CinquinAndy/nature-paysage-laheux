@@ -12,5 +12,16 @@ export async function getSiteSettings(): Promise<SiteSetting> {
 		depth: 2, // Include related media
 	})
 
+	// Validate critical fields
+	if (!siteSettings.contact) {
+		throw new Error('Site Settings: Missing contact information in Payload CMS')
+	}
+	if (!siteSettings.contact.phone) {
+		throw new Error('Site Settings: Missing contact.phone in Payload CMS')
+	}
+	if (!siteSettings.contact.email) {
+		throw new Error('Site Settings: Missing contact.email in Payload CMS')
+	}
+
 	return siteSettings as SiteSetting
 }

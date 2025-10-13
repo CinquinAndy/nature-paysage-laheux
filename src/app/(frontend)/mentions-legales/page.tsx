@@ -9,8 +9,6 @@ export async function generateMetadata(): Promise<Metadata> {
 	const mentionsLegalesPage = await getMentionsLegalesPageData()
 
 	return generateSEOMetadata(mentionsLegalesPage, '/mentions-legales', {
-		fallbackTitle: 'Mentions Légales | Jean-Luc Laheux Eco-Paysagiste',
-		fallbackDescription: 'Mentions légales et informations sur le site nature-paysage-laheux.fr',
 		robots: 'noindex, follow',
 	})
 }
@@ -18,14 +16,14 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function MentionsLegalesPage() {
 	const pageData = await getMentionsLegalesPageData()
 
-	const heroImageUrl = getMediaUrl(pageData.hero?.image)
+	const heroImageUrl = getMediaUrl(pageData.hero!.image!)!
 
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<PageHero
-				title={pageData.hero?.title || 'Mentions Légales'}
-				imageSrc={heroImageUrl || '/usable/PXL_20251006_080220831.jpg'}
+				title={pageData.hero!.title!}
+				imageSrc={heroImageUrl}
 				imageAlt="Mentions légales Nature et Paysage Laheux"
 			/>
 
