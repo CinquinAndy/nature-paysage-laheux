@@ -35,13 +35,16 @@ const AltTextGenerator: React.FC = () => {
 				throw new Error(data.error || 'Failed to generate alt text')
 			}
 
-			// Show success message with the generated alt text
-			setSuccess(`✅ Alt text généré : "${data.alt}"`)
+			// Show success message - generation is happening in background
+			setSuccess(
+				`✅ Génération lancée en arrière-plan pour "${data.filename}". Rafraîchissez la page dans ~10 secondes.`
+			)
+			setIsGenerating(false)
 
-			// Reload after a short delay to let user see the success message
+			// Auto-reload after 10 seconds to show the generated alt text
 			setTimeout(() => {
 				window.location.reload()
-			}, 2000)
+			}, 10000)
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An error occurred')
 			setIsGenerating(false)
