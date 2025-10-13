@@ -51,4 +51,3 @@ export async function generateAltText(imageUrl: string, filename: string): Promi
 		return null
 	}
 }
-

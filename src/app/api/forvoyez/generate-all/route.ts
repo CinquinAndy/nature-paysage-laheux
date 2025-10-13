@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import type { Payload } from 'payload'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
+import { generateAltText } from '@/lib/forvoyez/generate-alt-text'
 
 async function generateAltTextForMedia(
 	payload: Payload,
@@ -25,44 +26,12 @@ async function generateAltTextForMedia(
 			imageUrl = `${origin}${imageUrl}`
 		}
 
-		// Fetch the image
-		const imageResponse = await fetch(imageUrl)
-		if (!imageResponse.ok) {
-			return { success: false, error: 'Failed to fetch image' }
+		// Generate alt text using ForVoyez
+		const altText = await generateAltText(imageUrl, media.filename || 'image.jpg')
+
+		if (!altText) {
+			return { success: false, error: 'Failed to generate alt text' }
 		}
-
-		const imageBlob = await imageResponse.blob()
-
-		// Prepare FormData for ForVoyez API
-		const formData = new FormData()
-		formData.append('image', imageBlob, media.filename || 'image.jpg')
-		formData.append('language', 'fr')
-
-		const schema = JSON.stringify({
-			alternativeText: 'string',
-		})
-		formData.append('schema', schema)
-
-		// Call ForVoyez API
-		const forvoyezToken = process.env.FORVOYEZ_TOKEN
-		if (!forvoyezToken) {
-			return { success: false, error: 'ForVoyez token not configured' }
-		}
-
-		const forvoyezResponse = await fetch('https://forvoyez.com/api/describe', {
-			method: 'POST',
-			headers: {
-				Authorization: `Bearer ${forvoyezToken}`,
-			},
-			body: formData,
-		})
-
-		if (!forvoyezResponse.ok) {
-			return { success: false, error: `ForVoyez API error: ${forvoyezResponse.status}` }
-		}
-
-		const forvoyezData = await forvoyezResponse.json()
-		const altText = forvoyezData.alternativeText || forvoyezData.caption || forvoyezData.title || ''
 
 		// Update the media document
 		await payload.update({
