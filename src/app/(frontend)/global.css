@@ -157,53 +157,6 @@
 	.animate-scale-in {
 		animation: scale-in 0.5s ease-out forwards;
 	}
-
-	* {
-		box-sizing: border-box;
-		list-style: none;
-		text-decoration: none;
-	}
-
-	body {
-		--sb-track-color: #f8f5f0;
-		--sb-thumb-color: #344e41;
-		--sb-size: 7px;
-	}
-
-	body,
-	html {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		max-width: 100vw;
-		clear: both;
-		width: 100vw;
-	}
-
-	html {
-		overflow-x: hidden;
-		scroll-behavior: smooth;
-	}
-
-	body::-webkit-scrollbar {
-		width: var(--sb-size);
-	}
-
-	body::-webkit-scrollbar-track {
-		background: var(--sb-track-color);
-		border-radius: 20px;
-	}
-
-	body::-webkit-scrollbar-thumb {
-		background: var(--sb-thumb-color);
-		border-radius: 20px;
-	}
-
-	@supports not selector(::-webkit-scrollbar) {
-		body {
-			scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-		}
-	}
 }
 
 @layer base {
@@ -382,5 +335,52 @@
 			mask-image: var(--blob-mask-desktop) !important;
 			-webkit-mask-image: var(--blob-mask-desktop) !important;
 		}
+	}
+}
+
+* {
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+}
+
+body {
+	--sb-track-color: #f8f5f0;
+	--sb-thumb-color: #344e41;
+	--sb-size: 7px;
+}
+
+body,
+html {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	max-width: 100vw;
+	clear: both;
+	width: 100vw;
+}
+
+html {
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+	width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+	background: var(--sb-track-color);
+	border-radius: 20px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: var(--sb-thumb-color);
+	border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+	body {
+		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 	}
 }
