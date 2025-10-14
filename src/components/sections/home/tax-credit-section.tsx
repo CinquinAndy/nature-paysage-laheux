@@ -1,4 +1,6 @@
+import { AnimatedSection } from '@/components/animation/animated-section'
 import { FeatureCarousel } from '@/components/ui/animated-feature-carousel'
+import { fadeInUp } from '@/lib/animation/variants'
 import { getMediaUrl } from '@/lib/payload/media-helpers'
 import type { Homepage } from '@/payload-types'
 
@@ -27,15 +29,15 @@ export function TaxCreditSection({ data }: Props) {
 		<section className="py-16 md:py-24 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
-				<div className="text-left mb-12 md:mb-16">
+				<AnimatedSection variants={fadeInUp} className="text-left mb-12 md:mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{title}</h2>
 					<p className="text-lg text-muted-foreground max-w-3xl">{subtitle}</p>
-				</div>
+				</AnimatedSection>
 
 				{/* Animated Feature Carousel */}
-				<div className="mb-12">
+				<AnimatedSection variants={fadeInUp} delay={0.2} className="mb-12">
 					<FeatureCarousel image={images} />
-				</div>
+				</AnimatedSection>
 			</div>
 		</section>
 	)

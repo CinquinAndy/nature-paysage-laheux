@@ -1,5 +1,8 @@
 import { Award, Heart, Leaf, type LucideIcon, MapPin, Shield, TrendingDown, Wrench } from 'lucide-react'
 import Image from 'next/image'
+import { AnimatedGrid } from '@/components/animation/animated-grid'
+import { AnimatedSection } from '@/components/animation/animated-section'
+import { fadeInLeft, fadeInUp } from '@/lib/animation/variants'
 import { getMediaUrl } from '@/lib/payload'
 import type { Homepage } from '@/payload-types'
 
@@ -60,7 +63,7 @@ export function ValuesSection({ data }: ValuesSectionProps) {
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 					{/* Left Side - Image */}
-					<div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
+					<AnimatedSection variants={fadeInLeft} className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
 						<Image
 							src={imageUrl}
 							alt="Jardin paysager écologique"
@@ -68,19 +71,19 @@ export function ValuesSection({ data }: ValuesSectionProps) {
 							className="object-cover"
 							sizes="(max-width: 1024px) 100vw, 50vw"
 						/>
-					</div>
+					</AnimatedSection>
 
 					{/* Right Side - Content */}
 					<div className="space-y-8">
 						{/* Header */}
-						<div>
+						<AnimatedSection variants={fadeInUp}>
 							<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 uppercase tracking-tight">
 								{parseTitleWithBold(data.sectionTitle)}
 							</h2>
-						</div>
+						</AnimatedSection>
 
 						{/* Values Grid */}
-						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+						<AnimatedGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							{values.map(value => {
 								const Icon = iconMap[value.icon] || Leaf
 								return (
@@ -99,7 +102,7 @@ export function ValuesSection({ data }: ValuesSectionProps) {
 									</div>
 								)
 							})}
-						</div>
+						</AnimatedGrid>
 					</div>
 				</div>
 			</div>

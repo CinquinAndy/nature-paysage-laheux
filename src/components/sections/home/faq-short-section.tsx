@@ -2,9 +2,11 @@
 
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { AnimatedSection } from '@/components/animation/animated-section'
 import { AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { RichText } from '@/components/ui/rich-text'
+import { fadeInLeft, fadeInRight } from '@/lib/animation/variants'
 import type { Faq, Homepage } from '@/payload-types'
 
 interface Props {
@@ -18,7 +20,7 @@ export function FaqShortSection({ data, faqItems }: Props) {
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid lg:grid-cols-2 gap-10 lg:gap-20">
 					{/* Left Column - Intro */}
-					<div className="flex gap-10 flex-col">
+					<AnimatedSection variants={fadeInLeft} className="flex gap-10 flex-col">
 						<div className="flex gap-4 flex-col">
 							<div className="flex gap-2 flex-col">
 								<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-xl text-left">
@@ -37,19 +39,21 @@ export function FaqShortSection({ data, faqItems }: Props) {
 								</Button>
 							</div>
 						</div>
-					</div>
+					</AnimatedSection>
 
 					{/* Right Column - Accordion */}
-					<AccordionRoot type="single" collapsible className="w-full">
-						{faqItems.map(item => (
-							<AccordionItem key={item.id} value={item.id.toString()}>
-								<AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-								<AccordionContent>
-									<RichText content={item.answer} className="text-muted-foreground" />
-								</AccordionContent>
-							</AccordionItem>
-						))}
-					</AccordionRoot>
+					<AnimatedSection variants={fadeInRight} delay={0.2} className="w-full">
+						<AccordionRoot type="single" collapsible className="w-full">
+							{faqItems.map(item => (
+								<AccordionItem key={item.id} value={item.id.toString()}>
+									<AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+									<AccordionContent>
+										<RichText content={item.answer} className="text-muted-foreground" />
+									</AccordionContent>
+								</AccordionItem>
+							))}
+						</AccordionRoot>
+					</AnimatedSection>
 				</div>
 			</div>
 		</section>

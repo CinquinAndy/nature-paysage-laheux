@@ -15,7 +15,7 @@ export function ServiceCard({ service, showImage = true }: ServiceCardProps) {
 	const imageUrl = getMediaUrl(service.image)
 
 	return (
-		<Card className="relative min-h-[500px] h-full flex flex-col overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-transparent border-none z-20">
+		<Card className="relative min-h-[500px] h-full flex flex-col overflow-hidden group hover:scale-[1.02] hover:shadow-lg transition-all duration-300 bg-transparent border-none z-20">
 			{showImage && imageUrl && (
 				<Image
 					src={imageUrl}

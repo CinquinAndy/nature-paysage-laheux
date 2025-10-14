@@ -1,6 +1,7 @@
 import { CheckCircle2, XCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AnimatedGrid } from '@/components/animation/animated-grid'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { ServiceCard } from '@/components/sections/shared/service-card'
 import { TaxCreditEligibility } from '@/components/sections/shared/tax-credit-eligibility'
@@ -70,17 +71,13 @@ export default async function PrestationsPage() {
 			{/* Services Grid */}
 			<section className="py-16 md:py-24">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{services.map(service => (
-							<Link
-								key={service.id}
-								href={`/prestations/${service.slug}`}
-								className="hover:scale-105 transition-all duration-300 cursor-pointer"
-							>
+							<Link key={service.id} href={`/prestations/${service.slug}`} className="cursor-pointer">
 								<ServiceCard service={service} showImage={true} />
 							</Link>
 						))}
-					</div>
+					</AnimatedGrid>
 				</div>
 			</section>
 

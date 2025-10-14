@@ -1,7 +1,10 @@
 import { Award, Check, Heart, Leaf, type LucideIcon, Shield, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { AnimatedGrid } from '@/components/animation/animated-grid'
+import { AnimatedSection } from '@/components/animation/animated-section'
 import { Button } from '@/components/ui/button'
+import { fadeInLeft, fadeInRight, fadeInUp, scaleIn } from '@/lib/animation/variants'
 import { getMediaUrl } from '@/lib/payload'
 import { cn } from '@/lib/utils'
 import type { Homepage } from '@/payload-types'
@@ -68,7 +71,7 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 				{/* Section Header */}
-				<div className="max-w-3xl mb-16">
+				<AnimatedSection variants={fadeInUp} className="max-w-3xl mb-16">
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">{parseTitleWithBold(data.title)}</h2>
 					{data.introText && <p className="text-lg text-muted-foreground leading-relaxed">{data.introText}</p>}
 					{data.quote && (
@@ -76,13 +79,13 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 							<strong className="text-foreground">{data.quote}</strong>
 						</p>
 					)}
-				</div>
+				</AnimatedSection>
 
 				{/* Main Content Grid */}
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
 					{/* Left: Layered Image Mockup */}
 					{imageUrl && (
-						<div className="relative h-[400px] lg:h-[500px]">
+						<AnimatedSection variants={fadeInLeft} className="relative h-[400px] lg:h-[500px]">
 							{/* Secondary Image (Background) */}
 							<div className="absolute top-0 right-0 w-[85%] h-[70%] rounded-2xl overflow-hidden shadow-2xl">
 								<Image
@@ -114,11 +117,11 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 									</div>
 								)}
 							</div>
-						</div>
+						</AnimatedSection>
 					)}
 
 					{/* Right: Philosophy Cards */}
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+					<AnimatedGrid className="grid grid-cols-1 sm:grid-cols-2 gap-0">
 						{philosophyPoints.map((point, index) => {
 							const Icon = iconMap[point.icon] || Leaf
 							return (
@@ -162,13 +165,13 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 								</div>
 							)
 						})}
-					</div>
+					</AnimatedGrid>
 				</div>
 
 				{/* Two Columns: What I Do / What I Don't */}
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 mb-12">
 					{/* What I Do */}
-					<div className="flex gap-4 flex-col items-start">
+					<AnimatedSection variants={fadeInLeft} className="flex gap-4 flex-col items-start">
 						<div className="flex gap-2 flex-col">
 							<h3 className="text-3xl md:text-4xl tracking-tighter font-semibold">Ce que je privilégie</h3>
 						</div>
@@ -183,10 +186,10 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 								</div>
 							))}
 						</div>
-					</div>
+					</AnimatedSection>
 
 					{/* What I Don't */}
-					<div className="flex gap-4 flex-col items-start">
+					<AnimatedSection variants={fadeInRight} delay={0.2} className="flex gap-4 flex-col items-start">
 						<div className="flex gap-2 flex-col">
 							<h3 className="text-3xl md:text-4xl tracking-tighter font-semibold">Ce que je refuse</h3>
 						</div>
@@ -201,12 +204,12 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 								</div>
 							))}
 						</div>
-					</div>
+					</AnimatedSection>
 				</div>
 
 				{/* Engagement Banner */}
 				{data.engagementBanner && (
-					<section className="overflow-hidden pt-0 md:pt-0">
+					<AnimatedSection variants={scaleIn} as="section" className="overflow-hidden pt-0 md:pt-0">
 						<div className="relative mx-auto flex container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
 							{/* Title */}
 							{data.engagementBanner.title && (
@@ -232,7 +235,7 @@ export function PhilosophySection({ data }: PhilosophySectionProps) {
 							{/* Glow Effect */}
 							<div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
 						</div>
-					</section>
+					</AnimatedSection>
 				)}
 			</div>
 		</section>

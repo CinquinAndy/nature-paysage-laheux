@@ -1,7 +1,9 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { AnimatedSection } from '@/components/animation/animated-section'
 import { Button } from '@/components/ui/button'
 import { Gallery4, type Gallery4Item } from '@/components/ui/gallery4'
+import { scaleIn } from '@/lib/animation/variants'
 import { getMediaUrl } from '@/lib/payload/media-helpers'
 import type { Homepage, Realisation } from '@/payload-types'
 
@@ -33,14 +35,14 @@ export function RealisationsPreviewSection({ data, realisations }: Props) {
 				/>
 
 				{/* CTA */}
-				<div className="text-center ">
+				<AnimatedSection variants={scaleIn} className="text-center ">
 					<Button size="lg" variant="outline" asChild>
 						<Link href={data?.ctaUrl || '/realisations'}>
 							{data?.ctaLabel || 'Voir Toutes Mes Réalisations'}
 							<ArrowRight className="ml-2 h-5 w-5" />
 						</Link>
 					</Button>
-				</div>
+				</AnimatedSection>
 			</div>
 		</section>
 	)
