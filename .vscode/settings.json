@@ -43,5 +43,6 @@
   },
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
+  "svg.preview.background": "black"
 }
