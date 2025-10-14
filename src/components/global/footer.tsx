@@ -21,14 +21,20 @@ export async function Footer() {
 					{/* Column 1: About */}
 					<div className="space-y-4">
 						<div className="flex items-center gap-2">
-							<Image src="/logo.svg" alt="Nature & Paysage Laheux" width={40} height={40} />
+							<Image
+								src="/logo.svg"
+								alt={contactInfo.company?.name || 'Nature & Paysage Laheux'}
+								width={40}
+								height={40}
+							/>
 							<div>
-								<h3 className="font-bold text-lg">Jean-Luc Laheux</h3>
+								<h3 className="font-bold text-lg">{contactInfo.company?.representative || 'Jean-Luc Laheux'}</h3>
 								<p className="text-sm text-muted-foreground">Eco-Paysagiste</p>
 							</div>
 						</div>
 						<p className="text-sm text-muted-foreground">
-							{contactInfo.address?.city}, {contactInfo.address?.region}
+							{contactInfo.address?.city}
+							{contactInfo.address?.region && `, ${contactInfo.address.region}`}
 						</p>
 						<p className="text-sm text-muted-foreground">
 							Services à la personne
