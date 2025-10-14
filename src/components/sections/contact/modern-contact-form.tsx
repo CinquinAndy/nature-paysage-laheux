@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from 'lucide-react'
+import { motion } from 'motion/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -10,26 +10,77 @@ import { AddressAutocomplete } from '@/components/ui/address-autocomplete'
 import { Button } from '@/components/ui/button'
 import type { ContactPage, SiteSetting } from '@/payload-types'
 
-const containerVariants = {
-	hidden: { opacity: 0 },
+// Animation pour le titre et sous-titre
+const headerVariants = {
+	hidden: { opacity: 0, y: 20 },
 	visible: {
 		opacity: 1,
+		y: 0,
 		transition: {
-			staggerChildren: 0.1,
+			duration: 0.7,
+			ease: [0.22, 1, 0.36, 1],
 		},
 	},
 }
 
-const itemVariants = {
+// Container pour stagger les champs du formulaire
+const formContainerVariants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.12, // Plus espacé
+			delayChildren: 0.2, // Délai avant de commencer
+		},
+	},
+}
+
+// Animation pour chaque champ du formulaire
+const fieldVariants = {
 	hidden: { opacity: 0, y: 20 },
 	visible: {
 		opacity: 1,
 		y: 0,
 		transition: {
 			duration: 0.5,
-			ease: 'easeOut' as const,
+			ease: [0.22, 1, 0.36, 1],
 		},
 	},
+}
+
+// Animation pour la sidebar (arrive depuis la droite)
+const sidebarContainerVariants = {
+	hidden: { opacity: 0, x: 30 },
+	visible: {
+		opacity: 1,
+		x: 0,
+		transition: {
+			duration: 0.7,
+			ease: [0.22, 1, 0.36, 1],
+			staggerChildren: 0.1,
+			delayChildren: 0.3,
+		},
+	},
+}
+
+// Animation pour chaque item de la sidebar
+const sidebarItemVariants = {
+	hidden: { opacity: 0, x: 20 },
+	visible: {
+		opacity: 1,
+		x: 0,
+		transition: {
+			duration: 0.5,
+			ease: [0.22, 1, 0.36, 1],
+		},
+	},
+}
+
+// Viewport config pour déclencher l'animation quand visible
+const viewportConfig = {
+	once: true,
+	margin: '-50px', // Trigger un peu avant que l'élément soit visible
+	amount: 0.1,
 }
 
 interface ModernContactFormProps {
@@ -126,13 +177,15 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 				<rect fill="url(#contact-pattern)" width="100%" height="100%" strokeWidth={0} />
 			</svg>
 
-			<motion.div
-				className="mx-auto max-w-xl lg:max-w-6xl"
-				initial="hidden"
-				animate="visible"
-				variants={containerVariants}
-			>
-				<motion.div variants={itemVariants} className="text-center lg:text-left">
+			<div className="mx-auto max-w-xl lg:max-w-6xl">
+				{/* Header avec animation */}
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					viewport={viewportConfig}
+					variants={headerVariants}
+					className="text-center lg:text-left"
+				>
 					<h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
 						{formSection?.title || 'Parlons de Votre Jardin'}
 					</h2>
@@ -143,11 +196,18 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 				</motion.div>
 
 				<div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
-					{/* Form */}
-					<motion.form variants={itemVariants} onSubmit={handleSubmit} className="lg:flex-auto">
+					{/* Form avec stagger animation */}
+					<motion.form
+						onSubmit={handleSubmit}
+						className="lg:flex-auto"
+						initial="hidden"
+						whileInView="visible"
+						viewport={viewportConfig}
+						variants={formContainerVariants}
+					>
 						<div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 							{/* Name */}
-							<motion.div variants={itemVariants} className="sm:col-span-2">
+							<motion.div variants={fieldVariants} className="sm:col-span-2">
 								<label htmlFor="name" className="block text-sm font-semibold text-foreground">
 									Nom complet *
 								</label>
@@ -172,7 +232,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</motion.div>
 
 							{/* Email */}
-							<motion.div variants={itemVariants}>
+							<motion.div variants={fieldVariants}>
 								<label htmlFor="email" className="block text-sm font-semibold text-foreground">
 									Email *
 								</label>
@@ -197,7 +257,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</motion.div>
 
 							{/* Phone */}
-							<motion.div variants={itemVariants}>
+							<motion.div variants={fieldVariants}>
 								<label htmlFor="phone" className="block text-sm font-semibold text-foreground">
 									Téléphone *
 								</label>
@@ -222,7 +282,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</motion.div>
 
 							{/* Address */}
-							<motion.div variants={itemVariants}>
+							<motion.div variants={fieldVariants}>
 								<label htmlFor="address" className="block text-sm font-semibold text-foreground">
 									Adresse du jardin
 								</label>
@@ -251,7 +311,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</motion.div>
 
 							{/* Garden Size */}
-							<motion.div variants={itemVariants}>
+							<motion.div variants={fieldVariants}>
 								<label htmlFor="gardenSize" className="block text-sm font-semibold text-foreground">
 									Surface du jardin
 								</label>
@@ -280,7 +340,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</motion.div>
 
 							{/* Message */}
-							<motion.div variants={itemVariants} className="sm:col-span-2">
+							<motion.div variants={fieldVariants} className="sm:col-span-2">
 								<label htmlFor="message" className="block text-sm font-semibold text-foreground">
 									Votre message *
 								</label>
@@ -305,7 +365,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</motion.div>
 						</div>
 
-						<motion.div variants={itemVariants} className="mt-10">
+						<motion.div variants={fieldVariants} className="mt-10">
 							<Button
 								type="submit"
 								size="lg"
@@ -323,22 +383,36 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 							</Button>
 						</motion.div>
 
-						<motion.p variants={itemVariants} className="mt-4 text-sm text-muted-foreground">
+						<motion.p variants={fieldVariants} className="mt-4 text-sm text-muted-foreground">
 							{formSection?.privacyText ||
 								'En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande. Réponse sous 48h maximum.'}
 						</motion.p>
 					</motion.form>
 
-					{/* Sidebar Info */}
-					<motion.div variants={itemVariants} className="lg:mt-6 lg:w-80 lg:flex-none">
+					{/* Sidebar Info avec animation séparée */}
+					<motion.div
+						className="lg:mt-6 lg:w-80 lg:flex-none"
+						initial="hidden"
+						whileInView="visible"
+						viewport={viewportConfig}
+						variants={sidebarContainerVariants}
+					>
 						{/* Contact Info Card */}
-						<div className="rounded-2xl bg-card border border-border p-8 shadow-lg">
+						<motion.div
+							className="rounded-2xl bg-card border border-border p-8 shadow-lg"
+							whileHover={{ scale: 1.02 }}
+							transition={{ duration: 0.3 }}
+						>
 							<div className="space-y-6">
-								<div className="flex items-start gap-4">
+								<motion.div variants={sidebarItemVariants} className="flex items-start gap-4">
 									<div className="flex-shrink-0">
-										<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+										<motion.div
+											className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+											whileHover={{ scale: 1.1, rotate: 5 }}
+											transition={{ duration: 0.2 }}
+										>
 											<Phone className="h-6 w-6 text-primary" />
-										</div>
+										</motion.div>
 									</div>
 									<div>
 										<p className="text-sm font-semibold text-foreground">Téléphone</p>
@@ -350,13 +424,17 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 										</Link>
 										<p className="text-xs text-muted-foreground mt-1">Le moyen le plus rapide</p>
 									</div>
-								</div>
+								</motion.div>
 
-								<div className="flex items-start gap-4">
+								<motion.div variants={sidebarItemVariants} className="flex items-start gap-4">
 									<div className="flex-shrink-0">
-										<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+										<motion.div
+											className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+											whileHover={{ scale: 1.1, rotate: 5 }}
+											transition={{ duration: 0.2 }}
+										>
 											<Mail className="h-6 w-6 text-primary" />
-										</div>
+										</motion.div>
 									</div>
 									<div>
 										<p className="text-sm font-semibold text-foreground">Email</p>
@@ -368,49 +446,62 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 										</Link>
 										<p className="text-xs text-muted-foreground mt-1">Réponse sous 48h</p>
 									</div>
-								</div>
+								</motion.div>
 
-								<div className="flex items-start gap-4">
+								<motion.div variants={sidebarItemVariants} className="flex items-start gap-4">
 									<div className="flex-shrink-0">
-										<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+										<motion.div
+											className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+											whileHover={{ scale: 1.1, rotate: 5 }}
+											transition={{ duration: 0.2 }}
+										>
 											<MapPin className="h-6 w-6 text-primary" />
-										</div>
+										</motion.div>
 									</div>
 									<div>
 										<p className="text-sm font-semibold text-foreground">Adresse</p>
 										<p className="text-sm text-muted-foreground">{fullAddress}</p>
 									</div>
-								</div>
+								</motion.div>
 
-								<div className="flex items-start gap-4">
+								<motion.div variants={sidebarItemVariants} className="flex items-start gap-4">
 									<div className="flex-shrink-0">
-										<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+										<motion.div
+											className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+											whileHover={{ scale: 1.1, rotate: 5 }}
+											transition={{ duration: 0.2 }}
+										>
 											<Clock className="h-6 w-6 text-primary" />
-										</div>
+										</motion.div>
 									</div>
 									<div>
 										<p className="text-sm font-semibold text-foreground">Horaires</p>
 										<p className="text-sm text-muted-foreground">Lundi - Vendredi</p>
 										<p className="text-sm text-muted-foreground">{contactInfo.hours?.weekday}</p>
 									</div>
-								</div>
+								</motion.div>
 							</div>
 
 							{/* Benefits */}
 							<div className="mt-8 space-y-3 pt-8 border-t border-border">
-								{benefits?.map(item =>
+								{benefits?.map((item, index) =>
 									item.benefit ? (
-										<div key={item.id} className="flex items-center gap-3">
+										<motion.div
+											key={item.id}
+											variants={sidebarItemVariants}
+											custom={index}
+											className="flex items-center gap-3"
+										>
 											<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
 											<span className="text-sm text-muted-foreground">{item.benefit}</span>
-										</div>
+										</motion.div>
 									) : null
 								)}
 							</div>
-						</div>
+						</motion.div>
 					</motion.div>
 				</div>
-			</motion.div>
+			</div>
 		</div>
 	)
 }

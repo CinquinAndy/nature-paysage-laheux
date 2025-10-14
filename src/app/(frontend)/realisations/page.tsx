@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AnimatedGrid } from '@/components/animation/animated-grid'
+import { AnimatedSection } from '@/components/animation/animated-section'
 import { PageHero } from '@/components/sections/shared/page-hero'
 import { RealisationCard } from '@/components/sections/shared/realisation-card'
 import { CtaShader } from '@/components/ui/cta-shader'
+import { scaleIn } from '@/lib/animation/variants'
 import { getMediaUrl, getRealisations, getRealisationsPageData } from '@/lib/payload'
 import { generateSEOMetadata } from '@/lib/seo'
 
@@ -30,31 +33,27 @@ export default async function RealisationsListPage() {
 			{/* Introduction */}
 			<section className="py-12 md:py-16">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="max-w-3xl mx-auto text-center">
+					<AnimatedSection variants={scaleIn} className="max-w-3xl mx-auto text-center">
 						{pageData.introduction!.paragraph1 && (
 							<p className="text-lg text-muted-foreground leading-relaxed">{pageData.introduction!.paragraph1}</p>
 						)}
 						{pageData.introduction!.paragraph2 && (
 							<p className="text-base text-muted-foreground mt-4">{pageData.introduction!.paragraph2}</p>
 						)}
-					</div>
+					</AnimatedSection>
 				</div>
 			</section>
 
 			{/* Gallery */}
 			<section className="py-8 md:py-12">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{realisations.map(realisation => (
-							<Link
-								key={realisation.id}
-								href={`/realisations/${realisation.slug}`}
-								className="hover:scale-105 transition-all duration-300 cursor-pointer"
-							>
+							<Link key={realisation.id} href={`/realisations/${realisation.slug}`} className="cursor-pointer">
 								<RealisationCard realisation={realisation} />
 							</Link>
 						))}
-					</div>
+					</AnimatedGrid>
 				</div>
 			</section>
 

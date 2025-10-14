@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react'
 import type { ReactNode } from 'react'
-import { heroText, imageReveal } from '@/lib/animation/variants'
+import { fadeIn, heroText } from '@/lib/animation/variants'
 
 interface AnimatedPageHeroProps {
 	imageElement: ReactNode
@@ -13,16 +13,18 @@ interface AnimatedPageHeroProps {
 /**
  * Composant spécifique pour animer le PageHero
  * Anime l'image, le titre et le bouton d'action avec des délais appropriés
+ * Note: On utilise fadeIn au lieu de imageReveal pour éviter le scale qui casse le blob mask
  */
 export function AnimatedPageHero({ imageElement, titleElement, actionElement }: AnimatedPageHeroProps) {
 	return (
 		<div className="relative w-screen h-screen">
 			<motion.div
+				className="absolute inset-0"
 				initial="hidden"
 				animate="visible"
-				variants={imageReveal}
+				variants={fadeIn}
 				style={{
-					willChange: 'opacity, transform',
+					willChange: 'opacity',
 				}}
 			>
 				{imageElement}

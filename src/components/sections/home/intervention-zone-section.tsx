@@ -4,8 +4,10 @@ import { motion, useReducedMotion } from 'framer-motion'
 import type * as GeoJSON from 'geojson'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { AnimatedSection } from '@/components/animation/animated-section'
 import { Button } from '@/components/ui/button'
 import { CityCard } from '@/components/ui/grid-feature-cards'
+import { fadeInUp, scaleIn } from '@/lib/animation/variants'
 import { COMMUNE_COLORS } from '@/lib/data/commune-colors'
 import { COMMUNES_CONTOURS } from '@/lib/data/communes-contours'
 import type { Homepage } from '@/payload-types'
@@ -148,37 +150,41 @@ export function InterventionZoneSection({ data }: Props) {
 					</div>
 
 					{/* CTA Card */}
-					<section className="overflow-hidden pt-0 md:pt-0">
+					<AnimatedSection variants={scaleIn} as="section" className="overflow-hidden pt-0 md:pt-0">
 						<div className="relative mx-auto flex container flex-col items-center gap-6 px-8 py-12 text-center sm:gap-8 md:py-24">
 							{/* Title */}
-							<h2 className="text-3xl font-semibold sm:text-5xl opacity-0 animate-fade-in-up delay-200">
-								{data?.ctaSection?.title || "Votre commune n'est pas dans la liste ?"}
-							</h2>
+							<AnimatedSection variants={fadeInUp}>
+								<h2 className="text-3xl font-semibold sm:text-5xl">
+									{data?.ctaSection?.title || "Votre commune n'est pas dans la liste ?"}
+								</h2>
+							</AnimatedSection>
 
 							{/* Description */}
-							<p className="text-muted-foreground opacity-0 animate-fade-in-up delay-300">
-								{data?.ctaSection?.description || (
-									<>
-										Contactez-moi pour vérifier si j'interviens dans votre secteur. <br />
-										Basé à Monnières, je peux étendre ma zone d'intervention selon vos besoins et la nature de votre
-										projet.
-									</>
-								)}
-							</p>
+							<AnimatedSection variants={fadeInUp} delay={0.1}>
+								<p className="text-muted-foreground">
+									{data?.ctaSection?.description || (
+										<>
+											Contactez-moi pour vérifier si j'interviens dans votre secteur. <br />
+											Basé à Monnières, je peux étendre ma zone d'intervention selon vos besoins et la nature de votre
+											projet.
+										</>
+									)}
+								</p>
+							</AnimatedSection>
 
 							{/* Action Buttons */}
-							<div className="flex flex-col sm:flex-row gap-3 opacity-0 animate-fade-in-up delay-500">
+							<AnimatedSection variants={fadeInUp} delay={0.2} className="flex flex-col sm:flex-row gap-3">
 								<Button variant="default" size="lg" asChild>
 									<Link href={data?.ctaSection?.ctaUrl || '/contact'}>
 										{data?.ctaSection?.ctaLabel || 'Contactez-moi'}
 									</Link>
 								</Button>
-							</div>
+							</AnimatedSection>
 
 							{/* Glow Effect */}
-							<div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow opacity-0 animate-scale-in delay-700" />
+							<div className="fade-top-lg pointer-events-none absolute inset-0 rounded-2xl shadow-glow" />
 						</div>
-					</section>
+					</AnimatedSection>
 				</div>
 			</div>
 		</section>
