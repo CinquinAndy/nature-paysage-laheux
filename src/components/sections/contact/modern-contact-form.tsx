@@ -18,7 +18,7 @@ const headerVariants = {
 		y: 0,
 		transition: {
 			duration: 0.7,
-			ease: [0.22, 1, 0.36, 1],
+			ease: [0.22, 1, 0.36, 1] as const,
 		},
 	},
 }
@@ -43,7 +43,7 @@ const fieldVariants = {
 		y: 0,
 		transition: {
 			duration: 0.5,
-			ease: [0.22, 1, 0.36, 1],
+			ease: [0.22, 1, 0.36, 1] as const,
 		},
 	},
 }
@@ -56,7 +56,7 @@ const sidebarContainerVariants = {
 		x: 0,
 		transition: {
 			duration: 0.7,
-			ease: [0.22, 1, 0.36, 1],
+			ease: [0.22, 1, 0.36, 1] as const,
 			staggerChildren: 0.1,
 			delayChildren: 0.3,
 		},
@@ -71,7 +71,7 @@ const sidebarItemVariants = {
 		x: 0,
 		transition: {
 			duration: 0.5,
-			ease: [0.22, 1, 0.36, 1],
+			ease: [0.22, 1, 0.36, 1] as const,
 		},
 	},
 }
