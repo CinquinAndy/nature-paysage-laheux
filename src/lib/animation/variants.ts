@@ -278,13 +278,13 @@ export const pageTransition: Variants = {
 // Configuration viewport par défaut pour whileInView
 export const defaultViewportConfig = {
 	once: true,
-	margin: '-80px',
-	amount: 0.2 as const,
+	margin: '0px', // Déclencher dès que visible (meilleur pour mobile)
+	amount: 0.1 as const, // Seulement 10% visible nécessaire (meilleur pour mobile)
 }
 
 // Configuration viewport pour les éléments en bas de page
 export const bottomViewportConfig = {
 	once: true,
-	margin: '-50px',
-	amount: 0.1 as const,
+	margin: '0px',
+	amount: 0.05 as const, // Encore plus permissif pour les éléments en bas
 }
