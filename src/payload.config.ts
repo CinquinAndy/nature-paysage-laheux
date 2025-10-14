@@ -27,6 +27,11 @@ const dirname = path.dirname(filename)
 export default buildConfig({
 	serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
 	admin: {
+		meta: {
+			title: 'Nature Paysage Laheux - Administration',
+			description: 'Nature Paysage Laheux - Administration',
+			icons: [{ rel: 'icon', url: '/web-app-manifest-192x192.png', type: 'image/png' }],
+		},
 		user: Users.slug,
 		importMap: {
 			baseDir: path.resolve(dirname),
