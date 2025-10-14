@@ -328,4 +328,12 @@
 	.map-minimal-style {
 		filter: grayscale(0.3) contrast(1.1);
 	}
+
+	/* Responsive blob mask - use vertical blob on mobile, horizontal on desktop */
+	@media (min-width: 768px) {
+		.blob-mask-responsive {
+			mask-image: var(--blob-mask-desktop) !important;
+			-webkit-mask-image: var(--blob-mask-desktop) !important;
+		}
+	}
 }
