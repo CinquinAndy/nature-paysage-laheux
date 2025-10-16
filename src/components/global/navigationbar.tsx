@@ -19,10 +19,9 @@ export const NavigationBar = () => {
 
 	const navItems = [
 		{ name: 'Accueil', link: '/' },
-		{ name: 'Ce Que Je Propose', link: '/prestations' },
-		{ name: 'Mes Réalisations', link: '/realisations' },
+		{ name: 'Ce que je propose', link: '/prestations' },
+		{ name: 'Mes réalisations', link: '/realisations' },
 		{ name: 'FAQ', link: '/faq' },
-		{ name: 'Contact', link: '/contact' },
 	]
 
 	return (
@@ -33,7 +32,7 @@ export const NavigationBar = () => {
 				<NavItems items={navItems} />
 				<div className="flex items-center gap-4">
 					<NavbarButton variant="primary" href="/contact">
-						Devis Gratuit
+						Me contacter
 					</NavbarButton>
 				</div>
 			</NavBody>
@@ -63,7 +62,7 @@ export const NavigationBar = () => {
 							href="/contact"
 							onClick={() => setIsMobileMenuOpen(false)}
 						>
-							Devis Gratuit
+							Me contacter
 						</NavbarButton>
 					</div>
 				</MobileNavMenu>
