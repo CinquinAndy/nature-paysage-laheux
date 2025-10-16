@@ -2,6 +2,7 @@
 
 import { Check } from 'lucide-react'
 import { motion } from 'motion/react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatedSection } from '@/components/animation/animated-section'
 import { Button } from '@/components/ui/button'
@@ -31,7 +32,10 @@ export function CtaShader({
 	items = defaultItems,
 }: CtaShaderProps) {
 	return (
-		<section className="relative px-4 md:px-0 py-32 overflow-hidden bg-sidebar-accent">
+		<section className="relative px-4 md:px-0 py-32 overflow-hidden bg-sidebar-accent z-0">
+			<div className="absolute inset-0 -z-10 top-0 left-0  mix-blend-soft-light">
+				<Image src="/bg_alt_2.webp" alt="Background" fill className="object-cover" />
+			</div>
 			{/* Enhanced Multi-Layer Shader Background */}
 			{/* <EnhancedShaderBackground variant={shaderVariant} colors={shaderColors} /> */}
 
