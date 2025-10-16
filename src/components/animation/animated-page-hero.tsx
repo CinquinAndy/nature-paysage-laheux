@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
+import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { fadeIn, heroText } from '@/lib/animation/variants'
 
@@ -19,7 +20,7 @@ export function AnimatedPageHero({ imageElement, titleElement, actionElement }: 
 	return (
 		<div className="relative w-screen h-screen">
 			<motion.div
-				className="absolute inset-0"
+				className="absolute inset-0 z-0"
 				initial="hidden"
 				animate="visible"
 				variants={fadeIn}

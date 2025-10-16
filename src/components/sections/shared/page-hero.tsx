@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { ReactNode } from 'react'
 import { AnimatedPageHero } from '@/components/animation/animated-page-hero'
 import { BlobMaskedImage } from '@/components/ui/blob-masked-image'
@@ -42,7 +43,10 @@ export function PageHero({ title, imageSrc, imageAlt, action }: PageHeroProps) {
 	)
 
 	return (
-		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-2xl md:rounded-b-4xl">
+		<section className="relative w-full h-full min-h-screen overflow-hidden bg-sidebar-accent rounded-b-2xl md:rounded-b-4xl z-0">
+			<div className="absolute inset-0 -z-10 top-0 left-0  mix-blend-soft-light">
+				<Image src="/bg_alt.webp" alt="Background" fill className="object-cover" />
+			</div>
 			<div className="px-4 sm:px-6 lg:px-8 h-full w-full flex items-center justify-center md:mt-16">
 				<div className="relative w-full h-full flex items-center">
 					<AnimatedPageHero imageElement={imageElement} titleElement={titleElement} actionElement={action} />
