@@ -33,7 +33,7 @@
 		"@radix-ui/react-tabs": "1.1.13",
 		"@react-email/components": "0.5.6",
 		"@tabler/icons-react": "3.35.0",
-		"@tailwindcss/postcss": "4.1.14",
+		"@tailwindcss/postcss": "4.1.15",
 		"ai": "5.0.76",
 		"class-variance-authority": "0.7.1",
 		"clsx": "2.1.1",
@@ -58,7 +58,7 @@
 		"sharp": "0.34.4",
 		"sonner": "2.0.7",
 		"tailwind-merge": "3.3.1",
-		"tailwindcss": "4.1.14",
+		"tailwindcss": "4.1.15",
 		"use-debounce": "10.0.6"
 	},
 	"devDependencies": {
