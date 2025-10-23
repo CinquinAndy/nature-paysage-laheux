@@ -131,5 +131,69 @@ export const COMMUNES_GEOJSON = {
 				],
 			},
 		},
+		{
+			type: 'Feature',
+			properties: { name: 'Saint-Hilaire-de-Clisson' },
+			geometry: {
+				type: 'Polygon',
+				coordinates: [
+					[
+						[-1.295, 47.055],
+						[-1.27, 47.055],
+						[-1.27, 47.079],
+						[-1.295, 47.079],
+						[-1.295, 47.055],
+					],
+				],
+			},
+		},
+		{
+			type: 'Feature',
+			properties: { name: 'Gétigné' },
+			geometry: {
+				type: 'Polygon',
+				coordinates: [
+					[
+						[-1.26, 47.06],
+						[-1.18, 47.06],
+						[-1.18, 47.1],
+						[-1.26, 47.1],
+						[-1.26, 47.06],
+					],
+				],
+			},
+		},
+		{
+			type: 'Feature',
+			properties: { name: 'Cugand' },
+			geometry: {
+				type: 'Polygon',
+				coordinates: [
+					[
+						[-1.29, 47.035],
+						[-1.215, 47.035],
+						[-1.215, 47.065],
+						[-1.29, 47.065],
+						[-1.29, 47.035],
+					],
+				],
+			},
+		},
+		{
+			type: 'Feature',
+			properties: { name: 'Boussay' },
+			geometry: {
+				type: 'Polygon',
+				coordinates: [
+					[
+						[-1.205, 47.04],
+						[-1.125, 47.04],
+						[-1.125, 47.07],
+						[-1.205, 47.07],
+						[-1.205, 47.04],
+					],
+				],
+			},
+		},
 	],
 }
