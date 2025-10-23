@@ -1,26 +1,23 @@
-import { serializeLexicalContent } from '@/lib/lexical/serializer'
+'use client'
+
+import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+import { RichText as PayloadRichText } from '@payloadcms/richtext-lexical/react'
 
 interface RichTextProps {
-	content: {
-		root: {
-			type: string
-			children: unknown[]
-			direction: ('ltr' | 'rtl') | null
-			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
-			indent: number
-			version: number
-		}
-		[k: string]: unknown
-	}
+	content: SerializedEditorState
 	className?: string
 }
 
 /**
  * RichText component for rendering Payload CMS Lexical content
- * Uses a custom serializer for full control over HTML output and styling
+ * Uses Payload's built-in RichText component + Tailwind Typography for clean, maintainable styling
  */
 export function RichText({ content, className = '' }: RichTextProps) {
 	if (!content) return null
 
-	return <div className={`rich-text-content ${className}`}>{serializeLexicalContent(content)}</div>
+	return (
+		<article className={`prose prose-nature prose-lg max-w-none ${className}`}>
+			<PayloadRichText data={content} />
+		</article>
+	)
 }
