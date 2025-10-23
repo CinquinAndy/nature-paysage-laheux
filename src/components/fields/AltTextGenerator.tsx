@@ -1,14 +1,16 @@
 'use client'
 
 import { useDocumentInfo } from '@payloadcms/ui'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from '../ui/button'
 
 const AltTextGenerator: React.FC = () => {
 	const [isGenerating, setIsGenerating] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 	const [success, setSuccess] = useState<string | null>(null)
+	const [generatedAlt, setGeneratedAlt] = useState<string | null>(null)
 	const { id } = useDocumentInfo()
+	const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
 	const handleGenerate = async () => {
 		if (!id) {
@@ -37,14 +39,9 @@ const AltTextGenerator: React.FC = () => {
 
 			// Show success message - generation is happening in background
 			setSuccess(
-				`✅ Génération lancée en arrière-plan pour "${data.filename}". Rafraîchissez la page dans ~10 secondes.`
+				`✅ Génération lancée en arrière-plan pour "${data.filename}". Le résultat apparaîtra automatiquement.`
 			)
 			setIsGenerating(false)
-
-			// Auto-reload after 10 seconds to show the generated alt text
-			setTimeout(() => {
-				window.location.reload()
-			}, 10000)
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An error occurred')
 			setIsGenerating(false)
