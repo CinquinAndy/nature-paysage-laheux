@@ -11,6 +11,9 @@ import { ValuesSection } from '@/components/sections/home/values-section'
 import { getFeaturedServices, getHomepageData, getHomepageFaq, getLatestRealisations } from '@/lib/payload'
 import { generateSEOMetadata } from '@/lib/seo'
 
+// ISR: Revalider cette page toutes les heures (3600 secondes)
+export const revalidate = 3600
+
 export async function generateMetadata(): Promise<Metadata> {
 	const homepage = await getHomepageData()
 

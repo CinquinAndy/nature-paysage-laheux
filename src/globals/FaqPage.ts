@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { revalidateGlobalAfterChange } from '@/hooks/revalidation'
 import { seoFields } from '@/lib/payload/seo-fields'
 
 export const FaqPage: GlobalConfig = {
@@ -6,6 +7,9 @@ export const FaqPage: GlobalConfig = {
 	label: 'Page FAQ',
 	access: {
 		read: () => true,
+	},
+	hooks: {
+		afterChange: [revalidateGlobalAfterChange],
 	},
 	fields: [
 		...seoFields,

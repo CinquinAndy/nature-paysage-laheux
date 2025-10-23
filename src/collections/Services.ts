@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidation'
 import { seoFields } from '@/lib/payload/seo-fields'
 
 export const Services: CollectionConfig = {
@@ -13,6 +14,10 @@ export const Services: CollectionConfig = {
 	},
 	access: {
 		read: () => true,
+	},
+	hooks: {
+		afterChange: [revalidateAfterChange],
+		afterDelete: [revalidateAfterDelete],
 	},
 	fields: [
 		...seoFields,

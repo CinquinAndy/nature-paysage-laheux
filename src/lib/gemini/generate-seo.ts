@@ -39,7 +39,7 @@ export async function generateSeoContent(context: PageContext): Promise<SeoConte
 		const prompt = buildSeoPrompt(context)
 
 		const { text } = await generateText({
-			model: google('gemini-2.5-flash'),
+			model: google('gemini-2.5-pro'),
 			prompt,
 			temperature: 0.7,
 		})

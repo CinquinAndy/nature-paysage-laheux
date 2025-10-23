@@ -14,6 +14,9 @@ import { parseLineBreaks } from '@/lib/utils'
 // Lazy load the image gallery modal
 const ImageGalleryModal = dynamic(() => import('@/components/ui/image-gallery-modal'))
 
+// ISR: Revalider cette page toutes les heures (3600 secondes)
+export const revalidate = 3600
+
 interface PrestationPageProps {
 	params: Promise<{
 		slug: string

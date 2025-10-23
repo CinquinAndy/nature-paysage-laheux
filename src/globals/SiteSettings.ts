@@ -1,10 +1,14 @@
 import type { GlobalConfig } from 'payload'
+import { revalidateGlobalAfterChange } from '@/hooks/revalidation'
 
 export const SiteSettings: GlobalConfig = {
 	slug: 'site-settings',
 	label: 'Paramètres du Site',
 	access: {
 		read: () => true,
+	},
+	hooks: {
+		afterChange: [revalidateGlobalAfterChange],
 	},
 	fields: [
 		// ===========================
