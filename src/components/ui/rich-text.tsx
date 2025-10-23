@@ -16,7 +16,7 @@ export function RichText({ content, className = '' }: RichTextProps) {
 	if (!content) return null
 
 	return (
-		<article className={`prose prose-nature prose-lg max-w-none ${className}`}>
+		<article className={`prose prose-nature max-w-none ${className}`}>
 			<PayloadRichText data={content} />
 		</article>
 	)
