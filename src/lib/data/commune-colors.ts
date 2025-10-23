@@ -22,11 +22,15 @@ export const COMMUNE_COLORS: Record<string, string> = {
 	// Clisson et environs - Roses/Corails très doux
 	'44043': '#fee2e2', // Clisson - Rose pêche très pâle
 	'44173': '#fef2f2', // Saint-Lumine - Rose presque blanc
+	'44165': '#fce7f3', // Saint-Hilaire-de-Clisson - Rose glacé très pâle
+	'44063': '#fff7ed', // Gétigné - Orange crème très clair
 
 	// Autres - Tons neutres très pâles
 	'44070': '#fce7f3', // La Haie-Fouassière - Rose glacé
 	'44088': '#f5f3ff', // Maisdon-sur-Sèvre - Lavande très pâle
 	'44002': '#fef9e7', // Aigrefeuille - Jaune crème très clair
+	'44022': '#f0fdf4', // Boussay - Vert menthe très pâle
+	'85076': '#fef3c7', // Cugand (Vendée) - Jaune miel très pâle
 }
 
 export function getCommuneColor(code: string): string {
