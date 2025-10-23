@@ -12,6 +12,55 @@ const AltTextGenerator: React.FC = () => {
 	const { id } = useDocumentInfo()
 	const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
+	// Cleanup polling on unmount
+	useEffect(() => {
+		return () => {
+			if (pollingIntervalRef.current) {
+				clearInterval(pollingIntervalRef.current)
+			}
+		}
+	}, [])
+
+	// Start polling for alt text generation
+	const startPolling = () => {
+		let attempts = 0
+		const maxAttempts = 30 // Poll for up to 30 seconds (30 * 1s)
+
+		pollingIntervalRef.current = setInterval(async () => {
+			attempts++
+
+			try {
+				const response = await fetch(`/api/forvoyez/check-status?mediaId=${id}`)
+				const data = await response.json()
+
+				if (data.hasAlt && data.alt) {
+					// Alt text has been generated!
+					setGeneratedAlt(data.alt)
+					setSuccess(`✅ Alt text généré : "${data.alt}"`)
+					setIsGenerating(false)
+
+					// Stop polling
+					if (pollingIntervalRef.current) {
+						clearInterval(pollingIntervalRef.current)
+						pollingIntervalRef.current = null
+					}
+				} else if (attempts >= maxAttempts) {
+					// Timeout - stop polling
+					setSuccess('⏱️ Génération en cours... Consultez les logs ou réessayez.')
+					setIsGenerating(false)
+
+					if (pollingIntervalRef.current) {
+						clearInterval(pollingIntervalRef.current)
+						pollingIntervalRef.current = null
+					}
+				}
+			} catch (err) {
+				console.error('Polling error:', err)
+				// Continue polling on error
+			}
+		}, 1000) // Poll every second
+	}
+
 	const handleGenerate = async () => {
 		if (!id) {
 			setError('Document not saved yet')
@@ -38,10 +87,10 @@ const AltTextGenerator: React.FC = () => {
 			}
 
 			// Show success message - generation is happening in background
-			setSuccess(
-				`✅ Génération lancée en arrière-plan pour "${data.filename}". Le résultat apparaîtra automatiquement.`
-			)
-			setIsGenerating(false)
+			setSuccess(`🔄 Génération en cours pour "${data.filename}"...`)
+
+			// Start polling to check when alt text is ready
+			startPolling()
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An error occurred')
 			setIsGenerating(false)
