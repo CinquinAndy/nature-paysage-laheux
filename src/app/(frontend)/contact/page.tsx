@@ -4,6 +4,9 @@ import { PageHero } from '@/components/sections/shared/page-hero'
 import { getContactPageData, getMediaUrl, getSiteSettings } from '@/lib/payload'
 import { generateSEOMetadata } from '@/lib/seo'
 
+// ISR: Revalider cette page toutes les heures (3600 secondes)
+export const revalidate = 3600
+
 export async function generateMetadata(): Promise<Metadata> {
 	const contactPage = await getContactPageData()
 

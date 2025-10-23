@@ -7,6 +7,9 @@ import { fadeInDown, fadeInLeft, fadeInUp } from '@/lib/animation/variants'
 import { getMediaUrl, getMentionsLegalesPageData } from '@/lib/payload'
 import { generateSEOMetadata } from '@/lib/seo'
 
+// ISR: Revalider cette page toutes les heures (3600 secondes)
+export const revalidate = 3600
+
 export async function generateMetadata(): Promise<Metadata> {
 	const mentionsLegalesPage = await getMentionsLegalesPageData()
 

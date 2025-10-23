@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidation'
 import { generateAltText } from '@/lib/forvoyez/generate-alt-text'
 
 export const Media: CollectionConfig = {
@@ -13,6 +14,7 @@ export const Media: CollectionConfig = {
 	},
 	hooks: {
 		afterChange: [
+			// Hook pour générer automatiquement le texte alternatif
 			async ({ doc, req, operation }) => {
 				// Only generate alt text for new uploads without alt text
 				if (operation === 'create' && (!doc.alt || doc.alt === '')) {
@@ -58,7 +60,10 @@ export const Media: CollectionConfig = {
 
 				return doc
 			},
+			// Hook pour revalider les pages après changement de média
+			revalidateAfterChange,
 		],
+		afterDelete: [revalidateAfterDelete],
 	},
 	fields: [
 		{
