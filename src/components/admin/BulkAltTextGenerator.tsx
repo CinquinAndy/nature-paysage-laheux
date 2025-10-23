@@ -6,13 +6,11 @@ const BulkAltTextGenerator: React.FC = () => {
 	const [isGenerating, setIsGenerating] = useState(false)
 	const [totalImages, setTotalImages] = useState<number | null>(null)
 	const [error, setError] = useState<string | null>(null)
-	const [isDone, setIsDone] = useState(false)
 
 	const handleBulkGenerate = async () => {
 		setIsGenerating(true)
 		setError(null)
 		setTotalImages(null)
-		setIsDone(false)
 
 		try {
 			const response = await fetch('/api/forvoyez/generate-all', {
@@ -30,7 +28,6 @@ const BulkAltTextGenerator: React.FC = () => {
 
 			// Generation happens in background - show immediate feedback
 			setTotalImages(data.total)
-			setIsDone(true)
 		} catch (err) {
 			setError(err instanceof Error ? err.message : 'An error occurred')
 		} finally {
