@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -130,6 +131,27 @@
 }
 
 @layer utilities {
+	/* Custom Prose Theme - Adapted to Nature Paysage Laheux brand colors */
+	.prose-nature {
+		/* Base text */
+		--tw-prose-body: oklch(0.3 0.0358 30.2042); /* foreground */
+		--tw-prose-headings: oklch(0.32 0.042 152.8); /* accent - vert foncé #344E41 */
+		--tw-prose-lead: oklch(0.4495 0.0486 39.211); /* muted-foreground */
+		--tw-prose-links: oklch(0.624 0.108 142.5); /* primary - vert moyen #90A955 */
+		--tw-prose-bold: oklch(0.32 0.042 152.8); /* accent - vert foncé */
+		--tw-prose-counters: oklch(0.624 0.108 142.5); /* primary */
+		--tw-prose-bullets: oklch(0.75 0.068 138.2); /* secondary - vert clair */
+		--tw-prose-hr: oklch(0.8805 0.0208 74.6428); /* border */
+		--tw-prose-quotes: oklch(0.32 0.042 152.8); /* accent */
+		--tw-prose-quote-borders: oklch(0.624 0.108 142.5); /* primary */
+		--tw-prose-captions: oklch(0.4495 0.0486 39.211); /* muted-foreground */
+		--tw-prose-code: oklch(0.32 0.042 152.8); /* accent */
+		--tw-prose-pre-code: oklch(0.98 0 0); /* white */
+		--tw-prose-pre-bg: oklch(0.32 0.042 152.8); /* accent */
+		--tw-prose-th-borders: oklch(0.8805 0.0208 74.6428); /* border */
+		--tw-prose-td-borders: oklch(0.937 0.0142 74.4218); /* muted */
+	}
+
 	.delay-100 {
 		animation-delay: 100ms;
 	}
