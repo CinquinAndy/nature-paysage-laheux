@@ -17,7 +17,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@ai-sdk/google": "2.0.45",
+		"@ai-sdk/google": "2.0.46",
 		"@paper-design/shaders-react": "0.0.68",
 		"@payloadcms/db-postgres": "3.68.2",
 		"@payloadcms/next": "3.68.2",
