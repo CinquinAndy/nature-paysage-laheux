@@ -63,8 +63,8 @@ importers:
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.1.18)
       ai:
-        specifier: 5.0.133
-        version: 5.0.133(zod@4.1.12)
+        specifier: 5.0.135
+        version: 5.0.135(zod@4.1.12)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -186,8 +186,8 @@ packages:
   '@acemir/cssom@0.9.28':
     resolution: {integrity: sha512-LuS6IVEivI75vKN8S04qRD+YySP0RmU/cV8UNukhQZvprxF+76Z43TNo/a08eCodaGhT1Us8etqS1ZRY9/Or0A==}
 
-  '@ai-sdk/gateway@2.0.39':
-    resolution: {integrity: sha512-ULnefGmRHG0/tRrf+dtDwgQYAttGi/TR0FmASAzTs1dtpeZp4Xoh1VyWrX3Z1bM3WDs9RM3ZeSE77kQT/jbfjw==}
+  '@ai-sdk/gateway@2.0.41':
+    resolution: {integrity: sha512-0YPxu3ybm6L8h0mclMP5Uyi2sT/06rEkd3LZWO0eYsamHmlev2HXKhm5GYPtaRVpIRgJE+HJglpL/Ww5aM8EJw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -2702,8 +2702,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@5.0.133:
-    resolution: {integrity: sha512-N6KnwSWKcXEWPnAri3anRuzRvcrvtDz1W1JG9CvMrQ0Xdp8Vu8ZToNW/eHt63CmrbmzTwVw/HaCtJuO+MYtS7A==}
+  ai@5.0.135:
+    resolution: {integrity: sha512-FH5xvP/V2YBmbZy/2Z+rDZ2+Ao/L2AH4H7OenJC4liXnMFoPjslRWP3BHdIyjcPnO3wTgwPlv+Nml4ikkf5Nbw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -4893,7 +4893,7 @@ snapshots:
 
   '@acemir/cssom@0.9.28': {}
 
-  '@ai-sdk/gateway@2.0.39(zod@4.1.12)':
+  '@ai-sdk/gateway@2.0.41(zod@4.1.12)':
     dependencies:
       '@ai-sdk/provider': 2.0.1
       '@ai-sdk/provider-utils': 3.0.21(zod@4.1.12)
@@ -7859,9 +7859,9 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@5.0.133(zod@4.1.12):
+  ai@5.0.135(zod@4.1.12):
     dependencies:
-      '@ai-sdk/gateway': 2.0.39(zod@4.1.12)
+      '@ai-sdk/gateway': 2.0.41(zod@4.1.12)
       '@ai-sdk/provider': 2.0.1
       '@ai-sdk/provider-utils': 3.0.21(zod@4.1.12)
       '@opentelemetry/api': 1.9.0
