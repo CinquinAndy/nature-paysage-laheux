@@ -12,8 +12,8 @@ importers:
         specifier: 2.0.62
         version: 2.0.62(zod@4.1.12)
       '@paper-design/shaders-react':
-        specifier: 0.0.68
-        version: 0.0.68(@types/react@19.2.14)(react@19.2.4)
+        specifier: 0.0.72
+        version: 0.0.72(@types/react@19.2.14)(react@19.2.4)
       '@payloadcms/db-postgres':
         specifier: 3.79.0
         version: 3.79.0(@opentelemetry/api@1.9.0)(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))
@@ -1548,8 +1548,8 @@ packages:
     resolution: {integrity: sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg==}
     engines: {node: '>=8.0.0'}
 
-  '@paper-design/shaders-react@0.0.68':
-    resolution: {integrity: sha512-RaL/OCfaPVyVcPHJnemRuobfgseq1Pb5d4ktjclCmKprUe5Ac5WsexFuJBHpIfrMdYC/bV2ADJj24+dnthTpig==}
+  '@paper-design/shaders-react@0.0.72':
+    resolution: {integrity: sha512-q6KwquL93ZVNcuSM7pqzW0z/VLjnDVb/NSpYyGJBxf7MEHHCXx37E+zw/Px6RZLt3SGCUerIDDCGCMT385oW0w==}
     peerDependencies:
       '@types/react': ^18 || ^19
       react: ^18 || ^19
@@ -1557,8 +1557,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@paper-design/shaders@0.0.68':
-    resolution: {integrity: sha512-HWDb/mYfIDcwRGYjwTFEoupw4PgdmuoNONJ6TIXBaXWj3zdhS38iNehbAWQxWa1NHtOanOeQkbdG0wvaNKhvEw==}
+  '@paper-design/shaders@0.0.72':
+    resolution: {integrity: sha512-rk2BFuV5ood2DaivbxJC2jQMzaB434isDUzdUQ85Cy0OWnUMuxl8kyGMR74TDPyjo3EvcHIyreNLkJdRG+GfSA==}
 
   '@payloadcms/db-postgres@3.79.0':
     resolution: {integrity: sha512-FvuKl/RSALjpXk4/f2pIEGm3jS9frndwtMei8XZtmY6VhwIwjfKFclZc2zNeUBZuQdXpLNRDXNvSr91Pw8+nQw==}
@@ -6530,14 +6530,14 @@ snapshots:
 
   '@opentelemetry/api@1.9.0': {}
 
-  '@paper-design/shaders-react@0.0.68(@types/react@19.2.14)(react@19.2.4)':
+  '@paper-design/shaders-react@0.0.72(@types/react@19.2.14)(react@19.2.4)':
     dependencies:
-      '@paper-design/shaders': 0.0.68
+      '@paper-design/shaders': 0.0.72
       react: 19.2.4
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@paper-design/shaders@0.0.68': {}
+  '@paper-design/shaders@0.0.72': {}
 
   '@payloadcms/db-postgres@3.79.0(@opentelemetry/api@1.9.0)(payload@3.79.0(graphql@16.13.1)(typescript@5.9.3))':
     dependencies:
