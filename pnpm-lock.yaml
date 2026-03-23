@@ -63,8 +63,8 @@ importers:
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.2.2)
       ai:
-        specifier: 5.0.157
-        version: 5.0.157(zod@4.1.12)
+        specifier: 5.0.159
+        version: 5.0.159(zod@4.1.12)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -186,8 +186,8 @@ packages:
   '@acemir/cssom@0.9.28':
     resolution: {integrity: sha512-LuS6IVEivI75vKN8S04qRD+YySP0RmU/cV8UNukhQZvprxF+76Z43TNo/a08eCodaGhT1Us8etqS1ZRY9/Or0A==}
 
-  '@ai-sdk/gateway@2.0.61':
-    resolution: {integrity: sha512-zxB5bqe7tx+tX15RHTFdnm7G3PVxh9l6WfeCgnFhhYZ8PfbeLgb3x/YgxO5vwRnaDpfArMXyYjSFjJ9d+I9ZGw==}
+  '@ai-sdk/gateway@2.0.63':
+    resolution: {integrity: sha512-zFV9ZY6gnflkQ9FGFmWoWH59DSSSP0fj8BAMME6wyNosdUC3nOvqDPUpciNzM0KkZcvHRN9t+dWHl2LVmDv4cQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -2705,8 +2705,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@5.0.157:
-    resolution: {integrity: sha512-Gb8r7gRzsFmRafbGYiy3QQjlcs6nHpIa+Qui0pssLlJv2veLRgHDN3TQPflLvQvAwdvKt3DuS6oe+WxTqUr6Fw==}
+  ai@5.0.159:
+    resolution: {integrity: sha512-e0qokVtX2eearCpJGVeSETC186HaTEPvZOHMfZcDMAG4E+s3rsTfRj2pupaxUfrIOpQ7ci0WFhBEMVPTWrOpMQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -4907,7 +4907,7 @@ snapshots:
 
   '@acemir/cssom@0.9.28': {}
 
-  '@ai-sdk/gateway@2.0.61(zod@4.1.12)':
+  '@ai-sdk/gateway@2.0.63(zod@4.1.12)':
     dependencies:
       '@ai-sdk/provider': 2.0.1
       '@ai-sdk/provider-utils': 3.0.22(zod@4.1.12)
@@ -7891,9 +7891,9 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@5.0.157(zod@4.1.12):
+  ai@5.0.159(zod@4.1.12):
     dependencies:
-      '@ai-sdk/gateway': 2.0.61(zod@4.1.12)
+      '@ai-sdk/gateway': 2.0.63(zod@4.1.12)
       '@ai-sdk/provider': 2.0.1
       '@ai-sdk/provider-utils': 3.0.22(zod@4.1.12)
       '@opentelemetry/api': 1.9.0
