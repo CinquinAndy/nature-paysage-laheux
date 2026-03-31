@@ -874,6 +874,22 @@ export interface Homepage {
         }[]
       | null;
   };
+  partnersSection?: {
+    /**
+     * Utilisez **mot** pour mettre en gras.
+     */
+    title?: string | null;
+    description?: string | null;
+    partners?:
+      | {
+          image: number | Media;
+          name: string;
+          title?: string | null;
+          link?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1343,6 +1359,21 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               benefit?: T;
+              id?: T;
+            };
+      };
+  partnersSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        partners?:
+          | T
+          | {
+              image?: T;
+              name?: T;
+              title?: T;
+              link?: T;
               id?: T;
             };
       };

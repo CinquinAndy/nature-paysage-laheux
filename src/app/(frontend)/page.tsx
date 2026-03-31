@@ -5,6 +5,7 @@ import { FinalCtaSection } from '@/components/sections/home/final-cta-section'
 import { HeroSection } from '@/components/sections/home/hero-section'
 import { InterventionZoneSection } from '@/components/sections/home/intervention-zone-section'
 import { PhilosophySection } from '@/components/sections/home/philosophy-section'
+import { PartnersSection } from '@/components/sections/home/partners-section'
 import { RealisationsPreviewSection } from '@/components/sections/home/realisations-preview-section'
 import { ServicesPreviewSection } from '@/components/sections/home/services-preview-section'
 import { TaxCreditSection } from '@/components/sections/home/tax-credit-section'
@@ -45,6 +46,7 @@ export default async function HomePage() {
 				<FaqShortSection data={homepage.faqShort!} faqItems={faqItems} />
 				<TaxCreditSection data={homepage.taxCredit!} />
 				<FinalCtaSection data={homepage.finalCta!} />
+				<PartnersSection data={homepage.partnersSection} />
 			</div>
 		</>
 	)
