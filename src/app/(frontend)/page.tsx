@@ -37,7 +37,7 @@ export default async function HomePage() {
 			</div>
 			<div className="transform translate-y-[-75px]">
 				<ValuesSection data={homepage.values!} />
-				<ActivitiesSection />
+				<ActivitiesSection data={homepage.activitiesSection} />
 				<ServicesPreviewSection data={homepage.servicesPreview!} services={services} />
 				<PhilosophySection data={homepage.philosophy!} />
 				<InterventionZoneSection data={homepage.interventionZone!} />

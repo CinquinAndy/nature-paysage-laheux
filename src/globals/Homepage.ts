@@ -112,6 +112,184 @@ export const Homepage: GlobalConfig = {
 		},
 
 		// ===========================
+		// SECTION ACTIVITÉS PRINCIPALES
+		// ===========================
+		{
+			name: 'activitiesSection',
+			type: 'group',
+			label: 'Section Activités Principales',
+			fields: [
+				// --- En-tête de la section ---
+				{
+					name: 'badgeLabel',
+					type: 'text',
+					label: 'Label du badge',
+					defaultValue: 'Mon Savoir-Faire',
+				},
+				{
+					name: 'title',
+					type: 'text',
+					label: 'Titre de la section',
+					defaultValue: 'Découvrez mes **activités principales**',
+					admin: {
+						description: 'Utilisez **mot** pour mettre en évidence. Exemple : Découvrez mes **activités principales**',
+					},
+				},
+				{
+					name: 'subtitle',
+					type: 'textarea',
+					label: 'Sous-titre',
+					defaultValue:
+						"Que ce soit pour l'entretien quotidien de votre jardin ou pour un aménagement complet sur-mesure, je vous accompagne avec passion.",
+				},
+
+				// --- Onglet Entretien de Jardin ---
+				{
+					name: 'entretien',
+					type: 'group',
+					label: 'Onglet : Entretien de Jardin',
+					fields: [
+						{
+							name: 'tabLabel',
+							type: 'text',
+							label: "Label de l'onglet",
+							defaultValue: 'Entretien de jardin',
+						},
+						{
+							name: 'taxCreditLabel',
+							type: 'text',
+							label: 'Label crédit impôt (badge vert)',
+							defaultValue: "Service à la personne (50% de crédit d'impôt)",
+						},
+						{
+							name: 'title',
+							type: 'text',
+							label: 'Titre de la carte',
+							defaultValue: 'Un entretien soigné pour un jardin rayonnant',
+						},
+						{
+							name: 'description',
+							type: 'textarea',
+							label: 'Description',
+							defaultValue:
+								"Confiez-moi l'entretien de vos espaces verts. Grâce à l'agrément Service à la personne, vous bénéficiez d'une déduction fiscale de 50% sur l'ensemble de ces prestations.",
+						},
+						{
+							name: 'services',
+							type: 'array',
+							label: 'Liste des services',
+							admin: {
+								description: "Interventions proposées dans l'entretien",
+							},
+							fields: [
+								{
+									name: 'label',
+									type: 'text',
+									required: true,
+									label: 'Service',
+								},
+							],
+						},
+						{
+							name: 'beforeImage',
+							type: 'upload',
+							relationTo: 'media',
+							label: 'Image "Avant"',
+						},
+						{
+							name: 'afterImage',
+							type: 'upload',
+							relationTo: 'media',
+							label: 'Image "Après"',
+						},
+					],
+				},
+
+				// --- Onglet Aménagement Paysager ---
+				{
+					name: 'amenagement',
+					type: 'group',
+					label: 'Onglet : Aménagement Paysager',
+					fields: [
+						{
+							name: 'tabLabel',
+							type: 'text',
+							label: "Label de l'onglet",
+							defaultValue: 'Aménagement paysager',
+						},
+						{
+							name: 'title',
+							type: 'text',
+							label: 'Titre de la carte',
+							defaultValue: "Créons l'espace extérieur de vos rêves",
+						},
+						{
+							name: 'description',
+							type: 'textarea',
+							label: 'Description',
+							defaultValue:
+								'De la conception à la réalisation, je transforme votre jardin en un véritable lieu de vie, esthétique et durable.',
+						},
+						{
+							name: 'cards',
+							type: 'array',
+							label: 'Cartes de prestations',
+							maxRows: 4,
+							admin: {
+								description: '4 cartes maximum (Terrasse, Clôture, Massif, Plantation…)',
+							},
+							fields: [
+								{
+									name: 'title',
+									type: 'text',
+									required: true,
+									label: 'Titre',
+								},
+								{
+									name: 'description',
+									type: 'text',
+									label: 'Description courte',
+								},
+								{
+									name: 'image',
+									type: 'upload',
+									relationTo: 'media',
+									label: 'Image',
+								},
+							],
+						},
+						{
+							name: 'devisCard',
+							type: 'group',
+							label: 'Carte "Sur devis personnalisé"',
+							fields: [
+								{
+									name: 'title',
+									type: 'text',
+									label: 'Titre',
+									defaultValue: 'Toutes autres possibilités...',
+								},
+								{
+									name: 'description',
+									type: 'textarea',
+									label: 'Description',
+									defaultValue:
+										"J'étudie toutes vos envies de création paysagère. Du cheminement en pas japonais à la création de rocailles.",
+								},
+								{
+									name: 'badgeLabel',
+									type: 'text',
+									label: 'Badge',
+									defaultValue: 'Sur devis personnalisé',
+								},
+							],
+						},
+					],
+				},
+			],
+		},
+
+		// ===========================
 		// SECTION APERÇU DES PRESTATIONS
 		// ===========================
 		{

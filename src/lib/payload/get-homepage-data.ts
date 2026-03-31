@@ -16,6 +16,9 @@ export async function getHomepageData(): Promise<Homepage> {
 	if (!homepage.hero?.title) {
 		throw new Error('Homepage: Missing hero.title in Payload CMS')
 	}
+	if (!homepage.activitiesSection) {
+		throw new Error('Homepage: Missing activitiesSection in Payload CMS')
+	}
 	if (!homepage.values) {
 		throw new Error('Homepage: Missing values section in Payload CMS')
 	}
