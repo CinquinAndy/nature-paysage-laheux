@@ -145,7 +145,7 @@ export const Compare = ({
 	return (
 		<section
 			ref={sliderRef}
-			className={cn('w-[400px] h-[400px] overflow-hidden', className)}
+			className={cn('w-full h-full min-h-[300px] overflow-hidden', className)}
 			style={{
 				position: 'relative',
 				cursor: slideMode === 'drag' ? 'grab' : 'col-resize',

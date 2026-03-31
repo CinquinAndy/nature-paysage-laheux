@@ -54,6 +54,7 @@ const nextConfig = {
 			bodySizeLimit: '10mb',
 		},
 	},
+	allowedDevOrigins: ['192.168.1.128', 'localhost'],
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

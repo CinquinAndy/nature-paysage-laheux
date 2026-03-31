@@ -181,18 +181,17 @@ export function ActivitiesSection({ data }: ActivitiesSectionProps) {
 										<ul className="space-y-4 mt-2">
 											{entretienServices.map(item => (
 												<li key={item} className="flex items-start gap-3">
-													<div className="mt-1 bg-primary/20 p-1 rounded-full text-primary">
+													<div className="mt-1 bg-primary/20 p-1 rounded-full text-primary shrink-0">
 														<Check className="w-4 h-4" />
 													</div>
-													<span className="text-foreground">{item}</span>
+													<span className="text-foreground leading-tight">{item}</span>
 												</li>
 											))}
 										</ul>
 									</div>
 
-									{/* Compare Slider Right */}
-									<div className="order-1 lg:order-2 flex justify-center w-full">
-										<div className="p-2 border border-border/50 bg-muted/20 rounded-3xl w-full max-w-[500px]">
+									<div className="order-1 lg:order-2 flex justify-center w-full overflow-hidden">
+										<div className="p-2 border border-border/50 bg-muted/20 rounded-3xl w-full max-w-full lg:max-w-[500px]">
 											<Compare
 												firstImage={beforeImageUrl}
 												secondImage={afterImageUrl}
