@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ActivitiesSection } from '@/components/sections/home/activities-section'
 import { FaqShortSection } from '@/components/sections/home/faq-short-section'
 import { FinalCtaSection } from '@/components/sections/home/final-cta-section'
 import { HeroSection } from '@/components/sections/home/hero-section'
@@ -36,6 +37,7 @@ export default async function HomePage() {
 			</div>
 			<div className="transform translate-y-[-75px]">
 				<ValuesSection data={homepage.values!} />
+				<ActivitiesSection />
 				<ServicesPreviewSection data={homepage.servicesPreview!} services={services} />
 				<PhilosophySection data={homepage.philosophy!} />
 				<InterventionZoneSection data={homepage.interventionZone!} />
