@@ -764,12 +764,21 @@ export const Homepage: GlobalConfig = {
 			label: 'Section Partenariats',
 			fields: [
 				{
+					name: 'badgeLabel',
+					type: 'text',
+					defaultValue: 'Mes Partenariats',
+					label: 'Label du badge',
+					admin: {
+						description: 'Ex: "Mes Partenaires", "Collaborations", etc. Apparaît au-dessus du titre.',
+					},
+				},
+				{
 					name: 'title',
 					type: 'text',
 					defaultValue: 'Mes **Partenaires** & Collaborations',
 					label: 'Titre de la section',
 					admin: {
-						description: 'Utilisez **mot** pour mettre en gras.',
+						description: 'Utilisez **mot** pour mettre en gras le texte (ex: Mes **Partenaires**).',
 					},
 				},
 				{
@@ -778,6 +787,9 @@ export const Homepage: GlobalConfig = {
 					defaultValue:
 						"Je travaille en étroite collaboration avec des professionnels passionnés pour vous offrir le meilleur du paysagisme écologique.",
 					label: 'Description',
+					admin: {
+						description: 'Texte court présentant vos collaborations.',
+					},
 				},
 				{
 					name: 'partners',
