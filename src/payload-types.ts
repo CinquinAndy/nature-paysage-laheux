@@ -874,6 +874,29 @@ export interface Homepage {
         }[]
       | null;
   };
+  partnersSection?: {
+    /**
+     * Ex: "Mes Partenaires", "Collaborations", etc. Apparaît au-dessus du titre.
+     */
+    badgeLabel?: string | null;
+    /**
+     * Utilisez **mot** pour mettre en gras le texte (ex: Mes **Partenaires**).
+     */
+    title?: string | null;
+    /**
+     * Texte court présentant vos collaborations.
+     */
+    description?: string | null;
+    partners?:
+      | {
+          image: number | Media;
+          name: string;
+          title?: string | null;
+          link?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1343,6 +1366,22 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               benefit?: T;
+              id?: T;
+            };
+      };
+  partnersSection?:
+    | T
+    | {
+        badgeLabel?: T;
+        title?: T;
+        description?: T;
+        partners?:
+          | T
+          | {
+              image?: T;
+              name?: T;
+              title?: T;
+              link?: T;
               id?: T;
             };
       };

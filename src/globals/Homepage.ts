@@ -754,5 +754,74 @@ export const Homepage: GlobalConfig = {
 				},
 			],
 		},
+
+		// ===========================
+		// SECTION PARTENARIATS
+		// ===========================
+		{
+			name: 'partnersSection',
+			type: 'group',
+			label: 'Section Partenariats',
+			fields: [
+				{
+					name: 'badgeLabel',
+					type: 'text',
+					defaultValue: 'Mes Partenariats',
+					label: 'Label du badge',
+					admin: {
+						description: 'Ex: "Mes Partenaires", "Collaborations", etc. Apparaît au-dessus du titre.',
+					},
+				},
+				{
+					name: 'title',
+					type: 'text',
+					defaultValue: 'Mes **Partenaires** & Collaborations',
+					label: 'Titre de la section',
+					admin: {
+						description: 'Utilisez **mot** pour mettre en gras le texte (ex: Mes **Partenaires**).',
+					},
+				},
+				{
+					name: 'description',
+					type: 'textarea',
+					defaultValue:
+						"Je travaille en étroite collaboration avec des professionnels passionnés pour vous offrir le meilleur du paysagisme écologique.",
+					label: 'Description',
+					admin: {
+						description: 'Texte court présentant vos collaborations.',
+					},
+				},
+				{
+					name: 'partners',
+					type: 'array',
+					label: 'Liste des partenaires',
+					fields: [
+						{
+							name: 'image',
+							type: 'upload',
+							relationTo: 'media',
+							required: true,
+							label: 'Image / Logo',
+						},
+						{
+							name: 'name',
+							type: 'text',
+							required: true,
+							label: 'Nom du partenaire',
+						},
+						{
+							name: 'title',
+							type: 'text',
+							label: 'Entreprise / Rôle',
+						},
+						{
+							name: 'link',
+							type: 'text',
+							label: 'Lien vers le site',
+						},
+					],
+				},
+			],
+		},
 	],
 }
