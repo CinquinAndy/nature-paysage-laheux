@@ -79,4 +79,4 @@ function Accordion({ items, type = 'single', className }: LegacyAccordionProps) 
 	)
 }
 
-export { Accordion, AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger }

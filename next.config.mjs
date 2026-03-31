@@ -44,6 +44,8 @@ const nextConfig = {
 			{ protocol: 'https', hostname: 'nature-paysage-laheux.fr' },
 			{ protocol: 'https', hostname: '*.andy-cinquin.fr' },
 			{ protocol: 'https', hostname: 'cdnjs.cloudflare.com' },
+			{ protocol: 'https', hostname: '*.unsplash.com' },
+			{ protocol: 'https', hostname: 'unsplash.com' },
 		],
 		qualities: [75, 90, 100], // Add quality configurations
 	},
