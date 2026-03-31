@@ -23,7 +23,7 @@ export function RealisationsPreviewSection({ data, realisations }: Props) {
 	}))
 
 	return (
-		<section className="py-16 md:pb-24 bg-background">
+		<section className="py-16 md:pb-24 bg-background overflow-x-hidden">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<Gallery4
 					title={data?.title || 'Découvrez Mes Réalisations'}
