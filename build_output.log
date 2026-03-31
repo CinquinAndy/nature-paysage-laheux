@@ -1,0 +1,80 @@
+
+> nature-paysage-laheux@1.0.2 build /home/andycinquin/clonedrepo/nature-paysage-laheux
+> next build
+
+   ▲ Next.js 15.5.14
+   - Environments: .env
+   - Experiments (use with caution):
+     · serverActions
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 38.2s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/55) ...
+   Generating static pages (13/55) 
+   Generating static pages (27/55) 
+   Generating static pages (41/55) 
+ ✓ Generating static pages (55/55)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                                     Size  First Load JS  Revalidate  Expire
+┌ ○ /                                                                         120 kB         299 kB          1h      1y
+├ ○ /_not-found                                                                 1 kB         104 kB
+├ ƒ /admin/[[...segments]]                                                     151 B         745 kB
+├ ƒ /api/[...slug]                                                             178 B         104 kB
+├ ƒ /api/clean-media                                                           175 B         104 kB
+├ ƒ /api/forvoyez/check-status                                                 175 B         104 kB
+├ ƒ /api/forvoyez/generate-all                                                 175 B         104 kB
+├ ƒ /api/forvoyez/generate-alt                                                 175 B         104 kB
+├ ƒ /api/gemini/generate-seo                                                   175 B         104 kB
+├ ƒ /api/graphql                                                               175 B         104 kB
+├ ƒ /api/graphql-playground                                                    178 B         104 kB
+├ ƒ /api/health                                                                175 B         104 kB
+├ ƒ /api/revalidate                                                            175 B         104 kB
+├ ○ /apple-icon.png                                                              0 B            0 B
+├ ○ /contact                                                                 8.24 kB         180 kB          1h      1y
+├ ○ /contact/opengraph-image-5jci00                                            175 B         104 kB
+├ ○ /faq                                                                     3.88 kB         178 kB          1h      1y
+├ ○ /faq/opengraph-image-1ljxge                                                175 B         104 kB
+├ ○ /icon0.svg                                                                   0 B            0 B
+├ ○ /icon1.png                                                                   0 B            0 B
+├ ○ /mentions-legales                                                        1.03 kB         158 kB          1h      1y
+├ ○ /mentions-legales/opengraph-image-w0o8x7                                   175 B         104 kB
+├ ○ /opengraph-image-4usi79                                                    175 B         104 kB
+├ ○ /prestations                                                             3.72 kB         177 kB          1h      1y
+├ ● /prestations/[slug]                                                        147 B         183 kB          1h      1y
+├   ├ /prestations/tonte-pelouse                                                                             1h      1y
+├   ├ /prestations/desherbage-ecologique                                                                     1h      1y
+├   ├ /prestations/taille-haies-arbustes                                                                     1h      1y
+├   └ [+3 more paths]
+├ ● /prestations/[slug]/opengraph-image-dt8m7m                                 175 B         104 kB
+├   ├ /prestations/tonte-pelouse/opengraph-image-dt8m7m
+├   ├ /prestations/desherbage-ecologique/opengraph-image-dt8m7m
+├   ├ /prestations/taille-haies-arbustes/opengraph-image-dt8m7m
+├   └ [+3 more paths]
+├ ○ /prestations/opengraph-image-vzq07k                                        175 B         104 kB
+├ ○ /realisations                                                            4.62 kB         167 kB          1h      1y
+├ ● /realisations/[slug]                                                       146 B         183 kB          1h      1y
+├   ├ /realisations/jardin-monnieres                                                                         1h      1y
+├   ├ /realisations/jardin-naturel-                                                                          1h      1y
+├   ├ /realisations/entretien-massifs-haute-goulaine                                                         1h      1y
+├   └ [+4 more paths]
+├ ● /realisations/[slug]/opengraph-image-q070pw                                175 B         104 kB
+├   ├ /realisations/jardin-monnieres/opengraph-image-q070pw
+├   ├ /realisations/jardin-naturel-/opengraph-image-q070pw
+├   ├ /realisations/entretien-massifs-haute-goulaine/opengraph-image-q070pw
+├   └ [+4 more paths]
+├ ○ /realisations/opengraph-image-mf7cn6                                       175 B         104 kB
+└ ○ /sitemap.xml                                                               175 B         104 kB
++ First Load JS shared by all                                                 103 kB
+  ├ chunks/2915-33cac2b7456d5f18.js                                          45.8 kB
+  ├ chunks/d24e3a4c-73eeb075ca78da9f.js                                      54.2 kB
+  └ other shared chunks (total)                                              3.38 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

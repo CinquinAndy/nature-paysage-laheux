@@ -6,7 +6,7 @@ import { AnimatedSection } from '@/components/animation/animated-section'
 import { Compare } from '@/components/ui/compare'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { fadeInUp, scaleIn } from '@/lib/animation/variants'
-import { getMediaUrlOptional } from '@/lib/payload'
+import { getMediaUrlOptional } from '@/lib/payload/media-helpers'
 import type { Homepage } from '@/payload-types'
 
 interface ActivitiesSectionProps {
