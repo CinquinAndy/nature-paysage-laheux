@@ -1,7 +1,7 @@
 'use client'
 
 import { useDocumentInfo } from '@payloadcms/ui'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
 
 const AltTextGenerator: React.FC = () => {
