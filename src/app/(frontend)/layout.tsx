@@ -88,7 +88,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 					strategy="afterInteractive"
 				/>
 				<NavigationBar />
-				<main>{children}</main>
+				<main className="overflow-x-clip">{children}</main>
 				<Footer />
 				<Toaster />
 			</body>

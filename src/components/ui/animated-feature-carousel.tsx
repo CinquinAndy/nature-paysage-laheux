@@ -241,7 +241,7 @@ function FeatureCard({ children, step }: { children: React.ReactNode; step: numb
 			style={{ '--x': useMotionTemplate`${mouseX}px`, '--y': useMotionTemplate`${mouseY}px` } as WrapperStyle}
 		>
 			<div className="relative w-full overflow-hidden bg-white duration-300 rounded-2xl">
-				<div className="m-6 md:m-10 min-h-[450px] md:min-h-[500px] w-full relative">
+				<div className="p-6 md:p-10 min-h-[450px] md:min-h-[500px] w-full relative">
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={step}
@@ -294,7 +294,7 @@ function StepsNav({
 }) {
 	return (
 		<nav aria-label="Progress" className="flex justify-center px-4">
-			<ol className="flex w-full flex-wrap items-center justify-center gap-2">
+			<ol className="flex w-full flex-wrap items-center justify-center gap-2 px-2">
 				{stepItems.map((step, stepIdx) => {
 					const isCompleted = current > stepIdx
 					const isCurrent = current === stepIdx

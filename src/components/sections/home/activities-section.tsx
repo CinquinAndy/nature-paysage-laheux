@@ -75,7 +75,11 @@ function parseTitleWithBold(title: string) {
 	const parts = title.split(/(\*\*.*?\*\*)/)
 	return parts.map((part, i) => {
 		if (part.startsWith('**') && part.endsWith('**')) {
-			return <span key={`bold-${part}`} className="text-primary">{part.slice(2, -2)}</span>
+			return (
+				<span key={`bold-${part}`} className="text-primary">
+					{part.slice(2, -2)}
+				</span>
+			)
 		}
 		return <span key={`text-${part}-${i}`}>{part}</span>
 	})
@@ -120,7 +124,7 @@ export function ActivitiesSection({ data }: ActivitiesSectionProps) {
 	const devisBadge = data?.amenagement?.devisCard?.badgeLabel || DEFAULTS.amenagement.devisCard.badgeLabel
 
 	return (
-		<section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden">
+		<section className="py-16 md:py-24 bg-muted/30 relative overflow-x-hidden">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 				{/* Header Section */}
 				<AnimatedSection variants={fadeInUp} className="flex flex-col items-center gap-4 text-center mb-16">
@@ -128,9 +132,7 @@ export function ActivitiesSection({ data }: ActivitiesSectionProps) {
 						<Leaf className="w-4 h-4 mr-2" />
 						{badgeLabel}
 					</div>
-					<h2 className="max-w-3xl text-3xl font-bold md:text-5xl tracking-tight">
-						{parseTitleWithBold(title)}
-					</h2>
+					<h2 className="max-w-3xl text-3xl font-bold md:text-5xl tracking-tight">{parseTitleWithBold(title)}</h2>
 					<p className="max-w-2xl text-muted-foreground text-lg leading-relaxed mt-2">{subtitle}</p>
 				</AnimatedSection>
 
@@ -159,19 +161,19 @@ export function ActivitiesSection({ data }: ActivitiesSectionProps) {
 							<TabsContent value="entretien" className="w-full outline-none">
 								<div className="relative grid lg:grid-cols-2 gap-10 items-center bg-background rounded-3xl p-6 lg:p-12 shadow-xl border border-border/40">
 									{/* SAP Logo */}
-									<div className="absolute -top-6 right-6 lg:right-10 z-10">
+									<div className="absolute -top-4 right-4 lg:-top-6 lg:right-10 z-10">
 										<Image
 											src="/sap.png"
 											alt="Logo Services à la personne"
-											width={80}
-											height={80}
-											className="drop-shadow-lg"
+											width={60}
+											height={60}
+											className="drop-shadow-lg lg:w-[80px] lg:h-[80px]"
 										/>
 									</div>
 
 									{/* Content Left */}
 									<div className="flex flex-col gap-6 order-2 lg:order-1">
-										<div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-xl w-fit font-medium">
+										<div className="flex flex-wrap items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-xl w-fit max-w-full font-medium text-sm sm:text-base whitespace-normal">
 											<span className="text-lg">💶</span>
 											{entretienTaxCreditLabel}
 										</div>

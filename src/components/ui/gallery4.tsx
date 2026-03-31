@@ -96,7 +96,7 @@ const Gallery4 = ({
 						{items.map(item => (
 							<CarouselItem key={item.id} className="basis-auto pl-4">
 								<Link href={item.href} className="group rounded-xl block">
-									<div className="group relative h-full min-h-[27rem] w-[320px] lg:w-[360px] overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">
+									<div className="group relative h-full min-h-[27rem] w-[280px] sm:w-[320px] lg:w-[360px] overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">
 										<Image
 											width={400}
 											height={800}

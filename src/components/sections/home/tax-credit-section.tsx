@@ -26,7 +26,7 @@ export function TaxCreditSection({ data }: Props) {
 	}
 
 	return (
-		<section className="py-16 md:py-24 bg-background">
+		<section className="py-16 md:py-24 bg-background overflow-x-hidden">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
 				<AnimatedSection variants={fadeInUp} className="text-left mb-12 md:mb-16">
