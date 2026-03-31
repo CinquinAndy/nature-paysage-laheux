@@ -1,5 +1,6 @@
 'use client'
 
+import { Leaf } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { AnimatedSection } from '@/components/animation/animated-section'
 import { FocusRail, type FocusRailItem } from '@/components/ui/focus-rail'
@@ -12,6 +13,8 @@ interface PartnersSectionProps {
 
 export function PartnersSection({ data }: PartnersSectionProps) {
 	if (!data) return null
+
+	const badgeLabel = data.badgeLabel || 'Mes Partenariats'
 
 	const partners =
 		data.partners?.map(
@@ -53,7 +56,7 @@ export function PartnersSection({ data }: PartnersSectionProps) {
 		return parts.map((part, index) => {
 			if (part.startsWith('**') && part.endsWith('**')) {
 				return (
-					<span key={part}>
+					<span key={part} className="text-primary">
 						{part.slice(2, -2)}
 					</span>
 				)
@@ -63,13 +66,24 @@ export function PartnersSection({ data }: PartnersSectionProps) {
 	}
 
 	return (
-		<section id="partenariats" className="py-24 bg-neutral-950 overflow-hidden">
-			<div className="container mx-auto px-4 mb-16 text-center">
-				<AnimatedSection className="space-y-4">
-					{data.title && (
-						<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">{parseTitleWithBold(data.title)}</h2>
+		<section id="partenariats" className="py-24 bg-background overflow-hidden relative">
+			{/* Background Pattern subtle */}
+			<div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+				<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent" />
+			</div>
+
+			<div className="container mx-auto px-4 mb-16 text-center relative z-10">
+				<AnimatedSection className="space-y-4 flex flex-col items-center">
+					{badgeLabel && (
+						<div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary mb-2">
+							<Leaf className="w-4 h-4 mr-2" />
+							{badgeLabel}
+						</div>
 					)}
-					{data.description && <p className="text-neutral-400 max-w-2xl mx-auto text-lg">{data.description}</p>}
+					{data.title && (
+						<h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">{parseTitleWithBold(data.title)}</h2>
+					)}
+					{data.description && <p className="text-muted-foreground max-w-2xl mx-auto text-lg">{data.description}</p>}
 				</AnimatedSection>
 			</div>
 
@@ -78,7 +92,7 @@ export function PartnersSection({ data }: PartnersSectionProps) {
 				whileInView={{ opacity: 1, scale: 1 }}
 				viewport={{ once: true }}
 				transition={{ duration: 0.8, ease: 'easeOut' }}
-				className="w-full max-w-7xl mx-auto px-4"
+				className="w-full max-w-7xl mx-auto px-4 relative z-10"
 			>
 				<FocusRail items={displayPartners} autoPlay={false} loop={true} />
 			</motion.div>
