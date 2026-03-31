@@ -693,6 +693,52 @@ export interface Homepage {
         }[]
       | null;
   };
+  activitiesSection?: {
+    badgeLabel?: string | null;
+    /**
+     * Utilisez **mot** pour mettre en évidence. Exemple : Découvrez mes **activités principales**
+     */
+    title?: string | null;
+    subtitle?: string | null;
+    entretien?: {
+      tabLabel?: string | null;
+      taxCreditLabel?: string | null;
+      title?: string | null;
+      description?: string | null;
+      /**
+       * Interventions proposées dans l'entretien
+       */
+      services?:
+        | {
+            label: string;
+            id?: string | null;
+          }[]
+        | null;
+      beforeImage?: (number | null) | Media;
+      afterImage?: (number | null) | Media;
+    };
+    amenagement?: {
+      tabLabel?: string | null;
+      title?: string | null;
+      description?: string | null;
+      /**
+       * 4 cartes maximum (Terrasse, Clôture, Massif, Plantation…)
+       */
+      cards?:
+        | {
+            title: string;
+            description?: string | null;
+            image?: (number | null) | Media;
+            id?: string | null;
+          }[]
+        | null;
+      devisCard?: {
+        title?: string | null;
+        description?: string | null;
+        badgeLabel?: string | null;
+      };
+    };
+  };
   /**
    * Les prestations sont automatiquement récupérées depuis la collection "Prestations"
    */
@@ -1136,6 +1182,51 @@ export interface HomepageSelect<T extends boolean = true> {
               title?: T;
               description?: T;
               id?: T;
+            };
+      };
+  activitiesSection?:
+    | T
+    | {
+        badgeLabel?: T;
+        title?: T;
+        subtitle?: T;
+        entretien?:
+          | T
+          | {
+              tabLabel?: T;
+              taxCreditLabel?: T;
+              title?: T;
+              description?: T;
+              services?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              beforeImage?: T;
+              afterImage?: T;
+            };
+        amenagement?:
+          | T
+          | {
+              tabLabel?: T;
+              title?: T;
+              description?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              devisCard?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    badgeLabel?: T;
+                  };
             };
       };
   servicesPreview?:
