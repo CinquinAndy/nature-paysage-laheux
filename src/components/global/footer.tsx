@@ -1,4 +1,5 @@
-import { Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
+import { Facebook, Linkedin } from '@/components/ui/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
