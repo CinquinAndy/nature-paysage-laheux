@@ -16,7 +16,7 @@ interface Props {
 
 export function FaqShortSection({ data, faqItems }: Props) {
 	return (
-		<section className="py-20 lg:py-40 bg-muted/30">
+		<section className="py-20 lg:py-40 bg-muted/30 overflow-x-hidden">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid lg:grid-cols-2 gap-10 lg:gap-20">
 					{/* Left Column - Intro */}

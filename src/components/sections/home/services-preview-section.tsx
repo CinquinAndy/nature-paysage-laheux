@@ -19,7 +19,7 @@ export function ServicesPreviewSection({ data, services }: ServicesPreviewSectio
 	const ctaUrl = data?.ctaUrl
 
 	return (
-		<section className="py-16 md:py-24 bg-muted/30">
+		<section className="py-16 md:py-24 bg-muted/30 overflow-x-hidden">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col md:flex-row justify-between items-start md:items-start mb-10 md:mb-0">
 					{/* Section Header */}
