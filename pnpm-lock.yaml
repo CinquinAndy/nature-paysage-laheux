@@ -12,8 +12,8 @@ importers:
         specifier: 3.0.75
         version: 3.0.75(zod@4.1.12)
       '@paper-design/shaders-react':
-        specifier: 0.0.72
-        version: 0.0.72(@types/react@19.2.14)(react@19.2.6)
+        specifier: 0.0.76
+        version: 0.0.76(@types/react@19.2.14)(react@19.2.6)
       '@payloadcms/db-mongodb':
         specifier: 3.84.1
         version: 3.84.1(@aws-sdk/credential-providers@3.901.0)(payload@3.84.1(graphql@16.14.0)(typescript@6.0.3))
@@ -1681,8 +1681,8 @@ packages:
   '@oxc-project/types@0.130.0':
     resolution: {integrity: sha512-ibD2usx9JRu7f5pu2tMKMI4cpA4NgXJQoYRP4pQ7Pxmn1l6k/53qWtQWZayhYy3X4QZkt90Ot+mJEaeXouio6Q==}
 
-  '@paper-design/shaders-react@0.0.72':
-    resolution: {integrity: sha512-q6KwquL93ZVNcuSM7pqzW0z/VLjnDVb/NSpYyGJBxf7MEHHCXx37E+zw/Px6RZLt3SGCUerIDDCGCMT385oW0w==}
+  '@paper-design/shaders-react@0.0.76':
+    resolution: {integrity: sha512-uPJWrYRf6cJdO2H+fuXlahaqz0QjYglNAyUTaRfIInpzCa/d6guxBIK003soAZQFuQ035yg9FhtfFzKNWm+a5A==}
     peerDependencies:
       '@types/react': ^18 || ^19
       react: ^18 || ^19
@@ -1690,8 +1690,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@paper-design/shaders@0.0.72':
-    resolution: {integrity: sha512-rk2BFuV5ood2DaivbxJC2jQMzaB434isDUzdUQ85Cy0OWnUMuxl8kyGMR74TDPyjo3EvcHIyreNLkJdRG+GfSA==}
+  '@paper-design/shaders@0.0.76':
+    resolution: {integrity: sha512-AcNDY4J66YQHUfQYFInkCP7M9VOje0od7wLpOR7LtCmc532opJy6ll+h1W9zBovz8tt9U7OADUmJ/qKEXyOX/A==}
 
   '@payloadcms/db-mongodb@3.84.1':
     resolution: {integrity: sha512-HTP/Z6iQHFyHhuMImAC/GH0xGhjuvuHZHdB7crJUkXAyD677tp6C3mS8YB04s28bCteDqcXBYjHODZr5xDHBcw==}
@@ -6813,14 +6813,14 @@ snapshots:
 
   '@oxc-project/types@0.130.0': {}
 
-  '@paper-design/shaders-react@0.0.72(@types/react@19.2.14)(react@19.2.6)':
+  '@paper-design/shaders-react@0.0.76(@types/react@19.2.14)(react@19.2.6)':
     dependencies:
-      '@paper-design/shaders': 0.0.72
+      '@paper-design/shaders': 0.0.76
       react: 19.2.6
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@paper-design/shaders@0.0.72': {}
+  '@paper-design/shaders@0.0.76': {}
 
   '@payloadcms/db-mongodb@3.84.1(@aws-sdk/credential-providers@3.901.0)(payload@3.84.1(graphql@16.14.0)(typescript@6.0.3))':
     dependencies:
