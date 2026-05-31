@@ -176,7 +176,7 @@ importers:
         version: 19.2.3(@types/react@19.2.15)
       '@vitejs/plugin-react':
         specifier: 6.0.2
-        version: 6.0.2(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3))
+        version: 6.0.2(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4))
       esbuild:
         specifier: 0.28.0
         version: 0.28.0
@@ -184,8 +184,8 @@ importers:
         specifier: 29.1.1
         version: 29.1.1
       tsx:
-        specifier: 4.22.3
-        version: 4.22.3
+        specifier: 4.22.4
+        version: 4.22.4
       tw-animate-css:
         specifier: 1.4.0
         version: 1.4.0
@@ -194,10 +194,10 @@ importers:
         version: 6.0.3
       vite:
         specifier: 8.0.14
-        version: 8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3)
+        version: 8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4)
       vite-tsconfig-paths:
         specifier: 6.1.1
-        version: 6.1.1(typescript@6.0.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3))
+        version: 6.1.1(typescript@6.0.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4))
 
 packages:
 
@@ -4920,8 +4920,8 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  tsx@4.22.3:
-    resolution: {integrity: sha512-mdoNxBC/cSQObGGVQ5Bpn5i+yv7j68gk3Nfm3wFjcJg3Z0Mix9jzAFfP12prmm5eVGmDKtp0yyArrs0Q+8gZHg==}
+  tsx@4.22.4:
+    resolution: {integrity: sha512-X8EX+XV4QR5xCsrgxaED954zTDfY8KqlDtskKEL0cHhyS/P8b4IFOvGDQpsC9Q1XnLq915wEfwwY/zzskCtmhg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -8351,10 +8351,10 @@ snapshots:
 
   '@vercel/oidc@3.2.0': {}
 
-  '@vitejs/plugin-react@6.0.2(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3))':
+  '@vitejs/plugin-react@6.0.2(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0
-      vite: 8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3)
+      vite: 8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4)
 
   accepts@1.3.8:
     dependencies:
@@ -10404,7 +10404,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  tsx@4.22.3:
+  tsx@4.22.4:
     dependencies:
       esbuild: 0.28.0
     optionalDependencies:
@@ -10494,17 +10494,17 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-stringify-position: 4.0.0
 
-  vite-tsconfig-paths@6.1.1(typescript@6.0.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3)):
+  vite-tsconfig-paths@6.1.1(typescript@6.0.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4)):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
       tsconfck: 3.1.6(typescript@6.0.3)
-      vite: 8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3)
+      vite: 8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.3):
+  vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.6.1)(sass@1.77.4)(tsx@4.22.4):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -10517,7 +10517,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       sass: 1.77.4
-      tsx: 4.22.3
+      tsx: 4.22.4
 
   w3c-xmlserializer@5.0.0:
     dependencies:
