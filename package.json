@@ -57,7 +57,7 @@
 		"postcss": "8.5.15",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
-		"react-email": "5.2.11",
+		"react-email": "6.6.0",
 		"react-leaflet": "5.0.0",
 		"resend": "6.12.4",
 		"sharp": "0.34.5",
