@@ -1,5 +1,5 @@
 import config from '@payload-config'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 
 interface HealthCheckResult {
@@ -13,7 +13,13 @@ interface HealthCheckResult {
 	}
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+	// Les détails (vars manquantes, temps de réponse DB/Payload) ne sont exposés
+	// qu'avec le bon secret. Sinon on ne renvoie que le statut global, ce qui
+	// suffit aux moniteurs d'uptime tout en évitant de divulguer l'infra.
+	const providedSecret = request.nextUrl.searchParams.get('secret') || request.headers.get('x-health-secret') || ''
+	const detailed = Boolean(process.env.REVALIDATE_SECRET) && providedSecret === process.env.REVALIDATE_SECRET
+
 	const timestamp = new Date().toISOString()
 	console.log(`[${timestamp}] [HEALTH_CHECK] Starting health check...`)
 
@@ -124,5 +130,8 @@ export async function GET() {
 
 	const statusCode = result.status === 'healthy' ? 200 : result.status === 'degraded' ? 207 : 503
 
-	return NextResponse.json(result, { status: statusCode })
+	// Sans secret : uniquement le statut global (pas de détails d'infra).
+	const body = detailed ? result : { status: result.status, timestamp }
+
+	return NextResponse.json(body, { status: statusCode })
 }

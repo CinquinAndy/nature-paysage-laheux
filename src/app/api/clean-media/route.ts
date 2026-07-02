@@ -1,13 +1,17 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { getPayload } from 'payload'
+import { requireAdmin } from '@/lib/security/require-admin'
 import config from '@/payload.config'
 
-export async function POST(_request: NextRequest) {
+export async function POST(request: NextRequest) {
 	try {
 		// Only allow in development/local environment
 		if (process.env.NODE_ENV === 'production') {
 			return NextResponse.json({ error: 'This endpoint is disabled in production' }, { status: 403 })
 		}
+
+		const unauthorized = await requireAdmin(request)
+		if (unauthorized) return unauthorized
 
 		const payload = await getPayload({ config })
 

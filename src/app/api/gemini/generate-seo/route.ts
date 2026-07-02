@@ -3,10 +3,14 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import type { PageContext } from '@/lib/gemini/generate-seo'
 import { generateSeoContent } from '@/lib/gemini/generate-seo'
+import { requireAdmin } from '@/lib/security/require-admin'
 import config from '@/payload.config'
 
 export async function POST(req: NextRequest) {
 	try {
+		const unauthorized = await requireAdmin(req)
+		if (unauthorized) return unauthorized
+
 		const { documentId, collectionSlug, globalSlug } = await req.json()
 
 		const payload = await getPayload({ config })

@@ -51,7 +51,7 @@ const nextConfig = {
 	},
 	experimental: {
 		serverActions: {
-			bodySizeLimit: '10mb',
+			bodySizeLimit: '1mb',
 		},
 	},
 	allowedDevOrigins: ['192.168.1.128', 'localhost'],

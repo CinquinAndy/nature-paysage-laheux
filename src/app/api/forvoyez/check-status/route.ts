@@ -1,10 +1,14 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
+import { requireAdmin } from '@/lib/security/require-admin'
 import config from '@/payload.config'
 
 export async function GET(req: NextRequest) {
 	try {
+		const unauthorized = await requireAdmin(req)
+		if (unauthorized) return unauthorized
+
 		const mediaId = req.nextUrl.searchParams.get('mediaId')
 
 		if (!mediaId) {

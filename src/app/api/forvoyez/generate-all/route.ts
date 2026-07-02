@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import type { Payload } from 'payload'
 import { getPayload } from 'payload'
 import { generateAltText } from '@/lib/forvoyez/generate-alt-text'
+import { requireAdmin } from '@/lib/security/require-admin'
 import config from '@/payload.config'
 
 async function generateAltTextForMedia(
@@ -51,6 +52,9 @@ async function generateAltTextForMedia(
 
 export async function POST(req: NextRequest) {
 	try {
+		const unauthorized = await requireAdmin(req)
+		if (unauthorized) return unauthorized
+
 		const payload = await getPayload({ config })
 
 		// Get all media without alt text

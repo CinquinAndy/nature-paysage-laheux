@@ -3,6 +3,7 @@
 import { CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
+import Script from 'next/script'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { type ContactFormData, submitContactForm } from '@/actions/contact'
@@ -83,6 +84,16 @@ const viewportConfig = {
 	amount: 0.1,
 }
 
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
+declare global {
+	interface Window {
+		turnstile?: {
+			reset: (widget?: string) => void
+		}
+	}
+}
+
 interface ModernContactFormProps {
 	formSection?: ContactPage['formSection']
 	contactInfo: SiteSetting['contact']
@@ -109,12 +120,22 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 	const [focusedField, setFocusedField] = useState<string | null>(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
-	const handleSubmit = async (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		setIsSubmitting(true)
 
+		// Lire le token Turnstile et le honeypot directement depuis le formulaire.
+		const form = e.currentTarget
+		const data = new FormData(form)
+		const turnstileToken = (data.get('cf-turnstile-response') as string) || undefined
+		const website = (data.get('website') as string) || undefined
+
 		try {
-			const result = await submitContactForm(formData as ContactFormData)
+			const result = await submitContactForm({
+				...formData,
+				turnstileToken,
+				website,
+			} as ContactFormData)
 
 			if (result.success) {
 				toast.success('Message envoyé !', {
@@ -132,6 +153,8 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 					message: '',
 					gardenSize: '',
 				})
+				// Régénérer un nouveau token Turnstile pour un éventuel prochain envoi.
+				window.turnstile?.reset()
 			} else {
 				toast.error('Erreur', {
 					description: result.message,
@@ -364,6 +387,20 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 								</div>
 							</motion.div>
 						</div>
+
+						{/* Honeypot anti-bot : caché aux humains, souvent rempli par les bots. */}
+						<div aria-hidden="true" className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden">
+							<label htmlFor="website">Ne pas remplir ce champ</label>
+							<input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+						</div>
+
+						{/* Widget Cloudflare Turnstile (anti-bot). Injecte un input caché "cf-turnstile-response". */}
+						{TURNSTILE_SITE_KEY ? (
+							<motion.div variants={fieldVariants} className="mt-8">
+								<Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
+								<div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme="auto" />
+							</motion.div>
+						) : null}
 
 						<motion.div variants={fieldVariants} className="mt-10">
 							<Button

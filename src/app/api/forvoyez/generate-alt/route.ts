@@ -2,10 +2,14 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import { generateAltText } from '@/lib/forvoyez/generate-alt-text'
+import { requireAdmin } from '@/lib/security/require-admin'
 import config from '@/payload.config'
 
 export async function POST(req: NextRequest) {
 	try {
+		const unauthorized = await requireAdmin(req)
+		if (unauthorized) return unauthorized
+
 		const { mediaId } = await req.json()
 
 		if (!mediaId) {
