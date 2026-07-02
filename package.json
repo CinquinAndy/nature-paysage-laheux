@@ -60,7 +60,7 @@
 		"react-email": "5.2.11",
 		"react-leaflet": "5.0.0",
 		"resend": "6.14.0",
-		"sharp": "0.34.5",
+		"sharp": "0.35.3",
 		"sonner": "2.0.7",
 		"tailwind-merge": "3.6.0",
 		"tailwindcss": "4.3.1",
