@@ -69,8 +69,8 @@ importers:
         specifier: ^3.9.1
         version: 3.9.1
       '@tsparticles/react':
-        specifier: ^3.0.0
-        version: 3.0.0(@tsparticles/engine@3.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        specifier: ^4.0.0
+        version: 4.3.1(@tsparticles/engine@3.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@tsparticles/slim':
         specifier: ^3.9.1
         version: 3.9.1
@@ -2822,11 +2822,10 @@ packages:
     resolution: {integrity: sha512-SBxk7f1KBfXeTnnklbE2Hx4jBgh6I6HOtxb+Os1gTp0oaghZOkWcCD2dP4QbUu7fVNCMOcApPoMNC8RTFcy9wQ==}
     deprecated: Please update to version 4.1.1
 
-  '@tsparticles/react@3.0.0':
-    resolution: {integrity: sha512-hjGEtTT1cwv6BcjL+GcVgH++KYs52bIuQGW3PWv7z3tMa8g0bd6RI/vWSLj7p//NZ3uTjEIeilYIUPBh7Jfq/Q==}
-    deprecated: Please update to version 4.1.1
+  '@tsparticles/react@4.3.1':
+    resolution: {integrity: sha512-rr4Xm5k64A9RYKvbTr4lAIwRwciNGoWl1MHElBPhz1rB8ieJqbxyVCz3prqF9u0vQBztRszD/BYf04DrKq7U3A==}
     peerDependencies:
-      '@tsparticles/engine': ^3.0.2
+      '@tsparticles/engine': 4.3.1
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
@@ -8147,7 +8146,7 @@ snapshots:
     dependencies:
       '@tsparticles/engine': 3.9.1
 
-  '@tsparticles/react@3.0.0(@tsparticles/engine@3.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@tsparticles/react@4.3.1(@tsparticles/engine@3.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@tsparticles/engine': 3.9.1
       react: 19.2.7
