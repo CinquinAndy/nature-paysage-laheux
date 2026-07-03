@@ -120,8 +120,8 @@ importers:
         specifier: 3.85.1
         version: 3.85.1(graphql@16.14.2)(typescript@6.0.3)
       postcss:
-        specifier: 8.5.15
-        version: 8.5.15
+        specifier: 8.5.16
+        version: 8.5.16
       react:
         specifier: 19.2.7
         version: 19.2.7
