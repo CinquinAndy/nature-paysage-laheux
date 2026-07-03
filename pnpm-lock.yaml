@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ai-sdk/google':
-        specifier: 3.0.84
-        version: 3.0.84(zod@4.1.12)
+        specifier: 3.0.88
+        version: 3.0.88(zod@4.1.12)
       '@paper-design/shaders-react':
         specifier: 0.0.76
         version: 0.0.76(@types/react@19.2.17)(react@19.2.7)
@@ -207,8 +207,8 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/google@3.0.84':
-    resolution: {integrity: sha512-TVLcerZs7D70nHGPhtb5cwwX41CzKSVE00IEHRTRXXBa35g6BJdxi48YPglrrP9gDCAPSrl60/Nh5SBMMTwkwQ==}
+  '@ai-sdk/google@3.0.88':
+    resolution: {integrity: sha512-CN3PHCz5pa2sBowwZG4sNqE+7YfHWZT6+5KU12YMWuBssZ03s143Jr2jThkN5Fgemy8Kyg+ub2XbpHGhtIZ2yQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -219,8 +219,18 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
+  '@ai-sdk/provider-utils@4.0.35':
+    resolution: {integrity: sha512-bjYld/2KGPLt78kpqbya+fD4LYS7BqVQJyUjE3qAHrYB0FR2Q90BaWEVIBZaguTWXf/A8L6uG1zO1v9TxVlGWg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
   '@ai-sdk/provider@3.0.11':
     resolution: {integrity: sha512-GKu3RxsfKGWjBiXmEdsKsGR9uVgJ56mzL1w7mLsn5k2TiNtpyS2IYQo3v1NJpK3oyv2OVavlK3g801VSe+gujg==}
+    engines: {node: '>=18'}
+
+  '@ai-sdk/provider@3.0.13':
+    resolution: {integrity: sha512-ZPtVYt5QIJzOta1kdUiDuCx4HhFkvNPv/rvmZ2b1iXwybYjJsCnNYR4PAw4kW7rgVfDARvHXcU64efWuqNp6bw==}
     engines: {node: '>=18'}
 
   '@alloc/quick-lru@5.2.0':
@@ -5198,10 +5208,10 @@ snapshots:
       '@vercel/oidc': 3.2.0
       zod: 4.1.12
 
-  '@ai-sdk/google@3.0.84(zod@4.1.12)':
+  '@ai-sdk/google@3.0.88(zod@4.1.12)':
     dependencies:
-      '@ai-sdk/provider': 3.0.11
-      '@ai-sdk/provider-utils': 4.0.31(zod@4.1.12)
+      '@ai-sdk/provider': 3.0.13
+      '@ai-sdk/provider-utils': 4.0.35(zod@4.1.12)
       zod: 4.1.12
 
   '@ai-sdk/provider-utils@4.0.31(zod@4.1.12)':
@@ -5211,7 +5221,18 @@ snapshots:
       eventsource-parser: 3.0.8
       zod: 4.1.12
 
+  '@ai-sdk/provider-utils@4.0.35(zod@4.1.12)':
+    dependencies:
+      '@ai-sdk/provider': 3.0.13
+      '@standard-schema/spec': 1.1.0
+      eventsource-parser: 3.0.8
+      zod: 4.1.12
+
   '@ai-sdk/provider@3.0.11':
+    dependencies:
+      json-schema: 0.4.0
+
+  '@ai-sdk/provider@3.0.13':
     dependencies:
       json-schema: 0.4.0
 
