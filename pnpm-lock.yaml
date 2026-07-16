@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ai-sdk/google':
-        specifier: 3.0.93
-        version: 3.0.93(zod@4.1.12)
+        specifier: 3.0.94
+        version: 3.0.94(zod@4.1.12)
       '@paper-design/shaders-react':
         specifier: 0.0.76
         version: 0.0.76(@types/react@19.2.17)(react@19.2.7)
@@ -207,8 +207,8 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/google@3.0.93':
-    resolution: {integrity: sha512-QXoD+mvMBIbht3SIyIB5V2aSdoW7z6hFusr83ou6S7KeHok+YMwEJ5ORJPioGMAeh0lEZA0fXTqbIIdUY7tdJA==}
+  '@ai-sdk/google@3.0.94':
+    resolution: {integrity: sha512-s9vWtsReWMElsmL0R/JfLuBPvgS64pwS4D/8AOGu8fvqBhRkGegsG4q1aNZn30SEox2yfQi76aAFLB5J542Rmg==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -5194,7 +5194,7 @@ snapshots:
       '@vercel/oidc': 3.2.0
       zod: 4.1.12
 
-  '@ai-sdk/google@3.0.93(zod@4.1.12)':
+  '@ai-sdk/google@3.0.94(zod@4.1.12)':
     dependencies:
       '@ai-sdk/provider': 3.0.14
       '@ai-sdk/provider-utils': 4.0.39(zod@4.1.12)
