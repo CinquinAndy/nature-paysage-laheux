@@ -73,7 +73,7 @@
 		"@types/leaflet-draw": "1.0.13",
 		"@types/node": "25.9.5",
 		"@types/react": "19.2.18",
-		"@types/react-dom": "19.2.4",
+		"@types/react-dom": "19.2.5",
 		"@vitejs/plugin-react": "6.1.0",
 		"esbuild": "0.28.0",
 		"jsdom": "29.1.1",
