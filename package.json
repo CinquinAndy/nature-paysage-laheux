@@ -74,7 +74,7 @@
 		"@types/node": "25.9.5",
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
-		"@vitejs/plugin-react": "6.1.0",
+		"@vitejs/plugin-react": "6.1.1",
 		"esbuild": "0.28.0",
 		"jsdom": "29.1.1",
 		"tsx": "4.23.12",
