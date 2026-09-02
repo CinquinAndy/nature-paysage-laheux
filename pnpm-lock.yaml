@@ -75,8 +75,8 @@ importers:
         specifier: ^3.9.1
         version: 3.9.1
       ai:
-        specifier: 6.0.273
-        version: 6.0.273(zod@4.1.12)
+        specifier: 6.0.274
+        version: 6.0.274(zod@4.1.12)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -3152,8 +3152,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  ai@6.0.273:
-    resolution: {integrity: sha512-FbX1TxGbhKbu14T+rzXxUjYnR6BzDq91Ve7A/71EngmpwVP2Df8z42M0sXqE7HJTinrz31JhjqSnGy5V8tVReQ==}
+  ai@6.0.274:
+    resolution: {integrity: sha512-YJlg6wQN3UuPtFOFG09QemjEGfmHUMeqmrp7o9RD+zacrqKN6LesJ8R3DCbcPSNrA7FLLOG3e7hpXNksPjV17Q==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -8679,7 +8679,7 @@ snapshots:
 
   acorn@8.16.0: {}
 
-  ai@6.0.273(zod@4.1.12):
+  ai@6.0.274(zod@4.1.12):
     dependencies:
       '@ai-sdk/gateway': 3.0.186(zod@4.1.12)
       '@ai-sdk/provider': 3.0.15
