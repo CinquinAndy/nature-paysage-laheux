@@ -12,8 +12,8 @@ importers:
         specifier: 3.0.123
         version: 3.0.123(zod@4.1.12)
       '@paper-design/shaders-react':
-        specifier: 0.0.76
-        version: 0.0.76(@types/react@19.3.0)(react@19.3.0)
+        specifier: 0.0.81
+        version: 0.0.81(@types/react@19.3.0)(react@19.3.0)
       '@payloadcms/db-mongodb':
         specifier: 3.89.0
         version: 3.89.0(@aws-sdk/credential-providers@3.901.0)(payload@3.89.0(graphql@16.14.2)(typescript@6.0.3))
@@ -1831,8 +1831,8 @@ packages:
   '@oxc-project/types@0.149.0':
     resolution: {integrity: sha512-Efcc+iF0j3Bf67YjEqIqWXbX5XddXoK/Mw4K1/JuXwRCZ8N16VR7iT23nlCc9XrveFVh/E5Rqs2StT0V8v9LdA==}
 
-  '@paper-design/shaders-react@0.0.76':
-    resolution: {integrity: sha512-uPJWrYRf6cJdO2H+fuXlahaqz0QjYglNAyUTaRfIInpzCa/d6guxBIK003soAZQFuQ035yg9FhtfFzKNWm+a5A==}
+  '@paper-design/shaders-react@0.0.81':
+    resolution: {integrity: sha512-3FMkeZqj9sSvK/WkgekGu3crnOQd4R2iH8IT+jVBuQmq1m8p88VFvxh63s9bSt2exBwjBNaRfSo0FSCeNxqh3w==}
     peerDependencies:
       '@types/react': ^18 || ^19
       react: ^18 || ^19
@@ -1840,8 +1840,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@paper-design/shaders@0.0.76':
-    resolution: {integrity: sha512-AcNDY4J66YQHUfQYFInkCP7M9VOje0od7wLpOR7LtCmc532opJy6ll+h1W9zBovz8tt9U7OADUmJ/qKEXyOX/A==}
+  '@paper-design/shaders@0.0.81':
+    resolution: {integrity: sha512-jeGdyjMscZ2bxmQdo8lhwUufHUf4iq3s1ayjh8PXU7Go42Rw8E3I0It1FZdc3HuWt5J82m//DRWaxsRqRfA4Gg==}
 
   '@payloadcms/db-mongodb@3.89.0':
     resolution: {integrity: sha512-Z8kf0KF19NDHLT3WaUmKfQx0HLTrlbWYYQFEd3ea59bDK62lCZGdqmJ2cUrIVEomS/wlJ9YUN06t29WtQ3CjmQ==}
@@ -7162,14 +7162,14 @@ snapshots:
 
   '@oxc-project/types@0.149.0': {}
 
-  '@paper-design/shaders-react@0.0.76(@types/react@19.3.0)(react@19.3.0)':
+  '@paper-design/shaders-react@0.0.81(@types/react@19.3.0)(react@19.3.0)':
     dependencies:
-      '@paper-design/shaders': 0.0.76
+      '@paper-design/shaders': 0.0.81
       react: 19.3.0
     optionalDependencies:
       '@types/react': 19.3.0
 
-  '@paper-design/shaders@0.0.76': {}
+  '@paper-design/shaders@0.0.81': {}
 
   '@payloadcms/db-mongodb@3.89.0(@aws-sdk/credential-providers@3.901.0)(payload@3.89.0(graphql@16.14.2)(typescript@6.0.3))':
     dependencies:
