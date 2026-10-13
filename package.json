@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"type": "module",
 	"scripts": {
-		"build": "next build",
+		"build": "cross-env NODE_ENV=production tsx src/scripts/migrate.ts && next build",
 		"dev": "next dev",
 		"email": "email dev --dir src/emails --port 3001",
 		"generate:importmap": "payload generate:importmap",
