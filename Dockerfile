@@ -31,8 +31,16 @@ ARG REVALIDATE_SECRET
 ARG NEXT_PUBLIC_SERVER_URL
 ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
 ARG TURNSTILE_SECRET_KEY
+# Décalage de version (page ouverte avant un déploiement) : voir src/scripts/build-ids.mjs.
+# - Clé des Server Actions stable d'un build à l'autre (dérivée de PAYLOAD_SECRET, sauf si Coolify fournit
+#   NEXT_SERVER_ACTIONS_ENCRYPTION_KEY) : l'identifiant de submitContactForm ne change plus à chaque déploiement.
+# - .deployment-id : `deploymentId` de next.config.mjs, le commit si Coolify passe SOURCE_COMMIT.
+ARG NEXT_SERVER_ACTIONS_ENCRYPTION_KEY
+ARG SOURCE_COMMIT
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN pnpm run build
+RUN node src/scripts/build-ids.mjs deployment-id > .deployment-id \
+	&& NEXT_SERVER_ACTIONS_ENCRYPTION_KEY="${NEXT_SERVER_ACTIONS_ENCRYPTION_KEY:-$(node src/scripts/build-ids.mjs server-actions-key)}" \
+	pnpm run build
 
 # 2. What runs. The app is copied whole: `next start` needs .next, node_modules and the sources
 #    that next.config.mjs and the Payload config import.
