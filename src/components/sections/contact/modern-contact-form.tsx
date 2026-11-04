@@ -6,9 +6,10 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { type ContactFormData, submitContactForm } from '@/actions/contact'
+import { submitContactForm } from '@/actions/contact'
 import { AddressAutocomplete } from '@/components/ui/address-autocomplete'
 import { Button } from '@/components/ui/button'
+import type { ContactFormData } from '@/lib/contact-validation'
 import type { ContactPage, SiteSetting } from '@/payload-types'
 
 // Animation pour le titre et sous-titre

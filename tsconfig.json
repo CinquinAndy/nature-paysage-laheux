@@ -47,6 +47,7 @@
     ".next",
     "out",
     "dist",
-    "public/raw_photos"
+    "public/raw_photos",
+    "tests"
   ]
 }

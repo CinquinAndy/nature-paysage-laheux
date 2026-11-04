@@ -14,7 +14,8 @@
 		"lint": "biome lint --write",
 		"format": "biome format --write",
 		"payload": "payload",
-		"start": "next start"
+		"start": "next start",
+		"test": "bun test tests"
 	},
 	"dependencies": {
 		"@ai-sdk/google": "3.0.130",
