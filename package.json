@@ -18,7 +18,7 @@
 		"test": "bun test tests"
 	},
 	"dependencies": {
-		"@ai-sdk/google": "3.0.130",
+		"@ai-sdk/google": "3.0.141",
 		"@paper-design/shaders-react": "0.0.82",
 		"@payloadcms/db-mongodb": "3.90.2",
 		"@payloadcms/db-postgres": "3.90.2",
