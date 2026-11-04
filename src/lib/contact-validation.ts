@@ -11,6 +11,18 @@ export interface ContactFormData {
 	turnstileToken?: string
 	/** Champ honeypot : doit rester vide (rempli uniquement par des bots). */
 	website?: string
+	/**
+	 * Identifiant de l'envoi (UUID créé par le navigateur), repris tel quel quand le formulaire est renvoyé
+	 * après une mise à jour du site : sert de clé d'idempotence chez Resend pour ne jamais envoyer deux fois.
+	 */
+	submissionId?: string
+}
+
+const SUBMISSION_ID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+/** Renvoie l'identifiant d'envoi s'il a la forme d'un UUID, sinon undefined (valeur ignorée). */
+export function normalizeSubmissionId(value: unknown): string | undefined {
+	return typeof value === 'string' && SUBMISSION_ID_REGEX.test(value) ? value.toLowerCase() : undefined
 }
 
 export type ContactValidationError = {

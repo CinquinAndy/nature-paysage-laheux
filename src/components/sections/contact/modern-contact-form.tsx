@@ -4,11 +4,20 @@ import { CheckCircle2, Clock, Loader2, Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import Script from 'next/script'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { submitContactForm } from '@/actions/contact'
 import { AddressAutocomplete } from '@/components/ui/address-autocomplete'
 import { Button } from '@/components/ui/button'
+import {
+	type ContactDraftFields,
+	clearContactDraft,
+	EMPTY_CONTACT_FIELDS,
+	fieldsFingerprint,
+	planSubmitFailure,
+	resumeContactDraft,
+	submissionIdFor,
+} from '@/lib/contact-draft'
 import type { ContactFormData } from '@/lib/contact-validation'
 import type { ContactPage, SiteSetting } from '@/payload-types'
 
@@ -87,6 +96,31 @@ const viewportConfig = {
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
 
+// Délai max d'attente du token Turnstile avant le renvoi automatique (après rechargement).
+const TURNSTILE_WAIT_MS = 15_000
+
+function getSessionStorage(): Storage | null {
+	try {
+		return window.sessionStorage
+	} catch {
+		return null
+	}
+}
+
+/** Attend que le widget Turnstile ait rempli son champ caché ; null si rien ne vient à temps. */
+function waitForTurnstileToken(form: HTMLFormElement, timeoutMs: number): Promise<string | null> {
+	return new Promise(resolve => {
+		const startedAt = Date.now()
+		const check = () => {
+			const input = form.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')
+			if (input?.value) return resolve(input.value)
+			if (Date.now() - startedAt >= timeoutMs) return resolve(null)
+			window.setTimeout(check, 250)
+		}
+		check()
+	})
+}
+
 declare global {
 	interface Window {
 		turnstile?: {
@@ -107,19 +141,56 @@ interface ModernContactFormProps {
 }
 
 export function ModernContactForm({ formSection, contactInfo, benefits }: ModernContactFormProps) {
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		phone: '',
-		address: '',
-		city: '',
-		postalCode: '',
-		message: '',
-		gardenSize: '',
-	})
+	const [formData, setFormData] = useState<ContactDraftFields>(EMPTY_CONTACT_FIELDS)
 
 	const [focusedField, setFocusedField] = useState<string | null>(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
+
+	const formRef = useRef<HTMLFormElement>(null)
+	// Identifiant de l'envoi en cours (clé d'idempotence côté serveur) et empreinte des champs envoyés.
+	const submissionRef = useRef<{ submissionId: string; fingerprint: string } | null>(null)
+	// true pendant l'envoi relancé automatiquement après rechargement.
+	const autoRetryRef = useRef(false)
+	const [autoRetryReady, setAutoRetryReady] = useState(false)
+
+	// Après une mise à jour du site : restaurer ce que le visiteur avait tapé, et préparer le renvoi.
+	useEffect(() => {
+		const resumed = resumeContactDraft(getSessionStorage())
+		if (!resumed) return
+		setFormData(resumed.draft.fields)
+		submissionRef.current = {
+			submissionId: resumed.draft.submissionId,
+			fingerprint: fieldsFingerprint(resumed.draft.fields),
+		}
+		if (resumed.autoRetry) setAutoRetryReady(true)
+	}, [])
+
+	// Renvoi automatique, une seule fois, quand les champs restaurés sont affichés (et le token anti-robot prêt).
+	useEffect(() => {
+		if (!autoRetryReady) return
+		setAutoRetryReady(false)
+		const form = formRef.current
+		if (!form) return
+		let cancelled = false
+		setIsSubmitting(true)
+		const tokenReady = TURNSTILE_SITE_KEY ? waitForTurnstileToken(form, TURNSTILE_WAIT_MS) : Promise.resolve('')
+		void tokenReady.then(token => {
+			if (cancelled) return
+			setIsSubmitting(false)
+			if (token === null) {
+				toast.info('Votre message est conservé', {
+					description: "Le site vient d'être mis à jour : cliquez sur « Envoyer ma demande » pour l'envoyer.",
+					duration: 8000,
+				})
+				return
+			}
+			autoRetryRef.current = true
+			form.requestSubmit()
+		})
+		return () => {
+			cancelled = true
+		}
+	}, [autoRetryReady])
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -131,29 +202,29 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 		const turnstileToken = (data.get('cf-turnstile-response') as string) || undefined
 		const website = (data.get('website') as string) || undefined
 
+		const isAutoRetry = autoRetryRef.current
+		autoRetryRef.current = false
+		const fields = formData
+		const submission = submissionIdFor(submissionRef.current, fields)
+		submissionRef.current = submission
+
 		try {
 			const result = await submitContactForm({
-				...formData,
+				...fields,
 				turnstileToken,
 				website,
+				submissionId: submission.submissionId,
 			} as ContactFormData)
 
 			if (result.success) {
+				clearContactDraft(getSessionStorage())
+				submissionRef.current = null
 				toast.success('Message envoyé !', {
 					description: 'Votre demande a été envoyée avec succès ! Je vous répondrai sous 48h.',
 					duration: 5000,
 				})
 				// Réinitialiser le formulaire
-				setFormData({
-					name: '',
-					email: '',
-					phone: '',
-					address: '',
-					city: '',
-					postalCode: '',
-					message: '',
-					gardenSize: '',
-				})
+				setFormData(EMPTY_CONTACT_FIELDS)
 				// Régénérer un nouveau token Turnstile pour un éventuel prochain envoi.
 				window.turnstile?.reset()
 			} else {
@@ -162,10 +233,24 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 					duration: 5000,
 				})
 			}
-		} catch (_error) {
+		} catch (error) {
+			// Site mis à jour pendant que la page était ouverte (action introuvable), coupure réseau ou réponse
+			// non reconnue : on garde le message et on recharge la page pour le renvoyer une fois automatiquement.
+			const plan = planSubmitFailure({
+				error,
+				fields,
+				submissionId: submission.submissionId,
+				isAutoRetry,
+				storage: getSessionStorage(),
+			})
+			if (plan.action === 'reload') {
+				window.location.reload()
+				return
+			}
 			toast.error('Erreur', {
-				description: "Une erreur inattendue s'est produite. Veuillez réessayer.",
-				duration: 5000,
+				description:
+					plan.action === 'show-message' ? plan.message : "Une erreur inattendue s'est produite. Veuillez réessayer.",
+				duration: plan.action === 'show-message' ? 8000 : 5000,
 			})
 		} finally {
 			setIsSubmitting(false)
@@ -222,6 +307,7 @@ export function ModernContactForm({ formSection, contactInfo, benefits }: Modern
 				<div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
 					{/* Form avec stagger animation */}
 					<motion.form
+						ref={formRef}
 						onSubmit={handleSubmit}
 						className="lg:flex-auto"
 						initial="hidden"

@@ -3,7 +3,7 @@
 import { headers } from 'next/headers'
 import { Resend } from 'resend'
 import { ContactFormEmail } from '@/emails/contact-form-email'
-import { type ContactFormData, validateContactForm } from '@/lib/contact-validation'
+import { type ContactFormData, normalizeSubmissionId, validateContactForm } from '@/lib/contact-validation'
 import { getClientIp, rateLimit } from '@/lib/security/rate-limit'
 import { verifyTurnstile } from '@/lib/security/turnstile'
 
@@ -74,22 +74,30 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
 			return { success: false, message: SEND_ERROR_MESSAGE, error: 'CONFIG_ERROR' }
 		}
 
-		const { data, error } = await resend.emails.send({
-			from: FROM,
-			to: TO,
-			replyTo: formData.email.trim(),
-			subject: `Nouvelle demande de contact de ${formData.name.trim()}`,
-			react: ContactFormEmail({
-				name: formData.name,
-				email: formData.email,
-				phone: formData.phone,
-				address: formData.address,
-				city: formData.city,
-				postalCode: formData.postalCode,
-				message: formData.message,
-				gardenSize: formData.gardenSize,
-			}),
-		})
+		// Clé d'idempotence : un renvoi du même envoi (après une mise à jour du site ou une coupure réseau)
+		// est reconnu par Resend pendant 24 h et ne crée pas un second email.
+		const submissionId = normalizeSubmissionId(formData.submissionId)
+		const sendOptions = submissionId ? { idempotencyKey: `contact-form/${submissionId}` } : undefined
+
+		const { data, error } = await resend.emails.send(
+			{
+				from: FROM,
+				to: TO,
+				replyTo: formData.email.trim(),
+				subject: `Nouvelle demande de contact de ${formData.name.trim()}`,
+				react: ContactFormEmail({
+					name: formData.name,
+					email: formData.email,
+					phone: formData.phone,
+					address: formData.address,
+					city: formData.city,
+					postalCode: formData.postalCode,
+					message: formData.message,
+					gardenSize: formData.gardenSize,
+				}),
+			},
+			sendOptions
+		)
 
 		if (error) {
 			// Pas de données du visiteur dans les journaux : seulement le retour de Resend.
