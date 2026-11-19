@@ -123,6 +123,34 @@ describe('submitContactForm', () => {
 		expect(envois).toHaveLength(0)
 	})
 
+	test('nom et message en lettres au hasard : faux succès, rien n’est envoyé', async () => {
+		const resultat = await submitContactForm({
+			...formulaire,
+			name: 'FzEwOOmxoOoDAyMmIDdgBtPG',
+			message: 'oKcQzvnDkccQlIuC',
+		})
+		expect(resultat.success).toBe(true)
+		expect(envois).toHaveLength(0)
+	})
+
+	test('message avec un lien : envoyé, signalé dans l’objet', async () => {
+		const resultat = await submitContactForm({ ...formulaire, message: 'Voir www.exemple.fr pour le devis' })
+		expect(resultat.success).toBe(true)
+		expect(envois[0]?.subject).toBe('[Lien dans le message] Nouvelle demande de contact de Jeanne Test')
+	})
+
+	test('production sans TURNSTILE_SECRET_KEY : CAPTCHA_FAILED, rien n’est envoyé', async () => {
+		const envAvant = process.env.NODE_ENV
+		;(process.env as Record<string, string>).NODE_ENV = 'production'
+		try {
+			const resultat = await submitContactForm({ ...formulaire, turnstileToken: 'jeton' })
+			expect(resultat.error).toBe('CAPTCHA_FAILED')
+			expect(envois).toHaveLength(0)
+		} finally {
+			;(process.env as Record<string, string | undefined>).NODE_ENV = envAvant
+		}
+	})
+
 	test('plus de 3 envois depuis la même IP : RATE_LIMITED', async () => {
 		ipFixe = '10.9.9.9'
 		for (let i = 0; i < 3; i++) {

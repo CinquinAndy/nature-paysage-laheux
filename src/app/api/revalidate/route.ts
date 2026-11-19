@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
 		const { secret, collection, slug, global } = body
 
 		// Vérifier le secret de revalidation
-		if (secret !== process.env.REVALIDATE_SECRET) {
+		// Sans REVALIDATE_SECRET, un corps sans secret passait (undefined === undefined) : refus.
+		const expected = process.env.REVALIDATE_SECRET
+		if (!expected || secret !== expected) {
 			return NextResponse.json({ message: 'Invalid token' }, { status: 401 })
 		}
 

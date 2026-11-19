@@ -5,6 +5,7 @@ import { Resend } from 'resend'
 import { ContactFormEmail } from '@/emails/contact-form-email'
 import { type ContactFormData, normalizeSubmissionId, validateContactForm } from '@/lib/contact-validation'
 import { getClientIp, rateLimit } from '@/lib/security/rate-limit'
+import { containsLink, isHoneypotFilled, looksLikeBotText } from '@/lib/security/spam'
 import { verifyTurnstile } from '@/lib/security/turnstile'
 
 // Expéditeur sur un domaine vérifié dans le compte Resend (andy-cinquin.com).
@@ -34,7 +35,7 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
 	try {
 		// 1. Honeypot : si le champ caché est rempli, c'est un bot.
 		//    On renvoie un faux succès sans rien envoyer.
-		if (formData.website && formData.website.trim() !== '') {
+		if (isHoneypotFilled(formData.website)) {
 			return { success: true, message: 'Votre demande a été envoyée avec succès !' }
 		}
 
@@ -55,6 +56,13 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
 		const invalid = validateContactForm(formData)
 		if (invalid) {
 			return { success: false, message: invalid.message, error: invalid.error }
+		}
+
+		// Robots qui remplissent le nom et le message de lettres au hasard (vus sur cinquin-maeva.com,
+		// même modèle de formulaire) : faux succès, rien n'est envoyé.
+		if (looksLikeBotText(formData)) {
+			console.info('Formulaire de contact : envoi de robot écarté.')
+			return { success: true, message: 'Votre demande a été envoyée avec succès !' }
 		}
 
 		// 4. Vérification Cloudflare Turnstile (anti-bot).
@@ -84,7 +92,7 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
 				from: FROM,
 				to: TO,
 				replyTo: formData.email.trim(),
-				subject: `Nouvelle demande de contact de ${formData.name.trim()}`,
+				subject: `${containsLink(formData.message) ? '[Lien dans le message] ' : ''}Nouvelle demande de contact de ${formData.name.trim()}`,
 				react: ContactFormEmail({
 					name: formData.name,
 					email: formData.email,

@@ -12,19 +12,23 @@ export interface TurnstileResult {
 }
 
 /**
- * Valide un token Turnstile. Si `TURNSTILE_SECRET_KEY` n'est pas configuré,
- * la vérification est ignorée (retourne success) afin de ne pas casser les
- * environnements de dev non configurés — mais un warning est loggé.
+ * Valide un token Turnstile.
+ * Sans `TURNSTILE_SECRET_KEY` : refus en production (une variable oubliée ne doit pas ouvrir le formulaire
+ * en silence), vérification ignorée en développement et en test.
  */
-export async function verifyTurnstile(token: string | undefined, remoteIp?: string): Promise<TurnstileResult> {
+export async function verifyTurnstile(token: unknown, remoteIp?: string): Promise<TurnstileResult> {
 	const secret = process.env.TURNSTILE_SECRET_KEY
 
 	if (!secret) {
-		console.warn('[Turnstile] TURNSTILE_SECRET_KEY non défini — vérification ignorée.')
+		if (process.env.NODE_ENV === 'production') {
+			console.error('[Turnstile] TURNSTILE_SECRET_KEY absent en production : envoi refusé.')
+			return { success: false, errorCodes: ['missing-secret'] }
+		}
+		console.warn('[Turnstile] TURNSTILE_SECRET_KEY non défini — vérification ignorée (hors production).')
 		return { success: true }
 	}
 
-	if (!token) {
+	if (typeof token !== 'string' || !token || token.length > 2048) {
 		return { success: false, errorCodes: ['missing-input-response'] }
 	}
 
@@ -36,6 +40,7 @@ export async function verifyTurnstile(token: string | undefined, remoteIp?: stri
 			method: 'POST',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			body,
+			signal: AbortSignal.timeout(10_000),
 		})
 
 		const data = (await res.json()) as { success: boolean; 'error-codes'?: string[] }
