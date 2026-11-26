@@ -11,7 +11,7 @@
 # - pnpm-lock.yaml is the lockfile in use (bun.lock is stale).
 
 # 1. Build, on the Node version that runs the server.
-FROM node:24.22.3-bookworm-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54 AS build
+FROM node:24.22.3-bookworm-slim@sha256:873f586f3794f52281bd039bf02c048a0be08fde619338f9941bad1eb6b34530 AS build
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@10.34.5 --activate
 COPY package.json pnpm-lock.yaml ./
@@ -44,7 +44,7 @@ RUN node src/scripts/build-ids.mjs deployment-id > .deployment-id \
 
 # 2. What runs. The app is copied whole: `next start` needs .next, node_modules and the sources
 #    that next.config.mjs and the Payload config import.
-FROM node:24.22.3-bookworm-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54 AS run
+FROM node:24.22.3-bookworm-slim@sha256:873f586f3794f52281bd039bf02c048a0be08fde619338f9941bad1eb6b34530 AS run
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
 COPY --from=build --chown=node:node /app ./
